@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invenio Warnings Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Source Sans 3', sans-serif;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #b8860b 0%, #9a6f0a 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            margin-bottom: 1.5rem;
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 500;
+            font-size: 1.25rem;
+            padding: 1rem 1.25rem;
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .table th {
+            background-color: #e9ecef;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #495057;
+        }
+        .emoji-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            border: 2px solid #ca8a04;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #b45309;
+        }
+        .metric-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .warning-card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+        }
+        .warning-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .warning-badge {
+            background-color: #ca8a04;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .warning-text {
+            flex: 1;
+            padding-right: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #495057;
+            background-color: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            border-left: 3px solid #ca8a04;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .package-count-table {
+            font-size: 0.875rem;
+        }
+        .package-count-table td {
+            padding: 0.25rem 0.5rem;
+        }
+        .log-type-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .log-type-patched {
+            background-color: #0dcaf0;
+            color: #000;
+        }
+        .log-type-original {
+            background-color: #6c757d;
+            color: white;
+        }
+        .no-warnings {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+        }
+        .no-warnings .emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .back-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        .back-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mb-2">{% if config_name %}{{ config_name }} - Warnings Report{% else %}⚠️ Warnings Report{% endif %}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    {% if started_at %}
+                    <p class="mb-1"><em>Started: {{ started_at }}</em></p>
+                    {% endif %}
+                    <p class="mb-1"><em>Last updated: {{ last_updated }}</em></p>
+                    {% if python_version %}
+                    <p class="mb-1"><em>Python: {{ python_version }}</em></p>
+                    {% endif %}
+                </div>
+                <div class="col-md-8 text-md-end">
+                    {% if patch_mode %}
+                    <p class="mb-1"><em>Patch Mode: {{ patch_mode }}</em></p>
+                    {% endif %}
+                    {% if test_scope %}
+                    <p class="mb-1"><em>Test Scope: {{ test_scope }}</em></p>
+                    {% endif %}
+                    {% if test_mode %}
+                    <p class="mb-1"><em>Test Mode: {{ test_mode }}</em></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <a href="index.html" class="back-link">← Back to Main Report</a>
+                </div>
+            </div>
+        </div>
+    <div class="container mb-5">
+        <!-- Overall Statistics -->
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">📊</span>Overall Statistics
+            </div>
+            <div class="card-body">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">{{ total_unique_warnings }}</div>
+                        <div class="metric-label">Unique Warnings</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">{{ total_packages_with_warnings }}</div>
+                        <div class="metric-label">Packages with Warnings</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">{{ total_warning_occurrences }}</div>
+                        <div class="metric-label">Total Occurrences</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if total_unique_warnings == 0 %}
+        <!-- No Warnings -->
+        <div class="card">
+            <div class="card-body no-warnings">
+                <div class="emoji">✨</div>
+                <h3>No Warnings Found</h3>
+                <p>All packages ran without warnings!</p>
+            </div>
+        </div>
+        {% else %}
+        <!-- All Warnings (Merged) -->
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">⚠️</span>
+                All Warnings
+                <span class="ms-2 text-muted">({{ warnings|length }} unique warning{{ 's' if warnings|length != 1 else '' }})</span>
+            </div>
+            <div class="card-body">
+                {% for warning in warnings %}
+                <div class="warning-card">
+                    <div class="warning-header">
+                        <div class="warning-text">{{ warning.text }}</div>
+                        <span class="warning-badge">
+                            {{ warning.total_count }} occurrence{{ 's' if warning.total_count != 1 else '' }}
+                        </span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm package-count-table">
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for package in warning.packages %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ package.link }}" target="_blank" class="text-decoration-none">
+                                            <code>{{ package.name }}</code>
+                                        </a>
+                                    </td>
+                                    <td>{{ package.count }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

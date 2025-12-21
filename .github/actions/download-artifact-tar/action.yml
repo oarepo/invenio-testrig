@@ -1,0 +1,35 @@
+name: 'Download Artifact with Permissions'
+description: 'Download an artifact while preserving file permissions using tar'
+inputs:
+  name:
+    description: 'Name of the artifact'
+    required: true
+  path:
+    description: 'Path where the artifact should be extracted'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Download tar artifact
+      uses: actions/download-artifact@v7
+      with:
+        name: ${{ inputs.name }}
+    
+    - name: Extract tar archive
+      shell: bash
+      run: |
+        ARTIFACT_NAME="${{ inputs.name }}"
+        EXTRACT_PATH="${{ inputs.path }}"
+        TAR_FILE="${ARTIFACT_NAME}.tar.gz"
+        
+        echo "Extracting tar archive to $EXTRACT_PATH"
+        
+        # Create parent directory if it doesn't exist
+        mkdir -p "$(dirname "$EXTRACT_PATH")"
+        
+        # Extract tar file
+        tar -xzf "$TAR_FILE" -C "$(dirname "$EXTRACT_PATH")"
+        
+        # Clean up tar file
+        rm -f "$TAR_FILE"

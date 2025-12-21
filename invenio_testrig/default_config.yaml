@@ -1,0 +1,85 @@
+# Optional name for this test configuration run
+name: Invenio testrig
+
+# Repository configurations - where to find the original packages
+github:
+  # GitHub organization containing the repositories to test. Multiple organizations
+  # can be specified, and the same organization can appear multiple times with
+  # different branch configurations or regex patterns.
+  - org: "CERNDocumentServer"
+    include: 
+      - "invenio-cern-sync"
+    test: 
+      - ./run-tests.sh
+    extras:
+      - tests
+      - opensearch2
+      - postgresql
+      - admin
+    freeze:
+      - setuptools<82.0.0
+
+  - org: "tu-graz-library"
+    include: 
+      - "invenio-curations"
+    test: 
+      - ./run-tests.sh
+    extras:
+      - tests
+      - opensearch2
+      - postgresql
+      - admin
+    freeze:
+      - setuptools<82.0.0
+
+  - org: "inveniosoftware"
+
+    # Regular expressions to filter packages for testing.
+    # Only packages matching at least one pattern will be tested.
+    include: 
+      - "invenio-.*"
+
+    # Packages to exclude from testing, even if they match the include patterns.
+    exclude:
+      - "invenio-xrootd"
+      - "invenio-swh"
+    
+    # how to run tests for the packages matching this github configuration. Required.
+    test: 
+      - ./run-tests.sh
+
+    # extras to install for the packages matching this github configuration. Optional.
+    # Note: this is a union of all invenio packages but fortunately it doesn't need 
+    # to be exact - if the extra doesn't exist for a package, pip will just ignore it 
+    # and install the package without that extra.
+    extras:
+      - tests
+      - opensearch2
+      - s3
+      - devs
+      - s3fs
+      - oaipmh
+      - rdf
+      - sparql
+      - postgresql    
+      - admin
+    freeze:
+      - setuptools<82.0.0
+
+# Repository to test - used for extracting dependencies and optionally running e2e tests.
+seed_repository:
+
+  # Git repository to install and test. It will be installed (using uv sync) and used to:
+  #   1. Extract dependencies matching the github filters - these packages will be tested.
+  #   2. Run e2e tests (if e2e configuration is provided).
+  git: zenodo/zenodo-rdm@master
+
+  # Package containing the e2e test library/configuration. If the git repository
+  # above doesn't have an e2e directory, it will be copied from this package.
+  # If no e2e configuration is provided, only unit tests will run (no e2e tests).
+  #
+  # e2e: oarepo/invenio-e2e@log-xhr
+  e2e:
+
+# Timeout for each tested package (in minutes)
+test_timeout: 90

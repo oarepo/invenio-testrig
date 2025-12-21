@@ -1,0 +1,453 @@
+name: Run testrig
+
+on:
+    # the workflow can be triggered manually
+    workflow_dispatch:
+        inputs:
+            name:
+                description: "Test name"
+                required: false
+                type: string
+            python-version:
+                description: "Python version to use"
+                required: false
+                type: string
+                default: "3.14.2"
+            disable-codestyle-checks:
+                description: "Disable codestyle checks (black/isort) during tests"
+                required: false
+                type: boolean
+                default: false
+            patches:
+                description: "Space-separated list of patches"
+                required: false
+                type: string
+            patch-mode:
+                description: "Test upstream or pinned versions"
+                required: false
+                type: choice
+                options:
+                    - upstream
+                    - pinned
+            test-scope:
+                description: "Test scope: 'affected' (only packages affected by patches), 'all'"
+                required: false
+                type: choice
+                default: "affected"
+                options:
+                    - affected
+                    - all
+            test-mode:
+                description: "Test selection for patched packages: 'stop-on-success', 'run-all'"
+                required: false
+                type: choice
+                default: "stop-on-success"
+                options:
+                    - stop-on-success
+                    - run-all
+
+    # or called from another workflow from another repository
+    workflow_call:
+        inputs:
+            testrig-repository:
+                description: "Repository containing invenio-testrig (owner/repo)"
+                required: false
+                default: oarepo/invenio-testrig
+                type: string
+            testrig-branch:
+                description: "Branch of invenio-testrig to use"
+                required: false
+                default: master
+                type: string
+            python-version:
+                description: "Python version to use"
+                required: false
+                type: string
+                default: "3.14.2"
+            disable-codestyle-checks:
+                description: "Disable codestyle checks (black/isort) during tests"
+                required: false
+                type: boolean
+                default: false
+            test-scope:
+                description: "Test scope: 'affected' (only packages with patches), 'all' (all packages)"
+                required: false
+                type: string
+                default: "all"
+            test-mode:
+                description: "Test mode: 'stop-on-success' (test original only on failure), 'run-all' (always test both versions)"
+                required: false
+                type: string
+                default: "run-all"
+            config-file:
+                description: "Path to the configuration file to use (relative to workspace root)"
+                required: false
+                type: string
+            skip-report:
+                description: "Skip report generation and pushing to repository (for testing/debugging purposes)"
+                required: false
+                type: boolean
+                default: false
+            report-repository:
+                description: "Repository to push the report to (owner/repo)"
+                required: false
+                type: string
+            report-branch:
+                description: "Branch to push the report to"
+                required: false
+                default: gh-pages
+                type: string
+            report-repository-token:
+                description: "GitHub token with permissions to push the report repository"
+                required: false
+                type: string
+            repository:
+                description: "Override repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)"
+                required: false
+                type: string
+            e2e:
+                description: "Override repository.e2e configuration (e.g., 'org/repo@branch' or GitHub URL)"
+                required: false
+                type: string
+            name:
+                description: "Name for the configuration (used in reports)"
+                required: false
+                type: string
+            patch-mode:
+                description: "Use 'upstream' or 'pinned' versions of packages for testing"
+                required: false
+                type: string
+            patches:
+                description: "Space-separated list of patches to add to the configuration"
+                required: false
+                type: string
+            ignore-uv-lock:
+                description: "Ignore uv.lock files and use latest compatible versions"
+                required: false
+                type: boolean
+                default: false
+            hook-libraries:
+                description: |
+                    Space-separated list of libraries to install to the invenio-testrig environment.
+                    They can contain entrypoints for hooks, which will be used during testing. 
+                    Format: "library1[extra1,extra2] library2[extra3]". File paths and github URLs are also supported.
+                required: false
+                type: string
+            skip-tests:
+                description: "Skip running tests (only prepare configuration and apply patches)"
+                required: false
+                type: boolean
+                default: false
+
+env:
+    PYTHONUNBUFFERED: 1
+    PYTHON_VERSION: ${{ inputs.python-version || '3.14.2' }}
+    DISABLE_CODESTYLE_CHECKS: ${{ inputs.disable-codestyle-checks }}
+    TEST_SCOPE: ${{ inputs.test-scope || 'affected' }}
+    TEST_MODE: ${{ inputs.test-mode || 'stop-on-success' }}
+    IGNORE_UV_LOCK: ${{ inputs.ignore-uv-lock || false }}
+
+    # if the workflow is called from another workflow, we use the defaults
+    TESTRIG_REPOSITORY: ${{ inputs.testrig-repository || github.repository }}
+    TESTRIG_BRANCH: ${{ inputs.testrig-branch || github.ref_name }}
+
+    # Path to the configuration file to use (relative to workspace root)
+    YAML_CONFIG_PATH: ${{ inputs.config-file || '' }}
+    WORKDIR: ${{ github.workspace }}/workdir
+
+    # Report repository settings - defaults to current repository and gh-pages for workflow_dispatch
+    SKIP_REPORT: ${{ inputs.skip-report || false }}
+    REPORT_REPOSITORY: ${{ inputs.report-repository || github.repository }}
+    REPORT_BRANCH: ${{ inputs.report-branch || 'gh-pages' }}
+    REPORT_TOKEN: ${{ inputs.report-repository-token || secrets.GITHUB_TOKEN }}
+
+    # Repository overrides (only available via workflow_call)
+    REPOSITORY_GIT: ${{ inputs.repository || '' }}
+    REPOSITORY_E2E: ${{ inputs.e2e || '' }}
+    CONFIG_NAME: ${{ inputs.name || '' }}
+    PATCH_MODE: ${{ inputs.patch-mode || 'pinned' }}
+    PATCHES: ${{ inputs.patches || '' }}
+
+    # GH token needed for the API (gh commandline tool)
+    GH_TOKEN: ${{ github.token }}
+
+    # Hooks
+    HOOK_LIBRARIES: ${{ inputs.hook-libraries || '' }}
+
+    # Flag to skip running tests (only prepare configuration and apply patches)
+    SKIP_TESTS: ${{ inputs.skip-tests || false }}
+
+permissions:
+    contents: write # Required for pushing reports to the repository
+    id-token: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
+    pages: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
+
+jobs:
+    prepare:
+        runs-on: ubuntu-latest
+        outputs:
+            matrix_tested_packages: ${{ steps.prepare.outputs.matrix_tested_packages }}
+            report_name: ${{ steps.prepare-and-push-report.outputs.report-name }}
+            report_url: ${{ steps.prepare-and-push-report.outputs.report-url }}
+        steps:
+            - name: Checkout the testrig repository to .pipeline
+              uses: actions/checkout@v4
+              with:
+                  repository: ${{ env.TESTRIG_REPOSITORY }}
+                  ref: ${{ env.TESTRIG_BRANCH }}
+                  path: .pipeline
+
+            - name: Prepare python and tools
+              uses: ./.pipeline/.github/actions/action-install-tools
+              with:
+                  python-version: ${{ env.PYTHON_VERSION }}
+                  testrig-directory: ${{ github.workspace }}/.pipeline
+                  hook-libraries: ${{ env.HOOK_LIBRARIES }}
+
+            - name: Prepare testrig
+              id: prepare
+              shell: bash
+              run: |
+
+                  echo "::group::⚙️ Setting up testrig (init, collect, filter, select-patches, clone)"
+                  setup_args=("--verbose")
+
+                  if [ "$DISABLE_CODESTYLE_CHECKS" == "true" ]; then
+                      setup_args+=("--disable-codestyle-checks")
+                  fi
+                  if [ "$IGNORE_UV_LOCK" == "true" ]; then
+                      setup_args+=("--ignore-uv-lock")
+                  fi
+                  setup_args+=("--python" "$PYTHON_VERSION")
+                  setup_args+=("--test-scope" "$TEST_SCOPE")
+                  setup_args+=("--test-mode" "$TEST_MODE")
+
+                  # Add repository overrides if provided
+                  if [ -n "$REPOSITORY_GIT" ]; then
+                      setup_args+=("--repository" "$REPOSITORY_GIT")
+                  fi
+                  if [ -n "$REPOSITORY_E2E" ]; then
+                      setup_args+=("--e2e" "$REPOSITORY_E2E")
+                  fi
+                  if [ -n "$CONFIG_NAME" ]; then
+                      setup_args+=("--name" "$CONFIG_NAME")
+                  fi
+                  if [ -n "$PATCH_MODE" ]; then
+                      setup_args+=("--patch-mode" "$PATCH_MODE")
+                  fi
+                  # Add config file option
+                  if [ -n "$YAML_CONFIG_PATH" ]; then
+                      setup_args+=("--config" "$YAML_CONFIG_PATH")
+                  else
+                      # try to find the config.yaml in the root of the git repository
+                      DEFAULT_CONFIG="${{ github.workspace }}/.pipeline/config.yaml"
+                      if [ -f "$DEFAULT_CONFIG" ]; then
+                          setup_args+=("--config" "$DEFAULT_CONFIG")
+                      fi
+                  fi
+
+                  # Add patches as positional arguments (must come last)
+                  patch_args=()
+                  if [ -n "$PATCHES" ]; then
+                      for patch in $PATCHES; do
+                          patch_args+=("$patch")
+                      done
+                  fi
+
+                  invenio-testrig setup --workdir "$WORKDIR" "${setup_args[@]}" "${patch_args[@]}"
+                  echo "::endgroup::"
+
+                  echo "::group::⚙️📊 Generating test matrix"
+                  invenio-testrig matrix $WORKDIR $GITHUB_OUTPUT
+                  echo "::endgroup::"
+
+            - name: Prepare and push initial report
+              if: ${{ !inputs.skip-report }}
+              id: prepare-and-push-report
+              uses: ./.pipeline/.github/actions/prepare-and-push-initial-report
+              with:
+                  workdir: ${{ env.WORKDIR }}
+                  report-repository: ${{ env.REPORT_REPOSITORY }}
+                  report-branch: ${{ env.REPORT_BRANCH }}
+                  github-token: ${{ env.REPORT_TOKEN }}
+                  fallback-name: ${{ github.ref_name }}
+
+            - name: Add report URL to workflow summary
+              if: ${{ !inputs.skip-report && steps.prepare-and-push-report.outputs.report-url }}
+              shell: bash
+              run: |
+                  REPORT_URL="${{ steps.prepare-and-push-report.outputs.report-url }}"
+                  echo "### 📊 Test Report" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Report URL:** [$REPORT_URL]($REPORT_URL)" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "The report will be updated after the test finishes." >> $GITHUB_STEP_SUMMARY
+
+            - name: Store workdir with cloned packages as artifact
+              uses: ./.pipeline/.github/actions/upload-artifact-tar
+              with:
+                  name: workdir
+                  path: ${{ env.WORKDIR }}
+                  retention-days: 1
+
+    test:
+        needs:
+            - prepare
+        runs-on: ubuntu-latest
+        if: ${{ !inputs.skip-tests }}
+        strategy:
+            matrix:
+                package: ${{ fromJson(needs.prepare.outputs.matrix_tested_packages) }}
+            fail-fast: false
+            # max-parallel: 1
+        steps:
+            - name: Checkout the testrig repository to .pipeline
+              uses: actions/checkout@v4
+              with:
+                  repository: ${{ env.TESTRIG_REPOSITORY }}
+                  ref: ${{ env.TESTRIG_BRANCH }}
+                  path: .pipeline
+
+            - name: Load workdir artifact
+              uses: ./.pipeline/.github/actions/download-artifact-tar
+              with:
+                  name: workdir
+                  path: ${{ env.WORKDIR }}
+
+            - name: Prepare python and tools
+              uses: ./.pipeline/.github/actions/action-install-tools
+              with:
+                  python-version: ${{ env.PYTHON_VERSION }}
+                  testrig-directory: ${{ github.workspace }}/.pipeline
+                  hook-libraries: ${{ env.HOOK_LIBRARIES }}
+
+            - name: Run tests for the patched version of the package
+              shell: bash
+              id: run-patched
+              run: |
+                  echo "::group::🧪 Running tests for package ${{ matrix.package }}"
+                  invenio-testrig test \
+                      $WORKDIR \
+                      ${{ matrix.package }} \
+                      --apply-patches \
+                      || true
+                  echo "::endgroup::"
+
+                  STATUS_FILE=$WORKDIR/artifacts/${{ matrix.package }}/patched_status.json
+
+                  echo "test_patch_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
+                  status=$(cat $STATUS_FILE | jq -r '.status')
+
+                  if [ "$status" == "failed" ]; then
+                      exit 1
+                  fi
+
+            - name: Run unpatched tests for the package
+              shell: bash
+              id: run-unpatched
+              if: |
+                  ${{ 
+                    env.TEST_MODE == 'run-all' || 
+                    (env.TEST_MODE == 'stop-on-success' && failure()) ||
+                    (steps.run-patched.outputs.test_patch_status == 'skipped' && env.TEST_SCOPE == 'all')
+                  }}
+              run: |
+                  echo "::group::🧪 Running tests for the unpatched version of package ${{ matrix.package }}"
+                  invenio-testrig test \
+                      $WORKDIR \
+                      ${{ matrix.package }} \
+                      || true
+                  echo "::endgroup::"
+
+                  STATUS_FILE=$WORKDIR/artifacts/${{ matrix.package }}/original_status.json
+
+                  echo "test_original_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
+                  status=$(cat $STATUS_FILE | jq -r '.status')
+
+                  if [ "$status" == "failed" ] || [ "$status" == "skipped" ]; then
+                      exit 1
+                  fi
+
+            - name: Store test results as artifact
+              if: always()
+              uses: actions/upload-artifact@v6
+              with:
+                  name: test-results-${{ matrix.package }}
+                  path: ${{ env.WORKDIR }}/artifacts
+                  retention-days: 1
+
+            # Note: commented out because of github limits on the frequency of
+            # publishing github pages - about 10 publishes per hour
+            #
+            # - name: Regenerate and upload partial report for the package
+            #   if: ${{ always() && !inputs.skip-report }}
+            #   uses: ./.pipeline/.github/actions/generate-and-push-report
+            #   with:
+            #       workdir: ${{ env.WORKDIR }}
+            #       report-repository: ${{ env.REPORT_REPOSITORY }}
+            #       report-branch: ${{ env.REPORT_BRANCH }}
+            #       report-directory: ${{ needs.prepare.outputs.report_name }}
+            #       github-token: ${{ env.REPORT_TOKEN }}
+            #       completed: "false"
+            #       download-artifacts: "true"
+            #       max-retries: "5"
+
+    report:
+        needs:
+            - prepare
+            - test
+        if: always() && !inputs.skip-report
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the testrig repository to .pipeline
+              uses: actions/checkout@v4
+              with:
+                  repository: ${{ env.TESTRIG_REPOSITORY }}
+                  ref: ${{ env.TESTRIG_BRANCH }}
+                  path: .pipeline
+
+            - name: Load workdir artifact
+              uses: ./.pipeline/.github/actions/download-artifact-tar
+              with:
+                  name: workdir
+                  path: ${{ env.WORKDIR }}
+
+            - name: Prepare python and tools
+              uses: ./.pipeline/.github/actions/action-install-tools
+              with:
+                  python-version: ${{ env.PYTHON_VERSION }}
+                  testrig-directory: ${{ github.workspace }}/.pipeline
+                  hook-libraries: ${{ env.HOOK_LIBRARIES }}
+
+            - name: Generate and push final report
+              if: ${{ env.REPORT_REPOSITORY && env.REPORT_TOKEN }}
+              uses: ./.pipeline/.github/actions/generate-and-push-report
+              with:
+                  workdir: ${{ env.WORKDIR }}
+                  report-repository: ${{ env.REPORT_REPOSITORY }}
+                  report-branch: ${{ env.REPORT_BRANCH }}
+                  report-directory: ${{ needs.prepare.outputs.report_name }}
+                  github-token: ${{ env.REPORT_TOKEN }}
+                  completed: "true"
+                  download-artifacts: "true"
+                  max-retries: "5"
+
+            - name: Upload final report as artifact
+              if: always()
+              uses: actions/upload-artifact@v6
+              with:
+                  name: final-report
+                  path: ${{ runner.temp }}/generated-report
+                  retention-days: 90
+
+            - name: Display report URL
+              if: ${{ needs.prepare.outputs.report_url }}
+              shell: bash
+              run: |
+                  REPORT_URL="${{ needs.prepare.outputs.report_url }}"
+                  echo "::notice::📊 Final report published at: $REPORT_URL"
+                  echo "### 📊 Test Report Published" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Report URL:** [$REPORT_URL]($REPORT_URL)" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "*(Initial report was published before tests started, final report shows completed results)*" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,43 @@
+name: 'Upload Artifact with Permissions'
+description: 'Upload an artifact while preserving file permissions using tar'
+inputs:
+  name:
+    description: 'Name of the artifact'
+    required: true
+  path:
+    description: 'Path to the directory or file to upload'
+    required: true
+  retention-days:
+    description: 'Number of days to retain the artifact'
+    required: false
+    default: '90'
+
+runs:
+  using: composite
+  steps:
+    - name: Create tar archive
+      id: create_tar
+      shell: bash
+      run: |
+        ARTIFACT_NAME="${{ inputs.name }}"
+        ARTIFACT_PATH="${{ inputs.path }}"
+        TAR_FILE="${ARTIFACT_NAME}.tar.gz"
+        
+        # Get the absolute path
+        ARTIFACT_PATH=$(realpath "$ARTIFACT_PATH")
+        
+        # Get parent directory and base name
+        PARENT_DIR=$(dirname "$ARTIFACT_PATH")
+        BASE_NAME=$(basename "$ARTIFACT_PATH")
+        
+        echo "Creating tar archive from $ARTIFACT_PATH"
+        tar -czf "$TAR_FILE" -C "$PARENT_DIR" "$BASE_NAME"
+        
+        echo "tar_file=$TAR_FILE" >> $GITHUB_OUTPUT
+    
+    - name: Upload tar artifact
+      uses: actions/upload-artifact@v6
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ steps.create_tar.outputs.tar_file }}
+        retention-days: ${{ inputs.retention-days }}

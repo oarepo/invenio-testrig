@@ -1,0 +1,86 @@
+name: Prepare and Push Initial Report
+description: Generates report name, creates initial report, and pushes it to the repository
+
+inputs:
+    workdir:
+        description: Path to the working directory containing config.json
+        required: true
+    report-repository:
+        description: Repository to push the report to (owner/repo)
+        required: false
+    report-branch:
+        description: Branch to push the report to
+        required: false
+        default: gh-pages
+    github-token:
+        description: GitHub token with permissions to push to the report repository
+        required: false
+    fallback-name:
+        description: Fallback name to use if config name is not set (e.g., branch name)
+        required: false
+        default: "report"
+
+outputs:
+    report-name:
+        description: Generated report name (slugified config name with timestamp)
+        value: ${{ steps.generate-name.outputs.report_name }}
+    report-url:
+        description: GitHub Pages URL where the report is available
+        value: ${{ steps.generate-url.outputs.report_url }}
+
+runs:
+    using: composite
+    steps:
+        - name: Generate report name
+          id: generate-name
+          shell: bash
+          env:
+              WORKDIR: ${{ inputs.workdir }}
+              FALLBACK_NAME: ${{ inputs.fallback-name }}
+          run: |
+              # Take the .name from the config.json file, slugify it and add current date and time to it
+              CONFIG_NAME=$(cat $WORKDIR/config.json | jq -r '.name')
+              
+              # If name is not set or is null, use fallback name
+              if [ -z "$CONFIG_NAME" ] || [ "$CONFIG_NAME" = "null" ]; then
+                  CONFIG_NAME="$FALLBACK_NAME"
+                  echo "Config name not set, using fallback name: $CONFIG_NAME"
+              fi
+              
+              REPORT_NAME=$(echo "$CONFIG_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]-')
+              REPORT_NAME="${REPORT_NAME}-$(date +'%Y-%m-%d-%H-%M-%S')"
+              
+              echo "report_name=$REPORT_NAME" >> $GITHUB_OUTPUT
+              echo "Generated report name: $REPORT_NAME"
+
+        - name: Generate report URL
+          id: generate-url
+          shell: bash
+          env:
+              REPORT_REPOSITORY: ${{ inputs.report-repository }}
+              REPORT_NAME: ${{ steps.generate-name.outputs.report_name }}
+          run: |
+              if [ -n "$REPORT_REPOSITORY" ]; then
+                  # Calculate GitHub Pages URL
+                  OWNER=$(echo "$REPORT_REPOSITORY" | cut -d'/' -f1)
+                  REPO=$(echo "$REPORT_REPOSITORY" | cut -d'/' -f2)
+                  REPORT_URL="https://${OWNER}.github.io/${REPO}/${REPORT_NAME}"
+                  
+                  echo "report_url=$REPORT_URL" >> $GITHUB_OUTPUT
+                  echo "Report will be available at: $REPORT_URL"
+              else
+                  echo "No report repository specified, skipping URL generation"
+              fi
+
+        - name: Generate and push initial report
+          if: ${{ inputs.report-repository && inputs.github-token }}
+          uses: ./.pipeline/.github/actions/generate-and-push-report
+          with:
+              workdir: ${{ inputs.workdir }}
+              report-repository: ${{ inputs.report-repository }}
+              report-branch: ${{ inputs.report-branch }}
+              report-directory: ${{ steps.generate-name.outputs.report_name }}
+              github-token: ${{ inputs.github-token }}
+              completed: "false"
+              max-retries: "5"
+              force-report: "true"

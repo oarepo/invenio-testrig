@@ -1,0 +1,99 @@
+name: 'Install Python and UV'
+description: 'Setup Python and install UV package manager'
+inputs:
+  python-version:
+    description: 'Python version to install'
+    required: true
+  tools-python-version:
+    description: 'Python version to use for the tools virtualenv.'
+    required: false
+    default: "3.14"
+  testrig-directory:
+    description: 'Directory where invenio-testrig is located'
+    required: true
+  hook-libraries:
+    description: |
+      Space-separated list of libraries to install to the invenio-testrig environment. 
+      They can contain entrypoints for hooks, which will be used during testing. 
+      Format: "library1[extra1,extra2] library2[extra3]". 
+      File paths and github URLs are also supported.
+    required: false
+    default: ''
+runs:
+  using: 'composite'
+  steps:
+
+    - name: Set up OS requirements
+      shell: bash
+      run: |
+        echo "::group::Setting up OS requirements"
+        sudo apt-get update -qq
+        sudo DEBIAN_FRONTEND=noninteractive \
+          apt-get install -y -qq \
+            tree \
+            graphviz imagemagick \
+            libssl-dev libffi-dev \
+            libxml2-dev libxslt1-dev zlib1g-dev \
+            libcairo2-dev pkg-config \
+            fonts-dejavu imagemagick \
+            libpq-dev libjpeg-dev
+        echo "::endgroup::"
+
+    # set up 3.14 if python-version is not 3.14.x
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      if: ${{ !startsWith(inputs.python-version, '3.14') }}
+      with:
+        python-version: ${{ inputs.tools-python-version }}
+
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Set up uv/uvx
+      uses: astral-sh/setup-uv@v7
+      with:
+        version: latest
+        python-version: ${{ inputs.python-version }}
+        enable-cache: false
+
+    - name: Create tools virtualenv
+      shell: bash
+      run: |
+        echo "::group::Creating tools virtualenv"
+        cd "${{ inputs.testrig-directory }}"
+
+        # create a virtualenv for the tools and install the tools
+        uv venv .tools-venv --python ${{ inputs.tools-python-version }}
+        source .tools-venv/bin/activate
+        uv pip install --python ${{ inputs.tools-python-version }} -e "${{ inputs.testrig-directory }}"
+
+        if [ -n "${{ inputs.hook-libraries }}" ]; then
+          echo "Installing hook libraries: ${{ inputs.hook-libraries }}"
+          # Use array to properly handle special characters while splitting on spaces
+          read -ra libs <<< "${{ inputs.hook-libraries }}"
+          uv pip install --python ${{ inputs.tools-python-version }} "${libs[@]}"
+        fi
+
+        # create an extra directory that will contain linked tools.
+        # we do not want the virtualenv bin directory to be in PATH because
+        # it might conflict with the other venvs we will be installing later.
+
+        mkdir -p .tools
+        ln -s $PWD/.tools-venv/bin/invenio-testrig .tools/invenio-testrig
+        ln -s $PWD/.tools-venv/bin/black .tools/black
+
+        echo "Adding .tools to PATH"
+        echo "PATH=$(pwd)/.tools:$PATH" >> $GITHUB_ENV
+
+        echo "::endgroup::"
+        echo "✓ Tools virtualenv created"
+
+    - name: Prepare git
+      shell: bash
+      run: |
+        echo "::group::Preparing git"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        echo "::endgroup::"

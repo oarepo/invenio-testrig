@@ -1,0 +1,117 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Package</th>
+                {% if show_patches %}
+                <th style="width: 15%;">Patches Applied</th>
+                {% endif %}
+                <th style="width: 20%;">Original</th>
+                {% if show_patches %}
+                <th style="width: 25%;">Patched</th>
+                <th style="width: 25%;">Result</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for pkg in packages %}
+            <tr>
+                <td>
+                    <span class="package-name">
+                        {% if pkg.info.unpatched_reference %}
+                            <a href="{{ pkg.info.unpatched_reference.github_url }}" target="_blank">{{ pkg.info.reference.package }}</a>
+                        {% else %}
+                            <a href="{{ pkg.info.reference.github_url }}" target="_blank">{{ pkg.info.reference.package }}</a>
+                        {% endif %}
+                        {% if pkg.info.patched_reference and pkg.info.unpatched_reference and pkg.info.patched_reference.github_url != pkg.info.unpatched_reference.github_url %}
+                            <br><small><a href="{{ pkg.info.patched_reference.github_url }}" target="_blank" style="color: #6c757d;">(patched)</a></small>
+                        {% endif %}
+                    </span>
+                </td>
+                {% if show_patches %}
+                <td>
+                    {# the libraries below contains this one as well, so it is enough
+                       to show patches from the libraries 
+                    {% for patch in pkg.info.patches %}
+                        <a href="{{ patch.github_url }}" target="_blank">{{ patch }}</a>
+                        {% if not loop.last %}<br>{% endif %}
+                    {% endfor %}
+                    #}
+                    {# go through dependent libraries and show their patches as well #}
+                    {% for dep in (pkg.patched.dependencies or []) %}
+                        {% for patch in dep.patches %}
+                            <a href="{{ patch.github_url }}" target="_blank">{{ patch }}</a>
+                            {% if not loop.last %}<br>{% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </td>
+                {% endif %}
+                <td>
+                    <div>
+                        {% if pkg.original.status == "skipped" %}
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        {% elif pkg.original.status == "success" %}
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        {% elif pkg.original.status == "failed" %}
+                            <span class="result-icon">❌</span><strong>Fail</strong>
+                        {% else %}
+                            <strong>{{ pkg.original.status }}</strong>
+                        {% endif %}
+                    </div>
+                    {% if pkg.original.status != "skipped" %}
+                    <ul class="link-list">
+                        <li><a href="{{ pkg.artefact_dir }}/original_status.json" target="_blank">status</a> | <a href="{{ pkg.artefact_dir }}/original_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="{{ pkg.artefact_dir }}/original_log.log" target="_blank">log</a> | <a href="{{ pkg.artefact_dir }}/original_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="{{ pkg.artefact_dir }}/warnings_original.json" target="_blank">warnings</a></li>
+                        {% set unpatched_commits = "top_commits/" + pkg.info.reference.package + "_unpatched.json" %}
+                        <li><a href="{{ unpatched_commits }}" target="_blank">commits</a></li>
+                    </ul>
+                    {% endif %}
+                </td>
+                {% if show_patches %}
+                <td>
+                    <div>
+                        {% if pkg.patched.status == "success" %}
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        {% elif pkg.patched.status == "failed" %}
+                            <span class="result-icon">❌</span><strong>Fail</strong>
+                        {% elif pkg.patched.status == "skipped" %}
+                            <span class="result-icon">⏭️</span><strong>Skip</strong>
+                        {% else %}
+                            <strong>{{ pkg.patched.status }}</strong>
+                        {% endif %}
+                    </div>
+                    {% if pkg.patched.status != "skipped" %}
+                    <ul class="link-list">
+                        <li><a href="{{ pkg.artefact_dir }}/patched_status.json" target="_blank">status</a> | <a href="{{ pkg.artefact_dir }}/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="{{ pkg.artefact_dir }}/patched_log.log" target="_blank">log</a> | <a href="{{ pkg.artefact_dir }}/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="{{ pkg.artefact_dir }}/warnings_patched.json" target="_blank">warnings</a></li>
+                        {% if patched_sources %}
+                        {% set patched_commits = "top_commits/" + pkg.info.reference.package + "_patched.json" %}
+                        <li><a href="{{ patched_commits }}" target="_blank">commits</a></li>
+                        {% else %}
+                        {% set unpatched_commits = "top_commits/" + pkg.info.reference.package + "_unpatched.json" %}
+                        <li><a href="{{ unpatched_commits }}" target="_blank">commits</a></li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if pkg.patched.status == "success" and pkg.original.status != "success" %}
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    {% elif pkg.patched.status == "failed" and pkg.original.status == "success" %}
+                        <span class="result-icon">❌</span>Regression detected
+                    {% elif pkg.patched.status == "failed" and pkg.original.status == "failed" %}
+                        <span class="result-icon">⚠️</span>Still failing
+                    {% elif pkg.patched.status == "success" and pkg.original.status == "success" %}
+                        <span class="result-icon">✅</span>Tests passed (no change)
+                    {% else %}
+                        <span class="result-icon">ℹ️</span>{{ pkg.patched.status }}
+                    {% endif %}
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
