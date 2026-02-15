@@ -1,0 +1,111 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "d4d6e2bf885148a0a1689f71a26fe7606f9bcd63",
+          "commits_from_version": null,
+          "org": "inveniosoftware",
+          "package": "invenio-previewer",
+          "pr": 243,
+          "pr_info": {
+            "commits": [
+              "d4d6e2bf885148a0a1689f71a26fe7606f9bcd63"
+            ],
+            "source_branch": "contribution-container-previewers",
+            "source_org": "oarepo",
+            "source_repo": "invenio-previewer"
+          },
+          "repo": "invenio-previewer"
+        }
+      ],
+      "reference": {
+        "actual_version": "3.5.1",
+        "base": null,
+        "branch": "v3.5.1",
+        "commit": "7d9facf1b955d129ed94ca41620eff2699dc4f60",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-previewer",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-previewer"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [
+      {
+        "actual_version": null,
+        "base": null,
+        "branch": null,
+        "commit": "d4d6e2bf885148a0a1689f71a26fe7606f9bcd63",
+        "commits_from_version": null,
+        "org": "inveniosoftware",
+        "package": "invenio-previewer",
+        "pr": 243,
+        "pr_info": {
+          "commits": [
+            "d4d6e2bf885148a0a1689f71a26fe7606f9bcd63"
+          ],
+          "source_branch": "contribution-container-previewers",
+          "source_org": "oarepo",
+          "source_repo": "invenio-previewer"
+        },
+        "repo": "invenio-previewer"
+      }
+    ],
+    "reference": {
+      "actual_version": "3.5.1",
+      "base": null,
+      "branch": "v3.5.1",
+      "commit": "7d9facf1b955d129ed94ca41620eff2699dc4f60",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-previewer",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-previewer"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

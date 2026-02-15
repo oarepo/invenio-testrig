@@ -1,0 +1,411 @@
+running extract_messages
+extracting messages from invenio_records_resources/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/config.py (encoding="utf-8")
+extracting messages from invenio_records_resources/errors.py (encoding="utf-8")
+extracting messages from invenio_records_resources/ext.py (encoding="utf-8")
+extracting messages from invenio_records_resources/pagination.py (encoding="utf-8")
+extracting messages from invenio_records_resources/patch_info.py (encoding="utf-8")
+extracting messages from invenio_records_resources/proxies.py (encoding="utf-8")
+extracting messages from invenio_records_resources/registry.py (encoding="utf-8")
+extracting messages from invenio_records_resources/tasks.py (encoding="utf-8")
+extracting messages from invenio_records_resources/factories/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/factories/factory.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/api.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/dumpers.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/models.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/providers.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/resolver.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/transfer.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/calculated.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/entity_reference.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/index.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/pid.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/pid_statuscheck.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/relations.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/files/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/files/field.py (encoding="utf-8")
+extracting messages from invenio_records_resources/records/systemfields/files/manager.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/grants.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/registry.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/entity_resolvers/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/entity_resolvers/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/entity_resolvers/records.py (encoding="utf-8")
+extracting messages from invenio_records_resources/references/entity_resolvers/results.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/errors.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/files/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/files/config.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/files/parser.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/files/resource.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/records/args.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/records/config.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/records/headers.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/records/resource.py (encoding="utf-8")
+extracting messages from invenio_records_resources/resources/records/utils.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/errors.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/uow.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/components.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/config.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/links.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/results.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/service.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/base/utils.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/boolean.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/date.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/errors.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/mappings.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/number.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/schema.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/text.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/custom_fields/validate.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/config.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/generators.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/links.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/results.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/schema.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/service.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/tasks.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/components/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/components/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/components/content.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/components/metadata.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/components/multipart.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/components/processor.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/extractors/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/extractors/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/extractors/reply_stream.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/extractors/zip.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/processors/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/processors/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/processors/image.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/processors/zip.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/constants.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/registry.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/providers/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/providers/fetch.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/providers/local.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/providers/multipart.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/files/transfer/providers/remote.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/config.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/links.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/results.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/schema.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/service.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/components/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/components/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/components/data.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/components/files.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/components/metadata.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/components/relations.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/facets/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/facets/facets.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/facets/labels.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/facets/response.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/base.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/facets.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/filter.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/pagination.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/querystr.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/params/sort.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/queryparser/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/queryparser/query.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/queryparser/suggest.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/records/queryparser/transformer.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/references/__init__.py (encoding="utf-8")
+extracting messages from invenio_records_resources/services/references/schema.py (encoding="utf-8")
+extracting messages from tests/__init__.py (encoding="utf-8")
+extracting messages from tests/conftest.py (encoding="utf-8")
+extracting messages from tests/test_invenio_resources.py (encoding="utf-8")
+extracting messages from tests/test_tasks.py (encoding="utf-8")
+extracting messages from tests/factories/__init__.py (encoding="utf-8")
+extracting messages from tests/factories/conftest.py (encoding="utf-8")
+extracting messages from tests/factories/test_factory.py (encoding="utf-8")
+extracting messages from tests/factories/test_service.py (encoding="utf-8")
+extracting messages from tests/mock_module/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module/api.py (encoding="utf-8")
+extracting messages from tests/mock_module/config.py (encoding="utf-8")
+extracting messages from tests/mock_module/extractor.py (encoding="utf-8")
+extracting messages from tests/mock_module/models.py (encoding="utf-8")
+extracting messages from tests/mock_module/permissions.py (encoding="utf-8")
+extracting messages from tests/mock_module/resource.py (encoding="utf-8")
+extracting messages from tests/mock_module/schemas.py (encoding="utf-8")
+extracting messages from tests/mock_module/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module/mappings/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/grants.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/mappings/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from tests/mock_module_factory/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from tests/records/conftest.py (encoding="utf-8")
+extracting messages from tests/records/test_api.py (encoding="utf-8")
+extracting messages from tests/records/test_dumpers.py (encoding="utf-8")
+extracting messages from tests/records/test_systemfield_files.py (encoding="utf-8")
+extracting messages from tests/records/test_systemfield_index.py (encoding="utf-8")
+extracting messages from tests/records/test_systemfield_modelpid.py (encoding="utf-8")
+extracting messages from tests/records/test_systemfield_pid.py (encoding="utf-8")
+extracting messages from tests/records/test_systemfield_pidstatus.py (encoding="utf-8")
+extracting messages from tests/resources/conftest.py (encoding="utf-8")
+extracting messages from tests/resources/test_files_resource.py (encoding="utf-8")
+extracting messages from tests/resources/test_resource_faceting.py (encoding="utf-8")
+extracting messages from tests/resources/test_resource_links.py (encoding="utf-8")
+extracting messages from tests/resources/test_resource_pagination.py (encoding="utf-8")
+extracting messages from tests/resources/test_resource_preference.py (encoding="utf-8")
+extracting messages from tests/resources/test_resource_sorting.py (encoding="utf-8")
+extracting messages from tests/resources/test_resources.py (encoding="utf-8")
+extracting messages from tests/resources/test_resources_etag.py (encoding="utf-8")
+extracting messages from tests/resources/files/__init__.py (encoding="utf-8")
+extracting messages from tests/resources/files/conftest.py (encoding="utf-8")
+extracting messages from tests/resources/files/test_zip.py (encoding="utf-8")
+extracting messages from tests/services/conftest.py (encoding="utf-8")
+extracting messages from tests/services/test_results.py (encoding="utf-8")
+extracting messages from tests/services/test_results_expand.py (encoding="utf-8")
+extracting messages from tests/services/test_service.py (encoding="utf-8")
+extracting messages from tests/services/test_service_create.py (encoding="utf-8")
+extracting messages from tests/services/test_service_create_update.py (encoding="utf-8")
+extracting messages from tests/services/test_service_date_facet.py (encoding="utf-8")
+extracting messages from tests/services/test_service_facets.py (encoding="utf-8")
+extracting messages from tests/services/test_service_pagination.py (encoding="utf-8")
+extracting messages from tests/services/test_service_queryparser.py (encoding="utf-8")
+extracting messages from tests/services/test_service_relation_propagation.py (encoding="utf-8")
+extracting messages from tests/services/test_service_revision_id.py (encoding="utf-8")
+extracting messages from tests/services/test_service_sort.py (encoding="utf-8")
+extracting messages from tests/services/test_utils.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_base_cf.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_boolean_cf.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_date_cf.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_number_cf.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_schema_cf.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_text_cf.py (encoding="utf-8")
+extracting messages from tests/services/custom_fields/test_validate.py (encoding="utf-8")
+extracting messages from tests/services/files/conftest.py (encoding="utf-8")
+extracting messages from tests/services/files/files_utils.py (encoding="utf-8")
+extracting messages from tests/services/files/test_file_extractors.py (encoding="utf-8")
+extracting messages from tests/services/files/test_file_results.py (encoding="utf-8")
+extracting messages from tests/services/files/test_file_service.py (encoding="utf-8")
+extracting messages from tests/services/files/test_files_options.py (encoding="utf-8")
+extracting messages from tests/services/files/test_files_processing.py (encoding="utf-8")
+extracting messages from tests/services/files/test_zip.py (encoding="utf-8")
+extracting messages from tests/services/files/s3/conftest.py (encoding="utf-8")
+extracting messages from tests/services/files/s3/test_service_s3_backend.py (encoding="utf-8")
+writing PO template file to /dev/null
+ opensearch Pulling 
+ redis Pulling 
+ minio Pulling 
+ postgresql Pulling 
+ redis Pulled 
+ minio Pulled 
+ opensearch Pulled 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-minio-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-minio-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-minio-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+ Container docker_services_cli-minio-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.2, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-resources/patched
+configfile: setup.cfg
+testpaths: docs, tests, invenio_records_resources
+plugins: mock-3.15.1, invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 259 items
+tests/factories/test_factory.py 
+                               [  3%]
+tests/factories/test_service.py .                                        [  4%]
+tests/records/test_api.py 
+                                           [  5%]
+tests/records/test_dumpers.py 
+                                          [  6%]
+tests/records/test_systemfield_files.py 
+                   [ 11%]
+tests/records/test_systemfield_index.py 
+                              [ 12%]
+tests/records/test_systemfield_modelpid.py 
+                          [ 14%]
+tests/records/test_systemfield_pid.py 
+                            [ 16%]
+tests/records/test_systemfield_pidstatus.py 
+                          [ 18%]
+tests/resources/files/test_zip.py 
+                                   [ 19%]
+tests/resources/test_files_resource.py 
+                      [ 24%]
+tests/resources/test_resource_faceting.py 
+                          [ 26%]
+tests/resources/test_resource_links.py 
+                               [ 27%]
+tests/resources/test_resource_pagination.py 
+                   [ 31%]
+tests/resources/test_resource_preference.py 
+                            [ 31%]
+tests/resources/test_resource_sorting.py 
+                          [ 33%]
+tests/resources/test_resources.py 
+                                   [ 35%]
+tests/resources/test_resources_etag.py 
+                                [ 36%]
+tests/services/custom_fields/test_base_cf.py .                           [ 36%]
+tests/services/custom_fields/test_boolean_cf.py ....                     [ 38%]
+tests/services/custom_fields/test_date_cf.py 
+                    [ 41%]
+tests/services/custom_fields/test_number_cf.py ......                    [ 43%]
+tests/services/custom_fields/test_schema_cf.py 
+                         [ 44%]
+tests/services/custom_fields/test_text_cf.py ........                    [ 47%]
+tests/services/custom_fields/test_validate.py ..                         [ 47%]
+tests/services/files/s3/test_service_s3_backend.py 
+                     [ 48%]
+tests/services/files/test_file_extractors.py 
+                          [ 49%]
+tests/services/files/test_file_results.py ss                             [ 49%]
+tests/services/files/test_file_service.py 
+               [ 55%]
+tests/services/files/test_files_options.py 
+                         [ 57%]
+tests/services/files/test_files_processing.py 
+                         [ 58%]
+tests/services/files/test_zip.py 
+                                     [ 59%]
+tests/services/test_results.py 
+                                         [ 60%]
+tests/services/test_results_expand.py 
+                                  [ 60%]
+tests/services/test_service.py 
+                                      [ 62%]
+tests/services/test_service_create.py 
+                                [ 63%]
+tests/services/test_service_create_update.py 
+                    [ 66%]
+tests/services/test_service_date_facet.py 
+                        [ 69%]
+tests/services/test_service_facets.py 
+                              [ 71%]
+tests/services/test_service_pagination.py 
+                             [ 71%]
+tests/services/test_service_queryparser.py ............................. [ 83%]
+                                        [ 95%]
+tests/services/test_service_relation_propagation.py 
+                   [ 96%]
+tests/services/test_service_revision_id.py 
+                            [ 97%]
+tests/services/test_service_sort.py 
+                                  [ 98%]
+tests/services/test_utils.py 
+                                           [ 98%]
+tests/test_invenio_resources.py ..                                       [ 99%]
+tests/test_tasks.py 
+                                                    [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9
+    pyparsing.ParserElement.enablePackrat()
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52
+    oneThru12 = oneOf(["%.2d" % i for i in range(1, 13)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53
+    oneThru13 = oneOf(["%.2d" % i for i in range(1, 14)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54
+    oneThru23 = oneOf(["%.2d" % i for i in range(1, 24)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55
+    zeroThru23 = oneOf(["%.2d" % i for i in range(0, 24)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56
+    oneThru29 = oneOf(["%.2d" % i for i in range(1, 30)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57
+    oneThru30 = oneOf(["%.2d" % i for i in range(1, 31)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58
+    oneThru31 = oneOf(["%.2d" % i for i in range(1, 32)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59
+    oneThru59 = oneOf(["%.2d" % i for i in range(1, 60)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60
+    zeroThru59 = oneOf(["%.2d" % i for i in range(0, 60)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63
+    positiveDigit = Word(nums, exact=1, excludeChars="0")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73
+    (oneOf("01 03 05 07 08 10 12")("month") + "-" + oneThru31("day"))
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74
+    ^ (oneOf("04 06 09 11")("month") + "-" + oneThru30("day"))
+    p.addParseAction(cls.parse_action)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119
+    UASymbol = Combine(oneOf("? ~ %"))
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122
+    seasonNumber = oneOf("21 22 23 24")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155
+    l1Start.addParseAction(f)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157
+    l1End.addParseAction(f)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199
+    monthWithX = Combine(oneOf("0X 1X") ^ ("X" + digitOrX))("month")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+    earlier = L("..").addParseAction(f)("lower") + date("upper").addParseAction(f)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+    later = date("lower").addParseAction(f) + L("..").addParseAction(f)("upper")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325
+    seasonL2Number = oneOf("21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41")
+tests/factories/test_factory.py::test_gen_same_name_classes
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-resources/patched/.venv/lib/python3.14/site-packages/flask_sqlalchemy/model.py:144: SAWarning: This declarative base already contains a class with the same class name and module name as invenio_records_resources.factories.factory.MyRecordMetadata, and will be replaced in the string-lookup table
+    super().__init__(name, bases, d, **kwargs)
+    self.init_app(app)
+tests/records/test_dumpers.py::test_custom_field_dumperext
+tests/services/custom_fields/test_date_cf.py::test_edtfdatestring_validate
+tests/services/custom_fields/test_date_cf.py::test_edtfdatestring_validate
+tests/services/custom_fields/test_date_cf.py::test_edtfdatestring_validate
+tests/services/custom_fields/test_date_cf.py::test_edtfdatestring_validate
+tests/services/custom_fields/test_date_cf.py::test_edtfdatestring_validate
+tests/services/custom_fields/test_date_cf.py::test_edtfdatestring_multiple_dump
+    p = edtfParser.parseString(input_string.strip(), parseAll)
+tests/services/files/s3/test_service_s3_backend.py::test_multipart_file_upload_s3
+    warnings.warn(
+tests/services/files/test_file_service.py::test_remote_file
+tests/services/files/test_file_service.py::test_remote_file_with_checksum_and_size
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-resources/patched/.venv/lib/python3.14/site-packages/invenio_files_rest/models.py:719: SAWarning: Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)
+    return db.session.query(cls).filter_by(id=file_id).one_or_none()
+================= 257 passed, 2 skipped, 90 warnings in 45.25s =================
+ Container docker_services_cli-minio-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-minio-1  Stopped
+ Container docker_services_cli-minio-1  Removing
+ Container docker_services_cli-minio-1  Removed
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

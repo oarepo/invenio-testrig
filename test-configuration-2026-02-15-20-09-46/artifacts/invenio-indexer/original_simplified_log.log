@@ -1,0 +1,124 @@
+ redis Pulling 
+ rabbitmq Pulling 
+ opensearch Pulling 
+ 4f4fb700ef54 Already exists 
+ 4f4fb700ef54 Already exists 
+ redis Pulled 
+ rabbitmq Pulled 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-indexer/original
+configfile: setup.cfg
+testpaths: docs, tests, invenio_indexer
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 100 items
+docs/conf.py ...                                                         [  3%]
+tests/conftest.py ...                                                    [  6%]
+tests/data/__init__.py ...                                               [  9%]
+tests/data/os-v1/__init__.py ...                                         [ 12%]
+tests/data/os-v2/__init__.py ...                                         [ 15%]
+tests/data/v7/__init__.py ...                                            [ 18%]
+tests/demo/__init__.py ...                                               [ 21%]
+tests/demo/json_resolver.py ...                                          [ 24%]
+tests/test_api.py 
+                                     [ 42%]
+tests/test_cli.py 
+                                                  [ 47%]
+tests/test_invenio_indexer.py 
+                                     [ 53%]
+tests/test_registry.py ...                                               [ 56%]
+tests/test_tasks.py .....                                                [ 61%]
+tests/test_utils.py ........                                             [ 69%]
+invenio_indexer/__init__.py 
+                                         [ 73%]
+invenio_indexer/api.py ...                                               [ 76%]
+invenio_indexer/cli.py ...                                               [ 79%]
+invenio_indexer/config.py ...                                            [ 82%]
+invenio_indexer/ext.py ...                                               [ 85%]
+invenio_indexer/proxies.py ...                                           [ 88%]
+invenio_indexer/registry.py ...                                          [ 91%]
+invenio_indexer/signals.py ...                                           [ 94%]
+invenio_indexer/tasks.py ...                                             [ 97%]
+invenio_indexer/utils.py ...                                             [100%]
+=============================== warnings summary ===============================
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-indexer/original/.venv/lib/python3.14/site-packages/invenio_records/api.py:334: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_api.py::test_delete_action
+tests/test_cli.py::test_reindex
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-indexer/original/.venv/lib/python3.14/site-packages/invenio_records/api.py:495: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_cli.py::test_reindex
+tests/test_cli.py::test_reindex
+    .values(PersistentIdentifier.object_uuid)
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                          Stmts   Miss  Cover   Missing
+invenio_indexer/__init__.py       4      0   100%
+invenio_indexer/api.py          178     22    88%   106, 116, 118-127, 159, 195-200, 238-247, 261-262, 398-399, 459
+invenio_indexer/cli.py           82      3    96%   26, 35, 82
+invenio_indexer/config.py        21      0   100%
+invenio_indexer/ext.py           26      0   100%
+invenio_indexer/proxies.py        7      0   100%
+invenio_indexer/registry.py      16      0   100%
+invenio_indexer/signals.py       16      0   100%
+invenio_indexer/tasks.py         21      3    86%   29, 44, 59
+invenio_indexer/utils.py         26      0   100%
+TOTAL                           397     28    93%
+======================= 100 passed, 16 warnings in 8.21s =======================
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+  gc.collect()
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

@@ -1,0 +1,36 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v1.2.3",
+      "commit": "14829bbcfc0d26577c6d75248ffd377f7384cecb",
+      "org": "inveniosoftware",
+      "package": "invenio-notifications",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-notifications",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

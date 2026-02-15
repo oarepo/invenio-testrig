@@ -1,0 +1,36 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v4.2.1",
+      "commit": "051ed2495b2f99754aaca3bc2c8bd1d40a53e3b7",
+      "org": "inveniosoftware",
+      "package": "invenio-access",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-access",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

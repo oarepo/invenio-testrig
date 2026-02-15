@@ -1,0 +1,1021 @@
+ redis Pulling 
+ postgresql Pulling 
+ rabbitmq Pulling 
+ opensearch Pulling 
+ edcaff0d5e7e Pulling fs layer 
+ 7b28be0c8c4d Pulling fs layer 
+ c5761dea9b0e Pulling fs layer 
+ 4831516dd0cb Pulling fs layer 
+ bbf018d6d4b8 Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 47a60771af96 Pulling fs layer 
+ 22dca8215bc4 Pulling fs layer 
+ e8c6d4883897 Pulling fs layer 
+ 648eb81b3252 Pulling fs layer 
+ eb77aa907276 Pulling fs layer 
+ 2e81b9cb93cd Pulling fs layer 
+ 0ffa8f8aba1e Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ f9dd052e142d Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ dda3d8fbd5ed Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ cb628c265f09 Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ e0d55fdb4d15 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ b0a0cf830b12 Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ 4f4fb700ef54 Already exists 
+ 4f4fb700ef54 Already exists 
+ 3fadc669ef11 Pulling fs layer 
+ efa05c660812 Pulling fs layer 
+ f4e7f62f4b80 Pulling fs layer 
+ 20043066d3d5 Pulling fs layer 
+ 7084ac8f4ab6 Pulling fs layer 
+ 5e1c03b67a78 Pulling fs layer 
+ 14e6209d5fa8 Pulling fs layer 
+ d63c4408fdb7 Pulling fs layer 
+ beb0d870d438 Pulling fs layer 
+ d686b50ce172 Pulling fs layer 
+ 7b28be0c8c4d Download complete 
+ 648eb81b3252 Download complete 
+ 873532e5f8c7 Download complete 
+ 283a477db7bb Downloading [=======================>                           ]  2.097MB/4.533MB
+ c199bff16b05 Download complete 
+ efa05c660812 Download complete 
+ e8c6d4883897 Downloading [=======================>                           ]  2.097MB/4.398MB
+ 47a60771af96 Download complete 
+ c5761dea9b0e Download complete 
+ bbf018d6d4b8 Download complete 
+ 710e142705f8 Download complete 
+ 050d9f8c3b1c Download complete 
+ edcaff0d5e7e Download complete 
+ 22dca8215bc4 Downloading [====================>                              ]  6.291MB/15.35MB
+ 4831516dd0cb Downloading [=============>                                     ]   7.34MB/28.23MB
+ 14e6209d5fa8 Download complete 
+ d63c4408fdb7 Downloading [====>                                              ]  2.097MB/21.31MB
+ 3fadc669ef11 Downloading [=======>                                           ]  6.291MB/43.48MB
+ e8c6d4883897 Download complete 
+ 283a477db7bb Download complete 
+ cb628c265f09 Download complete 
+ 2e81b9cb93cd Download complete 
+ f9dd052e142d Downloading [====>                                              ]  4.194MB/52.33MB
+ eb77aa907276 Downloading [>                                                  ]  3.146MB/907.7MB
+ c1cb13b19080 Download complete 
+ 0ffa8f8aba1e Download complete 
+ ae3bb1b347a4 Download complete 
+ dda3d8fbd5ed Download complete 
+ f8406d9c00ea Download complete 
+ f9dd052e142d Downloading [==========>                                        ]  10.49MB/52.33MB
+ eb77aa907276 Downloading [>                                                  ]   7.34MB/907.7MB
+ 22dca8215bc4 Downloading [=====================================>             ]  11.53MB/15.35MB
+ 4831516dd0cb Downloading [========================>                          ]   13.6MB/28.23MB
+ 9739ced65621 Downloading [======>                                            ]  1.049MB/8.069MB
+ e0d55fdb4d15 Downloading [=>                                                 ]  3.146MB/109MB
+ b0a0cf830b12 Downloading [===>                                               ]  2.097MB/29.15MB
+ 20043066d3d5 Downloading [=======>                                           ]  4.194MB/29.72MB
+ d686b50ce172 Downloading [=====================>                             ]  5.243MB/12.47MB
+ d63c4408fdb7 Downloading [=================>                                 ]   7.34MB/21.31MB
+ 3fadc669ef11 Downloading [=============>                                     ]  11.53MB/43.48MB
+ 91d2729fa4d5 Download complete 
+ f4e7f62f4b80 Download complete 
+ 7084ac8f4ab6 Downloading [=====================>                             ]  3.146MB/7.468MB
+ 5e1c03b67a78 Download complete 
+ beb0d870d438 Download complete 
+ 22dca8215bc4 Downloading [==================================================>]  15.35MB/15.35MB
+ f9dd052e142d Downloading [==============>                                    ]  14.68MB/52.33MB
+ eb77aa907276 Downloading [>                                                  ]  13.63MB/907.7MB
+ d686b50ce172 Downloading [==========================================>        ]  10.49MB/12.47MB
+ d63c4408fdb7 Downloading [===========================>                       ]  11.53MB/21.31MB
+ 3fadc669ef11 Downloading [==================>                                ]  15.73MB/43.48MB
+ 5682dec5b749 Downloading [===========================>                       ]  3.146MB/5.719MB
+ e7da101a9486 Download complete 
+ 4831516dd0cb Downloading [===============================>                   ]  17.83MB/28.23MB
+ 7084ac8f4ab6 Download complete 
+ 20043066d3d5 Downloading [==============>                                    ]  8.389MB/29.72MB
+ 56b5e4f0933d Download complete 
+ 9739ced65621 Downloading [=========================>                         ]  4.194MB/8.069MB
+ e0d55fdb4d15 Downloading [===>                                               ]   7.34MB/109MB
+ b0a0cf830b12 Downloading [=======>                                           ]  4.194MB/29.15MB
+ f9dd052e142d Downloading [====================>                              ]  20.97MB/52.33MB
+ eb77aa907276 Downloading [=>                                                 ]  18.93MB/907.7MB
+ d63c4408fdb7 Downloading [=======================================>           ]  16.78MB/21.31MB
+ 3fadc669ef11 Downloading [=========================>                         ]  22.02MB/43.48MB
+ 7ec4c696b8bb Download complete 
+ 20043066d3d5 Downloading [========================>                          ]  14.68MB/29.72MB
+ 22dca8215bc4 Download complete 
+ 4831516dd0cb Downloading [==========================================>        ]  24.12MB/28.23MB
+ d686b50ce172 Download complete 
+ 16ef6b12768c Downloading [=================================>                 ]  2.097MB/3.088MB
+ 5682dec5b749 Download complete 
+ 9739ced65621 Downloading [======================================>            ]  6.291MB/8.069MB
+ e0d55fdb4d15 Downloading [=====>                                             ]  11.53MB/109MB
+ b0a0cf830b12 Downloading [================>                                  ]  9.437MB/29.15MB
+ c4cc93acbec6 Download complete 
+ eb77aa907276 Downloading [=>                                                 ]  27.26MB/907.7MB
+ f9dd052e142d Downloading [===========================>                       ]  28.31MB/52.33MB
+ 4831516dd0cb Download complete 
+ 9739ced65621 Download complete 
+ e0d55fdb4d15 Downloading [========>                                          ]  17.83MB/109MB
+ b0a0cf830b12 Downloading [==========================>                        ]  15.73MB/29.15MB
+ 20043066d3d5 Downloading [=====================================>             ]  22.02MB/29.72MB
+ 16ef6b12768c Download complete 
+ d63c4408fdb7 Download complete 
+ 3fadc669ef11 Downloading [=================================>                 ]  29.36MB/43.48MB
+ 4831516dd0cb Extracting 1 s
+ f9dd052e142d Downloading [===================================>               ]   36.7MB/52.33MB
+ eb77aa907276 Downloading [==>                                                ]  36.93MB/907.7MB
+ 3fadc669ef11 Downloading [===========================================>       ]  37.75MB/43.48MB
+ e0d55fdb4d15 Downloading [===========>                                       ]  25.17MB/109MB
+ b0a0cf830b12 Downloading [===========================================>       ]  25.17MB/29.15MB
+ 20043066d3d5 Download complete 
+ 4831516dd0cb Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ e0d55fdb4d15 Downloading [==============>                                    ]  31.46MB/109MB
+ 3fadc669ef11 Download complete 
+ eb77aa907276 Downloading [==>                                                ]  47.65MB/907.7MB
+ b0a0cf830b12 Download complete 
+ f9dd052e142d Downloading [==========================================>        ]  44.04MB/52.33MB
+ 4831516dd0cb Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [=================>                                 ]   38.8MB/109MB
+ eb77aa907276 Downloading [===>                                               ]  58.72MB/907.7MB
+ f9dd052e142d Downloading [=================================================> ]  51.38MB/52.33MB
+ 4831516dd0cb Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [======================>                            ]  48.23MB/109MB
+ f9dd052e142d Download complete 
+ eb77aa907276 Downloading [===>                                               ]  68.16MB/907.7MB
+ 4831516dd0cb Extracting 1 s
+ f9dd052e142d Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [===========================>                       ]  59.77MB/109MB
+ eb77aa907276 Downloading [====>                                              ]  77.59MB/907.7MB
+ f9dd052e142d Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [===============================>                   ]  69.21MB/109MB
+ eb77aa907276 Downloading [====>                                              ]  89.13MB/907.7MB
+ 20043066d3d5 Extracting 1 s
+ f9dd052e142d Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ eb77aa907276 Downloading [=====>                                             ]  101.7MB/907.7MB
+ e0d55fdb4d15 Downloading [=====================================>             ]  80.74MB/109MB
+ f9dd052e142d Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [==========================================>        ]  93.32MB/109MB
+ eb77aa907276 Downloading [======>                                            ]  113.2MB/907.7MB
+ 4831516dd0cb Extracting 1 s
+ f9dd052e142d Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ eb77aa907276 Downloading [======>                                            ]  123.7MB/907.7MB
+ e0d55fdb4d15 Downloading [===============================================>   ]  103.8MB/109MB
+ f9dd052e142d Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ eb77aa907276 Downloading [=======>                                           ]  136.3MB/907.7MB
+ e0d55fdb4d15 Download complete 
+ f9dd052e142d Extracting 1 s
+ 4831516dd0cb Extracting 2 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ eb77aa907276 Downloading [========>                                          ]  154.1MB/907.7MB
+ 20043066d3d5 Extracting 1 s
+ 4831516dd0cb Extracting 2 s
+ f9dd052e142d Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ eb77aa907276 Downloading [=========>                                         ]    172MB/907.7MB
+ f9dd052e142d Extracting 1 s
+ 4831516dd0cb Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ b0a0cf830b12 Extracting 1 s
+ eb77aa907276 Downloading [==========>                                        ]  188.7MB/907.7MB
+ f9dd052e142d Extracting 1 s
+ 4831516dd0cb Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [===========>                                       ]  205.5MB/907.7MB
+ f9dd052e142d Extracting 1 s
+ 20043066d3d5 Extracting 2 s
+ 4831516dd0cb Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [============>                                      ]  224.4MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 4831516dd0cb Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ eb77aa907276 Downloading [=============>                                     ]    238MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 4831516dd0cb Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [=============>                                     ]  251.7MB/907.7MB
+ 4831516dd0cb Extracting 2 s
+ f9dd052e142d Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [==============>                                    ]  269.5MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 4831516dd0cb Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [===============>                                   ]  289.4MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ 4831516dd0cb Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [================>                                  ]    302MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 20043066d3d5 Extracting 2 s
+ 4831516dd0cb Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [=================>                                 ]  318.8MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 4831516dd0cb Extracting 3 s
+ 20043066d3d5 Extracting 2 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [==================>                                ]  332.4MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 4831516dd0cb Extracting 3 s
+ 20043066d3d5 Extracting 3 s
+ b0a0cf830b12 Extracting 2 s
+ eb77aa907276 Downloading [===================>                               ]  347.1MB/907.7MB
+ f9dd052e142d Extracting 2 s
+ 4831516dd0cb Pull complete 
+ 20043066d3d5 Pull complete 
+ 3fadc669ef11 Extracting 1 s
+ b0a0cf830b12 Extracting 3 s
+ eb77aa907276 Downloading [===================>                               ]  360.5MB/907.7MB
+ 7b28be0c8c4d Pull complete 
+ 47a60771af96 Pull complete 
+ f9dd052e142d Extracting 2 s
+ 3fadc669ef11 Extracting 1 s
+ b0a0cf830b12 Pull complete 
+ eb77aa907276 Downloading [====================>                              ]  376.4MB/907.7MB
+ edcaff0d5e7e Pull complete 
+ 22dca8215bc4 Extracting 1 s
+ 283a477db7bb Extracting 1 s
+ f9dd052e142d Extracting 3 s
+ dda3d8fbd5ed Pull complete 
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [=====================>                             ]  393.6MB/907.7MB
+ f9dd052e142d Extracting 3 s
+ 22dca8215bc4 Extracting 1 s
+ 283a477db7bb Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [======================>                            ]    410MB/907.7MB
+ f9dd052e142d Extracting 3 s
+ 22dca8215bc4 Extracting 1 s
+ 283a477db7bb Pull complete 
+ 91d2729fa4d5 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [=======================>                           ]  425.7MB/907.7MB
+ 22dca8215bc4 Extracting 1 s
+ f9dd052e142d Extracting 3 s
+ 91d2729fa4d5 Pull complete 
+ 9739ced65621 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [========================>                          ]  441.5MB/907.7MB
+ 22dca8215bc4 Extracting 1 s
+ f9dd052e142d Extracting 3 s
+ 9739ced65621 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [=========================>                         ]  459.3MB/907.7MB
+ 22dca8215bc4 Extracting 1 s
+ f9dd052e142d Extracting 3 s
+ 3fadc669ef11 Extracting 1 s
+ 9739ced65621 Extracting 1 s
+ eb77aa907276 Downloading [==========================>                        ]  476.1MB/907.7MB
+ 4f4fb700ef54 Extracting 1 s
+ f9dd052e142d Extracting 3 s
+ bbf018d6d4b8 Pull complete 
+ 22dca8215bc4 Pull complete 
+ 9739ced65621 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ 4f4fb700ef54 Pull complete 
+ c5761dea9b0e Pull complete 
+ redis Pulled 
+ eb77aa907276 Downloading [===========================>                       ]  490.7MB/907.7MB
+ f9dd052e142d Extracting 3 s
+ 9739ced65621 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [===========================>                       ]  507.5MB/907.7MB
+ ae3bb1b347a4 Extracting 1 s
+ f9dd052e142d Extracting 3 s
+ 9739ced65621 Pull complete 
+ 3fadc669ef11 Extracting 1 s
+ eb77aa907276 Downloading [============================>                      ]  524.3MB/907.7MB
+ f9dd052e142d Extracting 3 s
+ ae3bb1b347a4 Pull complete 
+ 3fadc669ef11 Extracting 2 s
+ eb77aa907276 Downloading [=============================>                     ]    540MB/907.7MB
+ c199bff16b05 Pull complete 
+ f9dd052e142d Extracting 4 s
+ f8406d9c00ea Pull complete 
+ e0d55fdb4d15 Extracting 1 s
+ 3fadc669ef11 Extracting 2 s
+ eb77aa907276 Downloading [==============================>                    ]  558.9MB/907.7MB
+ e0d55fdb4d15 Extracting 1 s
+ f9dd052e142d Extracting 4 s
+ 7084ac8f4ab6 Extracting 1 s
+ 3fadc669ef11 Pull complete 
+ eb77aa907276 Downloading [===============================>                   ]  577.8MB/907.7MB
+ 7084ac8f4ab6 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ f9dd052e142d Extracting 4 s
+ eb77aa907276 Downloading [================================>                  ]  595.6MB/907.7MB
+ e0d55fdb4d15 Extracting 1 s
+ 7084ac8f4ab6 Extracting 1 s
+ f9dd052e142d Extracting 4 s
+ eb77aa907276 Downloading [=================================>                 ]  612.5MB/907.7MB
+ e0d55fdb4d15 Extracting 1 s
+ f9dd052e142d Extracting 4 s
+ 7084ac8f4ab6 Extracting 1 s
+ eb77aa907276 Downloading [==================================>                ]  632.3MB/907.7MB
+ e0d55fdb4d15 Extracting 1 s
+ beb0d870d438 Pull complete 
+ 7084ac8f4ab6 Pull complete 
+ d63c4408fdb7 Extracting 1 s
+ f9dd052e142d Extracting 4 s
+ eb77aa907276 Downloading [===================================>               ]  650.1MB/907.7MB
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ f9dd052e142d Extracting 4 s
+ eb77aa907276 Downloading [====================================>              ]    666MB/907.7MB
+ f9dd052e142d Extracting 4 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ eb77aa907276 Downloading [=====================================>             ]  683.6MB/907.7MB
+ f9dd052e142d Extracting 4 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ eb77aa907276 Downloading [======================================>            ]  699.4MB/907.7MB
+ e8c6d4883897 Extracting 1 s
+ f9dd052e142d Pull complete 
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ eb77aa907276 Downloading [=======================================>           ]  717.2MB/907.7MB
+ e8c6d4883897 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ eb77aa907276 Downloading [========================================>          ]  731.9MB/907.7MB
+ e8c6d4883897 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [=========================================>         ]  749.7MB/907.7MB
+ e8c6d4883897 Pull complete 
+ e0d55fdb4d15 Extracting 2 s
+ d63c4408fdb7 Extracting 1 s
+ eb77aa907276 Downloading [==========================================>        ]  768.6MB/907.7MB
+ 648eb81b3252 Pull complete 
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [===========================================>       ]  786.4MB/907.7MB
+ e0d55fdb4d15 Extracting 2 s
+ d63c4408fdb7 Extracting 1 s
+ eb77aa907276 Downloading [============================================>      ]  805.3MB/907.7MB
+ efa05c660812 Pull complete 
+ e0d55fdb4d15 Extracting 2 s
+ d63c4408fdb7 Pull complete 
+ eb77aa907276 Downloading [=============================================>     ]  824.2MB/907.7MB
+ 14e6209d5fa8 Pull complete 
+ f4e7f62f4b80 Pull complete 
+ 5e1c03b67a78 Pull complete 
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [==============================================>    ]  845.2MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [===============================================>   ]  868.2MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [================================================>  ]  887.1MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [=================================================> ]  898.6MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 3 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ d686b50ce172 Pull complete 
+ e0d55fdb4d15 Extracting 3 s
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Extracting 4 s
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ eb77aa907276 Downloading [==================================================>]  907.7MB/907.7MB
+ eb77aa907276 Download complete 
+ eb77aa907276 Extracting 1 s
+ c1cb13b19080 Pull complete 
+ e0d55fdb4d15 Pull complete 
+ rabbitmq Pulled 
+ 873532e5f8c7 Pull complete 
+ 710e142705f8 Pull complete 
+ 050d9f8c3b1c Pull complete 
+ eb77aa907276 Extracting 1 s
+ cb628c265f09 Pull complete 
+ postgresql Pulled 
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 1 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 2 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 3 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 4 s
+ eb77aa907276 Extracting 5 s
+ eb77aa907276 Extracting 5 s
+ eb77aa907276 Extracting 5 s
+ eb77aa907276 Extracting 5 s
+ eb77aa907276 Extracting 5 s
+ eb77aa907276 Extracting 5 s
+ eb77aa907276 Extracting 5 s
+ 4f4fb700ef54 Extracting 1 s
+ eb77aa907276 Pull complete 
+ 4f4fb700ef54 Pull complete 
+ 2e81b9cb93cd Pull complete 
+ 0ffa8f8aba1e Pull complete 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-opensearch-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original
+configfile: setup.cfg
+testpaths: tests, invenio_records
+plugins: mock-3.15.1, invenio-4.0.0, isort-4.0.0, flask-1.3.0, black-ng-0.4.1, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, pycodestyle-2.5.0
+collected 238 items
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py,line=2::pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pkg_resources/__init__.py,line=3148::Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.%0AImplementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py,line=2::Deprecated call to `pkg_resources.declare_namespace('flask_admin.contrib')`.%0AImplementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pkg_resources/__init__.py,line=2560::Deprecated call to `pkg_resources.declare_namespace('flask_admin')`.%0AImplementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+
+tests/conftest.py ...                                                    [  1%]
+tests/demo/__init__.py ...                                               [  2%]
+tests/demo/json_resolver.py ...                                          [  3%]
+tests/models.py ...                                                      [  5%]
+tests/test_alembic.py ..s                                                [  6%]
+tests/test_api.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=67::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=497::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=499::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=502::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=509::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=511::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py,line=515::nested transaction already deassociated from connection
+                                    [ 14%]
+tests/test_api_dumpers.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py,line=88::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py,line=122::nested transaction already deassociated from connection
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py,line=179::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py,line=188::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py,line=238::nested transaction already deassociated from connection
+                                       [ 17%]
+tests/test_custom_db.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                              [ 18%]
+tests/test_dictutils.py ......                                           [ 21%]
+tests/test_encoder.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_encoder.py,line=91::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+                                            [ 24%]
+tests/test_field_model.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                            [ 25%]
+tests/test_invenio_records.py .....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_invenio_records.py,line=86::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_invenio_records.py,line=122::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_invenio_records.py,line=137::nested transaction already deassociated from connection
+                                      [ 27%]
+tests/test_relations_field.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_field.py,line=198::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+                                        [ 28%]
+tests/test_relations_modelfield.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                   [ 30%]
+tests/test_relations_systemfield.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py,line=114::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py,line=231::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py,line=463::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py,line=783::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py,line=991::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py,line=113::nested transaction already deassociated from connection
+                         [ 35%]
+tests/test_resolver.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_resolver.py,line=62::nested transaction already deassociated from connection
+.....                                          [ 38%]
+tests/test_signals.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+                                               [ 40%]
+tests/test_systemfields.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_systemfields.py,line=155::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_systemfields.py,line=157::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_systemfields.py,line=286::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+.........::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+                     [ 50%]
+tests/test_systemfields_relatedmodelfield.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py,line=579::nested transaction already deassociated from connection
+..                  [ 55%]
+invenio_records/__init__.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=442::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=548::nested transaction already deassociated from connection
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=407::The patch() method is deprecated and will be removed.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py,line=495::nested transaction already deassociated from connection
+                                         [ 56%]
+invenio_records/admin.py ...                                             [ 57%]
+invenio_records/alembic/07fb52561c5c_alter_column_from_json_to_jsonb.py . [ 58%]
+..                                                                       [ 59%]
+invenio_records/alembic/1095cdf9f350_create_records_branch.py ...        [ 60%]
+invenio_records/alembic/428b919be0ea_alter_column_from_json_to_jsonb_for_version.py . [ 60%]
+..                                                                       [ 61%]
+invenio_records/alembic/66db9c49c699_change_datetime_types.py ...        [ 63%]
+invenio_records/alembic/862037093962_create_records_tables.py ...        [ 64%]
+invenio_records/api.py ....                                              [ 65%]
+invenio_records/config.py ...                                            [ 67%]
+invenio_records/dictutils.py ...                                         [ 68%]
+invenio_records/dumpers/__init__.py ...                                  [ 69%]
+invenio_records/dumpers/base.py ...                                      [ 71%]
+invenio_records/dumpers/indexedat.py ...                                 [ 72%]
+invenio_records/dumpers/relations.py ...                                 [ 73%]
+invenio_records/dumpers/search.py ...                                    [ 74%]
+invenio_records/errors.py ...                                            [ 76%]
+invenio_records/ext.py ...                                               [ 77%]
+invenio_records/extensions.py ...                                        [ 78%]
+invenio_records/models.py ...                                            [ 79%]
+invenio_records/resolver.py ...                                          [ 81%]
+invenio_records/signals.py ...                                           [ 82%]
+invenio_records/systemfields/__init__.py ...                             [ 83%]
+invenio_records/systemfields/base.py ...                                 [ 84%]
+invenio_records/systemfields/constant.py ...                             [ 86%]
+invenio_records/systemfields/dict.py ...                                 [ 87%]
+invenio_records/systemfields/model.py ...                                [ 88%]
+invenio_records/systemfields/relatedmodelfield.py ...                    [ 89%]
+invenio_records/systemfields/relations/__init__.py ...                   [ 91%]
+invenio_records/systemfields/relations/errors.py ...                     [ 92%]
+invenio_records/systemfields/relations/field.py ...                      [ 93%]
+invenio_records/systemfields/relations/mapping.py ...                    [ 94%]
+invenio_records/systemfields/relations/modelrelations.py ...             [ 96%]
+invenio_records/systemfields/relations/relations.py ...                  [ 97%]
+invenio_records/systemfields/relations/results.py ...                    [ 98%]
+invenio_records/validators.py ...                                        [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    __import__('pkg_resources').declare_namespace(__name__)
+
+.venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+.venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('flask_admin.contrib')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    __import__('pkg_resources').declare_namespace(__name__)
+
+.venv/lib/python3.14/site-packages/pkg_resources/__init__.py:2560
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pkg_resources/__init__.py:2560: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('flask_admin')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(parent)
+
+tests/test_api.py: 12 warnings
+tests/test_api_dumpers.py: 4 warnings
+tests/test_encoder.py: 4 warnings
+tests/test_invenio_records.py: 2 warnings
+tests/test_relations_field.py: 1 warning
+tests/test_relations_systemfield.py: 10 warnings
+tests/test_resolver.py: 1 warning
+tests/test_signals.py: 2 warnings
+tests/test_systemfields.py: 8 warnings
+tests/test_systemfields_relatedmodelfield.py: 3 warnings
+invenio_records/__init__.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py:334: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+
+tests/test_api.py::test_revision_id_created_updated_properties
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:67: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api.py: 5 warnings
+tests/test_encoder.py: 2 warnings
+tests/test_invenio_records.py: 1 warning
+tests/test_relations_field.py: 1 warning
+tests/test_relations_systemfield.py: 5 warnings
+tests/test_signals.py: 2 warnings
+tests/test_systemfields.py: 1 warning
+invenio_records/__init__.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py:442: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+
+tests/test_api.py::test_delete
+tests/test_api.py::test_undelete_no_get
+tests/test_api.py::test_undelete_with_get
+tests/test_signals.py::test_signals
+tests/test_signals.py::test_signals_disabled
+tests/test_systemfields.py::test_constant_field_deletion
+tests/test_systemfields.py::test_extension_delete
+tests/test_systemfields.py::test_dict_field_deleted
+invenio_records/__init__.py::invenio_records
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py:495: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+
+tests/test_api.py::test_delete
+tests/test_api.py::test_revisions
+tests/test_encoder.py::test_encoding_with_versioning
+tests/test_signals.py::test_signals
+tests/test_signals.py::test_signals_disabled
+tests/test_systemfields.py::test_extension_revert
+invenio_records/__init__.py::invenio_records
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py:548: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+
+tests/test_api.py: 1 warning
+tests/test_encoder.py: 1 warning
+tests/test_relations_field.py: 1 warning
+tests/test_relations_systemfield.py: 9 warnings
+tests/test_systemfields.py: 6 warnings
+tests/test_systemfields_relatedmodelfield.py: 3 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py:579: SAWarning: nested transaction already deassociated from connection
+    self._transaction.rollback(_to_root=False)
+
+tests/test_api.py::test_undelete_no_get
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:497: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api.py::test_undelete_no_get
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:499: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api.py::test_undelete_no_get
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:502: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api.py::test_undelete_with_get
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:509: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api.py::test_undelete_with_get
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:511: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api.py::test_undelete_with_get
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api.py:515: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api_dumpers.py: 1 warning
+tests/test_custom_db.py: 1 warning
+tests/test_encoder.py: 1 warning
+tests/test_field_model.py: 1 warning
+tests/test_invenio_records.py: 1 warning
+tests/test_relations_field.py: 1 warning
+tests/test_relations_modelfield.py: 1 warning
+tests/test_relations_systemfield.py: 1 warning
+tests/test_resolver.py: 1 warning
+tests/test_signals.py: 1 warning
+tests/test_systemfields.py: 1 warning
+tests/test_systemfields_relatedmodelfield.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+    self.init_app(app)
+
+tests/test_api_dumpers.py::test_esdumper_with_model
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py:88: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api_dumpers.py::test_esdumper_with_extensions
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py:122: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api_dumpers.py::test_relations_dumper
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py:179: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api_dumpers.py::test_relations_dumper
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py:188: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_api_dumpers.py::test_indexedtime_dumper
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_api_dumpers.py:238: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_encoder.py::test_encoding
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_encoder.py:91: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_invenio_records.py::test_db
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_invenio_records.py:86: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_invenio_records.py::test_db
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_invenio_records.py:122: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_invenio_records.py::test_db
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_invenio_records.py:137: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_field.py: 1 warning
+tests/test_relations_systemfield.py: 10 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/conftest.py:113: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_field.py::test_multirelations_field
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_field.py:198: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_systemfield.py::test_relations_field_pk_relation
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py:114: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_systemfield.py::test_relations_field_pk_list_relation
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py:231: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_systemfield.py::test_relations_field_pk_list_relation_of_objects
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py:463: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_systemfield.py::test_relations_field_pk_nested_list_of_objects_w_related_field
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py:783: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_relations_systemfield.py::test_relations_field_pk_nested_list_of_objects_wo_related_field
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_relations_systemfield.py:991: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_resolver.py::test_invenio_refresolver_with_local_store
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_resolver.py:62: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_systemfields.py::test_constant_field_deletion
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_systemfields.py:155: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_systemfields.py::test_constant_field_deletion
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_systemfields.py:157: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+tests/test_systemfields.py::test_extension_delete
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/tests/test_systemfields.py:286: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+
+invenio_records/__init__.py::invenio_records
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records/original/invenio_records/api.py:407: DeprecationWarning: The patch() method is deprecated and will be removed.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+
+Name                                                                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------------------------------------------------------
+invenio_records/__init__.py                                                               4      0   100%
+invenio_records/admin.py                                                                 37     12    68%   61-75
+invenio_records/alembic/07fb52561c5c_alter_column_from_json_to_jsonb.py                  12      4    67%   23-24, 34-35
+invenio_records/alembic/66db9c49c699_change_datetime_types.py                            13      6    54%   25-27, 32-34
+invenio_records/alembic/428b919be0ea_alter_column_from_json_to_jsonb_for_version.py      12      4    67%   23-24, 34-35
+invenio_records/alembic/1095cdf9f350_create_records_branch.py                             8      0   100%
+invenio_records/alembic/862037093962_create_records_tables.py                            19     10    47%   24-79, 89-102
+invenio_records/api.py                                                                  229      8    97%   107, 239-243, 252-256, 289-293, 523
+invenio_records/config.py                                                                 6      0   100%
+invenio_records/dictutils.py                                                             87      7    92%   55, 63, 131, 167, 170-172
+invenio_records/dumpers/__init__.py                                                       3      0   100%
+invenio_records/dumpers/base.py                                                           7      1    86%   49
+invenio_records/dumpers/indexedat.py                                                      9      0   100%
+invenio_records/dumpers/relations.py                                                     18      3    83%   35-36, 41
+invenio_records/dumpers/search.py                                                       112      7    94%   69-70, 75, 86, 106, 117, 124
+invenio_records/errors.py                                                                 3      0   100%
+invenio_records/ext.py                                                                   49      1    98%   106
+invenio_records/extensions.py                                                            21      0   100%
+invenio_records/models.py                                                                48      3    94%   76-78
+invenio_records/resolver.py                                                              16      1    94%   25
+invenio_records/signals.py                                                               18      0   100%
+invenio_records/systemfields/__init__.py                                                  7      0   100%
+invenio_records/systemfields/base.py                                                    139      9    94%   77, 273-277, 287-291, 301-305, 315-319
+invenio_records/systemfields/constant.py                                                 20      0   100%
+invenio_records/systemfields/dict.py                                                     15      0   100%
+invenio_records/systemfields/model.py                                                    32      0   100%
+invenio_records/systemfields/relatedmodelfield.py                                        42      0   100%
+invenio_records/systemfields/relations/__init__.py                                        7      0   100%
+invenio_records/systemfields/relations/errors.py                                          4      0   100%
+invenio_records/systemfields/relations/field.py                                          64      3    95%   34, 38, 42
+invenio_records/systemfields/relations/mapping.py                                        34      3    91%   30, 41, 49
+invenio_records/systemfields/relations/modelrelations.py                                 39      0   100%
+invenio_records/systemfields/relations/relations.py                                     175     22    87%   64, 85, 102, 109, 123-128, 175-176, 210-215, 218-219, 254, 324
+invenio_records/systemfields/relations/results.py                                       181     13    93%   59, 88-89, 103, 112, 126, 164, 166, 229, 233, 249-250, 261
+invenio_records/validators.py                                                            15      0   100%
+-------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                  1505    117    92%
+================ 237 passed, 1 skipped, 157 warnings in 23.38s =================
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

@@ -1,0 +1,5 @@
+{
+  "PytestConfigWarning: Unknown config option: pep8ignore": 1,
+  "SAWarning: nested transaction already deassociated from connection": 1,
+  "DeprecationWarning: Please use hash_password instead of encrypt_password.": 1
+}

@@ -1,0 +1,197 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v2.3.0",
+        "commit": "fcde4f4936d6e26338faf9cab81207b79843d2f5",
+        "org": "inveniosoftware",
+        "package": "invenio-app",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-app",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v2.4.0",
+        "commit": "7e0823a59ebc7afa353b34ac7f58468e3e9ef99e",
+        "org": "inveniosoftware",
+        "package": "invenio-base",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-base",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v2.1.0",
+        "commit": "476831a67d84f821aec27dd5395890a9c02c325c",
+        "org": "inveniosoftware",
+        "package": "invenio-cache",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-cache",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v2.2.0",
+        "commit": "3474a7e83278c6c1463a5cb53497b0cbb3a824d2",
+        "org": "inveniosoftware",
+        "package": "invenio-celery",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-celery",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v1.1.0",
+        "commit": "0f1fde1a9c4ebd6fd0876d81a594bf60d407ca9e",
+        "org": "inveniosoftware",
+        "package": "invenio-config",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-config",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v2.3.0",
+      "commit": "fcde4f4936d6e26338faf9cab81207b79843d2f5",
+      "org": "inveniosoftware",
+      "package": "invenio-app",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-app",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "skipped"
+}

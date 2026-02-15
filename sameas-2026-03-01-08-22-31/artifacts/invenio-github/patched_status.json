@@ -1,0 +1,92 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "99b3a1785276c8a591db13949fed80f36de57809",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-records-permissions",
+          "pr": 119,
+          "pr_info": {
+            "commits": [
+              "8c8cd95d87784ac7c60ebfaa035cf574b87dc794",
+              "99b3a1785276c8a591db13949fed80f36de57809"
+            ],
+            "source_branch": "contribution-same-as-permission",
+            "source_org": "oarepo",
+            "source_repo": "invenio-records-permissions"
+          },
+          "repo": "invenio-records-permissions"
+        }
+      ],
+      "reference": {
+        "actual_version": "1.2.1",
+        "base": null,
+        "branch": "v1.2.1",
+        "commit": "41c9c6281254e4739f7e798ba3f93427b4c7866e",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-records-permissions",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-records-permissions"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "actual_version": "4.0.0",
+      "base": null,
+      "branch": "v4.0.0",
+      "commit": "0f4e20e3e27bc9b3e3e839a3eecc6c60db642be5",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-github",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-github"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

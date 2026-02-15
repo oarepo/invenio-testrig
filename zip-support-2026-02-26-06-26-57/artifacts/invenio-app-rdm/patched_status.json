@@ -1,0 +1,274 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "e0844201d7e37e4a319d505d5bb7a43d90181351",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-app-rdm",
+          "pr": 3266,
+          "pr_info": {
+            "commits": [
+              "e0844201d7e37e4a319d505d5bb7a43d90181351"
+            ],
+            "source_branch": "contribution-zip-previewer-ui",
+            "source_org": "oarepo",
+            "source_repo": "invenio-app-rdm"
+          },
+          "repo": "invenio-app-rdm"
+        }
+      ],
+      "reference": {
+        "actual_version": "14.0.0b3.dev6",
+        "base": null,
+        "branch": "v14.0.0b3.dev6",
+        "commit": "f9fcc3d8e147240aef647a3d15c08db199ff1550",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-app-rdm",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-app-rdm"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "d4d6e2bf885148a0a1689f71a26fe7606f9bcd63",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-previewer",
+          "pr": 243,
+          "pr_info": {
+            "commits": [
+              "d4d6e2bf885148a0a1689f71a26fe7606f9bcd63"
+            ],
+            "source_branch": "contribution-container-previewers",
+            "source_org": "oarepo",
+            "source_repo": "invenio-previewer"
+          },
+          "repo": "invenio-previewer"
+        }
+      ],
+      "reference": {
+        "actual_version": "3.5.1",
+        "base": null,
+        "branch": "v3.5.1",
+        "commit": "7d9facf1b955d129ed94ca41620eff2699dc4f60",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-previewer",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-previewer"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "be3d85b05d01436b7f971c361892672cf389fa12",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-rdm-records",
+          "pr": 2222,
+          "pr_info": {
+            "commits": [
+              "be3d85b05d01436b7f971c361892672cf389fa12"
+            ],
+            "source_branch": "contribution-zip-extractors-processors",
+            "source_org": "oarepo",
+            "source_repo": "invenio-rdm-records"
+          },
+          "repo": "invenio-rdm-records"
+        }
+      ],
+      "reference": {
+        "actual_version": "22.7.3",
+        "base": null,
+        "branch": "v22.7.3",
+        "commit": "0c89a21d81fbdd185982b76faf6b0055e9efca70",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-rdm-records",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-rdm-records"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "3102386ee40392732e8be59e9b40153dd68a9936",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-records-resources",
+          "pr": 666,
+          "pr_info": {
+            "commits": [
+              "3102386ee40392732e8be59e9b40153dd68a9936"
+            ],
+            "source_branch": "contribution-container-extractors",
+            "source_org": "oarepo",
+            "source_repo": "invenio-records-resources"
+          },
+          "repo": "invenio-records-resources"
+        }
+      ],
+      "reference": {
+        "actual_version": "8.7.1",
+        "base": null,
+        "branch": "fix-read-many",
+        "commit": "5911e5bba6dcd750fd8ba86584ddb5e940a7a3de",
+        "commits_from_version": [
+          "a5c2ecb7f22b873523277847b82b7330787b00ea",
+          "c6b973a14802e2a7f73100ab4e32cb0c36bd4672",
+          "5911e5bba6dcd750fd8ba86584ddb5e940a7a3de"
+        ],
+        "org": "inveniosoftware",
+        "package": "invenio-records-resources",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-records-resources"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [
+      {
+        "actual_version": null,
+        "base": null,
+        "branch": null,
+        "commit": "e0844201d7e37e4a319d505d5bb7a43d90181351",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-app-rdm",
+        "pr": 3266,
+        "pr_info": {
+          "commits": [
+            "e0844201d7e37e4a319d505d5bb7a43d90181351"
+          ],
+          "source_branch": "contribution-zip-previewer-ui",
+          "source_org": "oarepo",
+          "source_repo": "invenio-app-rdm"
+        },
+        "repo": "invenio-app-rdm"
+      }
+    ],
+    "reference": {
+      "actual_version": "14.0.0b3.dev6",
+      "base": null,
+      "branch": "v14.0.0b3.dev6",
+      "commit": "f9fcc3d8e147240aef647a3d15c08db199ff1550",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-app-rdm",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-app-rdm"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

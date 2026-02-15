@@ -1,0 +1,282 @@
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original
+configfile: setup.cfg
+testpaths: docs, tests, invenio_audit_logs
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 117 items
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=9::'enablePackrat' deprecated - use 'enable_packrat'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=52::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=53::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=54::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=55::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=56::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=57::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=58::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=59::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=60::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=63::'excludeChars' argument is deprecated, use 'exclude_chars'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=73::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=74::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=119::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=122::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=155::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=157::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=199::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=325::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+
+docs/conf.py ...                                                         [  2%]
+tests/conftest.py ...                                                    [  5%]
+tests/mock_module/__init__.py ...                                        [  7%]
+tests/mock_module/auditlog/actions.py ...                                [ 10%]
+tests/services/__init__.py ...                                           [ 12%]
+tests/services/conftest.py ...                                           [ 15%]
+tests/services/test_action_builder.py ...                                [ 17%]
+tests/services/test_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.                                     [ 22%]
+tests/test_alembic.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/alembic/ddl/postgresql.py,line=202::autoincrement and existing_autoincrement only make sense for MySQL
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py,line=99::The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)
+                                                [ 24%]
+tests/test_invenio_audit_logs.py ....                                    [ 28%]
+invenio_audit_logs/__init__.py ...                                       [ 30%]
+invenio_audit_logs/alembic/1743073617_create_audit_logs_branch.py ...    [ 33%]
+invenio_audit_logs/alembic/1743073720_create_audit_logs_table.py ...     [ 35%]
+invenio_audit_logs/alembic/42fa8d3bbc0c_change_datetime_types.py ...     [ 38%]
+invenio_audit_logs/config.py ...                                         [ 41%]
+invenio_audit_logs/ext.py ...                                            [ 43%]
+invenio_audit_logs/proxies.py ...                                        [ 46%]
+invenio_audit_logs/records/__init__.py ...                               [ 48%]
+invenio_audit_logs/records/api.py ...                                    [ 51%]
+invenio_audit_logs/records/mappings/__init__.py ...                      [ 53%]
+invenio_audit_logs/records/mappings/templates/__init__.py ...            [ 56%]
+invenio_audit_logs/records/mappings/templates/os-v1/__init__.py ...      [ 58%]
+invenio_audit_logs/records/mappings/templates/os-v2/__init__.py ...      [ 61%]
+invenio_audit_logs/records/models.py ...                                 [ 64%]
+invenio_audit_logs/records/systemfields/__init__.py ...                  [ 66%]
+invenio_audit_logs/records/systemfields/action.py ...                    [ 69%]
+invenio_audit_logs/resources/__init__.py ...                             [ 71%]
+invenio_audit_logs/resources/config.py ...                               [ 74%]
+invenio_audit_logs/resources/resource.py ...                             [ 76%]
+invenio_audit_logs/services/__init__.py ...                              [ 79%]
+invenio_audit_logs/services/action.py ...                                [ 82%]
+invenio_audit_logs/services/config.py ...                                [ 84%]
+invenio_audit_logs/services/permissions.py ...                           [ 87%]
+invenio_audit_logs/services/results.py ...                               [ 89%]
+invenio_audit_logs/services/schema.py ...                                [ 92%]
+invenio_audit_logs/services/service.py ...                               [ 94%]
+invenio_audit_logs/services/uow.py ...                                   [ 97%]
+invenio_audit_logs/views.py ...                                          [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    pyparsing.ParserElement.enablePackrat()
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru12 = oneOf(["%.2d" % i for i in range(1, 13)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru13 = oneOf(["%.2d" % i for i in range(1, 14)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru23 = oneOf(["%.2d" % i for i in range(1, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru23 = oneOf(["%.2d" % i for i in range(0, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru29 = oneOf(["%.2d" % i for i in range(1, 30)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru30 = oneOf(["%.2d" % i for i in range(1, 31)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru31 = oneOf(["%.2d" % i for i in range(1, 32)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru59 = oneOf(["%.2d" % i for i in range(1, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru59 = oneOf(["%.2d" % i for i in range(0, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63: PyparsingDeprecationWarning: 'excludeChars' argument is deprecated, use 'exclude_chars'
+    positiveDigit = Word(nums, exact=1, excludeChars="0")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    (oneOf("01 03 05 07 08 10 12")("month") + "-" + oneThru31("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    ^ (oneOf("04 06 09 11")("month") + "-" + oneThru30("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: 19 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    p.addParseAction(cls.parse_action)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    UASymbol = Combine(oneOf("? ~ %"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonNumber = oneOf("21 22 23 24")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1Start.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1End.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    monthWithX = Combine(oneOf("0X 1X") ^ ("X" + digitOrX))("month")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    earlier = L("..").addParseAction(f)("lower") + date("upper").addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    later = date("lower").addParseAction(f) + L("..").addParseAction(f)("upper")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonL2Number = oneOf("21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41")
+
+tests/services/test_service.py::test_audit_log_create
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+    self.init_app(app)
+
+tests/services/test_service.py::test_audit_log_create
+tests/services/test_service.py::test_audit_log_create_identity_mismatch
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/flask_security/utils.py:77: DeprecationWarning: Remember me support has been removed.
+    warnings.warn("Remember me support has been removed.", DeprecationWarning)
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/alembic/config.py:580: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/alembic/ddl/postgresql.py:202: UserWarning: autoincrement and existing_autoincrement only make sense for MySQL
+    super().alter_column(
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-audit-logs/original/.venv/lib/python3.14/site-packages/invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py:99: SADeprecationWarning: The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)
+    insp = Inspector.from_engine(ctx.connection.engine)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+
+Name                                                                Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------------------------------------
+invenio_audit_logs/__init__.py                                          3      0   100%
+invenio_audit_logs/alembic/42fa8d3bbc0c_change_datetime_types.py       13      0   100%
+invenio_audit_logs/alembic/1743073617_create_audit_logs_branch.py      10      0   100%
+invenio_audit_logs/alembic/1743073720_create_audit_logs_table.py       12      0   100%
+invenio_audit_logs/config.py                                           11      0   100%
+invenio_audit_logs/ext.py                                              28      0   100%
+invenio_audit_logs/proxies.py                                           8      0   100%
+invenio_audit_logs/records/__init__.py                                  2      0   100%
+invenio_audit_logs/records/api.py                                      21      0   100%
+invenio_audit_logs/records/mappings/__init__.py                         0      0   100%
+invenio_audit_logs/records/mappings/templates/__init__.py               0      0   100%
+invenio_audit_logs/records/mappings/templates/os-v1/__init__.py         0      0   100%
+invenio_audit_logs/records/mappings/templates/os-v2/__init__.py         0      0   100%
+invenio_audit_logs/records/models.py                                    9      0   100%
+invenio_audit_logs/records/systemfields/__init__.py                     2      0   100%
+invenio_audit_logs/records/systemfields/action.py                      45     11    76%   26, 36-38, 42-44, 50, 54, 79-80
+invenio_audit_logs/resources/__init__.py                                3      0   100%
+invenio_audit_logs/resources/config.py                                 16      0   100%
+invenio_audit_logs/resources/resource.py                               26      4    85%   52-57, 64-68
+invenio_audit_logs/services/__init__.py                                 6      0   100%
+invenio_audit_logs/services/action.py                                  22      6    73%   28, 41-42, 46, 51, 55
+invenio_audit_logs/services/config.py                                  37      0   100%
+invenio_audit_logs/services/permissions.py                              9      0   100%
+invenio_audit_logs/services/results.py                                 51      4    92%   70, 77-80
+invenio_audit_logs/services/schema.py                                  48      3    94%   105, 115, 191
+invenio_audit_logs/services/service.py                                 20      1    95%   34
+invenio_audit_logs/services/uow.py                                     15      0   100%
+invenio_audit_logs/views.py                                             5      0   100%
+-------------------------------------------------------------------------------------------------
+TOTAL                                                                 422     29    93%
+====================== 117 passed, 49 warnings in 12.47s =======================
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

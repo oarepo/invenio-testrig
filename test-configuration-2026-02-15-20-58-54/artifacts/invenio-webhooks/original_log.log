@@ -1,0 +1,243 @@
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/invenio_webhooks/models.py:docstring of invenio_webhooks.models.Event.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.Any [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: ft.ResponseReturnValue [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: t.Any [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: ft.ResponseReturnValue [ref.class]
+ redis Pulling 
+ postgresql Pulling 
+ e0d55fdb4d15 Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ cb628c265f09 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ dda3d8fbd5ed Pulling fs layer 
+ b0a0cf830b12 Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ c5761dea9b0e Pulling fs layer 
+ 22dca8215bc4 Pulling fs layer 
+ edcaff0d5e7e Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ bbf018d6d4b8 Pulling fs layer 
+ 4831516dd0cb Pulling fs layer 
+ 7b28be0c8c4d Pulling fs layer 
+ 47a60771af96 Pulling fs layer 
+ 4f4fb700ef54 Already exists 
+ e7da101a9486 Download complete 
+ 873532e5f8c7 Download complete 
+ e0d55fdb4d15 Downloading [>                                                  ]  1.049MB/109MB
+ cb628c265f09 Download complete 
+ f8406d9c00ea Download complete 
+ 91d2729fa4d5 Download complete 
+ c199bff16b05 Download complete 
+ ae3bb1b347a4 Download complete 
+ 5682dec5b749 Downloading [==================>                                ]  2.097MB/5.719MB
+ 47a60771af96 Download complete 
+ 22dca8215bc4 Downloading [======>                                            ]  2.097MB/15.35MB
+ c1cb13b19080 Download complete 
+ 56b5e4f0933d Download complete 
+ 7b28be0c8c4d Download complete 
+ edcaff0d5e7e Download complete 
+ dda3d8fbd5ed Download complete 
+ 9739ced65621 Downloading [=========================>                         ]  4.194MB/8.069MB
+ 050d9f8c3b1c Download complete 
+ bbf018d6d4b8 Download complete 
+ 710e142705f8 Download complete 
+ b0a0cf830b12 Downloading [=======>                                           ]  4.194MB/29.15MB
+ e0d55fdb4d15 Downloading [====>                                              ]  10.49MB/109MB
+ c4cc93acbec6 Download complete 
+ 283a477db7bb Download complete 
+ c5761dea9b0e Download complete 
+ 4831516dd0cb Downloading [===>                                               ]  2.097MB/28.23MB
+ 4831516dd0cb Downloading [======================>                            ]  12.58MB/28.23MB
+ 22dca8215bc4 Downloading [=====================================>             ]  11.53MB/15.35MB
+ 9739ced65621 Download complete 
+ b0a0cf830b12 Downloading [=======================>                           ]  13.63MB/29.15MB
+ e0d55fdb4d15 Downloading [=========>                                         ]  20.97MB/109MB
+ 5682dec5b749 Download complete 
+ b0a0cf830b12 Downloading [============================================>      ]  26.21MB/29.15MB
+ e0d55fdb4d15 Downloading [================>                                  ]   36.7MB/109MB
+ 4831516dd0cb Downloading [==============================================>    ]  26.21MB/28.23MB
+ 22dca8215bc4 Download complete 
+ b0a0cf830b12 Downloading [==================================================>]  29.15MB/29.15MB
+ e0d55fdb4d15 Downloading [======================>                            ]  48.23MB/109MB
+ 4831516dd0cb Download complete 
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Download complete 
+ e0d55fdb4d15 Downloading [==========================>                        ]  57.67MB/109MB
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [===============================>                   ]  68.16MB/109MB
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [====================================>              ]  79.69MB/109MB
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [=========================================>         ]  91.23MB/109MB
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [===============================================>   ]  103.8MB/109MB
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Download complete 
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 4831516dd0cb Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 4831516dd0cb Extracting 2 s
+ b0a0cf830b12 Extracting 1 s
+ 47a60771af96 Pull complete 
+ 7b28be0c8c4d Pull complete 
+ edcaff0d5e7e Extracting 1 s
+ 4831516dd0cb Pull complete 
+ b0a0cf830b12 Pull complete 
+ edcaff0d5e7e Pull complete 
+ 22dca8215bc4 Extracting 1 s
+ dda3d8fbd5ed Pull complete 
+ 283a477db7bb Extracting 1 s
+ 22dca8215bc4 Extracting 1 s
+ 91d2729fa4d5 Pull complete 
+ 283a477db7bb Pull complete 
+ 9739ced65621 Extracting 1 s
+ 4f4fb700ef54 Pull complete 
+ bbf018d6d4b8 Pull complete 
+ c5761dea9b0e Pull complete 
+ 22dca8215bc4 Pull complete 
+ redis Pulled 
+ 9739ced65621 Extracting 1 s
+ ae3bb1b347a4 Extracting 1 s
+ 9739ced65621 Pull complete 
+ f8406d9c00ea Pull complete 
+ c199bff16b05 Pull complete 
+ ae3bb1b347a4 Pull complete 
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ 873532e5f8c7 Pull complete 
+ c1cb13b19080 Pull complete 
+ 050d9f8c3b1c Pull complete 
+ 710e142705f8 Pull complete 
+ e0d55fdb4d15 Pull complete 
+ cb628c265f09 Pull complete 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original
+configfile: setup.cfg
+testpaths: docs, tests, invenio_webhooks
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 66 items
+
+docs/conf.py ...                                                         [  4%]
+tests/conftest.py ...                                                    [  9%]
+tests/test_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/.venv/lib/python3.14/site-packages/invenio_oauth2server/ext.py,line=332::You are overriding the default OAuthlib "URL encoded" set of valid characters. Make sure that the characters defined in oauthlib.common.urlencoded are indeed limitting your needs.
+...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/.venv/lib/python3.14/site-packages/flask_security/datastore.py,line=208::get_user method is deprecated, user get_user_by_email/get_user_by_id
+...                                              [ 22%]
+tests/test_invenio_webhooks.py ....s.                                    [ 31%]
+tests/test_receivers.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/invenio_webhooks/models.py,line=147::The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0)
+.....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/.venv/lib/python3.14/site-packages/celery/backends/base.py,line=577::Results are not stored in backend and should not be retrieved when task_always_eager is enabled, unless task_store_eager_result is enabled.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/invenio_webhooks/models.py,line=147::The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0)
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/tests/test_receivers.py,line=221::The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0)
+                                        [ 45%]
+invenio_webhooks/__init__.py ...                                         [ 50%]
+invenio_webhooks/_compat.py ...                                          [ 54%]
+invenio_webhooks/alembic/201faeb649c7_change_datetime_types.py ...       [ 59%]
+invenio_webhooks/alembic/469925575192_create_webhooks_branch.py ...      [ 63%]
+invenio_webhooks/alembic/a095bd179f5c_create_webhooks_tables.py ...      [ 68%]
+invenio_webhooks/config.py ...                                           [ 72%]
+invenio_webhooks/errors.py ...                                           [ 77%]
+invenio_webhooks/ext.py ...                                              [ 81%]
+invenio_webhooks/models.py ...                                           [ 86%]
+invenio_webhooks/proxies.py ...                                          [ 90%]
+invenio_webhooks/signatures.py ...                                       [ 95%]
+invenio_webhooks/views.py ...                                            [100%]
+
+=============================== warnings summary ===============================
+tests/test_api.py::test_405_methods
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/.venv/lib/python3.14/site-packages/invenio_oauth2server/ext.py:332: RuntimeWarning: You are overriding the default OAuthlib "URL encoded" set of valid characters. Make sure that the characters defined in oauthlib.common.urlencoded are indeed limitting your needs.
+    warnings.warn(
+
+tests/test_api.py::test_webhook_post_no_token
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/.venv/lib/python3.14/site-packages/flask_security/datastore.py:208: DeprecationWarning: get_user method is deprecated, user get_user_by_email/get_user_by_id
+    warnings.warn(
+
+tests/test_receivers.py::test_receiver_registration
+tests/test_receivers.py::test_event_status
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/invenio_webhooks/models.py:147: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    event = Event.query.get(event_id)
+
+tests/test_receivers.py::test_event_status
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/.venv/lib/python3.14/site-packages/celery/backends/base.py:577: RuntimeWarning: Results are not stored in backend and should not be retrieved when task_always_eager is enabled, unless task_store_eager_result is enabled.
+    warnings.warn(
+
+tests/test_receivers.py::test_event_status
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-webhooks/original/tests/test_receivers.py:221: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    event = Event.query.get(event_id)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+
+Name                                                              Stmts   Miss  Cover   Missing
+-----------------------------------------------------------------------------------------------
+invenio_webhooks/__init__.py                                          5      0   100%
+invenio_webhooks/_compat.py                                           8      2    75%   46-47
+invenio_webhooks/alembic/201faeb649c7_change_datetime_types.py       13      6    54%   41-43, 48-50
+invenio_webhooks/alembic/469925575192_create_webhooks_branch.py      10      2    80%   38, 43
+invenio_webhooks/alembic/a095bd179f5c_create_webhooks_tables.py      16      6    62%   41-70, 80-81
+invenio_webhooks/config.py                                            3      0   100%
+invenio_webhooks/errors.py                                            4      0   100%
+invenio_webhooks/ext.py                                              29      1    97%   56
+invenio_webhooks/models.py                                          130      9    93%   196-197, 270-271, 276-277, 283-285
+invenio_webhooks/proxies.py                                           3      0   100%
+invenio_webhooks/signatures.py                                       12      0   100%
+invenio_webhooks/views.py                                            88      7    92%   114, 141-145, 169
+-----------------------------------------------------------------------------------------------
+TOTAL                                                               321     33    90%
+================== 65 passed, 1 skipped, 6 warnings in 8.23s ===================
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

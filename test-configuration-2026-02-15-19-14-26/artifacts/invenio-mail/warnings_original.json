@@ -1,0 +1,3 @@
+{
+  "UserWarning: Sphinx 9.0+ detected. celery.contrib.sphinx requires 'autodoc_use_legacy_class_based = True' in conf.py. Enabling it automatically.": 1
+}

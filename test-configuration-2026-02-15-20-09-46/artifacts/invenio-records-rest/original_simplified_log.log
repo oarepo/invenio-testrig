@@ -1,0 +1,225 @@
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original/.venv/lib/python3.14/site-packages/pyld/jsonld.py:4413: SyntaxWarning: "\?" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\?"? A raw string is also an option
+  and re.match('.*[:/\?#\[\]@]$', id_)
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original/.venv/lib/python3.14/site-packages/pyld/jsonld.py:577: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
+  if len(output) is 1 and output[0] == '':
+ postgresql Pulling 
+ rabbitmq Pulling 
+ opensearch Pulling 
+ redis Pulling 
+ 4f4fb700ef54 Already exists 
+ 4f4fb700ef54 Already exists 
+ redis Pulled 
+ rabbitmq Pulled 
+ postgresql Pulled 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original
+configfile: setup.cfg
+testpaths: docs, tests, invenio_records_rest
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 319 items
+docs/conf.py ...                                                         [  0%]
+tests/conftest.py ...                                                    [  1%]
+tests/helpers.py ...                                                     [  2%]
+tests/mock_module/__init__.py ...                                        [  3%]
+tests/mock_module/mappings/__init__.py ...                               [  4%]
+tests/mock_module/mappings/os-v1/__init__.py ...                         [  5%]
+tests/mock_module/mappings/os-v2/__init__.py ...                         [  6%]
+tests/mock_module/mappings/v7/__init__.py ...                            [  7%]
+tests/test_custom_endpoints.py 
+                                      [  8%]
+tests/test_custom_fields.py 
+                                         [ 10%]
+tests/test_error_handlers.py 
+                                         [ 10%]
+tests/test_ext.py ....                                                   [ 12%]
+tests/test_facets.py 
+                                       [ 16%]
+tests/test_index_prefixing.py 
+                                       [ 17%]
+tests/test_links.py 
+                                                 [ 18%]
+tests/test_marshmallow_contrib.py .....                                  [ 20%]
+tests/test_marshmallow_loader.py 
+                                [ 22%]
+tests/test_permissions.py 
+                                            [ 23%]
+tests/test_pid_resolver.py 
+                                           [ 24%]
+tests/test_serializer_base.py 
+                                       [ 26%]
+tests/test_serializer_citeproc.py 
+                                 [ 27%]
+tests/test_serializer_csv.py .....                                       [ 29%]
+tests/test_serializer_datacite.py ......                                 [ 31%]
+tests/test_serializer_dc.py ....                                         [ 32%]
+tests/test_serializer_json.py 
+                                      [ 34%]
+tests/test_serializer_jsonld.py ....                                     [ 35%]
+tests/test_serializer_marshmallow.py .....                               [ 36%]
+tests/test_serializer_response.py 
+                                   [ 38%]
+tests/test_sorter.py 
+                                           [ 41%]
+tests/test_utils.py 
+                                             [ 43%]
+tests/test_views_item_delete.py 
+                                   [ 45%]
+tests/test_views_item_get.py 
+                                      [ 47%]
+tests/test_views_item_patch.py 
+                                [ 50%]
+tests/test_views_item_put.py 
+                                [ 54%]
+tests/test_views_list_post.py 
+                                 [ 57%]
+tests/test_views_options.py 
+                                         [ 58%]
+tests/test_views_search.py 
+                        [ 65%]
+tests/test_views_serializers.py 
+                                     [ 66%]
+tests/test_views_suggesters.py 
+                                       [ 67%]
+invenio_records_rest/__init__.py 
+                                    [ 68%]
+invenio_records_rest/_compat.py ...                                      [ 69%]
+invenio_records_rest/config.py ...                                       [ 70%]
+invenio_records_rest/errors.py ...                                       [ 71%]
+invenio_records_rest/ext.py ...                                          [ 72%]
+invenio_records_rest/facets.py ...                                       [ 73%]
+invenio_records_rest/links.py ...                                        [ 74%]
+invenio_records_rest/loaders/__init__.py ...                             [ 75%]
+invenio_records_rest/loaders/marshmallow.py ...                          [ 76%]
+invenio_records_rest/proxies.py ...                                      [ 77%]
+invenio_records_rest/query.py ...                                        [ 78%]
+invenio_records_rest/schemas/__init__.py ...                             [ 79%]
+invenio_records_rest/schemas/fields/__init__.py ...                      [ 80%]
+invenio_records_rest/schemas/fields/datetime.py ...                      [ 81%]
+invenio_records_rest/schemas/fields/generated.py ...                     [ 82%]
+invenio_records_rest/schemas/fields/marshmallow_contrib.py ...           [ 83%]
+invenio_records_rest/schemas/fields/persistentidentifier.py ...          [ 84%]
+invenio_records_rest/schemas/fields/sanitizedhtml.py ...                 [ 84%]
+invenio_records_rest/schemas/fields/sanitizedunicode.py ...              [ 85%]
+invenio_records_rest/schemas/fields/trimmedstring.py ...                 [ 86%]
+invenio_records_rest/schemas/json.py ...                                 [ 87%]
+invenio_records_rest/serializers/__init__.py ...                         [ 88%]
+invenio_records_rest/serializers/base.py ...                             [ 89%]
+invenio_records_rest/serializers/citeproc.py ...                         [ 90%]
+invenio_records_rest/serializers/csv.py ...                              [ 91%]
+invenio_records_rest/serializers/datacite.py ...                         [ 92%]
+invenio_records_rest/serializers/dc.py ...                               [ 93%]
+invenio_records_rest/serializers/json.py ...                             [ 94%]
+invenio_records_rest/serializers/jsonld.py ...                           [ 95%]
+invenio_records_rest/serializers/marshmallow.py ...                      [ 96%]
+invenio_records_rest/serializers/response.py ...                         [ 97%]
+invenio_records_rest/sorter.py ...                                       [ 98%]
+invenio_records_rest/utils.py ...                                        [ 99%]
+invenio_records_rest/views.py ...                                        [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/__init__.py:13
+    __version_info__ = tuple(LooseVersion(__version__).version)
+venv/lib/python3.14/site-packages/datacite/rest_client.py:23
+    from idutils import normalize_doi
+venv/lib/python3.14/site-packages/datacite/jsonutils.py:15
+venv/lib/python3.14/site-packages/datacite/jsonutils.py:15
+    from jsonschema import RefResolver, validate
+    self.init_app(app)
+    warnings.warn(
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original/.venv/lib/python3.14/site-packages/invenio_records/api.py:334: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original/tests/helpers.py:30: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_index_prefixing.py::test_api_views
+tests/test_views_item_delete.py::test_valid_delete
+tests/test_views_item_delete.py::test_delete_deleted
+tests/test_views_item_delete.py::test_delete_with_sqldatabase_error
+tests/test_views_item_patch.py::test_patch_deleted[application/json-patch+json]
+tests/test_views_item_patch.py::test_patch_deleted[application/json-patch+json;charset=utf-8]
+tests/test_views_item_put.py::test_put_on_deleted[application/json]
+tests/test_views_item_put.py::test_put_on_deleted[application/json;charset=utf-8]
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original/.venv/lib/python3.14/site-packages/invenio_records/api.py:495: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-rest/original/.venv/lib/python3.14/site-packages/invenio_records/api.py:442: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+    warnings.warn(
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                                                          Stmts   Miss  Cover   Missing
+invenio_records_rest/__init__.py                                  4      0   100%
+invenio_records_rest/_compat.py                                  11      5    55%   22-28
+invenio_records_rest/config.py                                   29      0   100%
+invenio_records_rest/errors.py                                  105     10    90%   51, 104-106, 187-189, 255-259
+invenio_records_rest/ext.py                                      52      1    98%   112
+invenio_records_rest/facets.py                                  103     22    79%   31-55, 121, 167-170, 189-192, 240
+invenio_records_rest/links.py                                    13      0   100%
+invenio_records_rest/loaders/__init__.py                          8      0   100%
+invenio_records_rest/loaders/marshmallow.py                      45      5    89%   57, 87-89, 106
+invenio_records_rest/proxies.py                                   4      0   100%
+invenio_records_rest/query.py                                    25      3    88%   39-44
+invenio_records_rest/schemas/__init__.py                          2      0   100%
+invenio_records_rest/schemas/fields/__init__.py                   8      0   100%
+invenio_records_rest/schemas/fields/datetime.py                  11      4    64%   21-24
+invenio_records_rest/schemas/fields/generated.py                 23      7    70%   31-54
+invenio_records_rest/schemas/fields/marshmallow_contrib.py       38      7    82%   19-20, 26, 76, 135-137
+invenio_records_rest/schemas/fields/persistentidentifier.py       9      0   100%
+invenio_records_rest/schemas/fields/sanitizedhtml.py             11      0   100%
+invenio_records_rest/schemas/fields/sanitizedunicode.py          14      0   100%
+invenio_records_rest/schemas/fields/trimmedstring.py              5      0   100%
+invenio_records_rest/schemas/json.py                             61     27    56%   27-35, 68-75, 80-97, 114, 122-123
+invenio_records_rest/serializers/__init__.py                      9      0   100%
+invenio_records_rest/serializers/base.py                         36      7    81%   37, 52, 62, 84, 97, 116, 126
+invenio_records_rest/serializers/citeproc.py                     62      5    92%   33-36, 110-111
+invenio_records_rest/serializers/csv.py                          66      3    95%   54, 135, 139
+invenio_records_rest/serializers/datacite.py                     43      0   100%
+invenio_records_rest/serializers/dc.py                           15      0   100%
+invenio_records_rest/serializers/json.py                         15      0   100%
+invenio_records_rest/serializers/jsonld.py                       32      4    88%   45-48
+invenio_records_rest/serializers/marshmallow.py                  20      0   100%
+invenio_records_rest/serializers/response.py                     27      0   100%
+invenio_records_rest/sorter.py                                   49      0   100%
+invenio_records_rest/utils.py                                   100      1    99%   168
+invenio_records_rest/views.py                                   339     13    96%   114-116, 127, 291, 296, 299, 440, 718, 723, 881, 924, 961
+TOTAL                                                          1394    124    91%
+====================== 319 passed, 343 warnings in 44.41s ======================
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

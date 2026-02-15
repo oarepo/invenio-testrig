@@ -1,0 +1,450 @@
+{
+  "config_name": "ZIP support",
+  "patch_mode": "Upstream baseline (patches overwrite upstream, unpatched are upstream)",
+  "test_mode": "Test patched first, retry unpatched on failure",
+  "test_scope": "Affected packages only",
+  "started_at": "2026-02-26 14:11:37 UTC",
+  "python_version": "3.14.2",
+  "last_updated": "2026-02-26 14:48:59 UTC",
+  "total_unique_warnings": 26,
+  "total_packages_with_warnings": 5,
+  "total_warning_occurrences": 165,
+  "warnings": [
+    {
+      "text": "PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'",
+      "total_count": 60,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 15,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 15,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 15,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 15,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "SAWarning: nested transaction already deassociated from connection",
+      "total_count": 27,
+      "packages": [
+        {
+          "name": "invenio-rdm-records",
+          "count": 18,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-app-rdm",
+          "count": 6,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-previewer",
+          "count": 3,
+          "link": "artifacts/invenio-previewer/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'",
+      "total_count": 20,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 5,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 5,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 5,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 5,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.",
+      "total_count": 9,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 3,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 3,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 3,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.",
+      "total_count": 6,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 2,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-previewer",
+          "count": 2,
+          "link": "artifacts/invenio-previewer/patched_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 2,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "FutureWarning: CSRF validation will be enabled by default in the version 1.3.x",
+      "total_count": 4,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 1,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'",
+      "total_count": 4,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 1,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "PyparsingDeprecationWarning: 'excludeChars' argument is deprecated, use 'exclude_chars'",
+      "total_count": 4,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 1,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: Implicit imports (e.g., 'import idutils; idutils.function;') might be removed in the next major version. Please use explicit imports (e.g., 'from idutils import function;') instead.",
+      "total_count": 3,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-communities",
+          "count": 1,
+          "link": "artifacts/invenio-communities/original_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: The '__version__' attribute is deprecated and will be removed in in a future version. Use feature detection or 'importlib.metadata.version(\"marshmallow\")' instead.",
+      "total_count": 3,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-previewer",
+          "count": 1,
+          "link": "artifacts/invenio-previewer/patched_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'",
+      "total_count": 3,
+      "packages": [
+        {
+          "name": "invenio-rdm-records",
+          "count": 2,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: Remember me support has been removed.",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: jsonschema.RefResolver is deprecated as of v4.18.0, in favor of the https://github.com/python-jsonschema/referencing library, which provides more compliant referencing behavior as well as more flexible APIs for customization. A future release will remove RefResolver. Please file a feature request (on referencing) if you are missing an API for the kind of customization you need.",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: subject_nested is deprecated. Use subject_combined instead.",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        },
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "InsecureKeyLengthWarning: The HMAC key is 10 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-rdm-records",
+          "count": 2,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "InsecureKeyLengthWarning: The HMAC key is 9 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-rdm-records",
+          "count": 2,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 2,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "SAWarning: Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)",
+      "total_count": 2,
+      "packages": [
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        },
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: The _get_fs method is deprecated and will be removed. Please implement the abstract FileStorage instead of extending the PyFSFileStorage class.",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: The configuration value 'RDM_FILES_DEFAULT_MAX_FILE_SIZE' is not set. In future, please set it explicitly to define your max file size, or be aware that the default value used i.e. FILES_REST_DEFAULT_MAX_FILE_SIZE will be 10 * (10**9) (10 GB).",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: The configuration value 'RDM_FILES_DEFAULT_QUOTA_SIZE' is not set. In future, please set it explicitly to define your quota size, or be aware that the default value used i.e. FILES_REST_DEFAULT_QUOTA_SIZE will be 10 * (10**9) (10 GB).",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "DeprecationWarning: `es_clear` fixture is deprecated, use `search_clear` instead.",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-app-rdm",
+          "count": 1,
+          "link": "artifacts/invenio-app-rdm/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "SAWarning: This declarative base already contains a class with the same class name and module name as invenio_records_resources.factories.factory.MyRecordMetadata, and will be replaced in the string-lookup table.",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-records-resources",
+          "count": 1,
+          "link": "artifacts/invenio-records-resources/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "SyntaxWarning: 'return' in a 'finally' block",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-rdm-records",
+          "count": 1,
+          "link": "artifacts/invenio-rdm-records/patched_log.log"
+        }
+      ]
+    },
+    {
+      "text": "UserWarning: OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module tests.records.mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-communities",
+          "count": 1,
+          "link": "artifacts/invenio-communities/original_log.log"
+        }
+      ]
+    },
+    {
+      "text": "UserWarning: Please specify the OAISERVER_ID_PREFIX configuration.default value is: oai:runnervmnay03:",
+      "total_count": 1,
+      "packages": [
+        {
+          "name": "invenio-communities",
+          "count": 1,
+          "link": "artifacts/invenio-communities/original_log.log"
+        }
+      ]
+    }
+  ]
+}

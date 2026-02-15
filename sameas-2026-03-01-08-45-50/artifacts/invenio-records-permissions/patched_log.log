@@ -1,0 +1,863 @@
+running extract_messages
+extracting messages from invenio_records_permissions/__init__.py
+extracting messages from invenio_records_permissions/api.py
+extracting messages from invenio_records_permissions/config.py
+extracting messages from invenio_records_permissions/errors.py
+extracting messages from invenio_records_permissions/ext.py
+extracting messages from invenio_records_permissions/generators.py
+extracting messages from invenio_records_permissions/patch_info.py
+extracting messages from invenio_records_permissions/policies/__init__.py
+extracting messages from invenio_records_permissions/policies/base.py
+extracting messages from invenio_records_permissions/policies/records.py
+writing PO template file to /dev/null
+ redis Pulling 
+ postgresql Pulling 
+ opensearch Pulling 
+ f9dd052e142d Pulling fs layer 
+ e8c6d4883897 Pulling fs layer 
+ 648eb81b3252 Pulling fs layer 
+ eb77aa907276 Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 0ffa8f8aba1e Pulling fs layer 
+ 2e81b9cb93cd Pulling fs layer 
+ 4f4fb700ef54 Waiting 
+ 0ffa8f8aba1e Waiting 
+ eb77aa907276 Waiting 
+ 2e81b9cb93cd Waiting 
+ b0a0cf830b12 Pulling fs layer 
+ dda3d8fbd5ed Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ e0d55fdb4d15 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ cb628c265f09 Pulling fs layer 
+ b0a0cf830b12 Waiting 
+ c199bff16b05 Waiting 
+ dda3d8fbd5ed Waiting 
+ 283a477db7bb Waiting 
+ 91d2729fa4d5 Waiting 
+ 9739ced65621 Waiting 
+ ae3bb1b347a4 Waiting 
+ f8406d9c00ea Waiting 
+ 050d9f8c3b1c Waiting 
+ 710e142705f8 Waiting 
+ cb628c265f09 Waiting 
+ c1cb13b19080 Waiting 
+ 873532e5f8c7 Waiting 
+ 84a2afebaf4d Pulling fs layer 
+ 68bef8a2321a Pulling fs layer 
+ dc35057c3d27 Pulling fs layer 
+ 762d5b1c0ef7 Pulling fs layer 
+ 1196a886e941 Pulling fs layer 
+ 96afa962f1ac Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 6475cc3afbe1 Pulling fs layer 
+ 84a2afebaf4d Waiting 
+ 68bef8a2321a Waiting 
+ dc35057c3d27 Waiting 
+ 762d5b1c0ef7 Waiting 
+ 1196a886e941 Waiting 
+ 96afa962f1ac Waiting 
+ 4f4fb700ef54 Waiting 
+ 6475cc3afbe1 Waiting 
+ e8c6d4883897 Downloading [>                                                  ]  44.91kB/4.398MB
+ 648eb81b3252 Downloading [=======================>                           ]     720B/1.561kB
+ 648eb81b3252 Downloading [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Verifying Checksum 
+ 648eb81b3252 Download complete 
+ f9dd052e142d Downloading [>                                                  ]  524.3kB/52.33MB
+ e8c6d4883897 Downloading [===========================>                       ]  2.453MB/4.398MB
+ e8c6d4883897 Verifying Checksum 
+ e8c6d4883897 Download complete 
+ f9dd052e142d Downloading [==============>                                    ]  14.77MB/52.33MB
+ f9dd052e142d Downloading [=====================================>             ]  39.09MB/52.33MB
+ eb77aa907276 Downloading [>                                                  ]  528.2kB/907.7MB
+ f9dd052e142d Verifying Checksum 
+ f9dd052e142d Download complete 
+ f9dd052e142d Extracting [>                                                  ]  524.3kB/52.33MB
+ 4f4fb700ef54 Downloading [==================================================>]      32B/32B
+ 4f4fb700ef54 Verifying Checksum 
+ 4f4fb700ef54 Download complete 
+ eb77aa907276 Downloading [>                                                  ]  14.51MB/907.7MB
+ f9dd052e142d Extracting [=>                                                 ]  1.573MB/52.33MB
+ eb77aa907276 Downloading [==>                                                ]  38.05MB/907.7MB
+ 0ffa8f8aba1e Downloading [==================================================>]     226B/226B
+ 0ffa8f8aba1e Download complete 
+ 2e81b9cb93cd Downloading [===================>                               ]     707B/1.859kB
+ 2e81b9cb93cd Downloading [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Verifying Checksum 
+ 2e81b9cb93cd Download complete 
+ eb77aa907276 Downloading [===>                                               ]  61.69MB/907.7MB
+ f9dd052e142d Extracting [====>                                              ]  4.719MB/52.33MB
+ eb77aa907276 Downloading [====>                                              ]  85.77MB/907.7MB
+ f9dd052e142d Extracting [=====>                                             ]  5.767MB/52.33MB
+ eb77aa907276 Downloading [=====>                                             ]  108.8MB/907.7MB
+ dda3d8fbd5ed Downloading [==============================>                    ]     720B/1.165kB
+ dda3d8fbd5ed Downloading [==================================================>]  1.165kB/1.165kB
+ dda3d8fbd5ed Verifying Checksum 
+ dda3d8fbd5ed Download complete 
+ f9dd052e142d Extracting [============>                                      ]  13.11MB/52.33MB
+ b0a0cf830b12 Downloading [>                                                  ]  303.1kB/29.15MB
+ eb77aa907276 Downloading [=======>                                           ]  129.7MB/907.7MB
+ f9dd052e142d Extracting [==================>                                ]   19.4MB/52.33MB
+ b0a0cf830b12 Downloading [================>                                  ]  9.503MB/29.15MB
+ eb77aa907276 Downloading [========>                                          ]  152.1MB/907.7MB
+ f9dd052e142d Extracting [========================>                          ]  25.69MB/52.33MB
+ b0a0cf830b12 Downloading [=================================================> ]  28.88MB/29.15MB
+ b0a0cf830b12 Download complete 
+ 283a477db7bb Downloading [>                                                  ]  45.83kB/4.533MB
+ eb77aa907276 Downloading [=========>                                         ]  175.1MB/907.7MB
+ b0a0cf830b12 Extracting [>                                                  ]  294.9kB/29.15MB
+ f9dd052e142d Extracting [==========================>                        ]  27.79MB/52.33MB
+ eb77aa907276 Downloading [==========>                                        ]  198.2MB/907.7MB
+ b0a0cf830b12 Extracting [========>                                          ]  4.719MB/29.15MB
+ 283a477db7bb Downloading [===========>                                       ]  1.077MB/4.533MB
+ 283a477db7bb Verifying Checksum 
+ 283a477db7bb Download complete 
+ f9dd052e142d Extracting [===========================>                       ]  28.84MB/52.33MB
+ eb77aa907276 Downloading [============>                                      ]  221.2MB/907.7MB
+ 91d2729fa4d5 Downloading [>                                                  ]  14.82kB/1.45MB
+ b0a0cf830b12 Extracting [===============>                                   ]  8.847MB/29.15MB
+ 91d2729fa4d5 Verifying Checksum 
+ 91d2729fa4d5 Download complete 
+ eb77aa907276 Downloading [=============>                                     ]  244.8MB/907.7MB
+ b0a0cf830b12 Extracting [=================>                                 ]  10.32MB/29.15MB
+ f9dd052e142d Extracting [============================>                      ]  29.88MB/52.33MB
+ eb77aa907276 Downloading [==============>                                    ]  268.4MB/907.7MB
+ b0a0cf830b12 Extracting [========================>                          ]  14.45MB/29.15MB
+ 9739ced65621 Downloading [>                                                  ]  84.11kB/8.069MB
+ f9dd052e142d Extracting [=============================>                     ]  30.41MB/52.33MB
+ eb77aa907276 Downloading [================>                                  ]    292MB/907.7MB
+ b0a0cf830b12 Extracting [==================================>                ]  20.35MB/29.15MB
+ 9739ced65621 Downloading [===========================>                       ]  4.473MB/8.069MB
+ 9739ced65621 Download complete 
+ ae3bb1b347a4 Downloading [>                                                  ]     13kB/1.196MB
+ eb77aa907276 Downloading [=================>                                 ]    315MB/907.7MB
+ b0a0cf830b12 Extracting [=========================================>         ]  24.48MB/29.15MB
+ ae3bb1b347a4 Downloading [==================================================>]  1.196MB/1.196MB
+ ae3bb1b347a4 Verifying Checksum 
+ ae3bb1b347a4 Download complete 
+ f9dd052e142d Extracting [===============================>                   ]  33.03MB/52.33MB
+ eb77aa907276 Downloading [==================>                                ]  338.7MB/907.7MB
+ f9dd052e142d Extracting [=================================>                 ]   34.6MB/52.33MB
+ f8406d9c00ea Downloading [==================================================>]     116B/116B
+ f8406d9c00ea Verifying Checksum 
+ f8406d9c00ea Download complete 
+ eb77aa907276 Downloading [===================>                               ]  362.2MB/907.7MB
+ b0a0cf830b12 Extracting [==========================================>        ]  24.77MB/29.15MB
+ c199bff16b05 Downloading [===========>                                       ]     720B/3.145kB
+ c199bff16b05 Downloading [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Verifying Checksum 
+ c199bff16b05 Download complete 
+ eb77aa907276 Downloading [=====================>                             ]  385.3MB/907.7MB
+ f9dd052e142d Extracting [===================================>               ]   36.7MB/52.33MB
+ b0a0cf830b12 Extracting [===============================================>   ]  27.72MB/29.15MB
+ eb77aa907276 Downloading [======================>                            ]  409.4MB/907.7MB
+ f9dd052e142d Extracting [====================================>              ]  38.27MB/52.33MB
+ eb77aa907276 Downloading [=======================>                           ]  433.5MB/907.7MB
+ e0d55fdb4d15 Downloading [>                                                  ]  528.2kB/109MB
+ c1cb13b19080 Downloading [===>                                               ]     687B/9.925kB
+ c1cb13b19080 Downloading [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Verifying Checksum 
+ c1cb13b19080 Download complete 
+ f9dd052e142d Extracting [======================================>            ]  40.37MB/52.33MB
+ eb77aa907276 Downloading [=========================>                         ]  456.5MB/907.7MB
+ e0d55fdb4d15 Downloading [======>                                            ]  14.45MB/109MB
+ f9dd052e142d Extracting [========================================>          ]  42.47MB/52.33MB
+ eb77aa907276 Downloading [==========================>                        ]    479MB/907.7MB
+ e0d55fdb4d15 Downloading [================>                                  ]  36.92MB/109MB
+ f9dd052e142d Extracting [==========================================>        ]  44.56MB/52.33MB
+ 873532e5f8c7 Downloading [==================================================>]     128B/128B
+ 873532e5f8c7 Verifying Checksum 
+ 873532e5f8c7 Download complete 
+ eb77aa907276 Downloading [===========================>                       ]  502.5MB/907.7MB
+ e0d55fdb4d15 Downloading [==========================>                        ]  57.84MB/109MB
+ b0a0cf830b12 Extracting [================================================>  ]  28.31MB/29.15MB
+ f9dd052e142d Extracting [============================================>      ]  46.66MB/52.33MB
+ eb77aa907276 Downloading [============================>                      ]  524.5MB/907.7MB
+ e0d55fdb4d15 Downloading [=====================================>             ]  81.43MB/109MB
+ f9dd052e142d Extracting [==============================================>    ]  48.23MB/52.33MB
+ eb77aa907276 Downloading [==============================>                    ]  546.5MB/907.7MB
+ b0a0cf830b12 Extracting [==================================================>]  29.15MB/29.15MB
+ 050d9f8c3b1c Downloading [==================================================>]     169B/169B
+ 050d9f8c3b1c Verifying Checksum 
+ 050d9f8c3b1c Download complete 
+ e0d55fdb4d15 Downloading [================================================>  ]  105.6MB/109MB
+ b0a0cf830b12 Pull complete 
+ e0d55fdb4d15 Verifying Checksum 
+ e0d55fdb4d15 Download complete 
+ dda3d8fbd5ed Extracting [==================================================>]  1.165kB/1.165kB
+ dda3d8fbd5ed Extracting [==================================================>]  1.165kB/1.165kB
+ eb77aa907276 Downloading [===============================>                   ]  568.5MB/907.7MB
+ eb77aa907276 Downloading [================================>                  ]  592.1MB/907.7MB
+ 710e142705f8 Downloading [======>                                            ]     719B/5.421kB
+ 710e142705f8 Downloading [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Download complete 
+ eb77aa907276 Downloading [=================================>                 ]    614MB/907.7MB
+ cb628c265f09 Downloading [==================================================>]     184B/184B
+ cb628c265f09 Verifying Checksum 
+ cb628c265f09 Download complete 
+ f9dd052e142d Extracting [=================================================> ]  51.38MB/52.33MB
+ eb77aa907276 Downloading [===================================>               ]  638.1MB/907.7MB
+ f9dd052e142d Extracting [=================================================> ]   51.9MB/52.33MB
+ f9dd052e142d Extracting [==================================================>]  52.33MB/52.33MB
+ eb77aa907276 Downloading [====================================>              ]  660.5MB/907.7MB
+ 84a2afebaf4d Downloading [>                                                  ]  287.9kB/28.24MB
+ 68bef8a2321a Downloading [================================>                  ]     720B/1.102kB
+ 68bef8a2321a Downloading [==================================================>]  1.102kB/1.102kB
+ 68bef8a2321a Verifying Checksum 
+ 68bef8a2321a Download complete 
+ eb77aa907276 Downloading [=====================================>             ]  684.6MB/907.7MB
+ 84a2afebaf4d Downloading [===================>                               ]  10.85MB/28.24MB
+ eb77aa907276 Downloading [=======================================>           ]  708.1MB/907.7MB
+ 84a2afebaf4d Verifying Checksum 
+ 84a2afebaf4d Download complete 
+ eb77aa907276 Downloading [========================================>          ]  732.2MB/907.7MB
+ dc35057c3d27 Downloading [=========================================>         ]     721B/875B
+ dc35057c3d27 Downloading [==================================================>]     875B/875B
+ dc35057c3d27 Download complete 
+ eb77aa907276 Downloading [=========================================>         ]  755.8MB/907.7MB
+ 762d5b1c0ef7 Downloading [>                                                  ]  14.41kB/1.438MB
+ eb77aa907276 Downloading [==========================================>        ]  779.4MB/907.7MB
+ 762d5b1c0ef7 Downloading [==========>                                        ]  298.8kB/1.438MB
+ 762d5b1c0ef7 Verifying Checksum 
+ 762d5b1c0ef7 Download complete 
+ eb77aa907276 Downloading [===========================================>       ]  782.1MB/907.7MB
+ 1196a886e941 Downloading [>                                                  ]  155.2kB/15.35MB
+ 84a2afebaf4d Extracting [>                                                  ]  294.9kB/28.24MB
+ eb77aa907276 Downloading [============================================>      ]  804.6MB/907.7MB
+ 1196a886e941 Downloading [====================>                              ]   6.37MB/15.35MB
+ eb77aa907276 Downloading [============================================>      ]  812.7MB/907.7MB
+ 84a2afebaf4d Extracting [====>                                              ]  2.359MB/28.24MB
+ 96afa962f1ac Downloading [==================================================>]      96B/96B
+ 96afa962f1ac Verifying Checksum 
+ 96afa962f1ac Download complete 
+ eb77aa907276 Downloading [=============================================>     ]  824.5MB/907.7MB
+ 1196a886e941 Downloading [===========================================>       ]  13.38MB/15.35MB
+ 1196a886e941 Verifying Checksum 
+ 1196a886e941 Download complete 
+ 84a2afebaf4d Extracting [=====>                                             ]  2.949MB/28.24MB
+ f9dd052e142d Pull complete 
+ 84a2afebaf4d Extracting [========>                                          ]  4.719MB/28.24MB
+ eb77aa907276 Downloading [=============================================>     ]  833.6MB/907.7MB
+ 4f4fb700ef54 Downloading [==================================================>]      32B/32B
+ 4f4fb700ef54 Verifying Checksum 
+ 4f4fb700ef54 Download complete 
+ eb77aa907276 Downloading [==============================================>    ]  836.3MB/907.7MB
+ 84a2afebaf4d Extracting [========>                                          ]  5.014MB/28.24MB
+ 6475cc3afbe1 Downloading [==================================================>]     573B/573B
+ 6475cc3afbe1 Verifying Checksum 
+ 6475cc3afbe1 Download complete 
+ e8c6d4883897 Extracting [>                                                  ]  65.54kB/4.398MB
+ eb77aa907276 Downloading [==============================================>    ]  848.6MB/907.7MB
+ 84a2afebaf4d Extracting [==============>                                    ]  8.258MB/28.24MB
+ eb77aa907276 Downloading [===============================================>   ]  853.9MB/907.7MB
+ e8c6d4883897 Extracting [==>                                                ]  262.1kB/4.398MB
+ eb77aa907276 Downloading [===============================================>   ]  864.7MB/907.7MB
+ 84a2afebaf4d Extracting [================>                                  ]  9.437MB/28.24MB
+ eb77aa907276 Downloading [================================================>  ]  881.3MB/907.7MB
+ 84a2afebaf4d Extracting [===================>                               ]  10.91MB/28.24MB
+ e8c6d4883897 Extracting [========>                                          ]  720.9kB/4.398MB
+ eb77aa907276 Downloading [================================================>  ]  888.3MB/907.7MB
+ 84a2afebaf4d Extracting [===================>                               ]  11.21MB/28.24MB
+ eb77aa907276 Downloading [=================================================> ]  896.8MB/907.7MB
+ e8c6d4883897 Extracting [===================>                               ]  1.704MB/4.398MB
+ 84a2afebaf4d Extracting [======================>                            ]  12.68MB/28.24MB
+ eb77aa907276 Download complete 
+ e8c6d4883897 Extracting [=======================>                           ]  2.032MB/4.398MB
+ 84a2afebaf4d Extracting [==================================>                ]  19.46MB/28.24MB
+ 84a2afebaf4d Extracting [=========================================>         ]   23.3MB/28.24MB
+ 84a2afebaf4d Extracting [=========================================>         ]  23.59MB/28.24MB
+ e8c6d4883897 Extracting [============================>                      ]   2.49MB/4.398MB
+ e8c6d4883897 Extracting [=================================>                 ]  2.949MB/4.398MB
+ 84a2afebaf4d Extracting [==========================================>        ]  23.89MB/28.24MB
+ 84a2afebaf4d Extracting [===========================================>       ]  24.77MB/28.24MB
+ e8c6d4883897 Extracting [=====================================>             ]  3.342MB/4.398MB
+ 84a2afebaf4d Extracting [=============================================>     ]  25.95MB/28.24MB
+ e8c6d4883897 Extracting [======================================>            ]  3.408MB/4.398MB
+ 84a2afebaf4d Extracting [==============================================>    ]  26.25MB/28.24MB
+ 84a2afebaf4d Extracting [================================================>  ]  27.13MB/28.24MB
+ e8c6d4883897 Extracting [=======================================>           ]  3.473MB/4.398MB
+ dda3d8fbd5ed Pull complete 
+ 283a477db7bb Extracting [>                                                  ]  65.54kB/4.533MB
+ e8c6d4883897 Extracting [========================================>          ]  3.539MB/4.398MB
+ e8c6d4883897 Extracting [==================================================>]  4.398MB/4.398MB
+ 283a477db7bb Extracting [=================================>                 ]   3.08MB/4.533MB
+ 283a477db7bb Extracting [==================================================>]  4.533MB/4.533MB
+ e8c6d4883897 Pull complete 
+ 648eb81b3252 Extracting [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Extracting [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Pull complete 
+ 283a477db7bb Pull complete 
+ 91d2729fa4d5 Extracting [=>                                                 ]  32.77kB/1.45MB
+ 84a2afebaf4d Extracting [================================================>  ]  27.43MB/28.24MB
+ eb77aa907276 Extracting [>                                                  ]  557.1kB/907.7MB
+ 91d2729fa4d5 Extracting [==================================================>]   1.45MB/1.45MB
+ 91d2729fa4d5 Pull complete 
+ 9739ced65621 Extracting [>                                                  ]   98.3kB/8.069MB
+ eb77aa907276 Extracting [>                                                  ]  13.37MB/907.7MB
+ 9739ced65621 Extracting [==================>                                ]  2.949MB/8.069MB
+ 84a2afebaf4d Extracting [==================================================>]  28.24MB/28.24MB
+ eb77aa907276 Extracting [=>                                                 ]  30.64MB/907.7MB
+ 84a2afebaf4d Pull complete 
+ 68bef8a2321a Extracting [==================================================>]  1.102kB/1.102kB
+ 68bef8a2321a Extracting [==================================================>]  1.102kB/1.102kB
+ 9739ced65621 Extracting [===========================>                       ]  4.424MB/8.069MB
+ 68bef8a2321a Pull complete 
+ dc35057c3d27 Extracting [==================================================>]     875B/875B
+ dc35057c3d27 Extracting [==================================================>]     875B/875B
+ dc35057c3d27 Pull complete 
+ 762d5b1c0ef7 Extracting [=>                                                 ]  32.77kB/1.438MB
+ eb77aa907276 Extracting [==>                                                ]  44.56MB/907.7MB
+ 762d5b1c0ef7 Extracting [==================================================>]  1.438MB/1.438MB
+ 762d5b1c0ef7 Extracting [==================================================>]  1.438MB/1.438MB
+ 762d5b1c0ef7 Pull complete 
+ 1196a886e941 Extracting [>                                                  ]  163.8kB/15.35MB
+ 9739ced65621 Extracting [================================>                  ]  5.308MB/8.069MB
+ eb77aa907276 Extracting [===>                                               ]  60.16MB/907.7MB
+ 1196a886e941 Extracting [=================>                                 ]  5.407MB/15.35MB
+ 9739ced65621 Extracting [======================================>            ]  6.291MB/8.069MB
+ eb77aa907276 Extracting [===>                                               ]  72.42MB/907.7MB
+ 9739ced65621 Extracting [==================================================>]  8.069MB/8.069MB
+ 1196a886e941 Extracting [===================================>               ]  10.98MB/15.35MB
+ 9739ced65621 Pull complete 
+ ae3bb1b347a4 Extracting [=>                                                 ]  32.77kB/1.196MB
+ 1196a886e941 Extracting [==================================================>]  15.35MB/15.35MB
+ ae3bb1b347a4 Extracting [==================================================>]  1.196MB/1.196MB
+ ae3bb1b347a4 Extracting [==================================================>]  1.196MB/1.196MB
+ 1196a886e941 Pull complete 
+ 96afa962f1ac Extracting [==================================================>]      96B/96B
+ 96afa962f1ac Extracting [==================================================>]      96B/96B
+ eb77aa907276 Extracting [====>                                              ]  81.89MB/907.7MB
+ 96afa962f1ac Pull complete 
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Pull complete 
+ 6475cc3afbe1 Extracting [==================================================>]     573B/573B
+ 6475cc3afbe1 Extracting [==================================================>]     573B/573B
+ 6475cc3afbe1 Pull complete 
+ ae3bb1b347a4 Pull complete 
+ f8406d9c00ea Extracting [==================================================>]     116B/116B
+ f8406d9c00ea Extracting [==================================================>]     116B/116B
+ redis Pulled 
+ f8406d9c00ea Pull complete 
+ c199bff16b05 Extracting [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Extracting [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Pull complete 
+ eb77aa907276 Extracting [=====>                                             ]  91.36MB/907.7MB
+ e0d55fdb4d15 Extracting [>                                                  ]  557.1kB/109MB
+ eb77aa907276 Extracting [=====>                                             ]   98.6MB/907.7MB
+ e0d55fdb4d15 Extracting [==>                                                ]  5.571MB/109MB
+ eb77aa907276 Extracting [=====>                                             ]  106.4MB/907.7MB
+ e0d55fdb4d15 Extracting [===>                                               ]  8.356MB/109MB
+ eb77aa907276 Extracting [======>                                            ]  114.2MB/907.7MB
+ e0d55fdb4d15 Extracting [=====>                                             ]   11.7MB/109MB
+ eb77aa907276 Extracting [======>                                            ]  121.4MB/907.7MB
+ e0d55fdb4d15 Extracting [=======>                                           ]   15.6MB/109MB
+ eb77aa907276 Extracting [=======>                                           ]  128.7MB/907.7MB
+ e0d55fdb4d15 Extracting [========>                                          ]  18.94MB/109MB
+ eb77aa907276 Extracting [=======>                                           ]  135.4MB/907.7MB
+ e0d55fdb4d15 Extracting [==========>                                        ]  22.84MB/109MB
+ eb77aa907276 Extracting [=======>                                           ]  141.5MB/907.7MB
+ e0d55fdb4d15 Extracting [============>                                      ]   27.3MB/109MB
+ eb77aa907276 Extracting [========>                                          ]  147.6MB/907.7MB
+ e0d55fdb4d15 Extracting [===============>                                   ]  34.54MB/109MB
+ eb77aa907276 Extracting [========>                                          ]  154.3MB/907.7MB
+ e0d55fdb4d15 Extracting [===================>                               ]  42.34MB/109MB
+ eb77aa907276 Extracting [========>                                          ]  161.5MB/907.7MB
+ e0d55fdb4d15 Extracting [======================>                            ]  49.58MB/109MB
+ eb77aa907276 Extracting [=========>                                         ]  177.7MB/907.7MB
+ e0d55fdb4d15 Extracting [========================>                          ]  53.48MB/109MB
+ eb77aa907276 Extracting [==========>                                        ]  193.9MB/907.7MB
+ e0d55fdb4d15 Extracting [==========================>                        ]  57.93MB/109MB
+ eb77aa907276 Extracting [===========>                                       ]  209.5MB/907.7MB
+ e0d55fdb4d15 Extracting [=============================>                     ]  64.06MB/109MB
+ eb77aa907276 Extracting [============>                                      ]  218.9MB/907.7MB
+ e0d55fdb4d15 Extracting [================================>                  ]  71.86MB/109MB
+ eb77aa907276 Extracting [============>                                      ]  228.4MB/907.7MB
+ e0d55fdb4d15 Extracting [====================================>              ]  78.54MB/109MB
+ eb77aa907276 Extracting [============>                                      ]  235.1MB/907.7MB
+ e0d55fdb4d15 Extracting [=======================================>           ]  86.34MB/109MB
+ eb77aa907276 Extracting [=============>                                     ]  242.9MB/907.7MB
+ e0d55fdb4d15 Extracting [==========================================>        ]  92.47MB/109MB
+ eb77aa907276 Extracting [==============>                                    ]  255.7MB/907.7MB
+ e0d55fdb4d15 Extracting [===========================================>       ]   94.7MB/109MB
+ eb77aa907276 Extracting [===============>                                   ]    273MB/907.7MB
+ e0d55fdb4d15 Extracting [============================================>      ]  96.93MB/109MB
+ eb77aa907276 Extracting [================>                                  ]    293MB/907.7MB
+ e0d55fdb4d15 Extracting [=============================================>     ]  99.16MB/109MB
+ eb77aa907276 Extracting [=================>                                 ]  310.3MB/907.7MB
+ e0d55fdb4d15 Extracting [==============================================>    ]  101.9MB/109MB
+ eb77aa907276 Extracting [=================>                                 ]  325.9MB/907.7MB
+ eb77aa907276 Extracting [==================>                                ]  342.6MB/907.7MB
+ e0d55fdb4d15 Extracting [===============================================>   ]  103.6MB/109MB
+ eb77aa907276 Extracting [===================>                               ]  359.3MB/907.7MB
+ e0d55fdb4d15 Extracting [================================================>  ]  105.3MB/109MB
+ eb77aa907276 Extracting [====================>                              ]  365.4MB/907.7MB
+ e0d55fdb4d15 Extracting [=================================================> ]    107MB/109MB
+ eb77aa907276 Extracting [====================>                              ]  371.6MB/907.7MB
+ eb77aa907276 Extracting [=====================>                             ]  384.9MB/907.7MB
+ eb77aa907276 Extracting [======================>                            ]  402.2MB/907.7MB
+ e0d55fdb4d15 Extracting [=================================================> ]  107.5MB/109MB
+ eb77aa907276 Extracting [=======================>                           ]  424.5MB/907.7MB
+ e0d55fdb4d15 Extracting [=================================================> ]  108.6MB/109MB
+ eb77aa907276 Extracting [========================>                          ]  447.3MB/907.7MB
+ e0d55fdb4d15 Extracting [==================================================>]    109MB/109MB
+ eb77aa907276 Extracting [=========================>                         ]  465.7MB/907.7MB
+ eb77aa907276 Extracting [==========================>                        ]  489.7MB/907.7MB
+ eb77aa907276 Extracting [============================>                      ]  514.7MB/907.7MB
+ eb77aa907276 Extracting [=============================>                     ]  539.8MB/907.7MB
+ eb77aa907276 Extracting [===============================>                   ]  566.5MB/907.7MB
+ eb77aa907276 Extracting [================================>                  ]  589.4MB/907.7MB
+ eb77aa907276 Extracting [=================================>                 ]  614.4MB/907.7MB
+ eb77aa907276 Extracting [===================================>               ]  640.1MB/907.7MB
+ eb77aa907276 Extracting [====================================>              ]  664.6MB/907.7MB
+ eb77aa907276 Extracting [=====================================>             ]  689.6MB/907.7MB
+ eb77aa907276 Extracting [=======================================>           ]  713.6MB/907.7MB
+ eb77aa907276 Extracting [========================================>          ]  738.1MB/907.7MB
+ eb77aa907276 Extracting [=========================================>         ]  758.2MB/907.7MB
+ eb77aa907276 Extracting [==========================================>        ]  778.2MB/907.7MB
+ eb77aa907276 Extracting [===========================================>       ]  798.3MB/907.7MB
+ eb77aa907276 Extracting [=============================================>     ]  818.3MB/907.7MB
+ eb77aa907276 Extracting [==============================================>    ]  837.3MB/907.7MB
+ eb77aa907276 Extracting [===============================================>   ]  856.8MB/907.7MB
+ eb77aa907276 Extracting [================================================>  ]  877.4MB/907.7MB
+ eb77aa907276 Extracting [=================================================> ]  899.1MB/907.7MB
+ eb77aa907276 Extracting [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Pull complete 
+ c1cb13b19080 Extracting [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Extracting [==================================================>]  9.925kB/9.925kB
+ eb77aa907276 Pull complete 
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Pull complete 
+ 0ffa8f8aba1e Extracting [==================================================>]     226B/226B
+ 0ffa8f8aba1e Extracting [==================================================>]     226B/226B
+ c1cb13b19080 Pull complete 
+ 873532e5f8c7 Extracting [==================================================>]     128B/128B
+ 873532e5f8c7 Extracting [==================================================>]     128B/128B
+ 873532e5f8c7 Pull complete 
+ 0ffa8f8aba1e Pull complete 
+ 050d9f8c3b1c Extracting [==================================================>]     169B/169B
+ 050d9f8c3b1c Extracting [==================================================>]     169B/169B
+ 2e81b9cb93cd Extracting [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Extracting [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Pull complete 
+ 050d9f8c3b1c Pull complete 
+ 710e142705f8 Extracting [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Extracting [==================================================>]  5.421kB/5.421kB
+ opensearch Pulled 
+ 710e142705f8 Pull complete 
+ cb628c265f09 Extracting [==================================================>]     184B/184B
+ cb628c265f09 Extracting [==================================================>]     184B/184B
+ cb628c265f09 Pull complete 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.2, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched
+configfile: setup.cfg
+testpaths: tests, invenio_records_permissions
+plugins: mock-3.15.1, invenio-4.0.0, isort-4.0.0, flask-1.3.0, black-ng-0.4.1, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, pycodestyle-2.5.0
+collected 92 items
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/tests/test_permissions_base.py,line=29::cannot collect test class 'TestPermissionPolicy' because it has a __init__ constructor (from: tests/test_permissions_base.py)
+
+tests/conftest.py ...                                                    [  3%]
+tests/test_composite_generator.py ...........                            [ 15%]
+tests/test_generators.py ......::error file=workdir/tests/invenio-records-permissions/patched/tests/test_generators.py,line=89::test_system_process_without_superuser%0A%0AAssertionError: assert [Need(method=...bbd083ee283')] == [Need(method=...user-access')]%0A  %0A  At index 0 diff: Need(method='role', value='51e0a562-48cf-45b3-8975-abbd083ee283') != Need(method='role', value='role-superuser-access')%0A  %0A  Full diff:%0A    [%0A  -     Need(method='role', value='role-superuser-access'),%0A  +     Need(method='role', value='51e0a562-48cf-45b3-8975-abbd083ee283'),%0A    ]
+F.........::error file=workdir/tests/invenio-records-permissions/patched/tests/test_generators.py,line=295::test_admin_action%0A%0AAttributeError: 'list' object has no attribute 'to_dict'
+F                               [ 33%]
+tests/test_invenio_records_permissions.py ....                           [ 38%]
+tests/test_permissions_base.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.::error file=workdir/tests/invenio-records-permissions/patched/tests/test_permissions_base.py,line=57::test_permission_policy_needs_excludes%0A%0AAssertionError: assert {Need(method=...e='any_user')} == {Need(method=...e='any_user')}%0A  %0A  Extra items in the left set:%0A  Need(method='role', value='07575d9e-c63d-4f36-8f17-047a89a04ea5')%0A  Extra items in the right set:%0A  Need(method='role', value='role-superuser-access')%0A  %0A  Full diff:%0A    {%0A  -     Need(method='role', value='role-superuser-access'),%0A  +     Need(method='role', value='07575d9e-c63d-4f36-8f17-047a89a04ea5'),%0A        Need(method='system_role', value='any_user'),%0A    }
+F..                                   [ 45%]
+tests/test_record_permission_policy.py ..::error file=workdir/tests/invenio-records-permissions/patched/tests/test_record_permission_policy.py,line=19::test_delete_record_policy%0A%0AAssertionError: assert {Need(method=...9f7f0b2b90b')} == {Need(method=...user-access')}%0A  %0A  Extra items in the left set:%0A  Need(method='role', value='15aa18e7-7fc0-4c00-b167-39f7f0b2b90b')%0A  Extra items in the right set:%0A  Need(method='role', value='role-superuser-access')%0A  %0A  Full diff:%0A    {%0A  -     Need(method='role', value='role-superuser-access'),%0A  +     Need(method='role', value='15aa18e7-7fc0-4c00-b167-39f7f0b2b90b'),%0A    }
+F::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::error file=workdir/tests/invenio-records-permissions/patched/tests/test_record_permission_policy.py,line=28::test_create_record_policy%0A%0AAssertionError: assert {Need(method=...cca7f16cae8')} == {Need(method=...user-access')}%0A  %0A  Extra items in the left set:%0A  Need(method='role', value='4d9ecb8e-dd2e-4a13-a6ef-9cca7f16cae8')%0A  Extra items in the right set:%0A  Need(method='role', value='role-superuser-access')%0A  %0A  Full diff:%0A    {%0A  -     Need(method='role', value='role-superuser-access'),%0A  +     Need(method='role', value='4d9ecb8e-dd2e-4a13-a6ef-9cca7f16cae8'),%0A    }
+F::error file=workdir/tests/invenio-records-permissions/patched/tests/test_record_permission_policy.py,line=40::test_update_record_policy%0A%0AAssertionError: assert {Need(method=...b0fa643e58f')} == {Need(method=...user-access')}%0A  %0A  Extra items in the left set:%0A  Need(method='role', value='574ca7e3-fe49-448d-9c12-0b0fa643e58f')%0A  Extra items in the right set:%0A  Need(method='role', value='role-superuser-access')%0A  %0A  Full diff:%0A    {%0A        Need(method='id', value=1),%0A        Need(method='id', value=2),%0A        Need(method='id', value=3),%0A  -     Need(method='role', value='role-superuser-access'),%0A  +     Need(method='role', value='574ca7e3-fe49-448d-9c12-0b0fa643e58f'),%0A    }
+F..::error file=workdir/tests/invenio-records-permissions/patched/tests/test_record_permission_policy.py,line=75::test_update_files_policy%0A%0AAssertionError: assert {Need(method=...a0f0d8db143')} == {Need(method=...user-access')}%0A  %0A  Extra items in the left set:%0A  Need(method='role', value='5fe81875-eef6-4eb7-9aa4-1a0f0d8db143')%0A  Extra items in the right set:%0A  Need(method='role', value='role-superuser-access')%0A  %0A  Full diff:%0A    {%0A        Need(method='id', value=1),%0A        Need(method='id', value=2),%0A        Need(method='id', value=3),%0A  -     Need(method='role', value='role-superuser-access'),%0A  +     Need(method='role', value='5fe81875-eef6-4eb7-9aa4-1a0f0d8db143'),%0A    }
+F                          [ 54%]
+tests/test_same_as_generator.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.........                             [ 67%]
+invenio_records_permissions/__init__.py ...                              [ 70%]
+invenio_records_permissions/api.py ...                                   [ 73%]
+invenio_records_permissions/config.py ...                                [ 77%]
+invenio_records_permissions/errors.py ...                                [ 80%]
+invenio_records_permissions/ext.py .::error file=workdir/tests/invenio-records-permissions/patched/invenio_records_permissions/ext.py,line=0::Black format check%0A%0A--- /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/invenio_records_permissions/ext.py	2026-03-01 08:45:48+00:00%0A+++ /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/invenio_records_permissions/ext.py	2026-03-01 08:49:13.470894+00:00%0A@@ -6,11 +6,10 @@%0A # Invenio-Records-Permissions is free software; you can redistribute it%0A # and/or modify it under the terms of the MIT License; see LICENSE file for%0A # more details.%0A %0A """Permission policies for Invenio records."""%0A-%0A %0A from . import config%0A %0A %0A class InvenioRecordsPermissions(object):%0A
+F.                                   [ 83%]
+invenio_records_permissions/generators.py ...                            [ 86%]
+invenio_records_permissions/patch_info.py ...                            [ 90%]
+invenio_records_permissions/policies/__init__.py ...                     [ 93%]
+invenio_records_permissions/policies/base.py ...                         [ 96%]
+invenio_records_permissions/policies/records.py ...                      [100%]
+
+=================================== FAILURES ===================================
+____________________ test_system_process_without_superuser _____________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x7fcd9caa6c40>
+role_w_superuser_access_need = Need(method='role', value='role-superuser-access')
+
+    def test_system_process_without_superuser(mocker, role_w_superuser_access_need):
+        generator = SystemProcessWithoutSuperUser()
+    
+        assert generator.needs() == [system_process]
+>       assert generator.excludes() == [role_w_superuser_access_need]
+E       AssertionError: assert [Need(method=...bbd083ee283')] == [Need(method=...user-access')]
+E         
+E         At index 0 diff: Need(method='role', value='51e0a562-48cf-45b3-8975-abbd083ee283') != Need(method='role', value='role-superuser-access')
+E         
+E         Full diff:
+E           [
+E         -     Need(method='role', value='role-superuser-access'),
+E         +     Need(method='role', value='51e0a562-48cf-45b3-8975-abbd083ee283'),
+E           ]
+
+tests/test_generators.py:89: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  py.warnings:_py_warnings.py:230 /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/webargs/compat.py:8: DeprecationWarning: The '__version__' attribute is deprecated and will be removed in in a future version. Use feature detection or 'importlib.metadata.version("marshmallow")' instead.
+  MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+
+WARNING  py.warnings:_py_warnings.py:230 /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/webargs/compat.py:8: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+
+WARNING  py.warnings:_py_warnings.py:230 /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/webargs/__init__.py:13: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  __version_info__ = tuple(LooseVersion(__version__).version)
+
+WARNING  py.warnings:_py_warnings.py:230 /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+  self.init_app(app)
+______________________________ test_admin_action _______________________________
+
+app = <Flask 'invenio'>
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+mocker = <pytest_mock.plugin.MockerFixture object at 0x7fcd9c9ce250>
+
+    def test_admin_action(app, db, mocker):
+        """Test AdminAction generator."""
+        action = ActionNeed("admin")
+        generator = AdminAction(action)
+    
+        assert generator.needs() == [action]
+    
+        # Role doesn't have any action associated with it.
+        assert not generator.query_filter(
+            identity=mocker.Mock(provides=[Need(method="role", value="admin")])
+        )
+        # Action directly assigned to the identity
+        assert generator.query_filter(
+            identity=mocker.Mock(provides=[action])
+        ).to_dict() == {"match_all": {}}
+    
+        # Create role and asign the right action to it
+        admin = Role(name="admin")
+        db.session.add(ActionRoles.allow(action, role=admin))
+        db.session.commit()
+        assert generator.query_filter(
+            identity=mocker.Mock(provides=[Need(method="role", value="admin")])
+>       ).to_dict() == {"match_all": {}}
+          ^^^^^^^
+E       AttributeError: 'list' object has no attribute 'to_dict'
+
+tests/test_generators.py:295: AttributeError
+____________________ test_permission_policy_needs_excludes _____________________
+
+role_w_superuser_access_need = Need(method='role', value='role-superuser-access')
+
+    def test_permission_policy_needs_excludes(role_w_superuser_access_need):
+        create_perm = TestPermissionPolicy(action="create")
+        list_perm = TestPermissionPolicy(action="search")
+        read_perm = TestPermissionPolicy(action="read")
+        update_perm = TestPermissionPolicy(action="update")
+        delete_perm = TestPermissionPolicy(action="delete")
+        foo_bar_perm = TestPermissionPolicy(action="foo_bar")
+    
+>       assert create_perm.needs == {role_w_superuser_access_need, any_user}
+E       AssertionError: assert {Need(method=...e='any_user')} == {Need(method=...e='any_user')}
+E         
+E         Extra items in the left set:
+E         Need(method='role', value='07575d9e-c63d-4f36-8f17-047a89a04ea5')
+E         Extra items in the right set:
+E         Need(method='role', value='role-superuser-access')
+E         
+E         Full diff:
+E           {
+E         -     Need(method='role', value='role-superuser-access'),
+E         +     Need(method='role', value='07575d9e-c63d-4f36-8f17-047a89a04ea5'),
+E               Need(method='system_role', value='any_user'),
+E           }
+
+tests/test_permissions_base.py:57: AssertionError
+__________________________ test_delete_record_policy ___________________________
+
+role_w_superuser_access_need = Need(method='role', value='role-superuser-access')
+
+    def test_delete_record_policy(role_w_superuser_access_need):
+        """Test delete record policy."""
+        delete_perm = RecordPermissionPolicy(action="delete")
+    
+        # only superuser can delete
+>       assert delete_perm.needs == {role_w_superuser_access_need}
+E       AssertionError: assert {Need(method=...9f7f0b2b90b')} == {Need(method=...user-access')}
+E         
+E         Extra items in the left set:
+E         Need(method='role', value='15aa18e7-7fc0-4c00-b167-39f7f0b2b90b')
+E         Extra items in the right set:
+E         Need(method='role', value='role-superuser-access')
+E         
+E         Full diff:
+E           {
+E         -     Need(method='role', value='role-superuser-access'),
+E         +     Need(method='role', value='15aa18e7-7fc0-4c00-b167-39f7f0b2b90b'),
+E           }
+
+tests/test_record_permission_policy.py:19: AssertionError
+__________________________ test_create_record_policy ___________________________
+
+role_w_superuser_access_need = Need(method='role', value='role-superuser-access')
+
+    def test_create_record_policy(role_w_superuser_access_need):
+        """Test create record policy."""
+        create_perm = RecordPermissionPolicy(action="create")
+    
+        # superuser role added by base policy
+>       assert create_perm.needs == {role_w_superuser_access_need}
+E       AssertionError: assert {Need(method=...cca7f16cae8')} == {Need(method=...user-access')}
+E         
+E         Extra items in the left set:
+E         Need(method='role', value='4d9ecb8e-dd2e-4a13-a6ef-9cca7f16cae8')
+E         Extra items in the right set:
+E         Need(method='role', value='role-superuser-access')
+E         
+E         Full diff:
+E           {
+E         -     Need(method='role', value='role-superuser-access'),
+E         +     Need(method='role', value='4d9ecb8e-dd2e-4a13-a6ef-9cca7f16cae8'),
+E           }
+
+tests/test_record_permission_policy.py:28: AssertionError
+__________________________ test_update_record_policy ___________________________
+
+create_record = <function create_record.<locals>._create_record at 0x7fcd9db51170>
+role_w_superuser_access_need = Need(method='role', value='role-superuser-access')
+
+    def test_update_record_policy(create_record, role_w_superuser_access_need):
+        """Test create record policy."""
+        record = create_record()
+        update_perm = RecordPermissionPolicy(action="update", record=record)
+    
+        # only owners should be able to update
+>       assert update_perm.needs == {
+            UserNeed(1),
+            UserNeed(2),
+            UserNeed(3),
+            role_w_superuser_access_need,
+        }
+E       AssertionError: assert {Need(method=...b0fa643e58f')} == {Need(method=...user-access')}
+E         
+E         Extra items in the left set:
+E         Need(method='role', value='574ca7e3-fe49-448d-9c12-0b0fa643e58f')
+E         Extra items in the right set:
+E         Need(method='role', value='role-superuser-access')
+E         
+E         Full diff:
+E           {
+E               Need(method='id', value=1),
+E               Need(method='id', value=2),
+E               Need(method='id', value=3),
+E         -     Need(method='role', value='role-superuser-access'),
+E         +     Need(method='role', value='574ca7e3-fe49-448d-9c12-0b0fa643e58f'),
+E           }
+
+tests/test_record_permission_policy.py:40: AssertionError
+___________________________ test_update_files_policy ___________________________
+
+create_record = <function create_record.<locals>._create_record at 0x7fcd9db51170>
+role_w_superuser_access_need = Need(method='role', value='role-superuser-access')
+
+    def test_update_files_policy(create_record, role_w_superuser_access_need):
+        """Test update record files policy."""
+        record = create_record()
+        read_perm = RecordPermissionPolicy(action="update_files", record=record)
+    
+        # only owners should be able to update
+>       assert read_perm.needs == {
+            UserNeed(1),
+            UserNeed(2),
+            UserNeed(3),
+            role_w_superuser_access_need,
+        }
+E       AssertionError: assert {Need(method=...a0f0d8db143')} == {Need(method=...user-access')}
+E         
+E         Extra items in the left set:
+E         Need(method='role', value='5fe81875-eef6-4eb7-9aa4-1a0f0d8db143')
+E         Extra items in the right set:
+E         Need(method='role', value='role-superuser-access')
+E         
+E         Full diff:
+E           {
+E               Need(method='id', value=1),
+E               Need(method='id', value=2),
+E               Need(method='id', value=3),
+E         -     Need(method='role', value='role-superuser-access'),
+E         +     Need(method='role', value='5fe81875-eef6-4eb7-9aa4-1a0f0d8db143'),
+E           }
+
+tests/test_record_permission_policy.py:75: AssertionError
+______________________________ Black format check ______________________________
+--- /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/invenio_records_permissions/ext.py	2026-03-01 08:45:48+00:00
++++ /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/invenio_records_permissions/ext.py	2026-03-01 08:49:13.470894+00:00
+@@ -6,11 +6,10 @@
+ # Invenio-Records-Permissions is free software; you can redistribute it
+ # and/or modify it under the terms of the MIT License; see LICENSE file for
+ # more details.
+ 
+ """Permission policies for Invenio records."""
+-
+ 
+ from . import config
+ 
+ 
+ class InvenioRecordsPermissions(object):
+
+=============================== warnings summary ===============================
+tests/test_permissions_base.py:29
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/tests/test_permissions_base.py:29: PytestCollectionWarning: cannot collect test class 'TestPermissionPolicy' because it has a __init__ constructor (from: tests/test_permissions_base.py)
+    class TestPermissionPolicy(BasePermissionPolicy):
+
+tests/test_permissions_base.py::test_base_permission_policy_generators
+tests/test_record_permission_policy.py::test_delete_record_policy
+tests/test_same_as_generator.py::test_same_as_basic_delegation
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-records-permissions/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+    self.init_app(app)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.2-final-0 ________________
+
+Name                                               Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------
+invenio_records_permissions/__init__.py                4      0   100%
+invenio_records_permissions/api.py                     6      0   100%
+invenio_records_permissions/config.py                  2      0   100%
+invenio_records_permissions/errors.py                  1      0   100%
+invenio_records_permissions/ext.py                    14      1    93%   33
+invenio_records_permissions/generators.py            145      2    99%   183, 280
+invenio_records_permissions/patch_info.py              6      2    67%   48-50
+invenio_records_permissions/policies/__init__.py       2      0   100%
+invenio_records_permissions/policies/base.py          44      0   100%
+invenio_records_permissions/policies/records.py       32      7    78%   30, 45-49, 99
+--------------------------------------------------------------------------------
+TOTAL                                                256     12    95%
+=========================== short test summary info ============================
+FAILED tests/test_generators.py::test_system_process_without_superuser - AssertionError: assert [Need(method=...bbd083ee283')] == [Need(method=...user-access')]
+  
+  At index 0 diff: Need(method='role', value='51e0a562-48cf-45b3-8975-abbd083ee283') != Need(method='role', value='role-superuser-access')
+  
+  Full diff:
+    [
+  -     Need(method='role', value='role-superuser-access'),
+  +     Need(method='role', value='51e0a562-48cf-45b3-8975-abbd083ee283'),
+    ]
+FAILED tests/test_generators.py::test_admin_action - AttributeError: 'list' object has no attribute 'to_dict'
+FAILED tests/test_permissions_base.py::test_permission_policy_needs_excludes - AssertionError: assert {Need(method=...e='any_user')} == {Need(method=...e='any_user')}
+  
+  Extra items in the left set:
+  Need(method='role', value='07575d9e-c63d-4f36-8f17-047a89a04ea5')
+  Extra items in the right set:
+  Need(method='role', value='role-superuser-access')
+  
+  Full diff:
+    {
+  -     Need(method='role', value='role-superuser-access'),
+  +     Need(method='role', value='07575d9e-c63d-4f36-8f17-047a89a04ea5'),
+        Need(method='system_role', value='any_user'),
+    }
+FAILED tests/test_record_permission_policy.py::test_delete_record_policy - AssertionError: assert {Need(method=...9f7f0b2b90b')} == {Need(method=...user-access')}
+  
+  Extra items in the left set:
+  Need(method='role', value='15aa18e7-7fc0-4c00-b167-39f7f0b2b90b')
+  Extra items in the right set:
+  Need(method='role', value='role-superuser-access')
+  
+  Full diff:
+    {
+  -     Need(method='role', value='role-superuser-access'),
+  +     Need(method='role', value='15aa18e7-7fc0-4c00-b167-39f7f0b2b90b'),
+    }
+FAILED tests/test_record_permission_policy.py::test_create_record_policy - AssertionError: assert {Need(method=...cca7f16cae8')} == {Need(method=...user-access')}
+  
+  Extra items in the left set:
+  Need(method='role', value='4d9ecb8e-dd2e-4a13-a6ef-9cca7f16cae8')
+  Extra items in the right set:
+  Need(method='role', value='role-superuser-access')
+  
+  Full diff:
+    {
+  -     Need(method='role', value='role-superuser-access'),
+  +     Need(method='role', value='4d9ecb8e-dd2e-4a13-a6ef-9cca7f16cae8'),
+    }
+FAILED tests/test_record_permission_policy.py::test_update_record_policy - AssertionError: assert {Need(method=...b0fa643e58f')} == {Need(method=...user-access')}
+  
+  Extra items in the left set:
+  Need(method='role', value='574ca7e3-fe49-448d-9c12-0b0fa643e58f')
+  Extra items in the right set:
+  Need(method='role', value='role-superuser-access')
+  
+  Full diff:
+    {
+        Need(method='id', value=1),
+        Need(method='id', value=2),
+        Need(method='id', value=3),
+  -     Need(method='role', value='role-superuser-access'),
+  +     Need(method='role', value='574ca7e3-fe49-448d-9c12-0b0fa643e58f'),
+    }
+FAILED tests/test_record_permission_policy.py::test_update_files_policy - AssertionError: assert {Need(method=...a0f0d8db143')} == {Need(method=...user-access')}
+  
+  Extra items in the left set:
+  Need(method='role', value='5fe81875-eef6-4eb7-9aa4-1a0f0d8db143')
+  Extra items in the right set:
+  Need(method='role', value='role-superuser-access')
+  
+  Full diff:
+    {
+        Need(method='id', value=1),
+        Need(method='id', value=2),
+        Need(method='id', value=3),
+  -     Need(method='role', value='role-superuser-access'),
+  +     Need(method='role', value='5fe81875-eef6-4eb7-9aa4-1a0f0d8db143'),
+    }
+FAILED invenio_records_permissions/ext.py::black
+=================== 8 failed, 84 passed, 4 warnings in 7.88s ===================
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-postgresql-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

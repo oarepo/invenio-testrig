@@ -1,0 +1,37 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "actual_version": "0.3.0",
+      "base": null,
+      "branch": "v0.3.0",
+      "commit": "75994538a035a9e3675f7d612d3a073435d8fd1d",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-sitemap",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-sitemap"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "skipped"
+}

@@ -1,0 +1,36 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v2.1.0",
+      "commit": "dc4d1fab48d7e84a8895076ac7b5a72555e0281f",
+      "org": "inveniosoftware",
+      "package": "invenio-jsonschemas",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-jsonschemas",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

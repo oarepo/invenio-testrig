@@ -1,0 +1,4 @@
+{
+  "PendingDeprecationWarning: `use_markdown=` will be deprecated in a future version of rich-click. Please use `text_markup=` instead.": 1,
+  "PendingDeprecationWarning: `use_rich_markup=` will be deprecated in a future version of rich-click. Please use `text_markup=` instead.": 1
+}

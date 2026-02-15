@@ -1,0 +1,36 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v1.1.0",
+      "commit": "0847d14a7a408c513d9d83d6b7dd172f5c055a94",
+      "org": "inveniosoftware",
+      "package": "invenio-webhooks",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-webhooks",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

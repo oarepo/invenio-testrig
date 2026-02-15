@@ -1,0 +1,37 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "actual_version": "3.3.1",
+      "base": null,
+      "branch": "v3.3.1",
+      "commit": "f4ae65cf9867740a24a73a32f23f99c66d243651",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-formatter",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-formatter"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "skipped"
+}

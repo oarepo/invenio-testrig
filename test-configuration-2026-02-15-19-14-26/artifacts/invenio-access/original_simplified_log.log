@@ -1,0 +1,153 @@
+running extract_messages
+extracting messages from invenio_access/__init__.py (encoding="utf-8")
+extracting messages from invenio_access/admin.py (encoding="utf-8")
+extracting messages from invenio_access/cli.py (encoding="utf-8")
+extracting messages from invenio_access/config.py (encoding="utf-8")
+extracting messages from invenio_access/ext.py (encoding="utf-8")
+extracting messages from invenio_access/factory.py (encoding="utf-8")
+extracting messages from invenio_access/loaders.py (encoding="utf-8")
+extracting messages from invenio_access/models.py (encoding="utf-8")
+extracting messages from invenio_access/permissions.py (encoding="utf-8")
+extracting messages from invenio_access/proxies.py (encoding="utf-8")
+extracting messages from invenio_access/utils.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/04480be1593e_add_actionsystemroles.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/2069a982633b_add_on_delete_cascade_constraint.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/2f63be7b7572_create_access_tables.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/67ba0de65fbb_create_access_branch.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/842a62b56e60_change_fk_accountsrole_to_string_downgrade.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/dbe499bfda43_prevent_null_in_actionusers_for_.py (encoding="utf-8")
+extracting messages from invenio_access/alembic/f9843093f686_change_fk_accountsrole_to_string_upgrade.py (encoding="utf-8")
+writing PO template file to /dev/null
+ postgresql Pulling 
+ redis Pulling 
+ 4f4fb700ef54 Already exists 
+ redis Pulled 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-redis-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-access/original
+configfile: setup.cfg
+testpaths: tests, invenio_access
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 114 items
+tests/conftest.py ...                                                    [  2%]
+tests/test_admin.py ...                                                  [  5%]
+tests/test_cli.py 
+                                            [ 14%]
+tests/test_invenio_access.py 
+                                   [ 22%]
+tests/test_loaders.py .....                                              [ 27%]
+tests/test_permissions.py 
+                            [ 43%]
+tests/test_permissions_cache.py 
+                                [ 51%]
+invenio_access/__init__.py ....                                          [ 55%]
+invenio_access/admin.py ...                                              [ 57%]
+invenio_access/alembic/04480be1593e_add_actionsystemroles.py ...         [ 60%]
+invenio_access/alembic/2069a982633b_add_on_delete_cascade_constraint.py . [ 61%]
+                                                                       [ 63%]
+invenio_access/alembic/2f63be7b7572_create_access_tables.py ...          [ 65%]
+invenio_access/alembic/67ba0de65fbb_create_access_branch.py ...          [ 68%]
+invenio_access/alembic/842a62b56e60_change_fk_accountsrole_to_string_downgrade.py . [ 69%]
+                                                                       [ 71%]
+invenio_access/alembic/dbe499bfda43_prevent_null_in_actionusers_for_.py . [ 71%]
+                                                                       [ 73%]
+invenio_access/alembic/f9843093f686_change_fk_accountsrole_to_string_upgrade.py . [ 74%]
+                                                                       [ 76%]
+invenio_access/cli.py ...                                                [ 78%]
+invenio_access/config.py ...                                             [ 81%]
+invenio_access/ext.py ...                                                [ 84%]
+invenio_access/factory.py ...                                            [ 86%]
+invenio_access/loaders.py ...                                            [ 89%]
+invenio_access/models.py ...                                             [ 92%]
+invenio_access/permissions.py ...                                        [ 94%]
+invenio_access/proxies.py ...                                            [ 97%]
+invenio_access/utils.py ...                                              [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:2560
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(parent)
+tests/test_cli.py::test_access_cli_allow_action_unknown_email
+tests/test_cli.py::test_access_cli_allow_action_user
+tests/test_cli.py::test_access_cli_allow_action_user
+tests/test_cli.py::test_access_matrix
+    return callback(*args, **kwargs)
+tests/test_cli.py::test_access_cli_allow_action_unknown_role
+tests/test_cli.py::test_access_cli_allow_action_role
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+    return callback(*args, **kwargs)
+tests/test_cli.py::test_any_all_global
+tests/test_cli.py::test_any_all_global
+    return callback(*args, **kwargs)
+tests/test_cli.py::test_access_cli_deny_action_role
+    return callback(*args, **kwargs)
+tests/test_cli.py::test_access_matrix
+    return callback(*args, **kwargs)
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+    return callback(*args, **kwargs)
+tests/test_cli.py::test_access_matrix
+tests/test_cli.py::test_access_matrix
+    return callback(*args, **kwargs)
+tests/test_invenio_access.py::test_alembic
+    util.warn_deprecated(
+tests/test_invenio_access.py::test_alembic
+    super().alter_column(
+tests/test_invenio_access.py::test_alembic
+    insp = Inspector.from_engine(ctx.connection.engine)
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                                                                                Stmts   Miss  Cover   Missing
+invenio_access/__init__.py                                                             15      4    73%   420-426
+invenio_access/admin.py                                                                43      0   100%
+invenio_access/alembic/2f63be7b7572_create_access_tables.py                            20      0   100%
+invenio_access/alembic/67ba0de65fbb_create_access_branch.py                             8      0   100%
+invenio_access/alembic/842a62b56e60_change_fk_accountsrole_to_string_downgrade.py      11      0   100%
+invenio_access/alembic/2069a982633b_add_on_delete_cascade_constraint.py                19      0   100%
+invenio_access/alembic/04480be1593e_add_actionsystemroles.py                           16      0   100%
+invenio_access/alembic/dbe499bfda43_prevent_null_in_actionusers_for_.py                18      0   100%
+invenio_access/alembic/f9843093f686_change_fk_accountsrole_to_string_upgrade.py        11      0   100%
+invenio_access/cli.py                                                                 205     11    95%   44, 53-55, 111, 121, 131, 141, 150, 162, 174
+invenio_access/config.py                                                                6      0   100%
+invenio_access/ext.py                                                                  62      0   100%
+invenio_access/factory.py                                                               7      0   100%
+invenio_access/loaders.py                                                               6      0   100%
+invenio_access/models.py                                                               95      0   100%
+invenio_access/permissions.py                                                          84      0   100%
+invenio_access/proxies.py                                                               4      0   100%
+invenio_access/utils.py                                                                 9      0   100%
+TOTAL                                                                                 639     15    98%
+================ 114 passed, 6027 warnings in 66.12s (0:01:06) =================
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

@@ -1,0 +1,57 @@
+ redis Pulling 
+ 4f4fb700ef54 Already exists 
+ redis Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-redis-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-cache/original
+configfile: setup.cfg
+testpaths: tests, invenio_cache
+plugins: mock-3.15.1, invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 53 items
+tests/conftest.py ...                                                    [  5%]
+tests/test_bccache.py 
+                                                [ 11%]
+tests/test_decorator.py 
+                                             [ 18%]
+tests/test_invenio_cache.py 
+                                    [ 35%]
+tests/test_locks.py 
+                                               [ 47%]
+invenio_cache/__init__.py 
+                                           [ 54%]
+invenio_cache/_compat.py ...                                             [ 60%]
+invenio_cache/bccache.py ...                                             [ 66%]
+invenio_cache/config.py ...                                              [ 71%]
+invenio_cache/decorators.py ...                                          [ 77%]
+invenio_cache/errors.py ...                                              [ 83%]
+invenio_cache/ext.py ...                                                 [ 88%]
+invenio_cache/lock.py ...                                                [ 94%]
+invenio_cache/proxies.py ...                                             [100%]
+=============================== warnings summary ===============================
+    self._set_cache(app, config)
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                          Stmts   Miss  Cover   Missing
+invenio_cache/__init__.py         7      0   100%
+invenio_cache/_compat.py          4      0   100%
+invenio_cache/bccache.py          7      0   100%
+invenio_cache/config.py           8      0   100%
+invenio_cache/decorators.py      46      0   100%
+invenio_cache/errors.py          14      1    93%   21
+invenio_cache/ext.py             28      0   100%
+invenio_cache/lock.py            70     11    84%   70, 80, 84, 88, 92, 157, 206, 214-219, 222
+invenio_cache/proxies.py          7      0   100%
+TOTAL                           191     12    94%
+======================= 53 passed, 12 warnings in 3.18s ========================
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

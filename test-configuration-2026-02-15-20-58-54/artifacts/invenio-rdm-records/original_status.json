@@ -1,0 +1,55 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [
+      {
+        "base": null,
+        "branch": null,
+        "commit": "3845b70a85950c996615d1bbad6cbacdd456576b",
+        "org": "inveniosoftware",
+        "package": "invenio-rdm-records",
+        "pr": 2222,
+        "pr_info": {
+          "commits": [
+            "3845b70a85950c996615d1bbad6cbacdd456576b"
+          ],
+          "source_branch": "contribution-zip-extractors-processors",
+          "source_org": "oarepo",
+          "source_repo": "invenio-rdm-records"
+        },
+        "repo": "invenio-rdm-records",
+        "versions": []
+      }
+    ],
+    "reference": {
+      "base": null,
+      "branch": "v22.7.3",
+      "commit": "d384115632a28121d2259546d354ca231791ae28",
+      "org": "inveniosoftware",
+      "package": "invenio-rdm-records",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-rdm-records",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "failed"
+}

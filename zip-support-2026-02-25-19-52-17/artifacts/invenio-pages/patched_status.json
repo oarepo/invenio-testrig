@@ -1,0 +1,95 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "3102386ee40392732e8be59e9b40153dd68a9936",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-records-resources",
+          "pr": 666,
+          "pr_info": {
+            "commits": [
+              "3102386ee40392732e8be59e9b40153dd68a9936"
+            ],
+            "source_branch": "contribution-container-extractors",
+            "source_org": "oarepo",
+            "source_repo": "invenio-records-resources"
+          },
+          "repo": "invenio-records-resources"
+        }
+      ],
+      "reference": {
+        "actual_version": "8.7.1",
+        "base": null,
+        "branch": "fix-read-many",
+        "commit": "5911e5bba6dcd750fd8ba86584ddb5e940a7a3de",
+        "commits_from_version": [
+          "a5c2ecb7f22b873523277847b82b7330787b00ea",
+          "c6b973a14802e2a7f73100ab4e32cb0c36bd4672",
+          "5911e5bba6dcd750fd8ba86584ddb5e940a7a3de"
+        ],
+        "org": "inveniosoftware",
+        "package": "invenio-records-resources",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-records-resources"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "actual_version": "7.2.1",
+      "base": null,
+      "branch": "v7.2.1",
+      "commit": "5b95f877b78eb4bc1fe80a293ad4b48efee26f44",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-pages",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-pages"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

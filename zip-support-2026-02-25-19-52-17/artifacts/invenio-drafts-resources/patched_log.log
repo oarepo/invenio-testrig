@@ -1,0 +1,750 @@
+running extract_messages
+extracting messages from invenio_drafts_resources/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/auditlog/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/auditlog/actions.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/auditlog/context.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/records/api.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/records/models.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/records/systemfields/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/records/systemfields/parent.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/records/systemfields/versions.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/resources/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/resources/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/resources/records/args.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/resources/records/config.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/resources/records/errors.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/resources/records/resource.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/config.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/permissions.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/schema.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/search_params.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/service.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/tasks.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/uow.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/__init__.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/base.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/files.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/media_files.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/metadata.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/pid.py (encoding="utf-8")
+extracting messages from invenio_drafts_resources/services/records/components/relations.py (encoding="utf-8")
+writing PO template file to /dev/null
+ opensearch Pulling 
+ postgresql Pulling 
+ b0a0cf830b12 Pulling fs layer 
+ dda3d8fbd5ed Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ e0d55fdb4d15 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ cb628c265f09 Pulling fs layer 
+ ae3bb1b347a4 Waiting 
+ f8406d9c00ea Waiting 
+ c199bff16b05 Waiting 
+ e0d55fdb4d15 Waiting 
+ c1cb13b19080 Waiting 
+ 873532e5f8c7 Waiting 
+ 050d9f8c3b1c Waiting 
+ 710e142705f8 Waiting 
+ cb628c265f09 Waiting 
+ 91d2729fa4d5 Waiting 
+ 9739ced65621 Waiting 
+ f9dd052e142d Pulling fs layer 
+ e8c6d4883897 Pulling fs layer 
+ 648eb81b3252 Pulling fs layer 
+ eb77aa907276 Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 0ffa8f8aba1e Pulling fs layer 
+ 2e81b9cb93cd Pulling fs layer 
+ f9dd052e142d Waiting 
+ e8c6d4883897 Waiting 
+ 648eb81b3252 Waiting 
+ eb77aa907276 Waiting 
+ 4f4fb700ef54 Waiting 
+ 0ffa8f8aba1e Waiting 
+ 2e81b9cb93cd Waiting 
+ 283a477db7bb Downloading [>                                                  ]  45.83kB/4.533MB
+ b0a0cf830b12 Downloading [>                                                  ]  294.1kB/29.15MB
+ dda3d8fbd5ed Downloading [==============================>                    ]     720B/1.165kB
+ dda3d8fbd5ed Downloading [==================================================>]  1.165kB/1.165kB
+ dda3d8fbd5ed Download complete 
+ 283a477db7bb Verifying Checksum 
+ 283a477db7bb Download complete 
+ 91d2729fa4d5 Downloading [>                                                  ]  15.73kB/1.45MB
+ b0a0cf830b12 Downloading [=====================>                             ]  12.28MB/29.15MB
+ 91d2729fa4d5 Download complete 
+ 9739ced65621 Downloading [>                                                  ]  84.08kB/8.069MB
+ ae3bb1b347a4 Downloading [>                                                  ]     13kB/1.196MB
+ b0a0cf830b12 Downloading [===========================================>       ]  25.49MB/29.15MB
+ ae3bb1b347a4 Verifying Checksum 
+ ae3bb1b347a4 Download complete 
+ 9739ced65621 Verifying Checksum 
+ 9739ced65621 Download complete 
+ b0a0cf830b12 Verifying Checksum 
+ b0a0cf830b12 Download complete 
+ b0a0cf830b12 Extracting [>                                                  ]  294.9kB/29.15MB
+ f8406d9c00ea Downloading [==================================================>]     116B/116B
+ f8406d9c00ea Verifying Checksum 
+ f8406d9c00ea Download complete 
+ c199bff16b05 Downloading [===========>                                       ]     720B/3.145kB
+ c199bff16b05 Downloading [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Verifying Checksum 
+ c199bff16b05 Download complete 
+ e0d55fdb4d15 Downloading [>                                                  ]  540.7kB/109MB
+ b0a0cf830b12 Extracting [===========>                                       ]  6.488MB/29.15MB
+ c1cb13b19080 Downloading [===>                                               ]     687B/9.925kB
+ c1cb13b19080 Downloading [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Verifying Checksum 
+ c1cb13b19080 Download complete 
+ 873532e5f8c7 Downloading [==================================================>]     128B/128B
+ 873532e5f8c7 Verifying Checksum 
+ 873532e5f8c7 Download complete 
+ e0d55fdb4d15 Downloading [===>                                               ]  7.466MB/109MB
+ b0a0cf830b12 Extracting [=================>                                 ]  10.03MB/29.15MB
+ 050d9f8c3b1c Downloading [==================================================>]     169B/169B
+ 050d9f8c3b1c Download complete 
+ 710e142705f8 Downloading [======>                                            ]     719B/5.421kB
+ 710e142705f8 Downloading [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Verifying Checksum 
+ 710e142705f8 Download complete 
+ e0d55fdb4d15 Downloading [======>                                            ]  14.37MB/109MB
+ b0a0cf830b12 Extracting [========================>                          ]  14.16MB/29.15MB
+ cb628c265f09 Downloading [==================================================>]     184B/184B
+ cb628c265f09 Verifying Checksum 
+ cb628c265f09 Download complete 
+ f9dd052e142d Downloading [>                                                  ]  528.2kB/52.33MB
+ e0d55fdb4d15 Downloading [=========>                                         ]   21.3MB/109MB
+ b0a0cf830b12 Extracting [=====================================>             ]  22.12MB/29.15MB
+ e8c6d4883897 Downloading [>                                                  ]  44.47kB/4.398MB
+ f9dd052e142d Downloading [======>                                            ]  6.377MB/52.33MB
+ e0d55fdb4d15 Downloading [=============>                                     ]   28.8MB/109MB
+ e8c6d4883897 Verifying Checksum 
+ e8c6d4883897 Download complete 
+ f9dd052e142d Downloading [=========>                                         ]  9.571MB/52.33MB
+ b0a0cf830b12 Extracting [==========================================>        ]  24.77MB/29.15MB
+ e0d55fdb4d15 Downloading [===============>                                   ]  33.07MB/109MB
+ 648eb81b3252 Downloading [=======================>                           ]     719B/1.561kB
+ 648eb81b3252 Downloading [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Verifying Checksum 
+ 648eb81b3252 Download complete 
+ f9dd052e142d Downloading [================>                                  ]  17.55MB/52.33MB
+ e0d55fdb4d15 Downloading [==================>                                ]  40.57MB/109MB
+ b0a0cf830b12 Extracting [===============================================>   ]  27.72MB/29.15MB
+ eb77aa907276 Downloading [>                                                  ]  528.2kB/907.7MB
+ f9dd052e142d Downloading [=========================>                         ]  26.55MB/52.33MB
+ e0d55fdb4d15 Downloading [=====================>                             ]  47.51MB/109MB
+ eb77aa907276 Downloading [>                                                  ]   10.7MB/907.7MB
+ f9dd052e142d Downloading [==============================>                    ]  32.39MB/52.33MB
+ e0d55fdb4d15 Downloading [=========================>                         ]  56.06MB/109MB
+ eb77aa907276 Downloading [>                                                  ]  15.52MB/907.7MB
+ f9dd052e142d Downloading [=====================================>             ]  39.28MB/52.33MB
+ e0d55fdb4d15 Downloading [=============================>                     ]  63.54MB/109MB
+ b0a0cf830b12 Extracting [================================================>  ]  28.31MB/29.15MB
+ eb77aa907276 Downloading [=>                                                 ]  22.43MB/907.7MB
+ f9dd052e142d Downloading [===========================================>       ]  45.09MB/52.33MB
+ e0d55fdb4d15 Downloading [===============================>                   ]   69.4MB/109MB
+ b0a0cf830b12 Extracting [==================================================>]  29.15MB/29.15MB
+ eb77aa907276 Downloading [=>                                                 ]  26.17MB/907.7MB
+ b0a0cf830b12 Pull complete 
+ dda3d8fbd5ed Extracting [==================================================>]  1.165kB/1.165kB
+ dda3d8fbd5ed Extracting [==================================================>]  1.165kB/1.165kB
+ f9dd052e142d Downloading [================================================>  ]  50.95MB/52.33MB
+ e0d55fdb4d15 Downloading [====================================>              ]  79.56MB/109MB
+ eb77aa907276 Downloading [=>                                                 ]   28.3MB/907.7MB
+ f9dd052e142d Verifying Checksum 
+ f9dd052e142d Download complete 
+ e0d55fdb4d15 Downloading [======================================>            ]  83.83MB/109MB
+ eb77aa907276 Downloading [=>                                                 ]  35.24MB/907.7MB
+ 4f4fb700ef54 Downloading [==================================================>]      32B/32B
+ 4f4fb700ef54 Verifying Checksum 
+ 4f4fb700ef54 Download complete 
+ e0d55fdb4d15 Downloading [===========================================>       ]  93.99MB/109MB
+ 0ffa8f8aba1e Downloading [==================================================>]     226B/226B
+ 0ffa8f8aba1e Verifying Checksum 
+ 0ffa8f8aba1e Download complete 
+ eb77aa907276 Downloading [==>                                                ]  43.22MB/907.7MB
+ f9dd052e142d Extracting [>                                                  ]  524.3kB/52.33MB
+ e0d55fdb4d15 Downloading [=================================================> ]  108.4MB/109MB
+ e0d55fdb4d15 Verifying Checksum 
+ e0d55fdb4d15 Download complete 
+ 2e81b9cb93cd Downloading [===================>                               ]     707B/1.859kB
+ 2e81b9cb93cd Download complete 
+ f9dd052e142d Extracting [=>                                                 ]  1.573MB/52.33MB
+ eb77aa907276 Downloading [==>                                                ]  50.69MB/907.7MB
+ f9dd052e142d Extracting [====>                                              ]  4.719MB/52.33MB
+ eb77aa907276 Downloading [===>                                               ]  58.16MB/907.7MB
+ f9dd052e142d Extracting [=====>                                             ]  5.767MB/52.33MB
+ eb77aa907276 Downloading [===>                                               ]  60.31MB/907.7MB
+ f9dd052e142d Extracting [=============>                                     ]  13.63MB/52.33MB
+ f9dd052e142d Extracting [====================>                              ]  20.97MB/52.33MB
+ eb77aa907276 Downloading [===>                                               ]  60.83MB/907.7MB
+ f9dd052e142d Extracting [=========================>                         ]  26.74MB/52.33MB
+ eb77aa907276 Downloading [===>                                               ]  66.15MB/907.7MB
+ f9dd052e142d Extracting [===========================>                       ]  28.84MB/52.33MB
+ eb77aa907276 Downloading [===>                                               ]  68.81MB/907.7MB
+ f9dd052e142d Extracting [============================>                      ]  29.88MB/52.33MB
+ eb77aa907276 Downloading [====>                                              ]  74.68MB/907.7MB
+ f9dd052e142d Extracting [=============================>                     ]  30.41MB/52.33MB
+ eb77aa907276 Downloading [====>                                              ]  79.45MB/907.7MB
+ f9dd052e142d Extracting [===============================>                   ]  33.03MB/52.33MB
+ eb77aa907276 Downloading [====>                                              ]  84.75MB/907.7MB
+ f9dd052e142d Extracting [=================================>                 ]  35.13MB/52.33MB
+ eb77aa907276 Downloading [====>                                              ]  86.36MB/907.7MB
+ f9dd052e142d Extracting [===================================>               ]  37.22MB/52.33MB
+ eb77aa907276 Downloading [=====>                                             ]  92.26MB/907.7MB
+ f9dd052e142d Extracting [======================================>            ]  39.85MB/52.33MB
+ eb77aa907276 Downloading [=====>                                             ]  102.3MB/907.7MB
+ f9dd052e142d Extracting [=========================================>         ]  42.99MB/52.33MB
+ eb77aa907276 Downloading [=====>                                             ]  105.5MB/907.7MB
+ f9dd052e142d Extracting [============================================>      ]  46.14MB/52.33MB
+ eb77aa907276 Downloading [=====>                                             ]  106.6MB/907.7MB
+ eb77aa907276 Downloading [======>                                            ]  115.1MB/907.7MB
+ f9dd052e142d Extracting [=============================================>     ]  47.71MB/52.33MB
+ eb77aa907276 Downloading [======>                                            ]  119.4MB/907.7MB
+ eb77aa907276 Downloading [======>                                            ]  121.5MB/907.7MB
+ dda3d8fbd5ed Pull complete 
+ 283a477db7bb Extracting [>                                                  ]  65.54kB/4.533MB
+ eb77aa907276 Downloading [======>                                            ]  125.3MB/907.7MB
+ 283a477db7bb Extracting [==================================================>]  4.533MB/4.533MB
+ f9dd052e142d Extracting [=================================================> ]  51.38MB/52.33MB
+ eb77aa907276 Downloading [=======>                                           ]  130.1MB/907.7MB
+ f9dd052e142d Extracting [=================================================> ]   51.9MB/52.33MB
+ f9dd052e142d Extracting [==================================================>]  52.33MB/52.33MB
+ eb77aa907276 Downloading [=======>                                           ]  135.4MB/907.7MB
+ f9dd052e142d Pull complete 
+ e8c6d4883897 Extracting [>                                                  ]  65.54kB/4.398MB
+ eb77aa907276 Downloading [=======>                                           ]  140.7MB/907.7MB
+ e8c6d4883897 Extracting [========>                                          ]  720.9kB/4.398MB
+ eb77aa907276 Downloading [========>                                          ]  148.7MB/907.7MB
+ e8c6d4883897 Extracting [====================>                              ]  1.835MB/4.398MB
+ eb77aa907276 Downloading [========>                                          ]  161.5MB/907.7MB
+ e8c6d4883897 Extracting [========================>                          ]  2.163MB/4.398MB
+ 283a477db7bb Pull complete 
+ 91d2729fa4d5 Extracting [=>                                                 ]  32.77kB/1.45MB
+ eb77aa907276 Downloading [=========>                                         ]  169.5MB/907.7MB
+ 91d2729fa4d5 Extracting [==================================================>]   1.45MB/1.45MB
+ 91d2729fa4d5 Pull complete 
+ 9739ced65621 Extracting [>                                                  ]   98.3kB/8.069MB
+ e8c6d4883897 Extracting [====================================>              ]  3.211MB/4.398MB
+ eb77aa907276 Downloading [=========>                                         ]  173.8MB/907.7MB
+ 9739ced65621 Extracting [===================>                               ]  3.146MB/8.069MB
+ e8c6d4883897 Extracting [========================================>          ]  3.539MB/4.398MB
+ e8c6d4883897 Extracting [==================================================>]  4.398MB/4.398MB
+ eb77aa907276 Downloading [=========>                                         ]  176.5MB/907.7MB
+ e8c6d4883897 Pull complete 
+ 648eb81b3252 Extracting [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Extracting [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Pull complete 
+ 9739ced65621 Extracting [=============================>                     ]  4.817MB/8.069MB
+ eb77aa907276 Downloading [==========>                                        ]  183.4MB/907.7MB
+ 9739ced65621 Extracting [==============================================>    ]  7.471MB/8.069MB
+ 9739ced65621 Extracting [==================================================>]  8.069MB/8.069MB
+ 9739ced65621 Pull complete 
+ ae3bb1b347a4 Extracting [=>                                                 ]  32.77kB/1.196MB
+ eb77aa907276 Downloading [==========>                                        ]  186.6MB/907.7MB
+ ae3bb1b347a4 Extracting [==================================================>]  1.196MB/1.196MB
+ ae3bb1b347a4 Extracting [==================================================>]  1.196MB/1.196MB
+ ae3bb1b347a4 Pull complete 
+ f8406d9c00ea Extracting [==================================================>]     116B/116B
+ f8406d9c00ea Extracting [==================================================>]     116B/116B
+ f8406d9c00ea Pull complete 
+ c199bff16b05 Extracting [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Extracting [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Pull complete 
+ eb77aa907276 Downloading [==========>                                        ]  189.8MB/907.7MB
+ e0d55fdb4d15 Extracting [>                                                  ]  557.1kB/109MB
+ eb77aa907276 Downloading [==========>                                        ]  197.3MB/907.7MB
+ e0d55fdb4d15 Extracting [===>                                               ]  7.242MB/109MB
+ eb77aa907276 Downloading [===========>                                       ]  204.2MB/907.7MB
+ e0d55fdb4d15 Extracting [====>                                              ]  10.58MB/109MB
+ eb77aa907276 Downloading [===========>                                       ]  211.2MB/907.7MB
+ e0d55fdb4d15 Extracting [=======>                                           ]   15.6MB/109MB
+ eb77aa907276 Downloading [===========>                                       ]  216.5MB/907.7MB
+ e0d55fdb4d15 Extracting [=========>                                         ]  20.05MB/109MB
+ eb77aa907276 Downloading [============>                                      ]  222.4MB/907.7MB
+ e0d55fdb4d15 Extracting [===========>                                       ]  25.62MB/109MB
+ eb77aa907276 Downloading [============>                                      ]  229.8MB/907.7MB
+ e0d55fdb4d15 Extracting [===============>                                   ]  33.42MB/109MB
+ eb77aa907276 Downloading [============>                                      ]  235.7MB/907.7MB
+ e0d55fdb4d15 Extracting [===================>                               ]  42.34MB/109MB
+ eb77aa907276 Downloading [=============>                                     ]  241.6MB/907.7MB
+ e0d55fdb4d15 Extracting [=======================>                           ]  51.25MB/109MB
+ eb77aa907276 Downloading [=============>                                     ]  245.9MB/907.7MB
+ e0d55fdb4d15 Extracting [=========================>                         ]  55.15MB/109MB
+ eb77aa907276 Downloading [=============>                                     ]  249.6MB/907.7MB
+ e0d55fdb4d15 Extracting [============================>                      ]  61.83MB/109MB
+ e0d55fdb4d15 Extracting [================================>                  ]  71.86MB/109MB
+ eb77aa907276 Downloading [=============>                                     ]  253.3MB/907.7MB
+ e0d55fdb4d15 Extracting [====================================>              ]  80.22MB/109MB
+ eb77aa907276 Downloading [==============>                                    ]  256.6MB/907.7MB
+ e0d55fdb4d15 Extracting [========================================>          ]  89.13MB/109MB
+ eb77aa907276 Downloading [==============>                                    ]  260.3MB/907.7MB
+ e0d55fdb4d15 Extracting [==========================================>        ]  93.03MB/109MB
+ eb77aa907276 Downloading [==============>                                    ]    263MB/907.7MB
+ e0d55fdb4d15 Extracting [============================================>      ]  96.93MB/109MB
+ eb77aa907276 Downloading [==============>                                    ]  267.8MB/907.7MB
+ e0d55fdb4d15 Extracting [==============================================>    ]  100.3MB/109MB
+ eb77aa907276 Downloading [===============>                                   ]  274.1MB/907.7MB
+ eb77aa907276 Downloading [===============>                                   ]  277.9MB/907.7MB
+ e0d55fdb4d15 Extracting [===============================================>   ]  103.6MB/109MB
+ eb77aa907276 Downloading [===============>                                   ]  286.4MB/907.7MB
+ e0d55fdb4d15 Extracting [================================================>  ]  105.3MB/109MB
+ eb77aa907276 Downloading [===============>                                   ]  290.1MB/907.7MB
+ eb77aa907276 Downloading [================>                                  ]  294.9MB/907.7MB
+ eb77aa907276 Downloading [================>                                  ]  304.5MB/907.7MB
+ e0d55fdb4d15 Extracting [=================================================> ]  107.5MB/109MB
+ eb77aa907276 Downloading [=================>                                 ]  308.8MB/907.7MB
+ e0d55fdb4d15 Extracting [==================================================>]    109MB/109MB
+ eb77aa907276 Downloading [=================>                                 ]  314.7MB/907.7MB
+ eb77aa907276 Downloading [=================>                                 ]  318.4MB/907.7MB
+ eb77aa907276 Downloading [=================>                                 ]  322.2MB/907.7MB
+ eb77aa907276 Downloading [==================>                                ]  330.2MB/907.7MB
+ eb77aa907276 Downloading [==================>                                ]  334.5MB/907.7MB
+ eb77aa907276 Downloading [==================>                                ]  342.4MB/907.7MB
+ eb77aa907276 Downloading [===================>                               ]  349.4MB/907.7MB
+ eb77aa907276 Downloading [===================>                               ]  357.9MB/907.7MB
+ e0d55fdb4d15 Pull complete 
+ c1cb13b19080 Extracting [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Extracting [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Pull complete 
+ 873532e5f8c7 Extracting [==================================================>]     128B/128B
+ 873532e5f8c7 Extracting [==================================================>]     128B/128B
+ 873532e5f8c7 Pull complete 
+ 050d9f8c3b1c Extracting [==================================================>]     169B/169B
+ 050d9f8c3b1c Extracting [==================================================>]     169B/169B
+ 050d9f8c3b1c Pull complete 
+ 710e142705f8 Extracting [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Extracting [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Pull complete 
+ cb628c265f09 Extracting [==================================================>]     184B/184B
+ cb628c265f09 Extracting [==================================================>]     184B/184B
+ cb628c265f09 Pull complete 
+ postgresql Pulled 
+ eb77aa907276 Downloading [===================>                               ]  362.7MB/907.7MB
+ eb77aa907276 Downloading [====================>                              ]  368.6MB/907.7MB
+ eb77aa907276 Downloading [====================>                              ]  373.4MB/907.7MB
+ eb77aa907276 Downloading [====================>                              ]  379.8MB/907.7MB
+ eb77aa907276 Downloading [=====================>                             ]  389.4MB/907.7MB
+ eb77aa907276 Downloading [=====================>                             ]  395.8MB/907.7MB
+ eb77aa907276 Downloading [======================>                            ]  404.3MB/907.7MB
+ eb77aa907276 Downloading [======================>                            ]  416.1MB/907.7MB
+ eb77aa907276 Downloading [=======================>                           ]  428.9MB/907.7MB
+ eb77aa907276 Downloading [=======================>                           ]  431.6MB/907.7MB
+ eb77aa907276 Downloading [=======================>                           ]  434.2MB/907.7MB
+ eb77aa907276 Downloading [========================>                          ]  438.5MB/907.7MB
+ eb77aa907276 Downloading [========================>                          ]  446.5MB/907.7MB
+ eb77aa907276 Downloading [=========================>                         ]  454.4MB/907.7MB
+ eb77aa907276 Downloading [=========================>                         ]  457.1MB/907.7MB
+ eb77aa907276 Downloading [=========================>                         ]  462.4MB/907.7MB
+ eb77aa907276 Downloading [=========================>                         ]  466.2MB/907.7MB
+ eb77aa907276 Downloading [=========================>                         ]  467.8MB/907.7MB
+ eb77aa907276 Downloading [==========================>                        ]    472MB/907.7MB
+ eb77aa907276 Downloading [==========================>                        ]  480.5MB/907.7MB
+ eb77aa907276 Downloading [==========================>                        ]  485.4MB/907.7MB
+ eb77aa907276 Downloading [===========================>                       ]  490.2MB/907.7MB
+ eb77aa907276 Downloading [===========================>                       ]  492.3MB/907.7MB
+ eb77aa907276 Downloading [===========================>                       ]  496.6MB/907.7MB
+ eb77aa907276 Downloading [===========================>                       ]  499.3MB/907.7MB
+ eb77aa907276 Downloading [===========================>                       ]  504.6MB/907.7MB
+ eb77aa907276 Downloading [============================>                      ]  508.9MB/907.7MB
+ eb77aa907276 Downloading [============================>                      ]  515.3MB/907.7MB
+ eb77aa907276 Downloading [============================>                      ]  520.1MB/907.7MB
+ eb77aa907276 Downloading [============================>                      ]    526MB/907.7MB
+ eb77aa907276 Downloading [=============================>                     ]  528.1MB/907.7MB
+ eb77aa907276 Downloading [=============================>                     ]  530.8MB/907.7MB
+ eb77aa907276 Downloading [=============================>                     ]  535.1MB/907.7MB
+ eb77aa907276 Downloading [=============================>                     ]  539.3MB/907.7MB
+ eb77aa907276 Downloading [=============================>                     ]  543.1MB/907.7MB
+ eb77aa907276 Downloading [==============================>                    ]  544.7MB/907.7MB
+ eb77aa907276 Downloading [==============================>                    ]    550MB/907.7MB
+ eb77aa907276 Downloading [==============================>                    ]  553.7MB/907.7MB
+ eb77aa907276 Downloading [==============================>                    ]  555.9MB/907.7MB
+ eb77aa907276 Downloading [==============================>                    ]  556.9MB/907.7MB
+ eb77aa907276 Downloading [==============================>                    ]  561.7MB/907.7MB
+ eb77aa907276 Downloading [===============================>                   ]    567MB/907.7MB
+ eb77aa907276 Downloading [===============================>                   ]  571.3MB/907.7MB
+ eb77aa907276 Downloading [===============================>                   ]  574.5MB/907.7MB
+ eb77aa907276 Downloading [===============================>                   ]  576.6MB/907.7MB
+ eb77aa907276 Downloading [===============================>                   ]  579.8MB/907.7MB
+ eb77aa907276 Downloading [================================>                  ]  583.1MB/907.7MB
+ eb77aa907276 Downloading [================================>                  ]  585.2MB/907.7MB
+ eb77aa907276 Downloading [================================>                  ]  589.5MB/907.7MB
+ eb77aa907276 Downloading [================================>                  ]  593.2MB/907.7MB
+ eb77aa907276 Downloading [================================>                  ]    598MB/907.7MB
+ eb77aa907276 Downloading [=================================>                 ]  602.3MB/907.7MB
+ eb77aa907276 Downloading [=================================>                 ]    605MB/907.7MB
+ eb77aa907276 Downloading [=================================>                 ]  607.6MB/907.7MB
+ eb77aa907276 Downloading [=================================>                 ]  609.2MB/907.7MB
+ eb77aa907276 Downloading [=================================>                 ]  613.5MB/907.7MB
+ eb77aa907276 Downloading [=================================>                 ]  615.6MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]  619.4MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]  623.1MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]  625.2MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]  626.3MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]    629MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]    630MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]  631.6MB/907.7MB
+ eb77aa907276 Downloading [==================================>                ]  633.2MB/907.7MB
+ eb77aa907276 Downloading [===================================>               ]  636.9MB/907.7MB
+ eb77aa907276 Downloading [===================================>               ]  639.1MB/907.7MB
+ eb77aa907276 Downloading [===================================>               ]  641.8MB/907.7MB
+ eb77aa907276 Downloading [===================================>               ]  649.2MB/907.7MB
+ eb77aa907276 Downloading [===================================>               ]  653.5MB/907.7MB
+ eb77aa907276 Downloading [====================================>              ]  660.4MB/907.7MB
+ eb77aa907276 Downloading [====================================>              ]  665.3MB/907.7MB
+ eb77aa907276 Downloading [====================================>              ]  668.5MB/907.7MB
+ eb77aa907276 Downloading [====================================>              ]  671.1MB/907.7MB
+ eb77aa907276 Downloading [=====================================>             ]  673.8MB/907.7MB
+ eb77aa907276 Downloading [=====================================>             ]    677MB/907.7MB
+ eb77aa907276 Downloading [=====================================>             ]  681.3MB/907.7MB
+ eb77aa907276 Downloading [=====================================>             ]  683.4MB/907.7MB
+ eb77aa907276 Downloading [=====================================>             ]  689.3MB/907.7MB
+ eb77aa907276 Downloading [======================================>            ]  694.6MB/907.7MB
+ eb77aa907276 Downloading [======================================>            ]    700MB/907.7MB
+ eb77aa907276 Downloading [======================================>            ]  703.7MB/907.7MB
+ eb77aa907276 Downloading [======================================>            ]  705.8MB/907.7MB
+ eb77aa907276 Downloading [======================================>            ]  707.9MB/907.7MB
+ eb77aa907276 Downloading [=======================================>           ]  709.5MB/907.7MB
+ eb77aa907276 Downloading [=======================================>           ]  713.3MB/907.7MB
+ eb77aa907276 Downloading [=======================================>           ]  716.5MB/907.7MB
+ eb77aa907276 Downloading [=======================================>           ]  721.3MB/907.7MB
+ eb77aa907276 Downloading [========================================>          ]  728.8MB/907.7MB
+ eb77aa907276 Downloading [========================================>          ]  736.8MB/907.7MB
+ eb77aa907276 Downloading [=========================================>         ]  744.8MB/907.7MB
+ eb77aa907276 Downloading [=========================================>         ]  754.5MB/907.7MB
+ eb77aa907276 Downloading [==========================================>        ]  764.6MB/907.7MB
+ eb77aa907276 Downloading [==========================================>        ]  768.3MB/907.7MB
+ eb77aa907276 Downloading [==========================================>        ]  775.8MB/907.7MB
+ eb77aa907276 Downloading [===========================================>       ]  782.2MB/907.7MB
+ eb77aa907276 Downloading [===========================================>       ]  788.6MB/907.7MB
+ eb77aa907276 Downloading [===========================================>       ]  795.5MB/907.7MB
+ eb77aa907276 Downloading [============================================>      ]  800.8MB/907.7MB
+ eb77aa907276 Downloading [============================================>      ]  805.6MB/907.7MB
+ eb77aa907276 Downloading [============================================>      ]  812.6MB/907.7MB
+ eb77aa907276 Downloading [============================================>      ]  816.8MB/907.7MB
+ eb77aa907276 Downloading [=============================================>     ]  821.6MB/907.7MB
+ eb77aa907276 Downloading [=============================================>     ]  829.1MB/907.7MB
+ eb77aa907276 Downloading [=============================================>     ]    835MB/907.7MB
+ eb77aa907276 Downloading [==============================================>    ]  838.7MB/907.7MB
+ eb77aa907276 Downloading [==============================================>    ]  847.2MB/907.7MB
+ eb77aa907276 Downloading [===============================================>   ]  854.2MB/907.7MB
+ eb77aa907276 Downloading [===============================================>   ]  859.5MB/907.7MB
+ eb77aa907276 Downloading [===============================================>   ]  867.5MB/907.7MB
+ eb77aa907276 Downloading [================================================>  ]  878.7MB/907.7MB
+ eb77aa907276 Downloading [================================================>  ]  888.8MB/907.7MB
+ eb77aa907276 Downloading [=================================================> ]  896.3MB/907.7MB
+ eb77aa907276 Downloading [=================================================> ]  903.8MB/907.7MB
+ eb77aa907276 Verifying Checksum 
+ eb77aa907276 Download complete 
+ eb77aa907276 Extracting [>                                                  ]  557.1kB/907.7MB
+ eb77aa907276 Extracting [=>                                                 ]  23.95MB/907.7MB
+ eb77aa907276 Extracting [==>                                                ]  46.24MB/907.7MB
+ eb77aa907276 Extracting [===>                                               ]  70.19MB/907.7MB
+ eb77aa907276 Extracting [====>                                              ]  81.89MB/907.7MB
+ eb77aa907276 Extracting [=====>                                             ]  94.14MB/907.7MB
+ eb77aa907276 Extracting [=====>                                             ]  102.5MB/907.7MB
+ eb77aa907276 Extracting [======>                                            ]    112MB/907.7MB
+ eb77aa907276 Extracting [======>                                            ]  120.3MB/907.7MB
+ eb77aa907276 Extracting [=======>                                           ]  129.2MB/907.7MB
+ eb77aa907276 Extracting [=======>                                           ]  137.6MB/907.7MB
+ eb77aa907276 Extracting [========>                                          ]  145.4MB/907.7MB
+ eb77aa907276 Extracting [========>                                          ]  153.2MB/907.7MB
+ eb77aa907276 Extracting [=========>                                         ]  163.8MB/907.7MB
+ eb77aa907276 Extracting [==========>                                        ]  185.5MB/907.7MB
+ eb77aa907276 Extracting [===========>                                       ]  206.1MB/907.7MB
+ eb77aa907276 Extracting [===========>                                       ]  217.3MB/907.7MB
+ eb77aa907276 Extracting [============>                                      ]  228.4MB/907.7MB
+ eb77aa907276 Extracting [=============>                                     ]  237.9MB/907.7MB
+ eb77aa907276 Extracting [=============>                                     ]  250.1MB/907.7MB
+ eb77aa907276 Extracting [==============>                                    ]  269.1MB/907.7MB
+ eb77aa907276 Extracting [================>                                  ]  292.5MB/907.7MB
+ eb77aa907276 Extracting [=================>                                 ]  314.2MB/907.7MB
+ eb77aa907276 Extracting [==================>                                ]  334.8MB/907.7MB
+ eb77aa907276 Extracting [===================>                               ]  354.8MB/907.7MB
+ eb77aa907276 Extracting [====================>                              ]  364.3MB/907.7MB
+ eb77aa907276 Extracting [====================>                              ]  371.6MB/907.7MB
+ eb77aa907276 Extracting [=====================>                             ]  387.2MB/907.7MB
+ eb77aa907276 Extracting [======================>                            ]  407.8MB/907.7MB
+ eb77aa907276 Extracting [=======================>                           ]  433.9MB/907.7MB
+ eb77aa907276 Extracting [=========================>                         ]  462.4MB/907.7MB
+ eb77aa907276 Extracting [==========================>                        ]  489.7MB/907.7MB
+ eb77aa907276 Extracting [============================>                      ]  517.5MB/907.7MB
+ eb77aa907276 Extracting [=============================>                     ]  544.2MB/907.7MB
+ eb77aa907276 Extracting [===============================>                   ]  572.7MB/907.7MB
+ eb77aa907276 Extracting [================================>                  ]  598.8MB/907.7MB
+ eb77aa907276 Extracting [==================================>                ]  623.9MB/907.7MB
+ eb77aa907276 Extracting [===================================>               ]  651.2MB/907.7MB
+ eb77aa907276 Extracting [=====================================>             ]  678.5MB/907.7MB
+ eb77aa907276 Extracting [======================================>            ]  705.8MB/907.7MB
+ eb77aa907276 Extracting [========================================>          ]  730.9MB/907.7MB
+ eb77aa907276 Extracting [=========================================>         ]  750.4MB/907.7MB
+ eb77aa907276 Extracting [==========================================>        ]  772.1MB/907.7MB
+ eb77aa907276 Extracting [===========================================>       ]  792.7MB/907.7MB
+ eb77aa907276 Extracting [============================================>      ]  813.9MB/907.7MB
+ eb77aa907276 Extracting [=============================================>     ]  833.9MB/907.7MB
+ eb77aa907276 Extracting [===============================================>   ]  854.5MB/907.7MB
+ eb77aa907276 Extracting [================================================>  ]  875.1MB/907.7MB
+ eb77aa907276 Extracting [=================================================> ]  895.7MB/907.7MB
+ eb77aa907276 Extracting [==================================================>]  907.7MB/907.7MB
+ eb77aa907276 Pull complete 
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Pull complete 
+ 0ffa8f8aba1e Extracting [==================================================>]     226B/226B
+ 0ffa8f8aba1e Extracting [==================================================>]     226B/226B
+ 0ffa8f8aba1e Pull complete 
+ 2e81b9cb93cd Extracting [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Extracting [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Pull complete 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-opensearch-1  Started
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=9::'enablePackrat' deprecated - use 'enable_packrat'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=52::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=53::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=54::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=55::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=56::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=57::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=58::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=59::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=60::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=63::'excludeChars' argument is deprecated, use 'exclude_chars'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=73::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=74::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=119::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=122::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=155::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=157::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=199::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=325::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+============================= test session starts ==============================
+platform linux -- Python 3.14.2, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched
+configfile: setup.cfg
+testpaths: docs, tests, invenio_drafts_resources
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 81 items
+
+tests/records/test_api.py ...................                            [ 23%]
+tests/resources/test_files_resource.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+....                             [ 29%]
+tests/resources/test_record_resource.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+........                        [ 40%]
+tests/resources/test_resource_links.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...                              [ 45%]
+tests/services/test_record_service.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+............                      [ 61%]
+tests/services/test_record_service_files.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......................::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_files_rest/models.py,line=719::Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_files_rest/models.py,line=719::Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)
+     [ 91%]
+tests/services/test_record_service_search.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                          [ 93%]
+tests/services/test_record_service_tasks.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                            [ 95%]
+tests/services/test_records_uow.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                                    [ 97%]
+tests/services/test_services.py .::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                                       [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    pyparsing.ParserElement.enablePackrat()
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru12 = oneOf(["%.2d" % i for i in range(1, 13)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru13 = oneOf(["%.2d" % i for i in range(1, 14)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru23 = oneOf(["%.2d" % i for i in range(1, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru23 = oneOf(["%.2d" % i for i in range(0, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru29 = oneOf(["%.2d" % i for i in range(1, 30)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru30 = oneOf(["%.2d" % i for i in range(1, 31)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru31 = oneOf(["%.2d" % i for i in range(1, 32)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru59 = oneOf(["%.2d" % i for i in range(1, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru59 = oneOf(["%.2d" % i for i in range(0, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63: PyparsingDeprecationWarning: 'excludeChars' argument is deprecated, use 'exclude_chars'
+    positiveDigit = Word(nums, exact=1, excludeChars="0")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    (oneOf("01 03 05 07 08 10 12")("month") + "-" + oneThru31("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    ^ (oneOf("04 06 09 11")("month") + "-" + oneThru30("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: 19 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    p.addParseAction(cls.parse_action)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    UASymbol = Combine(oneOf("? ~ %"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonNumber = oneOf("21 22 23 24")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1Start.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1End.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    monthWithX = Combine(oneOf("0X 1X") ^ ("X" + digitOrX))("month")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    earlier = L("..").addParseAction(f)("lower") + date("upper").addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    later = date("lower").addParseAction(f) + L("..").addParseAction(f)("upper")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonL2Number = oneOf("21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41")
+
+tests/resources/test_files_resource.py::test_files_publish_flow
+tests/resources/test_record_resource.py::test_create_draft
+tests/resources/test_resource_links.py::test_create_draft
+tests/services/test_record_service.py::test_create_draft
+tests/services/test_record_service_files.py::test_create_delete_draft
+tests/services/test_record_service_search.py::test_search_versions
+tests/services/test_record_service_tasks.py::test_hard_delete_soft_deleted_task
+tests/services/test_records_uow.py::test_parent_record_uow_params
+tests/services/test_services.py::test_hard_delete_soft_deleted
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+    self.init_app(app)
+
+tests/services/test_record_service_files.py::test_publish_with_remote_files
+tests/services/test_record_service_files.py::test_enable_files_after_publish
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-drafts-resources/patched/.venv/lib/python3.14/site-packages/invenio_files_rest/models.py:719: SAWarning: Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)
+    return db.session.query(cls).filter_by(id=file_id).one_or_none()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.2-final-0 ________________
+
+Name                                                                  Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------------------------------
+invenio_drafts_resources/__init__.py                                      2      0   100%
+invenio_drafts_resources/auditlog/__init__.py                             0      0   100%
+invenio_drafts_resources/auditlog/actions.py                             21      0   100%
+invenio_drafts_resources/auditlog/context.py                             31     19    39%   26-29, 37-42, 51-62
+invenio_drafts_resources/records/__init__.py                              3      0   100%
+invenio_drafts_resources/records/api.py                                  93      1    99%   126
+invenio_drafts_resources/records/models.py                               36      0   100%
+invenio_drafts_resources/records/systemfields/__init__.py                 3      0   100%
+invenio_drafts_resources/records/systemfields/parent.py                  50      1    98%   80
+invenio_drafts_resources/records/systemfields/versions.py               130      1    99%   173
+invenio_drafts_resources/resources/__init__.py                            2      0   100%
+invenio_drafts_resources/resources/records/__init__.py                    3      0   100%
+invenio_drafts_resources/resources/records/args.py                        5      0   100%
+invenio_drafts_resources/resources/records/config.py                      6      0   100%
+invenio_drafts_resources/resources/records/errors.py                     16      0   100%
+invenio_drafts_resources/resources/records/resource.py                   85      2    98%   101-107
+invenio_drafts_resources/services/__init__.py                             2      0   100%
+invenio_drafts_resources/services/records/__init__.py                     3      0   100%
+invenio_drafts_resources/services/records/components/__init__.py          7      0   100%
+invenio_drafts_resources/services/records/components/base.py            126     12    90%   33, 37, 41, 45, 49, 53, 57, 116-124, 140, 296, 302
+invenio_drafts_resources/services/records/components/files.py             4      0   100%
+invenio_drafts_resources/services/records/components/media_files.py      58      5    91%   53-57, 77-78
+invenio_drafts_resources/services/records/components/metadata.py         10      0   100%
+invenio_drafts_resources/services/records/components/pid.py              12      0   100%
+invenio_drafts_resources/services/records/components/relations.py         4      1    75%   20
+invenio_drafts_resources/services/records/config.py                      49      0   100%
+invenio_drafts_resources/services/records/permissions.py                 11      0   100%
+invenio_drafts_resources/services/records/schema.py                      15      0   100%
+invenio_drafts_resources/services/records/search_params.py               13      0   100%
+invenio_drafts_resources/services/records/service.py                    227     47    79%   64, 77, 112, 124-148, 174-175, 180, 266, 452-453, 462, 547, 579-590, 594-595, 619-623, 671-674, 678-681, 708-736
+invenio_drafts_resources/services/records/tasks.py                        8      0   100%
+invenio_drafts_resources/services/records/uow.py                         36      4    89%   74-75, 80-81
+---------------------------------------------------------------------------------------------------
+TOTAL                                                                  1071     93    91%
+======================= 81 passed, 53 warnings in 39.13s =======================
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

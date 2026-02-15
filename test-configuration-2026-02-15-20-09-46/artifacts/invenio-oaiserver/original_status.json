@@ -1,0 +1,36 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v3.7.4",
+      "commit": "8d3bd3612daa6fe304d5a7effd8658b9cc5c824a",
+      "org": "inveniosoftware",
+      "package": "invenio-oaiserver",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-oaiserver",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

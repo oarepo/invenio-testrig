@@ -1,0 +1,94 @@
+WARNING: failed to reach any of the inventories with the following issues:
+intersphinx inventory 'https://elasticsearch-py.readthedocs.io/en/master/objects.inv' not fetchable due to <class 'requests.exceptions.HTTPError'>: 404 Client Error: Not Found for url: https://elasticsearch-py.readthedocs.io/en/master/objects.inv
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_HOSTS:9: WARNING: py:class reference target not found: elasticsearch.connection.Urllib3HttpConnection [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_HOSTS:10: WARNING: py:class reference target not found: elasticsearch.connection.RequestsHttpConnection [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:137: WARNING: py:class reference target not found: elasticsearch.connection.Urllib3HttpConnection [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:138: WARNING: py:class reference target not found: elasticsearch.connection.RequestsHttpConnection [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:142: WARNING: py:class reference target not found: opensearchpy.connection.Urllib3HttpConnection [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:143: WARNING: py:class reference target not found: opensearchpy.connection.RequestsHttpConnection [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_CLIENT_CONFIG:3: WARNING: py:class reference target not found: elasticsearch.Elasticsearch [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_CLIENT_CONFIG:3: WARNING: py:class reference target not found: opensearchpy.OpenSearch [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_CLIENT_CONFIG:7: WARNING: py:class reference target not found: elasticsearch.Elasticsearch [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_CLIENT_CONFIG:8: WARNING: py:class reference target not found: elasticsearch.Transport [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_CLIENT_CONFIG:12: WARNING: py:class reference target not found: opensearchpy.OpenSearch [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/invenio_search/config.py:docstring of invenio_search.config.SEARCH_CLIENT_CONFIG:13: WARNING: py:class reference target not found: opensearchpy.Transport [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:225: WARNING: py:class reference target not found: elasticsearch.Elasticsearch [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:225: WARNING: py:class reference target not found: opensearchpy.OpenSearch [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:226: WARNING: py:class reference target not found: elasticsearch.Transport [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original/docs/configuration.rst:226: WARNING: py:class reference target not found: opensearchpy.Transport [ref.class]
+ opensearch Pulling 
+ postgresql Pulling 
+ 4f4fb700ef54 Already exists 
+ postgresql Pulled 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-opensearch-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-search/original
+configfile: setup.cfg
+testpaths: docs, tests, invenio_search
+plugins: isort-4.0.0, flask-1.3.0, black-ng-0.4.1, invenio-3.4.2, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, pycodestyle-2.5.0
+collected 140 items
+docs/conf.py ...                                                         [  2%]
+tests/conftest.py ...                                                    [  4%]
+tests/mock_module/__init__.py ...                                        [  6%]
+tests/mock_module/component_templates/__init__.py ...                    [  8%]
+tests/mock_module/component_templates/os-v2/__init__.py ...              [ 10%]
+tests/mock_module/component_templates/v7/__init__.py ...                 [ 12%]
+tests/mock_module/index_templates/__init__.py ...                        [ 15%]
+tests/mock_module/index_templates/os-v2/__init__.py ...                  [ 17%]
+tests/mock_module/index_templates/v7/__init__.py ...                     [ 19%]
+tests/mock_module/mappings/__init__.py ...                               [ 21%]
+tests/mock_module/mappings/os-v1/__init__.py ...                         [ 23%]
+tests/mock_module/mappings/os-v2/__init__.py ...                         [ 25%]
+tests/mock_module/mappings/v7/__init__.py ...                            [ 27%]
+tests/mock_module/templates/__init__.py ...                              [ 30%]
+tests/mock_module/templates/os-v1/__init__.py ...                        [ 32%]
+tests/mock_module/templates/os-v2/__init__.py ...                        [ 34%]
+tests/mock_module/templates/v7/__init__.py ...                           [ 36%]
+tests/test_cli.py ......                                                 [ 40%]
+tests/test_invenio_search.py ................................            [ 63%]
+tests/test_query.py .................                                    [ 75%]
+tests/test_utils.py .......                                              [ 80%]
+invenio_search/__init__.py ...                                           [ 82%]
+invenio_search/api.py ...                                                [ 85%]
+invenio_search/cli.py ...                                                [ 87%]
+invenio_search/config.py ...                                             [ 89%]
+invenio_search/engine.py ...                                             [ 91%]
+invenio_search/errors.py ...                                             [ 93%]
+invenio_search/ext.py ...                                                [ 95%]
+invenio_search/proxies.py ...                                            [ 97%]
+invenio_search/utils.py ...                                              [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                         Stmts   Miss  Cover   Missing
+invenio_search/__init__.py       5      0   100%
+invenio_search/api.py          129      8    94%   50, 54, 58, 62, 106, 114, 250, 258
+invenio_search/cli.py          122      6    95%   27, 40, 116-122, 180-181
+invenio_search/config.py        12      0   100%
+invenio_search/engine.py        33     16    52%   26-28, 34-37, 48, 65-71, 76, 81, 86-87
+invenio_search/errors.py         2      0   100%
+invenio_search/ext.py          275     13    95%   119, 127-136, 225, 344, 373, 443-444, 460, 532, 536, 546
+invenio_search/proxies.py        8      0   100%
+invenio_search/utils.py         23      0   100%
+TOTAL                          609     43    93%
+============================= 140 passed in 11.35s =============================
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

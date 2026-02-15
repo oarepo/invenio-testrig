@@ -1,0 +1,101 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v2.4.0",
+        "commit": "7e0823a59ebc7afa353b34ac7f58468e3e9ef99e",
+        "org": "inveniosoftware",
+        "package": "invenio-base",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-base",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v1.1.0",
+        "commit": "0f1fde1a9c4ebd6fd0876d81a594bf60d407ca9e",
+        "org": "inveniosoftware",
+        "package": "invenio-config",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-config",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v1.1.0",
+      "commit": "0f1fde1a9c4ebd6fd0876d81a594bf60d407ca9e",
+      "org": "inveniosoftware",
+      "package": "invenio-config",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-config",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "skipped"
+}

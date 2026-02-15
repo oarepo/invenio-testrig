@@ -1,0 +1,13 @@
+{
+  "config_name": "sameas",
+  "patch_mode": "Upstream baseline (patches rebased on upstream, unpatched are upstream)",
+  "test_mode": "Test patched first, retry unpatched on failure",
+  "test_scope": "All packages",
+  "started_at": "2026-03-01 09:19:05 UTC",
+  "python_version": "3.14.2",
+  "last_updated": "2026-03-01 09:19:30 UTC",
+  "total_unique_warnings": 0,
+  "total_packages_with_warnings": 0,
+  "total_warning_occurrences": 0,
+  "warnings": []
+}

@@ -1,0 +1,7 @@
+{
+  "PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'": 1,
+  "PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'": 15,
+  "PyparsingDeprecationWarning: 'excludeChars' argument is deprecated, use 'exclude_chars'": 1,
+  "PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'": 5,
+  "DeprecationWarning: Implicit imports (e.g., 'import idutils; idutils.function;') might be removed in the next major version. Please use explicit imports (e.g., 'from idutils import function;') instead.": 1
+}

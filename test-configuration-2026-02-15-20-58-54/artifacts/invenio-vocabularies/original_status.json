@@ -1,0 +1,36 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v9.1.2",
+      "commit": "c0cf422178b9cabc1ecd09006e3a710c2efbe14a",
+      "org": "inveniosoftware",
+      "package": "invenio-vocabularies",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-vocabularies",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

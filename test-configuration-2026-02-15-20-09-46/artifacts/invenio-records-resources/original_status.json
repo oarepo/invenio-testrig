@@ -1,0 +1,55 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [
+      {
+        "base": null,
+        "branch": null,
+        "commit": "3102386ee40392732e8be59e9b40153dd68a9936",
+        "org": "inveniosoftware",
+        "package": "invenio-records-resources",
+        "pr": 666,
+        "pr_info": {
+          "commits": [
+            "3102386ee40392732e8be59e9b40153dd68a9936"
+          ],
+          "source_branch": "contribution-container-extractors",
+          "source_org": "oarepo",
+          "source_repo": "invenio-records-resources"
+        },
+        "repo": "invenio-records-resources",
+        "versions": []
+      }
+    ],
+    "reference": {
+      "base": null,
+      "branch": "fix-read-many",
+      "commit": "c6b973a14802e2a7f73100ab4e32cb0c36bd4672",
+      "org": "inveniosoftware",
+      "package": "invenio-records-resources",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-records-resources",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

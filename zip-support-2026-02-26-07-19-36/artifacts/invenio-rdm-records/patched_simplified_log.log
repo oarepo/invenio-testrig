@@ -1,0 +1,1351 @@
+ opensearch Pulling 
+ rabbitmq Pulling 
+ redis Pulling 
+ postgresql Pulling 
+ redis Pulled 
+ rabbitmq Pulled 
+ postgresql Pulled 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-opensearch-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.2, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched
+configfile: setup.cfg
+testpaths: docs, tests, invenio_rdm_records
+plugins: mock-3.15.1, invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0, Faker-40.5.1
+collected 819 items
+tests/contrib/codemeta/test_codemeta_custom_fields.py 
+             [  0%]
+tests/fixtures/load_error/test_vocabularies_load_error.py 
+              [  0%]
+tests/fixtures/test_cli.py 
+                                         [  1%]
+tests/fixtures/test_fixtures.py 
+                                [  2%]
+tests/oaiserver/test_oaipmh.py 
+                                       [  2%]
+tests/records/dumpers/test_access_dumpers.py 
+s                          [  3%]
+tests/records/dumpers/test_combined_subjects_dumper.py 
+                 [  3%]
+tests/records/dumpers/test_edtf_dumpers.py 
+                     [  4%]
+tests/records/dumpers/test_files_dumpers.py 
+                            [  4%]
+tests/records/dumpers/test_location_dumpers.py 
+s                     [  5%]
+tests/records/dumpers/test_pids_dumper.py 
+                              [  5%]
+tests/records/systemfields/test_access_systemfield.py 
+ [  7%]
+                                                                  [  8%]
+tests/records/systemfields/test_permission_flags.py 
+                  [  8%]
+tests/records/systemfields/test_tombstone.py 
+                     [  9%]
+tests/records/test_api.py 
+                                              [  9%]
+tests/records/test_jsonschema.py 
+   [ 14%]
+tests/records/test_quotas.py 
+                                          [ 14%]
+tests/records/test_records_communities.py 
+                              [ 14%]
+tests/records/test_relations_affiliations.py 
+                   [ 15%]
+tests/records/test_relations_languages.py 
+                           [ 16%]
+tests/records/test_relations_resource_types.py 
+                       [ 16%]
+tests/records/test_relations_subjects.py 
+                             [ 16%]
+tests/requests/test_record_deletion.py 
+                              [ 17%]
+tests/requests/test_user_moderation_actions.py 
+                       [ 17%]
+tests/resources/serializers/test_bibtex_serializer.py 
+ [ 19%]
+                                            [ 23%]
+tests/resources/serializers/test_cff_serializer.py 
+                     [ 23%]
+tests/resources/serializers/test_csl_serializer.py 
+                  [ 24%]
+tests/resources/serializers/test_datacite43_serializer.py 
+     [ 25%]
+tests/resources/serializers/test_datacite45_serializer.py 
+     [ 26%]
+tests/resources/serializers/test_datapackage_serializer.py ...           [ 26%]
+tests/resources/serializers/test_dcat_serializer.py 
+                    [ 26%]
+tests/resources/serializers/test_dublincore_serializer.py 
+        [ 27%]
+tests/resources/serializers/test_geojson_serializer.py ...               [ 28%]
+tests/resources/serializers/test_marcxml_serializer.py 
+                [ 28%]
+tests/resources/serializers/test_schemaorg_serializer.py 
+             [ 28%]
+tests/resources/serializers/test_signposting_serializer.py 
+         [ 29%]
+tests/resources/serializers/test_ui_serializer.py 
+                      [ 29%]
+tests/resources/test_access_requests.py 
+                            [ 30%]
+tests/resources/test_draft_file_permissions.py 
+            [ 31%]
+tests/resources/test_files.py 
+                                      [ 32%]
+tests/resources/test_iiif_image_api.py 
+                           [ 33%]
+tests/resources/test_iiif_presentation_api.py 
+                      [ 33%]
+tests/resources/test_media_files.py 
+                                [ 34%]
+tests/resources/test_publish_errors.py 
+s                               [ 34%]
+tests/resources/test_record_file_permissions.py 
+                 [ 35%]
+tests/resources/test_request_deletion.py 
+                           [ 36%]
+tests/resources/test_resources.py 
+ss
+               [ 39%]
+tests/resources/test_resources_communities.py 
+ [ 42%]
+                                                                       [ 42%]
+tests/resources/test_resources_community_records.py 
+                [ 43%]
+tests/resources/test_resources_oai.py 
+                       [ 44%]
+tests/resources/test_resources_pids.py 
+                            [ 45%]
+tests/resources/test_resources_record_communities.py 
+                  [ 45%]
+tests/resources/test_resources_review.py 
+                      [ 47%]
+tests/resources/test_resources_search.py 
+                               [ 47%]
+tests/resources/test_resources_user_access.py 
+                   [ 48%]
+tests/resources/test_rocrate.py 
+                                       [ 48%]
+tests/resources/test_serialized_links.py 
+                            [ 48%]
+tests/resources/test_signposting.py 
+                                  [ 49%]
+tests/resources/vocabularies/test_affiliations_vocabulary.py 
+          [ 49%]
+tests/resources/vocabularies/test_awards_vocabulary.py 
+                [ 49%]
+tests/resources/vocabularies/test_funders_vocabulary.py 
+               [ 50%]
+tests/resources/vocabularies/test_names_vocabulary.py 
+                 [ 50%]
+tests/resources/vocabularies/test_subjects_vocabulary.py s
+              [ 50%]
+tests/secret_links/test_secret_links.py 
+                        [ 51%]
+tests/secret_links/test_sharing.py 
+                                   [ 52%]
+tests/secret_links/test_token_serializers.py 
+                       [ 52%]
+tests/services/components/test_access_component.py 
+ssss
+                [ 53%]
+tests/services/components/test_internal_notes_component.py 
+             [ 53%]
+tests/services/components/test_metadata_component.py 
+                   [ 53%]
+tests/services/components/test_pids_component.py 
+     [ 55%]
+tests/services/components/test_relations_component.py 
+                  [ 56%]
+tests/services/components/test_signal_component.py 
+                     [ 56%]
+tests/services/components/test_verified_component.py 
+                  [ 56%]
+tests/services/files/test_deleted_record_files.py 
+                      [ 56%]
+tests/services/files/test_metadata_files.py 
+s                           [ 56%]
+tests/services/files/test_revert_of_deleted_files_in_published_record.py . [ 56%]
+                                                                         [ 56%]
+tests/services/files/test_zip_listing_extraction.py 
+EEEEEEEE            [ 57%]
+tests/services/pids/providers/test_datacite_pid_provider.py 
+  [ 59%]
+tests/services/pids/providers/test_external_pid_provider.py 
+        [ 59%]
+tests/services/pids/providers/test_oai_invenio_pid_provider.py 
+       [ 60%]
+tests/services/pids/test_pids_service.py 
+    [ 63%]
+tests/services/pids/test_pids_tasks.py 
+                           [ 64%]
+tests/services/schemas/test_access.py .........                          [ 65%]
+tests/services/schemas/test_additional_description.py ......s            [ 66%]
+tests/services/schemas/test_additional_title.py ......ss                 [ 67%]
+tests/services/schemas/test_creator_contributor.py 
+  [ 69%]
+tests/services/schemas/test_dates.py 
+                            [ 70%]
+tests/services/schemas/test_formats.py 
+                             [ 71%]
+tests/services/schemas/test_funding.py 
+                            [ 72%]
+tests/services/schemas/test_identifier.py 
+                        [ 73%]
+tests/services/schemas/test_languages.py 
+                              [ 73%]
+tests/services/schemas/test_location.py 
+                     [ 74%]
+tests/services/schemas/test_metadata.py 
+                              [ 75%]
+tests/services/schemas/test_pids.py .....                                [ 75%]
+tests/services/schemas/test_publication_date.py 
+ss
+               [ 76%]
+tests/services/schemas/test_rdm_record_schema.py 
+                      [ 77%]
+tests/services/schemas/test_reference.py 
+                         [ 78%]
+tests/services/schemas/test_related_identifier.py 
+             [ 79%]
+tests/services/schemas/test_resource_type.py ...                         [ 79%]
+tests/services/schemas/test_rights.py 
+                     [ 81%]
+tests/services/schemas/test_sizes.py 
+                               [ 81%]
+tests/services/schemas/test_version.py 
+                              [ 82%]
+tests/services/schemas/test_vocabulary.py ..                             [ 82%]
+tests/services/test_deletion_policy.py 
+                             [ 83%]
+tests/services/test_generators.py 
+                                [ 84%]
+tests/services/test_oai_service.py 
+                                  [ 84%]
+tests/services/test_permissions_policy.py 
+                             [ 84%]
+tests/services/test_rdm_service.py 
+                    [ 87%]
+tests/services/test_record_deletion.py 
+                               [ 87%]
+tests/services/test_record_deletion_request.py 
+                 [ 88%]
+tests/services/test_service_access.py 
+                [ 90%]
+tests/services/test_service_communities.py 
+                           [ 91%]
+tests/services/test_service_community_records.py 
+              [ 92%]
+tests/services/test_service_record_communities.py 
+               [ 93%]
+tests/services/test_service_review.py 
+    [ 97%]
+tests/services/test_service_tasks.py 
+                                 [ 97%]
+tests/services/test_sort.py 
+                                            [ 97%]
+tests/test_alembic.py s                                                  [ 97%]
+tests/test_invenio_rdm_records.py 
+                                     [ 98%]
+tests/tokens/test_feature_flag.py 
+                                      [ 98%]
+tests/tokens/test_resource_access.py 
+                     [100%]
+==================================== ERRORS ====================================
+__________________ ERROR at setup of test_zip_file_extraction __________________
+self = <sqlalchemy.engine.base.Connection object at 0x7f4d081ccb90>
+dialect = <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x7f4d0a80b100>
+context = <sqlalchemy.dialects.postgresql.psycopg2.PGExecutionContext_psycopg2 object at 0x7f4d09426350>
+statement = <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x7f4d0834cf50>
+parameters = [{'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'description': None, 'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'is_managed': True, ...}]
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+        effective_parameters: Optional[_AnyExecuteParams]
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+        if self._echo:
+            self._log_info(str_statement)
+            stats = context._get_cache_stats()
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x7f4d0a80b100>
+cursor = <cursor object at 0x7f4d081ccc70; closed: -1>
+statement = 'INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)'
+parameters = {'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'description': None, 'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'is_managed': True, ...}
+context = <sqlalchemy.dialects.postgresql.psycopg2.PGExecutionContext_psycopg2 object at 0x7f4d09426350>
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "uq_accounts_role_name"
+E       DETAIL:  Key (name)=(administration-access) already exists
+venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py:952: UniqueViolation
+The above exception was the direct cause of the following exception:
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:1311: in commit
+    self._prepare_impl()
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:1286: in _prepare_impl
+    self.session.flush()
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:4331: in flush
+    self._flush(objects)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:4466: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py:121: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:4427: in _flush
+    flush_context.execute()
+venv/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py:466: in execute
+    rec.execute(self)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py:642: in execute
+    util.preloaded.orm_persistence.save_obj(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py:93: in save_obj
+    _emit_insert_statements(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py:1233: in _emit_insert_statements
+    result = connection.execute(
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:1419: in execute
+    return meth(
+venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:1846: in _execute_context
+    return self._exec_single_context(
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x7f4d0a80b100>
+cursor = <cursor object at 0x7f4d081ccc70; closed: -1>
+statement = 'INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)'
+parameters = {'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'description': None, 'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'is_managed': True, ...}
+context = <sqlalchemy.dialects.postgresql.psycopg2.PGExecutionContext_psycopg2 object at 0x7f4d09426350>
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E       DETAIL:  Key (name)=(administration-access) already exists
+E       
+E       [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E       [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E       (Background on this error at: https://sqlalche.me/e/20/gkpj)
+venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py:952: IntegrityError
+_________________ ERROR at setup of test_zip_folder_extraction _________________
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = 'commit', state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+______________ ERROR at setup of test_large_zip_folder_extraction ______________
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = 'commit', state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+________________ ERROR at setup of test_large_zip_memory_usage _________________
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = 'commit', state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+_________________ ERROR at setup of test_zip_listing_resource __________________
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = 'commit', state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+_______________ ERROR at setup of test_zip_file_extract_resource _______________
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = 'commit', state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+______________ ERROR at setup of test_zip_folder_extract_resource ______________
+db = <SQLAlchemy postgresql+psycopg2://invenio:***@localhost:5432/invenio>
+    @pytest.fixture()
+    def admin_role_need(db):
+        """Store 1 role with 'superuser-access' ActionNeed
+        WHY: This is needed because expansion of ActionNeed is
+             done on the basis of a User/Role being associated with that Need
+             If no User/Role is associated with that Need (in the DB), the
+             permission is expanded to an empty list
+        """
+        role = Role(name="administration-access")
+        db.session.add(role)
+        action_role = ActionRoles.create(action=administration_access_action, role=role)
+        db.session.add(action_role)
+>       db.session.commit()
+tests/conftest.py:1834: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/scoping.py:597: in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2030: in commit
+    trans.commit(_to_root=True)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = 'commit', state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+____________ ERROR at teardown of test_zip_folder_extract_resource _____________
+database = <SQLAlchemy>
+    @pytest.yield_fixture(scope="module")
+    def location(database):
+        """Creates a simple default location for a test
+        Scope: function
+        Use this fixture if your test requires a `files location <https://invenio-
+        files-rest.readthedocs.io/en/latest/api.html#invenio_files_rest.models
+        Location>`_. The location will be a default location with the name
+        ``pytest-location``
+        """
+        from invenio_files_rest.models import Location
+        uri = tempfile.mkdtemp()
+        location_obj = Location(name="pytest-location", uri=uri, default=True)
+        database.session.add(location_obj)
+        database.session.commit()
+        yield location_obj
+>       shutil.rmtree(location_obj.uri)
+                      ^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py:752: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py:569: in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py:1096: in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py:1126: in _fire_loader_callables
+    return state._load_expired(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state.py:828: in _load_expired
+    self.manager.expired_attribute_loader(self, toload, passive)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py:1674: in load_scalar_attributes
+    result = load_on_ident(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py:510: in load_on_ident
+    return load_on_pk_identity(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py:695: in load_on_pk_identity
+    session.execute(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2351: in execute
+    return self._execute_internal(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2228: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py:577: in orm_pre_session_exec
+    session._autoflush()
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:3040: in _autoflush
+    self.flush()
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:4331: in flush
+    self._flush(objects)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:4359: in _flush
+    self.dispatch.before_flush(self, flush_context, objects)
+venv/lib/python3.14/site-packages/sqlalchemy/event/attr.py:387: in __call__
+    fn(*args, **kw)
+venv/lib/python3.14/site-packages/sqlalchemy_continuum/manager.py:349: in before_flush
+    uow = self.unit_of_work(session)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy_continuum/manager.py:308: in unit_of_work
+    conn = session.connection()
+           ^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2092: in connection
+    return self._connection_for_bind(
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:2108: in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py:101: in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+self = <sqlalchemy.orm.session.SessionTransaction object at 0x7f4d1c0c0a10>
+operation_name = '_connection_for_bind'
+state = <SessionTransactionState.DEACTIVE: 4>
+    def _raise_for_prerequisite_state(
+        self, operation_name: str, state: _StateChangeState
+    ) -> NoReturn:
+        if state is SessionTransactionState.DEACTIVE:
+            if self._rollback_exception:
+>               raise sa_exc.PendingRollbackError(
+                    "This Session's transaction has been rolled back "
+                    "due to a previous exception during flush."
+                    " To begin a new transaction with this Session, "
+                    "first issue Session.rollback()."
+                    f" Original exception was: {self._rollback_exception}",
+                    code="7s2a",
+                )
+E               sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+E               DETAIL:  Key (name)=(administration-access) already exists
+E               
+E               [SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+E               [parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+E               (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py:971: PendingRollbackError
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9
+    pyparsing.ParserElement.enablePackrat()
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52
+    oneThru12 = oneOf(["%.2d" % i for i in range(1, 13)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53
+    oneThru13 = oneOf(["%.2d" % i for i in range(1, 14)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54
+    oneThru23 = oneOf(["%.2d" % i for i in range(1, 24)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55
+    zeroThru23 = oneOf(["%.2d" % i for i in range(0, 24)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56
+    oneThru29 = oneOf(["%.2d" % i for i in range(1, 30)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57
+    oneThru30 = oneOf(["%.2d" % i for i in range(1, 31)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58
+    oneThru31 = oneOf(["%.2d" % i for i in range(1, 32)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59
+    oneThru59 = oneOf(["%.2d" % i for i in range(1, 60)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60
+    zeroThru59 = oneOf(["%.2d" % i for i in range(0, 60)])
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63
+    positiveDigit = Word(nums, exact=1, excludeChars="0")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73
+    (oneOf("01 03 05 07 08 10 12")("month") + "-" + oneThru31("day"))
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74
+    ^ (oneOf("04 06 09 11")("month") + "-" + oneThru30("day"))
+    p.addParseAction(cls.parse_action)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119
+    UASymbol = Combine(oneOf("? ~ %"))
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122
+    seasonNumber = oneOf("21 22 23 24")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155
+    l1Start.addParseAction(f)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157
+    l1End.addParseAction(f)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199
+    monthWithX = Combine(oneOf("0X 1X") ^ ("X" + digitOrX))("month")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+    earlier = L("..").addParseAction(f)("lower") + date("upper").addParseAction(f)
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+    later = date("lower").addParseAction(f) + L("..").addParseAction(f)("upper")
+venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325
+    seasonL2Number = oneOf("21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41")
+invenio_rdm_records/config.py:16
+    import idutils
+venv/lib/python3.14/site-packages/invenio_requests/services/files/config.py:64
+    "self": RequestFileLink("{+api}/requests/{request_id}/files/{key}"),
+venv/lib/python3.14/site-packages/invenio_requests/services/files/config.py:65
+    "content": RequestFileLink("{+api}/requests/{request_id}/files/{key}/content"),
+venv/lib/python3.14/site-packages/invenio_requests/services/files/config.py:66
+    "download_html": RequestFileLink("{+ui}/requests/{request_id}/files/{key}"),
+invenio_rdm_records/services/facets.py:76
+    warn(
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/__init__.py:13
+    __version_info__ = tuple(LooseVersion(__version__).version)
+venv/lib/python3.14/site-packages/datacite/jsonutils.py:15
+venv/lib/python3.14/site-packages/datacite/jsonutils.py:15
+    from jsonschema import RefResolver, validate
+venv/lib/python3.14/site-packages/tripoli/resource_validators/base_validator.py:611
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/tripoli/resource_validators/base_validator.py:611: SyntaxWarning: 'return' in a 'finally' block
+    return value
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py:334: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_db/uow.py:193: SAWarning: nested transaction already deassociated from connection
+    self.session.commit()
+    self.init_app(app)
+tests/fixtures/test_cli.py::test_create_fake_demo_draft_record
+tests/fixtures/test_cli.py::test_create_fake_demo_inclusion_requests
+    parsed_date = parser.parseString(f_date)[0]
+    p = edtfParser.parseString(input_string.strip(), parseAll)
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py:442: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/pytest_invenio/fixtures.py:579: SAWarning: nested transaction already deassociated from connection
+    self._transaction.rollback(_to_root=False)
+tests/records/dumpers/test_pids_dumper.py::test_esdumper_with_externalpidsext
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/records/dumpers/test_pids_dumper.py:37: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/records/test_records_communities.py::test_community_integration
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/records/test_records_communities.py:43: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/resources/test_files.py::test_published_record_files_allow_edit
+tests/services/files/test_revert_of_deleted_files_in_published_record.py::test_revert_of_deleted_files_in_published_record
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_files_rest/models.py:719: SAWarning: Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)
+    return db.session.query(cls).filter_by(id=file_id).one_or_none()
+tests/resources/test_request_deletion.py::test_request_flow
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/resources/test_request_deletion.py:57: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/resources/test_resources_communities.py::test_remove_another_community
+tests/resources/test_resources_communities.py::test_search_communities
+tests/resources/test_resources_communities.py::test_republish_with_mulitple_communities
+tests/resources/test_resources_communities.py::test_remove_record_last_community_with_multiple_communities
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/resources/test_resources_communities.py:31: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/resources/test_serialized_links.py::test_draft_links
+tests/secret_links/test_sharing.py::test_read_restricted_record_with_secret_link
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/secret_links/test_sharing.py:200: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/services/files/test_revert_of_deleted_files_in_published_record.py::test_revert_of_deleted_files_in_published_record
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py:495: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/services/files/test_revert_of_deleted_files_in_published_record.py::test_revert_of_deleted_files_in_published_record
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py:548: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/services/test_deletion_policy.py::test_grace_period_policy
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/services/test_deletion_policy.py:37: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/services/test_deletion_policy.py::test_deletion_policy_fallback_to_request
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/services/test_deletion_policy.py:95: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/services/test_rdm_service.py::test_publish_public_record_versions_no_or_external_doi_managed_doi
+tests/services/test_rdm_service.py::test_publish_public_record_versions_managed_doi_external_doi
+tests/services/test_rdm_service.py::test_publish_public_record_versions_managed_doi_no_doi
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/invenio_db/uow.py:212: SAWarning: nested transaction already deassociated from connection
+    self.session.commit()
+tests/services/test_record_deletion_request.py::test_request_deletion_request_only
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/services/test_record_deletion_request.py:77: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/services/test_record_deletion_request.py::test_request_deletion_duplicate_prevention
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/services/test_record_deletion_request.py:107: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/services/test_record_deletion_request.py::test_request_deletion_invalid_reason
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/services/test_record_deletion_request.py:137: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/services/test_service_community_records.py::test_remove_record_of_other_community
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/tests/services/test_service_community_records.py:95: SAWarning: nested transaction already deassociated from connection
+    db.session.commit()
+tests/tokens/test_resource_access.py::test_rat_validation_failed
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:153: InsecureKeyLengthWarning: The HMAC key is 10 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2
+    return self._jws.encode(
+tests/tokens/test_resource_access.py::test_rat_validation_failed
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:371: InsecureKeyLengthWarning: The HMAC key is 10 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2
+    decoded = self.decode_complete(
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:153: InsecureKeyLengthWarning: The HMAC key is 9 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2
+    return self._jws.encode(
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-rdm-records/patched/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:371: InsecureKeyLengthWarning: The HMAC key is 9 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2
+    decoded = self.decode_complete(
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.2-final-0 ________________
+Name                                                                                            Stmts   Miss  Cover   Missing
+invenio_rdm_records/__init__.py                                                                     3      0   100%
+invenio_rdm_records/access_requests_ui/__init__.py                                                  0      0   100%
+invenio_rdm_records/access_requests_ui/views.py                                                    31     19    39%   32-52, 58-64
+invenio_rdm_records/administration/__init__.py                                                      0      0   100%
+invenio_rdm_records/administration/views/__init__.py                                                0      0   100%
+invenio_rdm_records/administration/views/oai.py                                                    52      0   100%
+invenio_rdm_records/alembic/0cf260eb8e97_create_table_for_secret_links.py                          13      4    69%   23-32, 42-46
+invenio_rdm_records/alembic/4a15e8671f4d_create_rdm_records_tables.py                              30     20    33%   26-269, 279-297
+invenio_rdm_records/alembic/8ed1a438601c_migrate_secret_links.py                                    8      1    88%   22
+invenio_rdm_records/alembic/9e0ac518b9df_create_records_communities_m2m_table.py                   11      2    82%   23, 54
+invenio_rdm_records/alembic/88d1463de5c0_create_parent_record_table.py                             30     20    33%   25-101, 129-146
+invenio_rdm_records/alembic/912251a56a49_change_datetime_types.py                                  23     16    30%   25-53, 60-86
+invenio_rdm_records/alembic/2186256e8d9b_add_deletion_status_to_rdmrecords.py                      31     22    29%   22-43, 49-74, 79-80
+invenio_rdm_records/alembic/1746626978_drop_rdmrecordquota_user_id_unique_.py                       9      2    78%   21, 28
+invenio_rdm_records/alembic/__init__.py                                                             0      0   100%
+invenio_rdm_records/alembic/a2a6819f14f1_create_files_and_media_files_versioning_.py               26     16    38%   25-137, 148-175
+invenio_rdm_records/alembic/a6bfa06b1a6d_add_origin_and_description_to_secret_links.py             12      4    67%   22-26, 34-35
+invenio_rdm_records/alembic/a3957490361d_remove_pidrelations_tables.py                             14      6    57%   22-26, 32
+invenio_rdm_records/alembic/b822ba22c688_create_rdm_records_branch.py                               8      2    75%   20, 25
+invenio_rdm_records/alembic/cfcb8cb78708_create_access_request_tokens_table.py                     13      4    69%   23-37, 47-51
+invenio_rdm_records/alembic/faf0cefa79a0_create_record_quota_tables.py                             13      4    69%   23-43, 65-66
+invenio_rdm_records/alembic/ff9bec971d30_add_indexes.py                                            31     24    23%   21-87, 97-136
+invenio_rdm_records/alembic/ff860d48fb4b_create_media_files_table.py                               28     18    36%   25-149, 164-184
+invenio_rdm_records/alembic/ffd725001655_add_field_to_record_consent_to_share_.py                  10      2    80%   23, 35
+invenio_rdm_records/checks/__init__.py                                                              0      0   100%
+invenio_rdm_records/checks/requests.py                                                             72     51    29%   32-45, 53-73, 103-123, 131-152
+invenio_rdm_records/cli.py                                                                        187     90    52%   65-66, 89-102, 125-132, 155-162, 185-192, 215-239, 262-275, 282-286, 301-305, 312-344, 372-373, 382-386, 409-411
+invenio_rdm_records/config.py                                                                     170      0   100%
+invenio_rdm_records/contrib/__init__.py                                                             0      0   100%
+invenio_rdm_records/contrib/codemeta/__init__.py                                                    2      0   100%
+invenio_rdm_records/contrib/codemeta/custom_fields.py                                              10      0   100%
+invenio_rdm_records/contrib/codemeta/processors.py                                                 15     12    20%   17-34
+invenio_rdm_records/contrib/imprint/__init__.py                                                     2      0   100%
+invenio_rdm_records/contrib/imprint/custom_fields.py                                               15      2    87%   30, 48
+invenio_rdm_records/contrib/imprint/processors.py                                                  56     41    27%   26-43, 58-95
+invenio_rdm_records/contrib/journal/__init__.py                                                     3      0   100%
+invenio_rdm_records/contrib/journal/custom_fields.py                                               15      2    87%   29, 47
+invenio_rdm_records/contrib/journal/processors.py                                                 107     60    44%   25-48, 63-88, 116, 121, 139-156, 171-188
+invenio_rdm_records/contrib/journal/sort.py                                                         2      0   100%
+invenio_rdm_records/contrib/meeting/__init__.py                                                     3      0   100%
+invenio_rdm_records/contrib/meeting/custom_fields.py                                               17      2    88%   38, 63
+invenio_rdm_records/contrib/meeting/processors.py                                                  31     16    48%   24-37, 52-63
+invenio_rdm_records/contrib/meeting/sort.py                                                         2      0   100%
+invenio_rdm_records/contrib/thesis/__init__.py                                                      2      0   100%
+invenio_rdm_records/contrib/thesis/custom_fields.py                                                14      2    86%   28, 41
+invenio_rdm_records/ext.py                                                                        111      3    97%   134, 140, 146
+invenio_rdm_records/fixtures/__init__.py                                                           25     12    52%   32, 36-59, 67-71
+invenio_rdm_records/fixtures/communities.py                                                        12      0   100%
+invenio_rdm_records/fixtures/data/vocabularies/languages.py                                        15      7    53%   34-41, 46-47, 51-52
+invenio_rdm_records/fixtures/demo.py                                                              111     18    84%   46-49, 74-85, 99, 116, 345-354
+invenio_rdm_records/fixtures/fixture.py                                                            28      8    71%   34, 49-57, 62
+invenio_rdm_records/fixtures/records.py                                                             5      0   100%
+invenio_rdm_records/fixtures/tasks.py                                                             118     13    89%   58-59, 78, 85-90, 96-99, 165, 217-218
+invenio_rdm_records/fixtures/users.py                                                              44      3    93%   81-83
+invenio_rdm_records/fixtures/vocabularies.py                                                      212     30    86%   60-71, 75-81, 89-91, 99-103, 192, 399-400
+invenio_rdm_records/jobs/__init__.py                                                                0      0   100%
+invenio_rdm_records/jobs/jobs.py                                                                    4      0   100%
+invenio_rdm_records/notifications/__init__.py                                                       0      0   100%
+invenio_rdm_records/notifications/builders.py                                                     151      4    97%   112, 144, 289, 324
+invenio_rdm_records/oai.py                                                                         59      6    90%   114-118, 133-135
+invenio_rdm_records/oaiserver/__init__.py                                                           0      0   100%
+invenio_rdm_records/oaiserver/resources/__init__.py                                                 0      0   100%
+invenio_rdm_records/oaiserver/resources/config.py                                                  19      0   100%
+invenio_rdm_records/oaiserver/resources/resources.py                                               46      0   100%
+invenio_rdm_records/oaiserver/services/__init__.py                                                  0      0   100%
+invenio_rdm_records/oaiserver/services/config.py                                                   28      0   100%
+invenio_rdm_records/oaiserver/services/errors.py                                                   17      1    94%   42
+invenio_rdm_records/oaiserver/services/permissions.py                                               9      0   100%
+invenio_rdm_records/oaiserver/services/results.py                                                  59      3    95%   37, 86, 90
+invenio_rdm_records/oaiserver/services/schema.py                                                   18      0   100%
+invenio_rdm_records/oaiserver/services/services.py                                                115      7    94%   43-45, 51-53, 166
+invenio_rdm_records/oaiserver/services/uow.py                                                      14      0   100%
+invenio_rdm_records/patch_info.py                                                                   6      2    67%   42-44
+invenio_rdm_records/proxies.py                                                                     14      0   100%
+invenio_rdm_records/records/__init__.py                                                             2      0   100%
+invenio_rdm_records/records/api.py                                                                137      3    98%   357-361
+invenio_rdm_records/records/dumpers/__init__.py                                                     8      0   100%
+invenio_rdm_records/records/dumpers/access.py                                                      22      2    91%   50-51
+invenio_rdm_records/records/dumpers/combined_subjects.py                                           21      0   100%
+invenio_rdm_records/records/dumpers/edtf.py                                                        50      0   100%
+invenio_rdm_records/records/dumpers/locations.py                                                   24      0   100%
+invenio_rdm_records/records/dumpers/pids.py                                                        17      0   100%
+invenio_rdm_records/records/dumpers/statistics.py                                                  21      2    90%   48-49
+invenio_rdm_records/records/dumpers/subject_hierarchy.py                                           31     16    48%   71-88, 93-97
+invenio_rdm_records/records/jsonschemas/__init__.py                                                 0      0   100%
+invenio_rdm_records/records/mappings/__init__.py                                                    0      0   100%
+invenio_rdm_records/records/mappings/os-v1/__init__.py                                              0      0   100%
+invenio_rdm_records/records/mappings/os-v2/__init__.py                                              0      0   100%
+invenio_rdm_records/records/mappings/v7/__init__.py                                                 0      0   100%
+invenio_rdm_records/records/models.py                                                              84      1    99%   145
+invenio_rdm_records/records/processors/base.py                                                      8      3    62%   16, 20, 25
+invenio_rdm_records/records/processors/tiles.py                                                    74     53    28%   27, 47, 52, 57-59, 63-82, 92-142, 152-183
+invenio_rdm_records/records/stats/__init__.py                                                       2      0   100%
+invenio_rdm_records/records/stats/api.py                                                           25      3    88%   25, 32, 48
+invenio_rdm_records/records/stats/templates/__init__.py                                             0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/__init__.py                                0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_file_download/__init__.py             0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_file_download/os-v1/__init__.py       0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_file_download/os-v2/__init__.py       0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_file_download/v7/__init__.py          0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_record_view/__init__.py               0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_record_view/os-v1/__init__.py         0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_record_view/os-v2/__init__.py         0      0   100%
+invenio_rdm_records/records/stats/templates/aggregations/aggr_record_view/v7/__init__.py            0      0   100%
+invenio_rdm_records/records/stats/templates/events/__init__.py                                      0      0   100%
+invenio_rdm_records/records/stats/templates/events/file_download/__init__.py                        0      0   100%
+invenio_rdm_records/records/stats/templates/events/file_download/os-v1/__init__.py                  0      0   100%
+invenio_rdm_records/records/stats/templates/events/file_download/os-v2/__init__.py                  0      0   100%
+invenio_rdm_records/records/stats/templates/events/file_download/v7/__init__.py                     0      0   100%
+invenio_rdm_records/records/stats/templates/events/record_view/__init__.py                          0      0   100%
+invenio_rdm_records/records/stats/templates/events/record_view/os-v1/__init__.py                    0      0   100%
+invenio_rdm_records/records/stats/templates/events/record_view/os-v2/__init__.py                    0      0   100%
+invenio_rdm_records/records/stats/templates/events/record_view/v7/__init__.py                       0      0   100%
+invenio_rdm_records/records/systemfields/__init__.py                                                8      0   100%
+invenio_rdm_records/records/systemfields/access/__init__.py                                         8      0   100%
+invenio_rdm_records/records/systemfields/access/access_settings.py                                 10      1    90%   33
+invenio_rdm_records/records/systemfields/access/embargo.py                                         62      9    85%   24, 79-84, 91, 101, 111, 122
+invenio_rdm_records/records/systemfields/access/field/__init__.py                                   3      0   100%
+invenio_rdm_records/records/systemfields/access/field/parent.py                                   112     20    82%   71, 91, 106-111, 151-152, 157-158, 162-163, 176, 211-218, 231
+invenio_rdm_records/records/systemfields/access/field/record.py                                   103      5    95%   127-128, 146, 152-154
+invenio_rdm_records/records/systemfields/access/grants.py                                         122     13    89%   48-50, 58, 95, 120, 191, 228, 233, 243, 247, 276-277
+invenio_rdm_records/records/systemfields/access/links.py                                           62     13    79%   33, 45, 51, 56, 62, 66, 70, 81, 97-98, 102-105
+invenio_rdm_records/records/systemfields/access/owners.py                                          50     10    80%   33, 41, 65, 78, 82-85, 89, 93, 97
+invenio_rdm_records/records/systemfields/access/protection.py                                      44      5    89%   63-64, 74, 82, 88
+invenio_rdm_records/records/systemfields/deletion_status.py                                        61      4    93%   58, 62, 71, 79
+invenio_rdm_records/records/systemfields/draft_status.py                                           28      3    89%   80-89
+invenio_rdm_records/records/systemfields/has_draftcheck.py                                         21      0   100%
+invenio_rdm_records/records/systemfields/is_verified.py                                            12      0   100%
+invenio_rdm_records/records/systemfields/statistics.py                                             27      2    93%   36-37
+invenio_rdm_records/records/systemfields/tombstone.py                                             126      8    94%   45, 135, 166, 175, 181, 223, 229-230
+invenio_rdm_records/requests/__init__.py                                                            6      0   100%
+invenio_rdm_records/requests/access/__init__.py                                                     4      0   100%
+invenio_rdm_records/requests/access/models.py                                                      49      3    94%   86, 91, 126
+invenio_rdm_records/requests/access/permissions.py                                                  4      0   100%
+invenio_rdm_records/requests/access/requests.py                                                   112     18    84%   65-73, 81-87, 95-104, 112-117, 168, 342-349
+invenio_rdm_records/requests/access/tasks.py                                                        8      2    75%   22-25
+invenio_rdm_records/requests/base.py                                                                7      0   100%
+invenio_rdm_records/requests/community_inclusion.py                                                53      2    96%   74, 134
+invenio_rdm_records/requests/community_submission.py                                               70      2    97%   75, 217
+invenio_rdm_records/requests/decorators.py                                                         18      0   100%
+invenio_rdm_records/requests/entity_resolvers.py                                                   91      6    93%   65, 165, 169-170, 178, 210
+invenio_rdm_records/requests/file_modification.py                                                  47     15    68%   29-40, 44, 62-68, 108-109, 120
+invenio_rdm_records/requests/record_deletion.py                                                    71      5    93%   72, 120-126, 174
+invenio_rdm_records/requests/user_moderation/__init__.py                                            2      0   100%
+invenio_rdm_records/requests/user_moderation/actions.py                                            28      6    79%   42-43, 67-74
+invenio_rdm_records/requests/user_moderation/tasks.py                                              33     13    61%   29, 37, 43-54, 64-66, 72-76
+invenio_rdm_records/requests/user_moderation/utils.py                                              20      4    80%   44-47
+invenio_rdm_records/resources/__init__.py                                                           4      0   100%
+invenio_rdm_records/resources/args.py                                                               8      0   100%
+invenio_rdm_records/resources/config.py                                                           132      0   100%
+invenio_rdm_records/resources/deserializers/__init__.py                                             2      0   100%
+invenio_rdm_records/resources/deserializers/errors.py                                               1      0   100%
+invenio_rdm_records/resources/deserializers/rocrate/__init__.py                                    38      0   100%
+invenio_rdm_records/resources/deserializers/rocrate/schema.py                                      73      1    99%   140
+invenio_rdm_records/resources/errors.py                                                            22      2    91%   48, 53
+invenio_rdm_records/resources/iiif.py                                                             165     36    78%   146, 155-157, 201, 210-213, 284, 298, 308, 328, 342-344, 353, 357-372, 387-401
+invenio_rdm_records/resources/resources.py                                                        340     34    90%   51, 110-114, 125-132, 151-156, 171, 180-186, 193-199, 247-255, 262-268, 277-282, 377-382, 511-519, 571, 632-638, 663-671, 679-687, 692-697, 705-710
+invenio_rdm_records/resources/serializers/__init__.py                                              16      0   100%
+invenio_rdm_records/resources/serializers/bibtex/__init__.py                                        9      0   100%
+invenio_rdm_records/resources/serializers/bibtex/schema.py                                        166     11    93%   100, 104-105, 111, 304-308, 326, 341
+invenio_rdm_records/resources/serializers/bibtex/schema_formats.py                                 27      0   100%
+invenio_rdm_records/resources/serializers/cff/__init__.py                                           8      0   100%
+invenio_rdm_records/resources/serializers/cff/schema.py                                           148     18    88%   31, 53-60, 108, 122-128, 222, 244
+invenio_rdm_records/resources/serializers/codemeta/__init__.py                                      7      1    86%   22
+invenio_rdm_records/resources/serializers/codemeta/schema.py                                       34     22    35%   32-53, 57-67
+invenio_rdm_records/resources/serializers/csl/__init__.py                                          53      0   100%
+invenio_rdm_records/resources/serializers/csl/schema.py                                            75      5    93%   87-88, 103, 117, 126
+invenio_rdm_records/resources/serializers/csv/__init__.py                                           4      0   100%
+invenio_rdm_records/resources/serializers/datacite/__init__.py                                     19      0   100%
+invenio_rdm_records/resources/serializers/datacite/schema.py                                      593     38    94%   119-120, 134, 165, 279-284, 296, 417-432, 441, 464-468, 552-553, 585, 629-637, 767-772, 784, 1030-1031, 1063, 1109-1110
+invenio_rdm_records/resources/serializers/datapackage/__init__.py                                   6      0   100%
+invenio_rdm_records/resources/serializers/datapackage/schema.py                                    65      0   100%
+invenio_rdm_records/resources/serializers/dcat/__init__.py                                        105     13    88%   106-117, 134, 145, 155, 191-199
+invenio_rdm_records/resources/serializers/dcat/schema.py                                           45      3    93%   76-77, 93
+invenio_rdm_records/resources/serializers/dublincore/__init__.py                                   12      0   100%
+invenio_rdm_records/resources/serializers/dublincore/schema.py                                    115      2    98%   71, 96
+invenio_rdm_records/resources/serializers/errors.py                                                 2      0   100%
+invenio_rdm_records/resources/serializers/geojson/__init__.py                                       6      0   100%
+invenio_rdm_records/resources/serializers/geojson/schema.py                                        12      0   100%
+invenio_rdm_records/resources/serializers/iiif/__init__.py                                         15      0   100%
+invenio_rdm_records/resources/serializers/iiif/schema.py                                           76      0   100%
+invenio_rdm_records/resources/serializers/marcxml/__init__.py                                      13      0   100%
+invenio_rdm_records/resources/serializers/marcxml/schema.py                                       291     12    96%   163-170, 186-190, 277, 292, 372
+invenio_rdm_records/resources/serializers/schemaorg/__init__.py                                     7      0   100%
+invenio_rdm_records/resources/serializers/schemaorg/schema.py                                     270     42    84%   40-56, 78, 81, 122, 145, 251-252, 281, 298, 337, 368, 383, 447-448, 469-479, 486-498, 528
+invenio_rdm_records/resources/serializers/schemas.py                                               51      6    88%   28-29, 69-73
+invenio_rdm_records/resources/serializers/signposting/__init__.py                                  19      0   100%
+invenio_rdm_records/resources/serializers/signposting/schema.py                                    97      1    99%   46
+invenio_rdm_records/resources/serializers/ui/__init__.py                                            6      0   100%
+invenio_rdm_records/resources/serializers/ui/fields.py                                             48      3    94%   73-88
+invenio_rdm_records/resources/serializers/ui/schema.py                                            252     79    69%   46, 118, 221-254, 258-278, 282-297, 312-314, 317-318, 321-322, 327, 352-353, 436-448, 457-463
+invenio_rdm_records/resources/serializers/utils.py                                                 29      2    93%   58, 67
+invenio_rdm_records/resources/stats/__init__.py                                                     2      0   100%
+invenio_rdm_records/resources/stats/event_builders.py                                              34     26    24%   34-55, 64-90, 99-107, 112-115, 123-125
+invenio_rdm_records/secret_links/__init__.py                                                        3      0   100%
+invenio_rdm_records/secret_links/errors.py                                                          5      1    80%   22
+invenio_rdm_records/secret_links/models.py                                                         84      3    96%   90, 121, 125
+invenio_rdm_records/secret_links/permissions.py                                                     4      0   100%
+invenio_rdm_records/secret_links/serializers.py                                                    41      1    98%   75
+invenio_rdm_records/secret_links/signals.py                                                         6      0   100%
+invenio_rdm_records/services/__init__.py                                                            8      0   100%
+invenio_rdm_records/services/access/__init__.py                                                     2      0   100%
+invenio_rdm_records/services/access/service.py                                                    357     63    82%   99, 137, 181, 202, 216-217, 300, 344, 378, 382-385, 419, 430, 459-477, 496-545, 568, 581-604, 624, 630, 662, 673, 762, 766, 779, 836-851, 957-958
+invenio_rdm_records/services/communities/__init__.py                                                2      0   100%
+invenio_rdm_records/services/communities/components.py                                             24      0   100%
+invenio_rdm_records/services/communities/moderation.py                                             40      5    88%   23, 27, 31, 48, 54
+invenio_rdm_records/services/communities/service.py                                               178      7    96%   72, 89, 307-308, 314, 378, 479
+invenio_rdm_records/services/community_inclusion/__init__.py                                        2      0   100%
+invenio_rdm_records/services/community_inclusion/service.py                                        28      2    93%   45, 59
+invenio_rdm_records/services/community_records/__init__.py                                          2      0   100%
+invenio_rdm_records/services/community_records/service.py                                          51      4    92%   83-84, 141-142
+invenio_rdm_records/services/components/__init__.py                                                14      0   100%
+invenio_rdm_records/services/components/access.py                                                  36      0   100%
+invenio_rdm_records/services/components/custom_fields.py                                            4      0   100%
+invenio_rdm_records/services/components/files.py                                                   21      2    90%   50-51
+invenio_rdm_records/services/components/internal_notes.py                                          34      1    97%   67
+invenio_rdm_records/services/components/metadata.py                                                18      0   100%
+invenio_rdm_records/services/components/pids.py                                                   138      0   100%
+invenio_rdm_records/services/components/record_deletion.py                                         30      1    97%   53
+invenio_rdm_records/services/components/record_files.py                                             8      0   100%
+invenio_rdm_records/services/components/review.py                                                  23      0   100%
+invenio_rdm_records/services/components/signal.py                                                   6      0   100%
+invenio_rdm_records/services/components/verified.py                                                48      2    96%   41, 47
+invenio_rdm_records/services/config.py                                                            256      3    99%   296, 316-317
+invenio_rdm_records/services/customizations.py                                                     31      0   100%
+invenio_rdm_records/services/decorators.py                                                         13      1    92%   27
+invenio_rdm_records/services/dummy.py                                                              10      3    70%   16, 32, 36
+invenio_rdm_records/services/errors.py                                                             68      6    91%   53, 179, 191, 196-202
+invenio_rdm_records/services/facets.py                                                             22      1    95%   99
+invenio_rdm_records/services/files/__init__.py                                                      2      0   100%
+invenio_rdm_records/services/files/service.py                                                      14      0   100%
+invenio_rdm_records/services/generators.py                                                        215     18    92%   62, 75-80, 96, 112, 140, 173, 177, 248, 261, 289, 302, 328, 406, 417
+invenio_rdm_records/services/github/__init__.py                                                     0      0   100%
+invenio_rdm_records/services/github/metadata.py                                                    83     56    33%   22, 27-29, 41-46, 55-59, 66-68, 84-91, 103-125, 130-143, 148, 152, 156-168, 172-183
+invenio_rdm_records/services/github/release.py                                                    116     85    27%   28-30, 41-73, 77-80, 85-92, 96-102, 107-119, 142-208, 217-224, 228, 236-238, 243-244, 249-250
+invenio_rdm_records/services/github/utils.py                                                        4      2    50%   17-22
+invenio_rdm_records/services/iiif/__init__.py                                                       2      0   100%
+invenio_rdm_records/services/iiif/converter.py                                                     63     45    29%   15, 19-21, 31, 36, 44, 61-73, 79-103, 107-119
+invenio_rdm_records/services/iiif/service.py                                                       74     26    65%   23-25, 30, 34-36, 91-116, 128
+invenio_rdm_records/services/iiif/storage.py                                                       69     40    42%   33-38, 42, 46, 50, 69-75, 79-92, 99, 104-118, 122, 135, 139-152
+invenio_rdm_records/services/iiif/tasks.py                                                         31     23    26%   21-34, 44-60
+invenio_rdm_records/services/permissions.py                                                        99      0   100%
+invenio_rdm_records/services/pids/__init__.py                                                       3      0   100%
+invenio_rdm_records/services/pids/errors.py                                                         8      1    88%   31
+invenio_rdm_records/services/pids/manager.py                                                      142      8    94%   36-37, 83, 168, 203, 229, 276-277
+invenio_rdm_records/services/pids/providers/__init__.py                                             5      0   100%
+invenio_rdm_records/services/pids/providers/base.py                                                80      8    90%   41, 46, 85, 102-106, 119
+invenio_rdm_records/services/pids/providers/datacite.py                                           145     22    85%   57, 70, 167, 173, 180-186, 212-218, 221, 229-231, 245-251, 296-297
+invenio_rdm_records/services/pids/providers/external.py                                            46      2    96%   36, 69
+invenio_rdm_records/services/pids/providers/oai.py                                                 15      0   100%
+invenio_rdm_records/services/pids/service.py                                                      103     15    85%   84-85, 88, 92-93, 125-131, 143-150, 272
+invenio_rdm_records/services/pids/tasks.py                                                          6      0   100%
+invenio_rdm_records/services/queryparser.py                                                         5      3    40%   15-17
+invenio_rdm_records/services/request_policies.py                                                  105     26    75%   29, 33, 101-102, 108-109, 113-117, 128-130, 134, 171, 182, 205-212, 221-227
+invenio_rdm_records/services/requests/__init__.py                                                   2      0   100%
+invenio_rdm_records/services/requests/service.py                                                   14      7    50%   25, 38-49
+invenio_rdm_records/services/result_items.py                                                      100     16    84%   23-25, 49, 68, 89, 146, 154-156, 164, 193, 214-217
+invenio_rdm_records/services/results.py                                                            57     20    65%   33, 37, 41, 45, 58, 62, 66-75, 79, 123-124, 128-137, 141
+invenio_rdm_records/services/review/__init__.py                                                     2      0   100%
+invenio_rdm_records/services/review/links.py                                                       10      1    90%   20
+invenio_rdm_records/services/review/service.py                                                     95      3    97%   65, 136, 162
+invenio_rdm_records/services/schemas/__init__.py                                                    4      0   100%
+invenio_rdm_records/services/schemas/access.py                                                     41      1    98%   79
+invenio_rdm_records/services/schemas/community_records.py                                          21      2    90%   48, 52
+invenio_rdm_records/services/schemas/fields.py                                                     21      0   100%
+invenio_rdm_records/services/schemas/files.py                                                      52      0   100%
+invenio_rdm_records/services/schemas/metadata.py                                                  179      8    96%   143, 210-214, 251, 255
+invenio_rdm_records/services/schemas/parent/__init__.py                                            37      2    95%   26-27
+invenio_rdm_records/services/schemas/parent/access.py                                              44      0   100%
+invenio_rdm_records/services/schemas/parent/communities.py                                          9      0   100%
+invenio_rdm_records/services/schemas/pids.py                                                        6      0   100%
+invenio_rdm_records/services/schemas/quota.py                                                       6      0   100%
+invenio_rdm_records/services/schemas/record.py                                                     69      2    97%   45, 115
+invenio_rdm_records/services/schemas/record_communities.py                                         24      0   100%
+invenio_rdm_records/services/schemas/stats.py                                                      10      0   100%
+invenio_rdm_records/services/schemas/tombstone.py                                                  21      0   100%
+invenio_rdm_records/services/schemas/utils.py                                                      17     13    24%   22-38
+invenio_rdm_records/services/schemas/versions.py                                                    4      0   100%
+invenio_rdm_records/services/search_params.py                                                      45      5    89%   108-112
+invenio_rdm_records/services/services.py                                                          303     65    79%   137, 206, 231, 239, 245, 315-352, 357-384, 396-401, 426, 434, 504-508, 594, 631-632, 637, 684, 699-700, 732, 753-757, 792, 827, 836, 844-849, 856-870
+invenio_rdm_records/services/signals/__init__.py                                                    2      0   100%
+invenio_rdm_records/services/signals/signals.py                                                     4      0   100%
+invenio_rdm_records/services/sort.py                                                                8      0   100%
+invenio_rdm_records/services/stats/__init__.py                                                      2      0   100%
+invenio_rdm_records/services/stats/permissions.py                                                  16      8    50%   21-23, 37, 41, 53-56
+invenio_rdm_records/services/tasks.py                                                              54     23    57%   55-57, 64-94
+invenio_rdm_records/tokens/__init__.py                                                              3      0   100%
+invenio_rdm_records/tokens/errors.py                                                               18      0   100%
+invenio_rdm_records/tokens/permissions.py                                                           5      0   100%
+invenio_rdm_records/tokens/resource_access.py                                                      41      4    90%   45-46, 79, 90
+invenio_rdm_records/tokens/scopes.py                                                                4      0   100%
+invenio_rdm_records/utils.py                                                                       90     19    79%   34-54, 76, 114-119, 140-143, 146, 152-153
+invenio_rdm_records/views.py                                                                       50      4    92%   77-78, 113-119
+invenio_rdm_records/webpack.py                                                                      2      0   100%
+TOTAL                                                                                           12435   1879    85%
+=========================== short test summary info ============================
+ERROR tests/services/files/test_zip_listing_extraction.py::test_zip_file_extraction - sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_zip_folder_extraction - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_large_zip_folder_extraction - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_large_zip_memory_usage - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_zip_listing_resource - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_zip_file_extract_resource - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_zip_folder_extract_resource - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+ERROR tests/services/files/test_zip_listing_extraction.py::test_zip_folder_extract_resource - sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "uq_accounts_role_name"
+DETAIL:  Key (name)=(administration-access) already exists
+[SQL: INSERT INTO accounts_role (id, name, description, is_managed, version_id, created, updated) VALUES (%(id)s, %(name)s, %(description)s, %(is_managed)s, %(version_id)s, %(created)s, %(updated)s)]
+[parameters: {'id': '976587eb-f5f0-4d5e-9e32-0bf7015807dc', 'name': 'administration-access', 'description': None, 'is_managed': True, 'version_id': 1, 'created': datetime.datetime(2026, 2, 26, 7, 34, 57, 538829, tzinfo=datetime.timezone.utc), 'updated': datetime.datetime(2026, 2, 26, 7, 34, 57, 538835, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+===== 795 passed, 17 skipped, 821 warnings, 8 errors in 977.13s (0:16:17) ======
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

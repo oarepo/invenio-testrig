@@ -1,0 +1,145 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "6085496f2063f57dbccdd24e82051bb31bd22502",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-rdm-records",
+          "pr": 2267,
+          "pr_info": {
+            "commits": [
+              "6085496f2063f57dbccdd24e82051bb31bd22502"
+            ],
+            "source_branch": "contribution-same-as-permission",
+            "source_org": "oarepo",
+            "source_repo": "invenio-rdm-records"
+          },
+          "repo": "invenio-rdm-records"
+        }
+      ],
+      "reference": {
+        "actual_version": "22.7.3",
+        "base": null,
+        "branch": "v22.7.3",
+        "commit": "0c89a21d81fbdd185982b76faf6b0055e9efca70",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-rdm-records",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-rdm-records"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    },
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [
+        {
+          "actual_version": null,
+          "base": null,
+          "branch": null,
+          "commit": "5faf3aeede1932e3be7730bbe3a423a9dca7839f",
+          "commits_from_version": [],
+          "org": "inveniosoftware",
+          "package": "invenio-records-permissions",
+          "pr": 119,
+          "pr_info": {
+            "commits": [
+              "8c8cd95d87784ac7c60ebfaa035cf574b87dc794",
+              "5faf3aeede1932e3be7730bbe3a423a9dca7839f"
+            ],
+            "source_branch": "contribution-same-as-permission",
+            "source_org": "oarepo",
+            "source_repo": "invenio-records-permissions"
+          },
+          "repo": "invenio-records-permissions"
+        }
+      ],
+      "reference": {
+        "actual_version": "1.2.1",
+        "base": null,
+        "branch": "v1.2.1",
+        "commit": "41c9c6281254e4739f7e798ba3f93427b4c7866e",
+        "commits_from_version": [],
+        "org": "inveniosoftware",
+        "package": "invenio-records-permissions",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-records-permissions"
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "actual_version": "2.1.0",
+      "base": null,
+      "branch": "v2.1.0",
+      "commit": "1a95d47e938c02def37bb749ca58e4d3793ecabe",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-collections",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-collections"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "success"
+}

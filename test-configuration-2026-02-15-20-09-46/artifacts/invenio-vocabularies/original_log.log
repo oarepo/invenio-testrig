@@ -1,0 +1,1044 @@
+running extract_messages
+extracting messages from invenio_vocabularies/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/cli.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/ext.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/factories.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/fixtures.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/jobs.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/proxies.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/views.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/webpack.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/administration/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/administration/views/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/administration/views/vocabularies.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/17c703ce1eb7_create_names_table.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/3ba812d80559_add_internal_name_id.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/4a9a4fd235f8_create_vocabulary_schemes.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/4f365fced43f_create_vocabularies_tables.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/55a700f897b6_add_names_and_afiliations_pid_column.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/6312f33645c1_create_affiliations_table.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/676dd587542d_create_funders_vocabulary_table.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/8ff82dfb0be8_create_vocabularies_branch.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/af2457652217_drop_unique_constraint_from_internal_id.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/d00af88aac94_change_datetime_types.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/alembic/e1146238edd3_create_awards_table.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/affiliations.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/api.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/facets.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/models.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/resources.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/services.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/mappings/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/affiliations/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/api.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/awards.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/models.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/resources.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/serializer.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/services.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/mappings/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/awards/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/common/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/common/openaire/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/common/openaire/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/common/ror/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/common/ror/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/api.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/facets.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/funders.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/models.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/resources.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/serializer.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/services.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/mappings/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/funders/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/api.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/components.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/models.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/names.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/permissions.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/resources.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/s3client.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/services.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/mappings/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/names/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/api.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/facets.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/models.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/resources.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/services.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/subjects.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/euroscivoc/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/euroscivoc/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/gemet/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/gemet/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/mappings/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/mesh/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/mesh/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/nvs/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/contrib/subjects/nvs/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/datastreams.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/errors.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/factories.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/readers.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/tasks.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/transformers.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/writers.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/datastreams/xml.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/api.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/models.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/pidprovider.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/jsonschemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/mappings/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/mappings/os-v1/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/mappings/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/mappings/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/systemfields/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/systemfields/pid.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/records/systemfields/relations.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/resources/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/resources/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/resources/resource.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/resources/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/resources/serializer.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/components.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/config.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/facets.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/generators.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/permissions.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/querystr.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/results.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/schema.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/service.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/tasks.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/custom_fields/__init__.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/custom_fields/subject.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/services/custom_fields/vocabulary.py (encoding="utf-8")
+extracting messages from invenio_vocabularies/templates/semantic-ui/invenio_vocabularies/subjects.html (encoding="utf-8")
+extracting messages from invenio_vocabularies/templates/semantic-ui/invenio_vocabularies/vocabularies-list.html (encoding="utf-8")
+extracting messages from invenio_vocabularies/templates/semantic-ui/invenio_vocabularies/vocabulary-details.html (encoding="utf-8")
+writing PO template file to /dev/null
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/invenio_vocabularies/config.py,line=15::Implicit imports (e.g., 'import idutils; idutils.function;') might be removed in the next major version. Please use explicit imports (e.g., 'from idutils import function;') instead.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=9::'enablePackrat' deprecated - use 'enable_packrat'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=52::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=53::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=54::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=55::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=56::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=57::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=58::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=59::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=60::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=63::'excludeChars' argument is deprecated, use 'exclude_chars'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=73::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=74::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=119::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=122::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=155::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=157::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=199::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=325::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original
+configfile: setup.cfg
+testpaths: tests, invenio_vocabularies
+plugins: anyio-4.12.1, invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0, pytest_httpserver-1.1.5
+collected 937 items
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/tests/resources/test_tasks_resources.py,line=21::cannot collect test class 'TestReader' because it has a __init__ constructor (from: tests/resources/test_tasks_resources.py)
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/tests/resources/test_tasks_resources.py,line=42::cannot collect test class 'TestWriter' because it has a __init__ constructor (from: tests/resources/test_tasks_resources.py)
+
+tests/conftest.py ...                                                    [  0%]
+tests/contrib/affiliations/conftest.py ...                               [  0%]
+tests/contrib/affiliations/test_affiliations_api.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_indexer/api.py,line=118::The 'record_to_index' function is no longer expected to return a tuple (index, doc_type), instead it should only return the index. Support for the tuple will be removed in a future version of 'invenio-indexer'.
+.                [  1%]
+tests/contrib/affiliations/test_affiliations_datastreams.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......... [  2%]
+.                                                                        [  2%]
+tests/contrib/affiliations/test_affiliations_jsonschema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...        [  3%]
+tests/contrib/affiliations/test_affiliations_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.....        [  4%]
+tests/contrib/affiliations/test_affiliations_schema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.....         [  5%]
+tests/contrib/affiliations/test_affiliations_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...           [  5%]
+tests/contrib/awards/conftest.py ...                                     [  5%]
+tests/contrib/awards/test_awards_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                            [  6%]
+tests/contrib/awards/test_awards_datastreams.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+........              [  7%]
+tests/contrib/awards/test_awards_jsonschema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                     [  8%]
+tests/contrib/awards/test_awards_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+                 [  9%]
+tests/contrib/awards/test_awards_schema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+..........           [ 11%]
+tests/contrib/awards/test_awards_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.....                     [ 12%]
+tests/contrib/common/openaire/test_openaire_datastreams.py .......       [ 13%]
+tests/contrib/common/ror/test_ror_datastreams.py ..........::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+              [ 14%]
+tests/contrib/funders/conftest.py ...                                    [ 14%]
+tests/contrib/funders/test_funders_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                          [ 14%]
+tests/contrib/funders/test_funders_datastreams.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+....                [ 15%]
+tests/contrib/funders/test_funders_jsonschema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...                  [ 16%]
+tests/contrib/funders/test_funders_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+               [ 17%]
+tests/contrib/funders/test_funders_schema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+........                [ 18%]
+tests/contrib/funders/test_funders_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...                     [ 19%]
+tests/contrib/names/conftest.py ...                                      [ 19%]
+tests/contrib/names/test_name_permissions.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                         [ 20%]
+tests/contrib/names/test_names_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_indexer/api.py,line=118::The 'record_to_index' function is no longer expected to return a tuple (index, doc_type), instead it should only return the index. Support for the tuple will be removed in a future version of 'invenio-indexer'.
+.                              [ 20%]
+tests/contrib/names/test_names_datastreams.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+................       [ 22%]
+tests/contrib/names/test_names_jsonschema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...                      [ 23%]
+tests/contrib/names/test_names_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+                     [ 24%]
+tests/contrib/names/test_names_schema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py,line=845::In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+                          [ 24%]
+tests/contrib/names/test_names_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+....                        [ 25%]
+tests/contrib/subjects/conftest.py ...                                   [ 26%]
+tests/contrib/subjects/euroscivoc/test_subjects_euroscivoc_datastream.py . [ 26%]
+...                                                                      [ 26%]
+tests/contrib/subjects/gemet/test_subjects_gemet_datastream.py ...       [ 26%]
+tests/contrib/subjects/nvs/test_subjects_nvs_datastream.py ....          [ 27%]
+tests/contrib/subjects/test_subjects_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_indexer/api.py,line=118::The 'record_to_index' function is no longer expected to return a tuple (index, doc_type), instead it should only return the index. Support for the tuple will be removed in a future version of 'invenio-indexer'.
+.                         [ 27%]
+tests/contrib/subjects/test_subjects_datastreams.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...               [ 28%]
+tests/contrib/subjects/test_subjects_facets.py ....                      [ 28%]
+tests/contrib/subjects/test_subjects_jsonschema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...                [ 29%]
+tests/contrib/subjects/test_subjects_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+....                 [ 30%]
+tests/contrib/subjects/test_subjects_schema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                      [ 30%]
+tests/contrib/subjects/test_subjects_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                     [ 30%]
+tests/custom_fields/test_custom_fields.py .......::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...                     [ 32%]
+tests/datastreams/conftest.py ...                                        [ 32%]
+tests/datastreams/test_datastreams.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                              [ 32%]
+tests/datastreams/test_datastreams_tasks.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                         [ 33%]
+tests/datastreams/test_fixtures.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                   [ 33%]
+tests/datastreams/test_readers.py ............::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                         [ 35%]
+tests/datastreams/test_transformers.py ....                              [ 35%]
+tests/datastreams/test_writers.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.......                             [ 36%]
+tests/mock_module/__init__.py ...                                        [ 36%]
+tests/mock_module/api.py ...                                             [ 37%]
+tests/mock_module/jsonschemas/__init__.py ...                            [ 37%]
+tests/mock_module/mappings/__init__.py ...                               [ 37%]
+tests/mock_module/mappings/v6/__init__.py ...                            [ 38%]
+tests/mock_module/mappings/v7/__init__.py ...                            [ 38%]
+tests/mock_module/models.py ...                                          [ 38%]
+tests/records/conftest.py ...                                            [ 39%]
+tests/records/test_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_indexer/api.py,line=118::The 'record_to_index' function is no longer expected to return a tuple (index, doc_type), instead it should only return the index. Support for the tuple will be removed in a future version of 'invenio-indexer'.
+.                                          [ 39%]
+tests/records/test_jsonschema.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......                               [ 40%]
+tests/records/test_models.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                         [ 40%]
+tests/records/test_relationship.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_indexer/api.py,line=118::The 'record_to_index' function is no longer expected to return a tuple (index, doc_type), instead it should only return the index. Support for the tuple will be removed in a future version of 'invenio-indexer'.
+                               [ 41%]
+tests/resources/conftest.py ...                                          [ 42%]
+tests/resources/test_resources_l10n.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                              [ 42%]
+tests/resources/test_tasks_resources.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+                              [ 42%]
+tests/resources/test_vocabularies_admin_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                  [ 43%]
+tests/resources/test_vocabularies_resource.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......                  [ 44%]
+tests/services/conftest.py ...                                           [ 44%]
+tests/services/test_labels.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                                      [ 44%]
+tests/services/test_permissions.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                                  [ 45%]
+tests/services/test_schema.py ..........                                 [ 46%]
+tests/services/test_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+........                               [ 47%]
+tests/test_alembic.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_oauthclient/alembic/bff1f190b9bd_add_timestamp_oauthclient.py,line=27::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_oauthclient/alembic/97bbc733896c_create_oauthclient_tables.py,line=76::The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/alembic/ddl/postgresql.py,line=202::autoincrement and existing_autoincrement only make sense for MySQL
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py,line=99::The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)
+                                                [ 47%]
+tests/test_cli.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                                                   [ 48%]
+tests/test_factory.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py,line=128::OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+......                                          [ 49%]
+tests/test_invenio_vocabularies.py ....                                  [ 49%]
+invenio_vocabularies/__init__.py ...                                     [ 50%]
+invenio_vocabularies/administration/__init__.py ...                      [ 50%]
+invenio_vocabularies/administration/views/__init__.py ...                [ 50%]
+invenio_vocabularies/administration/views/vocabularies.py ...            [ 51%]
+invenio_vocabularies/alembic/__init__.py ...                             [ 51%]
+invenio_vocabularies/alembic/17c703ce1eb7_create_names_table.py ...      [ 51%]
+invenio_vocabularies/alembic/3ba812d80559_add_internal_name_id.py ...    [ 51%]
+invenio_vocabularies/alembic/4a9a4fd235f8_create_vocabulary_schemes.py . [ 52%]
+..                                                                       [ 52%]
+invenio_vocabularies/alembic/4f365fced43f_create_vocabularies_tables.py . [ 52%]
+..                                                                       [ 52%]
+invenio_vocabularies/alembic/55a700f897b6_add_names_and_afiliations_pid_column.py . [ 52%]
+..                                                                       [ 52%]
+invenio_vocabularies/alembic/6312f33645c1_create_affiliations_table.py . [ 53%]
+..                                                                       [ 53%]
+invenio_vocabularies/alembic/676dd587542d_create_funders_vocabulary_table.py . [ 53%]
+..                                                                       [ 53%]
+invenio_vocabularies/alembic/8ff82dfb0be8_create_vocabularies_branch.py . [ 53%]
+..                                                                       [ 53%]
+invenio_vocabularies/alembic/af2457652217_drop_unique_constraint_from_internal_id.py . [ 54%]
+..                                                                       [ 54%]
+invenio_vocabularies/alembic/d00af88aac94_change_datetime_types.py ...   [ 54%]
+invenio_vocabularies/alembic/e1146238edd3_create_awards_table.py ...     [ 54%]
+invenio_vocabularies/cli.py ...                                          [ 55%]
+invenio_vocabularies/config.py ...                                       [ 55%]
+invenio_vocabularies/contrib/__init__.py ...                             [ 55%]
+invenio_vocabularies/contrib/affiliations/__init__.py ...                [ 56%]
+invenio_vocabularies/contrib/affiliations/affiliations.py ...            [ 56%]
+invenio_vocabularies/contrib/affiliations/api.py ...                     [ 56%]
+invenio_vocabularies/contrib/affiliations/config.py ...                  [ 57%]
+invenio_vocabularies/contrib/affiliations/datastreams.py ...             [ 57%]
+invenio_vocabularies/contrib/affiliations/facets.py ...                  [ 57%]
+invenio_vocabularies/contrib/affiliations/jsonschemas/__init__.py ...    [ 58%]
+invenio_vocabularies/contrib/affiliations/mappings/__init__.py ...       [ 58%]
+invenio_vocabularies/contrib/affiliations/mappings/os-v1/__init__.py ... [ 58%]
+                                                                         [ 58%]
+invenio_vocabularies/contrib/affiliations/mappings/os-v2/__init__.py ... [ 59%]
+                                                                         [ 59%]
+invenio_vocabularies/contrib/affiliations/mappings/v7/__init__.py ...    [ 59%]
+invenio_vocabularies/contrib/affiliations/models.py ...                  [ 59%]
+invenio_vocabularies/contrib/affiliations/resources.py ...               [ 59%]
+invenio_vocabularies/contrib/affiliations/schema.py ...                  [ 60%]
+invenio_vocabularies/contrib/affiliations/services.py ...                [ 60%]
+invenio_vocabularies/contrib/awards/__init__.py ...                      [ 60%]
+invenio_vocabularies/contrib/awards/api.py ...                           [ 61%]
+invenio_vocabularies/contrib/awards/awards.py ...                        [ 61%]
+invenio_vocabularies/contrib/awards/config.py ...                        [ 61%]
+invenio_vocabularies/contrib/awards/datastreams.py ...                   [ 62%]
+invenio_vocabularies/contrib/awards/jsonschemas/__init__.py ...          [ 62%]
+invenio_vocabularies/contrib/awards/mappings/__init__.py ...             [ 62%]
+invenio_vocabularies/contrib/awards/mappings/os-v1/__init__.py ...       [ 63%]
+invenio_vocabularies/contrib/awards/mappings/os-v2/__init__.py ...       [ 63%]
+invenio_vocabularies/contrib/awards/mappings/v7/__init__.py ...          [ 63%]
+invenio_vocabularies/contrib/awards/models.py ...                        [ 64%]
+invenio_vocabularies/contrib/awards/resources.py ...                     [ 64%]
+invenio_vocabularies/contrib/awards/schema.py ...                        [ 64%]
+invenio_vocabularies/contrib/awards/serializer.py ...                    [ 65%]
+invenio_vocabularies/contrib/awards/services.py ...                      [ 65%]
+invenio_vocabularies/contrib/common/__init__.py ...                      [ 65%]
+invenio_vocabularies/contrib/common/openaire/__init__.py ...             [ 66%]
+invenio_vocabularies/contrib/common/openaire/datastreams.py ...          [ 66%]
+invenio_vocabularies/contrib/common/ror/__init__.py ...                  [ 66%]
+invenio_vocabularies/contrib/common/ror/datastreams.py ...               [ 67%]
+invenio_vocabularies/contrib/funders/__init__.py ...                     [ 67%]
+invenio_vocabularies/contrib/funders/api.py ...                          [ 67%]
+invenio_vocabularies/contrib/funders/config.py ...                       [ 67%]
+invenio_vocabularies/contrib/funders/datastreams.py ...                  [ 68%]
+invenio_vocabularies/contrib/funders/facets.py ...                       [ 68%]
+invenio_vocabularies/contrib/funders/funders.py ...                      [ 68%]
+invenio_vocabularies/contrib/funders/jsonschemas/__init__.py ...         [ 69%]
+invenio_vocabularies/contrib/funders/mappings/__init__.py ...            [ 69%]
+invenio_vocabularies/contrib/funders/mappings/os-v1/__init__.py ...      [ 69%]
+invenio_vocabularies/contrib/funders/mappings/os-v2/__init__.py ...      [ 70%]
+invenio_vocabularies/contrib/funders/mappings/v7/__init__.py ...         [ 70%]
+invenio_vocabularies/contrib/funders/models.py ...                       [ 70%]
+invenio_vocabularies/contrib/funders/resources.py ...                    [ 71%]
+invenio_vocabularies/contrib/funders/schema.py ...                       [ 71%]
+invenio_vocabularies/contrib/funders/serializer.py ...                   [ 71%]
+invenio_vocabularies/contrib/funders/services.py ...                     [ 72%]
+invenio_vocabularies/contrib/names/__init__.py ...                       [ 72%]
+invenio_vocabularies/contrib/names/api.py ...                            [ 72%]
+invenio_vocabularies/contrib/names/components.py ...                     [ 73%]
+invenio_vocabularies/contrib/names/config.py ...                         [ 73%]
+invenio_vocabularies/contrib/names/datastreams.py ...                    [ 73%]
+invenio_vocabularies/contrib/names/jsonschemas/__init__.py ...           [ 74%]
+invenio_vocabularies/contrib/names/mappings/__init__.py ...              [ 74%]
+invenio_vocabularies/contrib/names/mappings/os-v1/__init__.py ...        [ 74%]
+invenio_vocabularies/contrib/names/mappings/os-v2/__init__.py ...        [ 75%]
+invenio_vocabularies/contrib/names/mappings/v7/__init__.py ...           [ 75%]
+invenio_vocabularies/contrib/names/models.py ...                         [ 75%]
+invenio_vocabularies/contrib/names/names.py ...                          [ 75%]
+invenio_vocabularies/contrib/names/permissions.py ...                    [ 76%]
+invenio_vocabularies/contrib/names/resources.py ...                      [ 76%]
+invenio_vocabularies/contrib/names/s3client.py ...                       [ 76%]
+invenio_vocabularies/contrib/names/schema.py ...                         [ 77%]
+invenio_vocabularies/contrib/names/services.py ...                       [ 77%]
+invenio_vocabularies/contrib/subjects/__init__.py ...                    [ 77%]
+invenio_vocabularies/contrib/subjects/api.py ...                         [ 78%]
+invenio_vocabularies/contrib/subjects/config.py ...                      [ 78%]
+invenio_vocabularies/contrib/subjects/datastreams.py ...                 [ 78%]
+invenio_vocabularies/contrib/subjects/euroscivoc/__init__.py ...         [ 79%]
+invenio_vocabularies/contrib/subjects/euroscivoc/datastreams.py ...      [ 79%]
+invenio_vocabularies/contrib/subjects/facets.py ...                      [ 79%]
+invenio_vocabularies/contrib/subjects/gemet/__init__.py ...              [ 80%]
+invenio_vocabularies/contrib/subjects/gemet/datastreams.py ...           [ 80%]
+invenio_vocabularies/contrib/subjects/jsonschemas/__init__.py ...        [ 80%]
+invenio_vocabularies/contrib/subjects/mappings/__init__.py ...           [ 81%]
+invenio_vocabularies/contrib/subjects/mappings/os-v1/__init__.py ...     [ 81%]
+invenio_vocabularies/contrib/subjects/mappings/os-v2/__init__.py ...     [ 81%]
+invenio_vocabularies/contrib/subjects/mappings/v7/__init__.py ...        [ 82%]
+invenio_vocabularies/contrib/subjects/mesh/__init__.py ...               [ 82%]
+invenio_vocabularies/contrib/subjects/mesh/datastreams.py ...            [ 82%]
+invenio_vocabularies/contrib/subjects/models.py ...                      [ 83%]
+invenio_vocabularies/contrib/subjects/nvs/__init__.py ...                [ 83%]
+invenio_vocabularies/contrib/subjects/nvs/datastreams.py ...             [ 83%]
+invenio_vocabularies/contrib/subjects/resources.py ...                   [ 83%]
+invenio_vocabularies/contrib/subjects/schema.py ...                      [ 84%]
+invenio_vocabularies/contrib/subjects/services.py ...                    [ 84%]
+invenio_vocabularies/contrib/subjects/subjects.py ...                    [ 84%]
+invenio_vocabularies/datastreams/__init__.py ...                         [ 85%]
+invenio_vocabularies/datastreams/datastreams.py ...                      [ 85%]
+invenio_vocabularies/datastreams/errors.py ...                           [ 85%]
+invenio_vocabularies/datastreams/factories.py ...                        [ 86%]
+invenio_vocabularies/datastreams/readers.py ...                          [ 86%]
+invenio_vocabularies/datastreams/tasks.py ...                            [ 86%]
+invenio_vocabularies/datastreams/transformers.py ...                     [ 87%]
+invenio_vocabularies/datastreams/writers.py ...                          [ 87%]
+invenio_vocabularies/datastreams/xml.py ...                              [ 87%]
+invenio_vocabularies/ext.py ...                                          [ 88%]
+invenio_vocabularies/factories.py ...                                    [ 88%]
+invenio_vocabularies/fixtures.py ...                                     [ 88%]
+invenio_vocabularies/jobs.py ...                                         [ 89%]
+invenio_vocabularies/proxies.py ...                                      [ 89%]
+invenio_vocabularies/records/__init__.py ...                             [ 89%]
+invenio_vocabularies/records/api.py ...                                  [ 90%]
+invenio_vocabularies/records/jsonschemas/__init__.py ...                 [ 90%]
+invenio_vocabularies/records/mappings/__init__.py ...                    [ 90%]
+invenio_vocabularies/records/mappings/os-v1/__init__.py ...              [ 91%]
+invenio_vocabularies/records/mappings/os-v2/__init__.py ...              [ 91%]
+invenio_vocabularies/records/mappings/v7/__init__.py ...                 [ 91%]
+invenio_vocabularies/records/models.py ...                               [ 91%]
+invenio_vocabularies/records/pidprovider.py ...                          [ 92%]
+invenio_vocabularies/records/systemfields/__init__.py ...                [ 92%]
+invenio_vocabularies/records/systemfields/pid.py ...                     [ 92%]
+invenio_vocabularies/records/systemfields/relations.py ...               [ 93%]
+invenio_vocabularies/resources/__init__.py ...                           [ 93%]
+invenio_vocabularies/resources/config.py ...                             [ 93%]
+invenio_vocabularies/resources/resource.py ...                           [ 94%]
+invenio_vocabularies/resources/schema.py ...                             [ 94%]
+invenio_vocabularies/resources/serializer.py ...                         [ 94%]
+invenio_vocabularies/services/__init__.py ...                            [ 95%]
+invenio_vocabularies/services/components.py ...                          [ 95%]
+invenio_vocabularies/services/config.py ...                              [ 95%]
+invenio_vocabularies/services/custom_fields/__init__.py ...              [ 96%]
+invenio_vocabularies/services/custom_fields/subject.py ...               [ 96%]
+invenio_vocabularies/services/custom_fields/vocabulary.py ...            [ 96%]
+invenio_vocabularies/services/facets.py ...                              [ 97%]
+invenio_vocabularies/services/generators.py ...                          [ 97%]
+invenio_vocabularies/services/permissions.py ...                         [ 97%]
+invenio_vocabularies/services/querystr.py ...                            [ 98%]
+invenio_vocabularies/services/results.py ...                             [ 98%]
+invenio_vocabularies/services/schema.py ...                              [ 98%]
+invenio_vocabularies/services/service.py ...                             [ 99%]
+invenio_vocabularies/services/tasks.py ...                               [ 99%]
+invenio_vocabularies/views.py ...                                        [ 99%]
+invenio_vocabularies/webpack.py ...                                      [100%]
+
+=============================== warnings summary ===============================
+invenio_vocabularies/config.py:15
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/invenio_vocabularies/config.py:15: DeprecationWarning: Implicit imports (e.g., 'import idutils; idutils.function;') might be removed in the next major version. Please use explicit imports (e.g., 'from idutils import function;') instead.
+    from idutils import is_doi, is_gnd, is_isni, is_orcid, is_ror, is_url
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    pyparsing.ParserElement.enablePackrat()
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru12 = oneOf(["%.2d" % i for i in range(1, 13)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru13 = oneOf(["%.2d" % i for i in range(1, 14)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru23 = oneOf(["%.2d" % i for i in range(1, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru23 = oneOf(["%.2d" % i for i in range(0, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru29 = oneOf(["%.2d" % i for i in range(1, 30)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru30 = oneOf(["%.2d" % i for i in range(1, 31)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru31 = oneOf(["%.2d" % i for i in range(1, 32)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru59 = oneOf(["%.2d" % i for i in range(1, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru59 = oneOf(["%.2d" % i for i in range(0, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63: PyparsingDeprecationWarning: 'excludeChars' argument is deprecated, use 'exclude_chars'
+    positiveDigit = Word(nums, exact=1, excludeChars="0")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    (oneOf("01 03 05 07 08 10 12")("month") + "-" + oneThru31("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    ^ (oneOf("04 06 09 11")("month") + "-" + oneThru30("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: 19 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    p.addParseAction(cls.parse_action)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    UASymbol = Combine(oneOf("? ~ %"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonNumber = oneOf("21 22 23 24")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1Start.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1End.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    monthWithX = Combine(oneOf("0X 1X") ^ ("X" + digitOrX))("month")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    earlier = L("..").addParseAction(f)("lower") + date("upper").addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    later = date("lower").addParseAction(f) + L("..").addParseAction(f)("upper")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonL2Number = oneOf("21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41")
+
+tests/resources/test_tasks_resources.py:21
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/tests/resources/test_tasks_resources.py:21: PytestCollectionWarning: cannot collect test class 'TestReader' because it has a __init__ constructor (from: tests/resources/test_tasks_resources.py)
+    class TestReader(BaseReader):
+
+tests/resources/test_tasks_resources.py:42
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/tests/resources/test_tasks_resources.py:42: PytestCollectionWarning: cannot collect test class 'TestWriter' because it has a __init__ constructor (from: tests/resources/test_tasks_resources.py)
+    class TestWriter(BaseWriter):
+
+tests/contrib/affiliations/test_affiliations_api.py::test_affiliation_indexing
+tests/contrib/names/test_names_api.py::test_name_indexing
+tests/contrib/subjects/test_subjects_api.py::test_subject_indexing
+tests/records/test_api.py::test_record_indexing
+tests/records/test_relationship.py::test_indexing
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_indexer/api.py:118: DeprecationWarning: The 'record_to_index' function is no longer expected to return a tuple (index, doc_type), instead it should only return the index. Support for the tuple will be removed in a future version of 'invenio-indexer'.
+    warnings.warn(
+
+tests/contrib/affiliations/test_affiliations_datastreams.py: 1 warning
+tests/contrib/affiliations/test_affiliations_jsonschema.py: 1 warning
+tests/contrib/affiliations/test_affiliations_resource.py: 1 warning
+tests/contrib/affiliations/test_affiliations_schema.py: 1 warning
+tests/contrib/affiliations/test_affiliations_service.py: 1 warning
+tests/contrib/awards/test_awards_api.py: 1 warning
+tests/contrib/awards/test_awards_datastreams.py: 1 warning
+tests/contrib/awards/test_awards_jsonschema.py: 1 warning
+tests/contrib/awards/test_awards_resource.py: 1 warning
+tests/contrib/awards/test_awards_schema.py: 1 warning
+tests/contrib/awards/test_awards_service.py: 1 warning
+tests/contrib/common/ror/test_ror_datastreams.py: 1 warning
+tests/contrib/funders/test_funders_api.py: 1 warning
+tests/contrib/funders/test_funders_datastreams.py: 1 warning
+tests/contrib/funders/test_funders_jsonschema.py: 1 warning
+tests/contrib/funders/test_funders_resource.py: 1 warning
+tests/contrib/funders/test_funders_schema.py: 1 warning
+tests/contrib/funders/test_funders_service.py: 1 warning
+tests/contrib/names/test_name_permissions.py: 1 warning
+tests/contrib/names/test_names_api.py: 1 warning
+tests/contrib/names/test_names_datastreams.py: 1 warning
+tests/contrib/names/test_names_jsonschema.py: 1 warning
+tests/contrib/names/test_names_resource.py: 1 warning
+tests/contrib/names/test_names_schema.py: 1 warning
+tests/contrib/names/test_names_service.py: 1 warning
+tests/contrib/subjects/test_subjects_api.py: 1 warning
+tests/contrib/subjects/test_subjects_datastreams.py: 1 warning
+tests/contrib/subjects/test_subjects_jsonschema.py: 1 warning
+tests/contrib/subjects/test_subjects_resource.py: 1 warning
+tests/contrib/subjects/test_subjects_schema.py: 1 warning
+tests/contrib/subjects/test_subjects_service.py: 1 warning
+tests/custom_fields/test_custom_fields.py: 1 warning
+tests/datastreams/test_datastreams.py: 1 warning
+tests/datastreams/test_datastreams_tasks.py: 1 warning
+tests/datastreams/test_fixtures.py: 1 warning
+tests/datastreams/test_readers.py: 1 warning
+tests/datastreams/test_writers.py: 1 warning
+tests/records/test_api.py: 1 warning
+tests/records/test_jsonschema.py: 1 warning
+tests/records/test_models.py: 1 warning
+tests/records/test_relationship.py: 1 warning
+tests/resources/test_resources_l10n.py: 1 warning
+tests/resources/test_tasks_resources.py: 1 warning
+tests/resources/test_vocabularies_admin_resource.py: 1 warning
+tests/resources/test_vocabularies_resource.py: 1 warning
+tests/services/test_labels.py: 1 warning
+tests/services/test_permissions.py: 1 warning
+tests/services/test_service.py: 1 warning
+tests/test_alembic.py: 1 warning
+tests/test_cli.py: 1 warning
+tests/test_factory.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_search/ext.py:128: UserWarning: OpenSearch v2 mappings files not found, falling back to Elasticsearch v7 mappings for module mock_module.mappings. Please add the missing OpenSearch os-v2 mappings.
+    warnings.warn(
+
+tests/contrib/affiliations/test_affiliations_datastreams.py: 1 warning
+tests/contrib/affiliations/test_affiliations_jsonschema.py: 1 warning
+tests/contrib/affiliations/test_affiliations_resource.py: 1 warning
+tests/contrib/affiliations/test_affiliations_schema.py: 1 warning
+tests/contrib/affiliations/test_affiliations_service.py: 1 warning
+tests/contrib/awards/test_awards_api.py: 1 warning
+tests/contrib/awards/test_awards_datastreams.py: 1 warning
+tests/contrib/awards/test_awards_jsonschema.py: 1 warning
+tests/contrib/awards/test_awards_resource.py: 1 warning
+tests/contrib/awards/test_awards_schema.py: 1 warning
+tests/contrib/awards/test_awards_service.py: 1 warning
+tests/contrib/common/ror/test_ror_datastreams.py: 1 warning
+tests/contrib/funders/test_funders_api.py: 1 warning
+tests/contrib/funders/test_funders_datastreams.py: 1 warning
+tests/contrib/funders/test_funders_jsonschema.py: 1 warning
+tests/contrib/funders/test_funders_resource.py: 1 warning
+tests/contrib/funders/test_funders_schema.py: 1 warning
+tests/contrib/funders/test_funders_service.py: 1 warning
+tests/contrib/names/test_name_permissions.py: 1 warning
+tests/contrib/names/test_names_api.py: 1 warning
+tests/contrib/names/test_names_datastreams.py: 1 warning
+tests/contrib/names/test_names_jsonschema.py: 1 warning
+tests/contrib/names/test_names_resource.py: 1 warning
+tests/contrib/names/test_names_schema.py: 1 warning
+tests/contrib/names/test_names_service.py: 1 warning
+tests/contrib/subjects/test_subjects_api.py: 1 warning
+tests/contrib/subjects/test_subjects_datastreams.py: 1 warning
+tests/contrib/subjects/test_subjects_jsonschema.py: 1 warning
+tests/contrib/subjects/test_subjects_resource.py: 1 warning
+tests/contrib/subjects/test_subjects_schema.py: 1 warning
+tests/contrib/subjects/test_subjects_service.py: 1 warning
+tests/custom_fields/test_custom_fields.py: 1 warning
+tests/datastreams/test_datastreams.py: 1 warning
+tests/datastreams/test_datastreams_tasks.py: 1 warning
+tests/datastreams/test_fixtures.py: 1 warning
+tests/datastreams/test_readers.py: 1 warning
+tests/datastreams/test_writers.py: 1 warning
+tests/records/test_api.py: 1 warning
+tests/records/test_jsonschema.py: 1 warning
+tests/records/test_models.py: 1 warning
+tests/records/test_relationship.py: 1 warning
+tests/resources/test_resources_l10n.py: 1 warning
+tests/resources/test_tasks_resources.py: 1 warning
+tests/resources/test_vocabularies_admin_resource.py: 1 warning
+tests/resources/test_vocabularies_resource.py: 1 warning
+tests/services/test_labels.py: 1 warning
+tests/services/test_permissions.py: 1 warning
+tests/services/test_service.py: 1 warning
+tests/test_alembic.py: 1 warning
+tests/test_cli.py: 1 warning
+tests/test_factory.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+    self.init_app(app)
+
+tests/contrib/affiliations/test_affiliations_schema.py: 2 warnings
+tests/contrib/awards/test_awards_schema.py: 4 warnings
+tests/contrib/funders/test_funders_schema.py: 2 warnings
+tests/contrib/names/test_names_schema.py: 4 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/marshmallow/schema.py:845: UserWarning: In ModePIDFieldVocabularyMixin the context_schema is not defined, check why not!
+    validator_func(output, partial=partial, many=many)
+
+tests/contrib/awards/test_awards_resource.py: 3 warnings
+tests/contrib/funders/test_funders_resource.py: 3 warnings
+tests/contrib/names/test_names_resource.py: 5 warnings
+tests/resources/test_tasks_resources.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/flask_security/utils.py:77: DeprecationWarning: Remember me support has been removed.
+    warnings.warn("Remember me support has been removed.", DeprecationWarning)
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/alembic/config.py:580: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_oauthclient/alembic/bff1f190b9bd_add_timestamp_oauthclient.py:27: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    current_date = datetime.utcnow()
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_oauthclient/alembic/97bbc733896c_create_oauthclient_tables.py:76: SADeprecationWarning: The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)
+    insp = Inspector.from_engine(ctx.connection.engine)
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/alembic/ddl/postgresql.py:202: UserWarning: autoincrement and existing_autoincrement only make sense for MySQL
+    super().alter_column(
+
+tests/test_alembic.py::test_alembic
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-vocabularies/original/.venv/lib/python3.14/site-packages/invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py:99: SADeprecationWarning: The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)
+    insp = Inspector.from_engine(ctx.connection.engine)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+
+Name                                                                                   Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------------------------------------
+invenio_vocabularies/__init__.py                                                           3      0   100%
+invenio_vocabularies/administration/__init__.py                                            0      0   100%
+invenio_vocabularies/administration/views/__init__.py                                      0      0   100%
+invenio_vocabularies/administration/views/vocabularies.py                                 21      0   100%
+invenio_vocabularies/alembic/3ba812d80559_add_internal_name_id.py                         13      0   100%
+invenio_vocabularies/alembic/4a9a4fd235f8_create_vocabulary_schemes.py                    10      0   100%
+invenio_vocabularies/alembic/4f365fced43f_create_vocabularies_tables.py                   16      0   100%
+invenio_vocabularies/alembic/8ff82dfb0be8_create_vocabularies_branch.py                   10      0   100%
+invenio_vocabularies/alembic/17c703ce1eb7_create_names_table.py                           12      0   100%
+invenio_vocabularies/alembic/55a700f897b6_add_names_and_afiliations_pid_column.py         21      0   100%
+invenio_vocabularies/alembic/676dd587542d_create_funders_vocabulary_table.py              12      0   100%
+invenio_vocabularies/alembic/6312f33645c1_create_affiliations_table.py                    12      0   100%
+invenio_vocabularies/alembic/__init__.py                                                   0      0   100%
+invenio_vocabularies/alembic/af2457652217_drop_unique_constraint_from_internal_id.py      13      0   100%
+invenio_vocabularies/alembic/d00af88aac94_change_datetime_types.py                        13      0   100%
+invenio_vocabularies/alembic/e1146238edd3_create_awards_table.py                          12      0   100%
+invenio_vocabularies/cli.py                                                              107     46    57%   41, 43-45, 49-50, 60, 79-88, 99-100, 106, 113, 129-141, 156-175
+invenio_vocabularies/config.py                                                            69      2    97%   57, 63
+invenio_vocabularies/contrib/__init__.py                                                   0      0   100%
+invenio_vocabularies/contrib/affiliations/__init__.py                                      3      0   100%
+invenio_vocabularies/contrib/affiliations/affiliations.py                                 11      0   100%
+invenio_vocabularies/contrib/affiliations/api.py                                           2      0   100%
+invenio_vocabularies/contrib/affiliations/config.py                                       17      0   100%
+invenio_vocabularies/contrib/affiliations/datastreams.py                                  96     32    67%   45-47, 115-116, 129-181
+invenio_vocabularies/contrib/affiliations/facets.py                                        7      3    57%   26-32, 36
+invenio_vocabularies/contrib/affiliations/jsonschemas/__init__.py                          0      0   100%
+invenio_vocabularies/contrib/affiliations/mappings/__init__.py                             0      0   100%
+invenio_vocabularies/contrib/affiliations/mappings/os-v1/__init__.py                       0      0   100%
+invenio_vocabularies/contrib/affiliations/mappings/os-v2/__init__.py                       0      0   100%
+invenio_vocabularies/contrib/affiliations/mappings/v7/__init__.py                          0      0   100%
+invenio_vocabularies/contrib/affiliations/models.py                                        2      0   100%
+invenio_vocabularies/contrib/affiliations/resources.py                                     3      0   100%
+invenio_vocabularies/contrib/affiliations/schema.py                                       24      0   100%
+invenio_vocabularies/contrib/affiliations/services.py                                      3      0   100%
+invenio_vocabularies/contrib/awards/__init__.py                                            3      0   100%
+invenio_vocabularies/contrib/awards/api.py                                                 2      0   100%
+invenio_vocabularies/contrib/awards/awards.py                                             17      0   100%
+invenio_vocabularies/contrib/awards/config.py                                             16      0   100%
+invenio_vocabularies/contrib/awards/datastreams.py                                       121     24    80%   65, 106, 121, 123, 125, 135, 141-162, 205, 242, 251, 283-286, 292
+invenio_vocabularies/contrib/awards/jsonschemas/__init__.py                                0      0   100%
+invenio_vocabularies/contrib/awards/mappings/__init__.py                                   0      0   100%
+invenio_vocabularies/contrib/awards/mappings/os-v1/__init__.py                             0      0   100%
+invenio_vocabularies/contrib/awards/mappings/os-v2/__init__.py                             0      0   100%
+invenio_vocabularies/contrib/awards/mappings/v7/__init__.py                                0      0   100%
+invenio_vocabularies/contrib/awards/models.py                                              2      0   100%
+invenio_vocabularies/contrib/awards/resources.py                                           3      0   100%
+invenio_vocabularies/contrib/awards/schema.py                                             48      0   100%
+invenio_vocabularies/contrib/awards/serializer.py                                         21      0   100%
+invenio_vocabularies/contrib/awards/services.py                                            3      0   100%
+invenio_vocabularies/contrib/common/__init__.py                                            0      0   100%
+invenio_vocabularies/contrib/common/openaire/__init__.py                                   0      0   100%
+invenio_vocabularies/contrib/common/openaire/datastreams.py                               32      1    97%   44
+invenio_vocabularies/contrib/common/ror/__init__.py                                        0      0   100%
+invenio_vocabularies/contrib/common/ror/datastreams.py                                   119      5    96%   88, 151, 172, 174, 182
+invenio_vocabularies/contrib/funders/__init__.py                                           3      0   100%
+invenio_vocabularies/contrib/funders/api.py                                                2      0   100%
+invenio_vocabularies/contrib/funders/config.py                                            17      0   100%
+invenio_vocabularies/contrib/funders/datastreams.py                                       24      5    79%   38-44
+invenio_vocabularies/contrib/funders/facets.py                                             7      0   100%
+invenio_vocabularies/contrib/funders/funders.py                                           12      0   100%
+invenio_vocabularies/contrib/funders/jsonschemas/__init__.py                               0      0   100%
+invenio_vocabularies/contrib/funders/mappings/__init__.py                                  0      0   100%
+invenio_vocabularies/contrib/funders/mappings/os-v1/__init__.py                            0      0   100%
+invenio_vocabularies/contrib/funders/mappings/os-v2/__init__.py                            0      0   100%
+invenio_vocabularies/contrib/funders/mappings/v7/__init__.py                               0      0   100%
+invenio_vocabularies/contrib/funders/models.py                                             2      0   100%
+invenio_vocabularies/contrib/funders/resources.py                                          3      0   100%
+invenio_vocabularies/contrib/funders/schema.py                                            22      0   100%
+invenio_vocabularies/contrib/funders/serializer.py                                        14      0   100%
+invenio_vocabularies/contrib/funders/services.py                                           3      0   100%
+invenio_vocabularies/contrib/names/__init__.py                                             3      0   100%
+invenio_vocabularies/contrib/names/api.py                                                  2      0   100%
+invenio_vocabularies/contrib/names/components.py                                           7      0   100%
+invenio_vocabularies/contrib/names/config.py                                              15      0   100%
+invenio_vocabularies/contrib/names/datastreams.py                                        203     67    67%   42-44, 49-57, 68-106, 110-145, 150-172, 176-179, 190, 217, 230, 279, 285, 325, 373-374
+invenio_vocabularies/contrib/names/jsonschemas/__init__.py                                 0      0   100%
+invenio_vocabularies/contrib/names/mappings/__init__.py                                    0      0   100%
+invenio_vocabularies/contrib/names/mappings/os-v1/__init__.py                              0      0   100%
+invenio_vocabularies/contrib/names/mappings/os-v2/__init__.py                              0      0   100%
+invenio_vocabularies/contrib/names/mappings/v7/__init__.py                                 0      0   100%
+invenio_vocabularies/contrib/names/models.py                                               2      0   100%
+invenio_vocabularies/contrib/names/names.py                                               15      0   100%
+invenio_vocabularies/contrib/names/permissions.py                                          6      0   100%
+invenio_vocabularies/contrib/names/resources.py                                           20      0   100%
+invenio_vocabularies/contrib/names/s3client.py                                            20     12    40%   16-17, 25-28, 32-33, 41-47
+invenio_vocabularies/contrib/names/schema.py                                              57      2    96%   118, 120
+invenio_vocabularies/contrib/names/services.py                                            21      5    76%   41, 51-54
+invenio_vocabularies/contrib/subjects/__init__.py                                          4      0   100%
+invenio_vocabularies/contrib/subjects/api.py                                               2      0   100%
+invenio_vocabularies/contrib/subjects/config.py                                           19      0   100%
+invenio_vocabularies/contrib/subjects/datastreams.py                                      21      0   100%
+invenio_vocabularies/contrib/subjects/euroscivoc/__init__.py                               0      0   100%
+invenio_vocabularies/contrib/subjects/euroscivoc/datastreams.py                           18      0   100%
+invenio_vocabularies/contrib/subjects/facets.py                                            4      0   100%
+invenio_vocabularies/contrib/subjects/gemet/__init__.py                                    0      0   100%
+invenio_vocabularies/contrib/subjects/gemet/datastreams.py                                39      2    95%   18-19
+invenio_vocabularies/contrib/subjects/jsonschemas/__init__.py                              0      0   100%
+invenio_vocabularies/contrib/subjects/mappings/__init__.py                                 0      0   100%
+invenio_vocabularies/contrib/subjects/mappings/os-v1/__init__.py                           0      0   100%
+invenio_vocabularies/contrib/subjects/mappings/os-v2/__init__.py                           0      0   100%
+invenio_vocabularies/contrib/subjects/mappings/v7/__init__.py                              0      0   100%
+invenio_vocabularies/contrib/subjects/mesh/__init__.py                                     0      0   100%
+invenio_vocabularies/contrib/subjects/mesh/datastreams.py                                 19     10    47%   23-38
+invenio_vocabularies/contrib/subjects/models.py                                            2      0   100%
+invenio_vocabularies/contrib/subjects/nvs/__init__.py                                      0      0   100%
+invenio_vocabularies/contrib/subjects/nvs/datastreams.py                                  33      3    91%   20-21, 73
+invenio_vocabularies/contrib/subjects/resources.py                                         4      0   100%
+invenio_vocabularies/contrib/subjects/schema.py                                           39      5    87%   34-41
+invenio_vocabularies/contrib/subjects/services.py                                         10      4    60%   25-30
+invenio_vocabularies/contrib/subjects/subjects.py                                         11      0   100%
+invenio_vocabularies/datastreams/__init__.py                                               3      0   100%
+invenio_vocabularies/datastreams/datastreams.py                                          132     40    70%   45-50, 87-88, 108-109, 118, 135-137, 186-202, 210-211, 222-235, 239
+invenio_vocabularies/datastreams/errors.py                                                 6      1    83%   29
+invenio_vocabularies/datastreams/factories.py                                             41      2    95%   40-41
+invenio_vocabularies/datastreams/readers.py                                              231     54    77%   35-36, 41-42, 47-48, 66, 132-136, 143, 204-213, 222-226, 234-236, 240-246, 271, 316-328, 351, 393-404, 425, 432, 438
+invenio_vocabularies/datastreams/tasks.py                                                 46     14    70%   31-34, 45-57, 76-79, 89-96, 110
+invenio_vocabularies/datastreams/transformers.py                                          56      6    89%   21-22, 35, 89, 119, 123
+invenio_vocabularies/datastreams/writers.py                                              100     14    86%   46, 56, 128, 135-154
+invenio_vocabularies/datastreams/xml.py                                                   20      0   100%
+invenio_vocabularies/ext.py                                                               71      1    99%   148
+invenio_vocabularies/factories.py                                                         84     10    88%   49-50, 87, 109, 120, 131, 142, 153, 164, 175
+invenio_vocabularies/fixtures.py                                                          22      0   100%
+invenio_vocabularies/jobs.py                                                              55     15    73%   40, 78, 114, 149, 177-182, 194-207
+invenio_vocabularies/proxies.py                                                            8      0   100%
+invenio_vocabularies/records/__init__.py                                                   0      0   100%
+invenio_vocabularies/records/api.py                                                       16      0   100%
+invenio_vocabularies/records/jsonschemas/__init__.py                                       0      0   100%
+invenio_vocabularies/records/mappings/__init__.py                                          0      0   100%
+invenio_vocabularies/records/mappings/os-v1/__init__.py                                    0      0   100%
+invenio_vocabularies/records/mappings/os-v2/__init__.py                                    0      0   100%
+invenio_vocabularies/records/mappings/v7/__init__.py                                       0      0   100%
+invenio_vocabularies/records/models.py                                                    40      0   100%
+invenio_vocabularies/records/pidprovider.py                                               28      0   100%
+invenio_vocabularies/records/systemfields/__init__.py                                      2      0   100%
+invenio_vocabularies/records/systemfields/pid.py                                          38      1    97%   63
+invenio_vocabularies/records/systemfields/relations.py                                    18      9    50%   27-28, 33-45, 49
+invenio_vocabularies/resources/__init__.py                                                 4      0   100%
+invenio_vocabularies/resources/config.py                                                  28      0   100%
+invenio_vocabularies/resources/resource.py                                                58      8    86%   68-72, 91-101, 107-116
+invenio_vocabularies/resources/schema.py                                                   5      0   100%
+invenio_vocabularies/resources/serializer.py                                              18      1    94%   25
+invenio_vocabularies/services/__init__.py                                                  3      0   100%
+invenio_vocabularies/services/components.py                                               24      2    92%   27-28
+invenio_vocabularies/services/config.py                                                   47      1    98%   37
+invenio_vocabularies/services/custom_fields/__init__.py                                    3      0   100%
+invenio_vocabularies/services/custom_fields/subject.py                                    15      2    87%   36-45
+invenio_vocabularies/services/custom_fields/vocabulary.py                                 37      0   100%
+invenio_vocabularies/services/facets.py                                                   51      2    96%   111-112
+invenio_vocabularies/services/generators.py                                               12      0   100%
+invenio_vocabularies/services/permissions.py                                              11      0   100%
+invenio_vocabularies/services/querystr.py                                                 26     16    38%   24-28, 32-33, 37-41, 48-57
+invenio_vocabularies/services/results.py                                                  51      2    96%   61-62
+invenio_vocabularies/services/schema.py                                                   73      0   100%
+invenio_vocabularies/services/service.py                                                  67      5    93%   31, 42, 135, 145-152
+invenio_vocabularies/services/tasks.py                                                    15      4    73%   30-32, 35
+invenio_vocabularies/views.py                                                             16      0   100%
+invenio_vocabularies/webpack.py                                                            2      0   100%
+--------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                   3187    438    86%
+================ 937 passed, 181 warnings in 194.08s (0:03:14) =================
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

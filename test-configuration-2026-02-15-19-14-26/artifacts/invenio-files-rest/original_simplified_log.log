@@ -1,0 +1,182 @@
+ opensearch Pulling 
+ rabbitmq Pulling 
+ redis Pulling 
+ postgresql Pulling 
+ 4f4fb700ef54 Already exists 
+ 4f4fb700ef54 Already exists 
+ redis Pulled 
+ rabbitmq Pulled 
+ postgresql Pulled 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-files-rest/original
+configfile: setup.cfg
+testpaths: tests, invenio_files_rest
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 355 items
+tests/conftest.py ...                                                    [  0%]
+tests/fixtures/source/demo_source.py ...                                 [  1%]
+tests/fixtures/source/root.py ...                                        [  2%]
+tests/fixtures/source/subdirectory/demo_copy.py ...                      [  3%]
+tests/test_admin.py 
+                                                 [  4%]
+tests/test_cli.py 
+                                                    [  5%]
+tests/test_helpers.py ...                                                [  6%]
+tests/test_invenio_files_rest.py 
+                                   [  7%]
+tests/test_limiters.py ...                                               [  8%]
+tests/test_models.py 
+       [ 21%]
+tests/test_models_multipart.py 
+                                    [ 22%]
+tests/test_request.py ...                                                [ 23%]
+tests/test_serializer.py ...                                             [ 24%]
+tests/test_signals.py ...                                                [ 25%]
+tests/test_storage.py .....................                              [ 31%]
+tests/test_tasks.py .........                                            [ 33%]
+tests/test_views_bucket.py .......................                       [ 40%]
+tests/test_views_location.py ........                                    [ 42%]
+tests/test_views_multipart.py 
+ [ 54%]
+                                                                [ 56%]
+tests/test_views_objectversion.py 
+ [ 67%]
+                                                 [ 74%]
+tests/testutils.py ...                                                   [ 75%]
+invenio_files_rest/__init__.py 
+                                      [ 76%]
+invenio_files_rest/admin.py ...                                          [ 77%]
+invenio_files_rest/alembic/08e4a71525b6_change_datetime_types.py ...     [ 78%]
+invenio_files_rest/alembic/2e97565eba72_create_files_rest_tables.py ...  [ 78%]
+invenio_files_rest/alembic/52ce868f33c3_create_files_rest_branch.py ...  [ 79%]
+invenio_files_rest/alembic/8ae99b034410_create_files_objecttags_table.py . [ 80%]
+                                                                       [ 80%]
+invenio_files_rest/alembic/a29271fd78f8_create_files_object_partial_unique_index.py . [ 80%]
+                                                                       [ 81%]
+invenio_files_rest/alembic/e172c837b036_add_indexes.py ...               [ 82%]
+invenio_files_rest/alembic/f741aa746a7d_alter_files_files_last_check_column_to_.py . [ 82%]
+                                                                       [ 83%]
+invenio_files_rest/app.py ...                                            [ 83%]
+invenio_files_rest/cli.py ...                                            [ 84%]
+invenio_files_rest/config.py ...                                         [ 85%]
+invenio_files_rest/errors.py ...                                         [ 86%]
+invenio_files_rest/ext.py ...                                            [ 87%]
+invenio_files_rest/formparser.py ...                                     [ 88%]
+invenio_files_rest/helpers.py ...                                        [ 89%]
+invenio_files_rest/limiters.py ...                                       [ 89%]
+invenio_files_rest/models.py ...                                         [ 90%]
+invenio_files_rest/permissions.py ...                                    [ 91%]
+invenio_files_rest/proxies.py ...                                        [ 92%]
+invenio_files_rest/serializer.py ...                                     [ 93%]
+invenio_files_rest/signals.py ...                                        [ 94%]
+invenio_files_rest/storage/__init__.py ...                               [ 94%]
+invenio_files_rest/storage/base.py ...                                   [ 95%]
+invenio_files_rest/storage/pyfs.py ...                                   [ 96%]
+invenio_files_rest/tasks.py ...                                          [ 97%]
+invenio_files_rest/utils.py ...                                          [ 98%]
+invenio_files_rest/views.py ...                                          [ 99%]
+invenio_files_rest/wrappers.py ...                                       [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/__init__.py:13
+    __version_info__ = tuple(LooseVersion(__version__).version)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:2560
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(parent)
+    warnings.warn(
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-files-rest/original/invenio_files_rest/models.py:719: SAWarning: Object of type <ObjectVersion> not in session, add operation along 'Bucket.objects' will not proceed (This warning originated from the Session 'autoflush' process, which was invoked automatically in response to a user-initiated operation. Consider using ``no_autoflush`` context manager if this warning happened while initializing objects.)
+    return db.session.query(cls).filter_by(id=file_id).one_or_none()
+tests/test_invenio_files_rest.py::test_alembic
+    util.warn_deprecated(
+tests/test_invenio_files_rest.py::test_alembic
+    super().alter_column(
+tests/test_invenio_files_rest.py::test_alembic
+    insp = Inspector.from_engine(ctx.connection.engine)
+tests/test_views_objectversion.py::test_get_with_x_sendfile
+    warnings.warn("This streaming does not support multiple storage backends.")
+invenio_files_rest/__init__.py::invenio_files_rest
+    self.init_app(app)
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                                                                                  Stmts   Miss  Cover   Missing
+invenio_files_rest/__init__.py                                                            4      0   100%
+invenio_files_rest/admin.py                                                             116     13    89%   338-354
+invenio_files_rest/alembic/2e97565eba72_create_files_rest_tables.py                      34      0   100%
+invenio_files_rest/alembic/8ae99b034410_create_files_objecttags_table.py                 22      3    86%   28-29, 67
+invenio_files_rest/alembic/08e4a71525b6_change_datetime_types.py                         15      0   100%
+invenio_files_rest/alembic/52ce868f33c3_create_files_rest_branch.py                       8      0   100%
+invenio_files_rest/alembic/a29271fd78f8_create_files_object_partial_unique_index.py      12      0   100%
+invenio_files_rest/alembic/e172c837b036_add_indexes.py                                   21      0   100%
+invenio_files_rest/alembic/f741aa746a7d_alter_files_files_last_check_column_to_.py       10      0   100%
+invenio_files_rest/app.py                                                                 4      0   100%
+invenio_files_rest/cli.py                                                                66      0   100%
+invenio_files_rest/config.py                                                             52      0   100%
+invenio_files_rest/errors.py                                                             63      4    94%   29, 54-55, 59
+invenio_files_rest/ext.py                                                                52      1    98%   87
+invenio_files_rest/formparser.py                                                         24      7    71%   35, 39, 54, 65, 69-71
+invenio_files_rest/helpers.py                                                           118      5    96%   183-187
+invenio_files_rest/limiters.py                                                           25      0   100%
+invenio_files_rest/models.py                                                            704     23    97%   117, 542-547, 711, 1021-1023, 1405, 1463, 1591, 1628-1635, 1641, 1732-1735
+invenio_files_rest/permissions.py                                                        61      1    98%   134
+invenio_files_rest/proxies.py                                                             6      0   100%
+invenio_files_rest/serializer.py                                                        123      2    98%   304, 337
+invenio_files_rest/signals.py                                                             8      0   100%
+invenio_files_rest/storage/__init__.py                                                    3      0   100%
+invenio_files_rest/storage/base.py                                                       91      2    98%   120-121
+invenio_files_rest/storage/pyfs.py                                                      127     10    92%   58, 79, 91, 117, 127, 139, 231-234
+invenio_files_rest/tasks.py                                                             123     19    85%   108-109, 118, 241-243, 259, 261, 268-270, 276-285
+invenio_files_rest/utils.py                                                              20      1    95%   35
+invenio_files_rest/views.py                                                             273      4    99%   291, 726, 770, 772
+invenio_files_rest/wrappers.py                                                            4      0   100%
+TOTAL                                                                                  2189     95    96%
+================= 355 passed, 40 warnings in 119.68s (0:01:59) =================
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

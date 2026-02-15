@@ -1,0 +1,405 @@
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/invenio_oauthclient/models.py:docstring of invenio_oauthclient.models.RemoteAccount.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/invenio_oauthclient/models.py:docstring of invenio_oauthclient.models.RemoteToken.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/docs/api.rst:18: WARNING: py:exc reference target not found: AlreadyLinkedError [ref.exc]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/invenio_accounts/models.py:docstring of invenio_oauthclient.models.UserIdentity.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+ rabbitmq Pulling 
+ postgresql Pulling 
+ dda3d8fbd5ed Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ cb628c265f09 Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ e0d55fdb4d15 Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ b0a0cf830b12 Pulling fs layer 
+ cb628c265f09 Download complete 
+ c199bff16b05 Downloading [==================================================>]  3.145kB/3.145kB
+ d686b50ce172 Pulling fs layer 
+ 3fadc669ef11 Pulling fs layer 
+ 7084ac8f4ab6 Pulling fs layer 
+ efa05c660812 Pulling fs layer 
+ f4e7f62f4b80 Pulling fs layer 
+ 5e1c03b67a78 Pulling fs layer 
+ 14e6209d5fa8 Pulling fs layer 
+ beb0d870d438 Pulling fs layer 
+ 20043066d3d5 Pulling fs layer 
+ d63c4408fdb7 Pulling fs layer 
+ ae3bb1b347a4 Download complete 
+ e0d55fdb4d15 Downloading [>                                                  ]  1.049MB/109MB
+ c1cb13b19080 Download complete 
+ 710e142705f8 Download complete 
+ dda3d8fbd5ed Download complete 
+ b0a0cf830b12 Downloading [=====>                                             ]  3.146MB/29.15MB
+ 873532e5f8c7 Download complete 
+ 5682dec5b749 Downloading [==================>                                ]  2.097MB/5.719MB
+ 7ec4c696b8bb Download complete 
+ 283a477db7bb Download complete 
+ 9739ced65621 Downloading [=============================================>     ]   7.34MB/8.069MB
+ b0a0cf830b12 Downloading [=========================>                         ]  14.68MB/29.15MB
+ 91d2729fa4d5 Download complete 
+ f4e7f62f4b80 Download complete 
+ f8406d9c00ea Download complete 
+ 56b5e4f0933d Download complete 
+ c199bff16b05 Download complete 
+ 050d9f8c3b1c Download complete 
+ e0d55fdb4d15 Downloading [=====>                                             ]  11.53MB/109MB
+ e0d55fdb4d15 Downloading [==========>                                        ]  22.02MB/109MB
+ 5682dec5b749 Download complete 
+ 9739ced65621 Download complete 
+ b0a0cf830b12 Downloading [===========================================>       ]  25.17MB/29.15MB
+ 20043066d3d5 Downloading [========>                                          ]  5.243MB/29.72MB
+ 16ef6b12768c Download complete 
+ d63c4408fdb7 Downloading [==>                                                ]  1.049MB/21.31MB
+ 3fadc669ef11 Downloading [========>                                          ]   7.34MB/43.48MB
+ efa05c660812 Download complete 
+ 5e1c03b67a78 Download complete 
+ 14e6209d5fa8 Download complete 
+ d686b50ce172 Downloading [====>                                              ]  1.049MB/12.47MB
+ 7084ac8f4ab6 Downloading [======================================>            ]  5.677MB/7.468MB
+ e0d55fdb4d15 Downloading [==============>                                    ]  31.46MB/109MB
+ d686b50ce172 Downloading [=================================>                 ]  8.389MB/12.47MB
+ b0a0cf830b12 Download complete 
+ 7084ac8f4ab6 Download complete 
+ beb0d870d438 Download complete 
+ 20043066d3d5 Downloading [======================>                            ]  13.63MB/29.72MB
+ d63c4408fdb7 Downloading [===================>                               ]  8.389MB/21.31MB
+ 3fadc669ef11 Downloading [===================>                               ]  16.78MB/43.48MB
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [==================>                                ]  40.89MB/109MB
+ d686b50ce172 Download complete 
+ 20043066d3d5 Downloading [======================================>            ]  23.07MB/29.72MB
+ d63c4408fdb7 Downloading [=========================================>         ]  17.83MB/21.31MB
+ 3fadc669ef11 Downloading [============================>                      ]  25.17MB/43.48MB
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [========================>                          ]  52.43MB/109MB
+ 20043066d3d5 Download complete 
+ d63c4408fdb7 Download complete 
+ 3fadc669ef11 Downloading [=============================================>     ]  39.85MB/43.48MB
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [=============================>                     ]  65.01MB/109MB
+ 3fadc669ef11 Download complete 
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [=====================================>             ]  81.79MB/109MB
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [=======================================>           ]  85.98MB/109MB
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [=============================================>     ]  98.57MB/109MB
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [==================================================>]    109MB/109MB
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Download complete 
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Extracting 2 s
+ 20043066d3d5 Extracting 1 s
+ b0a0cf830b12 Pull complete 
+ dda3d8fbd5ed Pull complete 
+ 20043066d3d5 Pull complete 
+ 283a477db7bb Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ 283a477db7bb Pull complete 
+ 91d2729fa4d5 Pull complete 
+ 3fadc669ef11 Extracting 1 s
+ 9739ced65621 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ 9739ced65621 Extracting 1 s
+ 3fadc669ef11 Extracting 1 s
+ 9739ced65621 Pull complete 
+ ae3bb1b347a4 Pull complete 
+ f8406d9c00ea Pull complete 
+ c199bff16b05 Pull complete 
+ 3fadc669ef11 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ 7084ac8f4ab6 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ 3fadc669ef11 Pull complete 
+ 7084ac8f4ab6 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ 7084ac8f4ab6 Pull complete 
+ beb0d870d438 Pull complete 
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ d63c4408fdb7 Extracting 1 s
+ f4e7f62f4b80 Pull complete 
+ efa05c660812 Pull complete 
+ 5e1c03b67a78 Pull complete 
+ 14e6209d5fa8 Pull complete 
+ d686b50ce172 Extracting 1 s
+ d63c4408fdb7 Pull complete 
+ e0d55fdb4d15 Extracting 1 s
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ d686b50ce172 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ d686b50ce172 Pull complete 
+ rabbitmq Pulled 
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ c1cb13b19080 Pull complete 
+ 873532e5f8c7 Pull complete 
+ 050d9f8c3b1c Pull complete 
+ e0d55fdb4d15 Pull complete 
+ cb628c265f09 Pull complete 
+ 710e142705f8 Pull complete 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original
+configfile: setup.cfg
+testpaths: docs, tests, invenio_oauthclient
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 342 items
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/passlib/pwd.py,line=16::pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/pkg_resources/__init__.py,line=3148::Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.%0AImplementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/invenio_oauthclient/contrib/cern.py,line=162::The cern contrib is deprecated. Please use the generic keycloak instead.
+
+docs/conf.py ...                                                         [  0%]
+tests/conftest.py ...                                                    [  1%]
+tests/helpers.py ...                                                     [  2%]
+tests/test_admin.py ...                                                  [  3%]
+tests/test_app.py ........s....                                          [  7%]
+tests/test_base_handlers.py ....                                         [  8%]
+tests/test_contrib_cern_openid.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+                               [ 10%]
+tests/test_contrib_cern_openid_rest.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+                         [ 13%]
+tests/test_contrib_eosc_aai.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py,line=153::The HMAC key is 6 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+.......                                [ 16%]
+tests/test_contrib_github.py .........                                   [ 19%]
+tests/test_contrib_github_rest.py .........                              [ 21%]
+tests/test_contrib_globus.py .........                                   [ 24%]
+tests/test_contrib_keycloak.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+.....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py,line=1077::datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+.                            [ 28%]
+tests/test_contrib_orcid.py ........                                     [ 30%]
+tests/test_contrib_orcid_rest.py ........                                [ 33%]
+tests/test_examples_app.py ..ssssss                                      [ 35%]
+tests/test_handlers_rest.py .............................                [ 43%]
+tests/test_handlers_ui.py ...........                                    [ 47%]
+tests/test_models.py ......                                              [ 48%]
+tests/test_refresh.py ...                                                [ 49%]
+tests/test_utils.py ................                                     [ 54%]
+tests/test_views.py ...........                                          [ 57%]
+tests/test_views_rest.py ..........                                      [ 60%]
+invenio_oauthclient/__init__.py ...                                      [ 61%]
+invenio_oauthclient/_compat.py ...                                       [ 62%]
+invenio_oauthclient/admin.py ...                                         [ 63%]
+invenio_oauthclient/alembic/__init__.py ...                              [ 64%]
+invenio_oauthclient/alembic/1758275763_extra_data_jsonb.py ...           [ 64%]
+invenio_oauthclient/alembic/44ab9963e8cf_create_oauthclient_branch.py .. [ 65%]
+.                                                                        [ 65%]
+invenio_oauthclient/alembic/7def990b852e_add_expires_at_and_refresh_token_to_.py . [ 66%]
+..                                                                       [ 66%]
+invenio_oauthclient/alembic/97bbc733896c_create_oauthclient_tables.py .. [ 67%]
+.                                                                        [ 67%]
+invenio_oauthclient/alembic/aaa265b0afa6_move_useridentity_to_acconuts.py . [ 67%]
+..                                                                       [ 68%]
+invenio_oauthclient/alembic/bff1f190b9bd_add_timestamp_oauthclient.py .. [ 69%]
+.                                                                        [ 69%]
+invenio_oauthclient/alembic/edf0c0907f40_change_datetime_types.py ...    [ 70%]
+invenio_oauthclient/config.py ...                                        [ 71%]
+invenio_oauthclient/contrib/__init__.py ...                              [ 71%]
+invenio_oauthclient/contrib/cern.py ...                                  [ 72%]
+invenio_oauthclient/contrib/cern_openid.py ...                           [ 73%]
+invenio_oauthclient/contrib/eosc_aai.py ...                              [ 74%]
+invenio_oauthclient/contrib/github.py ...                                [ 75%]
+invenio_oauthclient/contrib/globus.py ...                                [ 76%]
+invenio_oauthclient/contrib/keycloak/__init__.py ...                     [ 77%]
+invenio_oauthclient/contrib/keycloak/handlers.py ...                     [ 78%]
+invenio_oauthclient/contrib/keycloak/helpers.py ...                      [ 78%]
+invenio_oauthclient/contrib/keycloak/settings.py ...                     [ 79%]
+invenio_oauthclient/contrib/openaire_aai.py ...                          [ 80%]
+invenio_oauthclient/contrib/orcid.py ...                                 [ 81%]
+invenio_oauthclient/contrib/settings.py ...                              [ 82%]
+invenio_oauthclient/errors.py ...                                        [ 83%]
+invenio_oauthclient/ext.py ...                                           [ 84%]
+invenio_oauthclient/handlers/__init__.py ...                             [ 85%]
+invenio_oauthclient/handlers/authorized.py ...                           [ 85%]
+invenio_oauthclient/handlers/base.py ...                                 [ 86%]
+invenio_oauthclient/handlers/decorators.py ...                           [ 87%]
+invenio_oauthclient/handlers/refresh.py ...                              [ 88%]
+invenio_oauthclient/handlers/rest.py ...                                 [ 89%]
+invenio_oauthclient/handlers/token.py ...                                [ 90%]
+invenio_oauthclient/handlers/ui.py ...                                   [ 91%]
+invenio_oauthclient/handlers/utils.py ...                                [ 92%]
+invenio_oauthclient/models.py ...                                        [ 92%]
+invenio_oauthclient/oauth.py ...                                         [ 93%]
+invenio_oauthclient/proxies.py ...                                       [ 94%]
+invenio_oauthclient/signals.py ...                                       [ 95%]
+invenio_oauthclient/tasks.py ...                                         [ 96%]
+invenio_oauthclient/utils.py ...                                         [ 97%]
+invenio_oauthclient/views/__init__.py ...                                [ 98%]
+invenio_oauthclient/views/client.py ...                                  [ 99%]
+invenio_oauthclient/views/settings.py ...                                [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/passlib/pwd.py:16
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/passlib/pwd.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    import pkg_resources
+
+.venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+invenio_oauthclient/contrib/cern.py:162
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/invenio_oauthclient/contrib/cern.py:162: DeprecationWarning: The cern contrib is deprecated. Please use the generic keycloak instead.
+    warn(
+
+tests/test_contrib_cern_openid.py::test_fetch_extra_data
+tests/test_contrib_cern_openid.py::test_account_info
+tests/test_contrib_cern_openid.py::test_account_setup
+tests/test_contrib_cern_openid.py::test_account_info_not_allowed_account
+tests/test_contrib_cern_openid_rest.py::test_fetch_extra_data
+tests/test_contrib_cern_openid_rest.py::test_account_info_rest
+tests/test_contrib_cern_openid_rest.py::test_account_setup
+tests/test_contrib_cern_openid_rest.py::test_account_info_not_allowed_account
+tests/test_contrib_cern_openid_rest.py::test_identity_changed
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:153: InsecureKeyLengthWarning: The HMAC key is 4 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    return self._jws.encode(
+
+tests/test_contrib_eosc_aai.py::test_account_info
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:153: InsecureKeyLengthWarning: The HMAC key is 6 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    return self._jws.encode(
+
+tests/test_contrib_keycloak.py: 18 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oauthclient/original/.venv/lib/python3.14/site-packages/httpretty/core.py:1077: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    now = datetime.utcnow()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+
+Name                                                                               Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------------------------------
+invenio_oauthclient/__init__.py                                                        5      0   100%
+invenio_oauthclient/_compat.py                                                        21      2    90%   18-19
+invenio_oauthclient/admin.py                                                          28      1    96%   84
+invenio_oauthclient/alembic/7def990b852e_add_expires_at_and_refresh_token_to_.py      14      4    71%   25-31, 44-45
+invenio_oauthclient/alembic/44ab9963e8cf_create_oauthclient_branch.py                 10      2    80%   23, 28
+invenio_oauthclient/alembic/97bbc733896c_create_oauthclient_tables.py                 23     13    43%   26-56, 75-87
+invenio_oauthclient/alembic/1758275763_extra_data_jsonb.py                            12      4    67%   23-24, 34-35
+invenio_oauthclient/alembic/__init__.py                                                0      0   100%
+invenio_oauthclient/alembic/aaa265b0afa6_move_useridentity_to_acconuts.py             14      5    64%   24-30, 35-57
+invenio_oauthclient/alembic/bff1f190b9bd_add_timestamp_oauthclient.py                 27     16    41%   27-36, 42-49, 53-60
+invenio_oauthclient/alembic/edf0c0907f40_change_datetime_types.py                     15      8    47%   26-29, 36-39
+invenio_oauthclient/config.py                                                         23      0   100%
+invenio_oauthclient/contrib/__init__.py                                                0      0   100%
+invenio_oauthclient/contrib/cern.py                                                  182    110    40%   283-290, 295-297, 306-320, 325-329, 336-352, 357-362, 374-383, 388-395, 400-425, 438-443, 448-455, 465-479, 484-485, 490-494, 499-516, 534-550
+invenio_oauthclient/contrib/cern_openid.py                                           159      6    96%   178-180, 199, 236, 330
+invenio_oauthclient/contrib/eosc_aai.py                                              104     11    89%   143-150, 332-334, 375-379
+invenio_oauthclient/contrib/github.py                                                 79      0   100%
+invenio_oauthclient/contrib/globus.py                                                 85      3    96%   324-328
+invenio_oauthclient/contrib/keycloak/__init__.py                                       3      0   100%
+invenio_oauthclient/contrib/keycloak/handlers.py                                      47      4    91%   147-150
+invenio_oauthclient/contrib/keycloak/helpers.py                                       44      0   100%
+invenio_oauthclient/contrib/keycloak/settings.py                                      25      0   100%
+invenio_oauthclient/contrib/openaire_aai.py                                           71     26    63%   147, 214, 248-253, 262-276, 284-285, 293-297, 307-322
+invenio_oauthclient/contrib/orcid.py                                                  70      0   100%
+invenio_oauthclient/contrib/settings.py                                               31      2    94%   98, 131
+invenio_oauthclient/errors.py                                                         34      0   100%
+invenio_oauthclient/ext.py                                                            95     19    80%   156, 218-220, 225-232, 241-258, 266-278
+invenio_oauthclient/handlers/__init__.py                                              10      0   100%
+invenio_oauthclient/handlers/authorized.py                                            96      9    91%   136, 192, 205, 210, 234, 240-241, 251, 257
+invenio_oauthclient/handlers/base.py                                                  14      0   100%
+invenio_oauthclient/handlers/decorators.py                                            19      0   100%
+invenio_oauthclient/handlers/refresh.py                                               14      0   100%
+invenio_oauthclient/handlers/rest.py                                                 104      5    95%   134, 136, 287-288, 292
+invenio_oauthclient/handlers/token.py                                                 73      1    99%   135
+invenio_oauthclient/handlers/ui.py                                                    99      9    91%   73, 75, 219-227, 230
+invenio_oauthclient/handlers/utils.py                                                 81     10    88%   110, 124-130, 134-140, 161, 167-173
+invenio_oauthclient/models.py                                                         99      2    98%   157, 208
+invenio_oauthclient/oauth.py                                                          65      0   100%
+invenio_oauthclient/proxies.py                                                         3      0   100%
+invenio_oauthclient/signals.py                                                         8      0   100%
+invenio_oauthclient/tasks.py                                                           5      0   100%
+invenio_oauthclient/utils.py                                                         101      3    97%   54, 93, 211
+invenio_oauthclient/views/__init__.py                                                  3      0   100%
+invenio_oauthclient/views/client.py                                                  137     31    77%   57-87, 143, 179, 186-192, 201, 213-221, 302-310
+invenio_oauthclient/views/settings.py                                                 27      0   100%
+----------------------------------------------------------------------------------------------------------------
+TOTAL                                                                               2179    306    86%
+================= 335 passed, 7 skipped, 31 warnings in 55.99s =================
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

@@ -1,0 +1,69 @@
+{
+  "dependencies": [
+    {
+      "extras": [
+        "tests",
+        "opensearch2",
+        "s3",
+        "devs",
+        "s3fs",
+        "oaipmh",
+        "rdf",
+        "sparql",
+        "postgresql",
+        "admin"
+      ],
+      "freeze": [
+        "setuptools<82.0.0"
+      ],
+      "patches": [],
+      "reference": {
+        "base": null,
+        "branch": "v2.3.0",
+        "commit": "367fe1fb091e74b96981e0e792497c07f7856630",
+        "org": "inveniosoftware",
+        "package": "invenio-mail",
+        "pr": null,
+        "pr_info": null,
+        "repo": "invenio-mail",
+        "versions": []
+      },
+      "test": [
+        "./run-tests.sh"
+      ]
+    }
+  ],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "base": null,
+      "branch": "v2.3.0",
+      "commit": "367fe1fb091e74b96981e0e792497c07f7856630",
+      "org": "inveniosoftware",
+      "package": "invenio-mail",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-mail",
+      "versions": []
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "skipped"
+}

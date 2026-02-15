@@ -1,0 +1,17 @@
+{
+  "UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.": 1,
+  "DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.": 1,
+  "DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('flask_admin.contrib')`.": 1,
+  "DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('flask_admin')`.": 1,
+  "DeprecationWarning: Please use the new command allow-action-for-user instead.": 1,
+  "DeprecationWarning: Please use the new command allow-action-for-role instead.": 1,
+  "DeprecationWarning: Please use the new command remove-action-global instead.": 1,
+  "DeprecationWarning: Please use the new command deny-action-for-role instead.": 1,
+  "DeprecationWarning: Please use the new command deny-action-for-user instead.": 1,
+  "DeprecationWarning: DynamicPermission is scheduled for removal.": 1,
+  "DeprecationWarning: Please use the new command remove-action-from-role instead.": 1,
+  "DeprecationWarning: Please use the new command remove-action-from-user instead.": 1,
+  "DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.": 1,
+  "UserWarning: autoincrement and existing_autoincrement only make sense for MySQL": 1,
+  "SADeprecationWarning: The from_engine() method on Inspector is deprecated and will be removed in a future release.  Please use the sqlalchemy.inspect() function on an Engine or Connection in order to acquire an Inspector. (deprecated since: 1.4)": 1
+}

@@ -1,0 +1,6 @@
+{
+  "SAWarning: nested transaction already deassociated from connection": 2,
+  "SADeprecationWarning: Query.values() is deprecated and will be removed in a future release.  Please use Query.with_entities() (deprecated since: 1.4)": 1,
+  "ResourceWarning: unclosed database in <sqlite3.Connection object at [id]>": 28,
+  "ResourceWarning: Enable tracemalloc to get the object allocation traceback": 28
+}

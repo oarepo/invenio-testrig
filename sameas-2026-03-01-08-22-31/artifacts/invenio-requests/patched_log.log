@@ -1,0 +1,938 @@
+ redis Pulling 
+ opensearch Pulling 
+ postgresql Pulling 
+ b0a0cf830b12 Pulling fs layer 
+ dda3d8fbd5ed Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ e0d55fdb4d15 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ cb628c265f09 Pulling fs layer 
+ e0d55fdb4d15 Waiting 
+ c1cb13b19080 Waiting 
+ 873532e5f8c7 Waiting 
+ 91d2729fa4d5 Waiting 
+ cb628c265f09 Waiting 
+ 050d9f8c3b1c Waiting 
+ 710e142705f8 Waiting 
+ 9739ced65621 Waiting 
+ f8406d9c00ea Waiting 
+ c199bff16b05 Waiting 
+ ae3bb1b347a4 Waiting 
+ f9dd052e142d Pulling fs layer 
+ e8c6d4883897 Pulling fs layer 
+ 648eb81b3252 Pulling fs layer 
+ eb77aa907276 Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 0ffa8f8aba1e Pulling fs layer 
+ f9dd052e142d Waiting 
+ 2e81b9cb93cd Pulling fs layer 
+ e8c6d4883897 Waiting 
+ eb77aa907276 Waiting 
+ 648eb81b3252 Waiting 
+ 4f4fb700ef54 Waiting 
+ 0ffa8f8aba1e Waiting 
+ 2e81b9cb93cd Waiting 
+ 84a2afebaf4d Pulling fs layer 
+ 68bef8a2321a Pulling fs layer 
+ dc35057c3d27 Pulling fs layer 
+ 762d5b1c0ef7 Pulling fs layer 
+ 1196a886e941 Pulling fs layer 
+ 96afa962f1ac Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 6475cc3afbe1 Pulling fs layer 
+ 68bef8a2321a Waiting 
+ 84a2afebaf4d Waiting 
+ dc35057c3d27 Waiting 
+ 762d5b1c0ef7 Waiting 
+ 1196a886e941 Waiting 
+ 96afa962f1ac Waiting 
+ 4f4fb700ef54 Waiting 
+ 6475cc3afbe1 Waiting 
+ dda3d8fbd5ed Downloading [==============================>                    ]     720B/1.165kB
+ dda3d8fbd5ed Downloading [==================================================>]  1.165kB/1.165kB
+ dda3d8fbd5ed Verifying Checksum 
+ dda3d8fbd5ed Download complete 
+ b0a0cf830b12 Downloading [>                                                  ]  300.2kB/29.15MB
+ 283a477db7bb Downloading [>                                                  ]  46.31kB/4.533MB
+ 283a477db7bb Verifying Checksum 
+ 283a477db7bb Download complete 
+ 91d2729fa4d5 Downloading [>                                                  ]  14.82kB/1.45MB
+ b0a0cf830b12 Downloading [===========================================>       ]   25.2MB/29.15MB
+ 91d2729fa4d5 Verifying Checksum 
+ 91d2729fa4d5 Download complete 
+ b0a0cf830b12 Verifying Checksum 
+ b0a0cf830b12 Download complete 
+ b0a0cf830b12 Extracting [>                                                  ]  294.9kB/29.15MB
+ 9739ced65621 Downloading [>                                                  ]  82.45kB/8.069MB
+ 9739ced65621 Verifying Checksum 
+ 9739ced65621 Download complete 
+ ae3bb1b347a4 Downloading [>                                                  ]  12.09kB/1.196MB
+ ae3bb1b347a4 Verifying Checksum 
+ ae3bb1b347a4 Download complete 
+ f8406d9c00ea Downloading [==================================================>]     116B/116B
+ f8406d9c00ea Verifying Checksum 
+ f8406d9c00ea Download complete 
+ b0a0cf830b12 Extracting [============>                                      ]  7.078MB/29.15MB
+ c199bff16b05 Downloading [===========>                                       ]     720B/3.145kB
+ c199bff16b05 Downloading [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Verifying Checksum 
+ c199bff16b05 Download complete 
+ e0d55fdb4d15 Downloading [>                                                  ]  528.2kB/109MB
+ b0a0cf830b12 Extracting [===================>                               ]   11.5MB/29.15MB
+ c1cb13b19080 Downloading [===>                                               ]     687B/9.925kB
+ c1cb13b19080 Downloading [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Verifying Checksum 
+ c1cb13b19080 Download complete 
+ 873532e5f8c7 Downloading [==================================================>]     128B/128B
+ 873532e5f8c7 Verifying Checksum 
+ 873532e5f8c7 Download complete 
+ e0d55fdb4d15 Downloading [============>                                      ]  27.48MB/109MB
+ b0a0cf830b12 Extracting [=================================>                 ]  19.76MB/29.15MB
+ 050d9f8c3b1c Downloading [==================================================>]     169B/169B
+ 050d9f8c3b1c Verifying Checksum 
+ 050d9f8c3b1c Download complete 
+ 710e142705f8 Downloading [======>                                            ]     719B/5.421kB
+ 710e142705f8 Downloading [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Verifying Checksum 
+ 710e142705f8 Download complete 
+ e0d55fdb4d15 Downloading [=========================>                         ]  54.95MB/109MB
+ cb628c265f09 Downloading [==================================================>]     184B/184B
+ cb628c265f09 Verifying Checksum 
+ cb628c265f09 Download complete 
+ f9dd052e142d Downloading [>                                                  ]  538.9kB/52.33MB
+ b0a0cf830b12 Extracting [==========================================>        ]  24.77MB/29.15MB
+ e0d55fdb4d15 Downloading [======================================>            ]  83.54MB/109MB
+ e8c6d4883897 Downloading [>                                                  ]  45.11kB/4.398MB
+ e8c6d4883897 Verifying Checksum 
+ e8c6d4883897 Download complete 
+ f9dd052e142d Downloading [=========================>                         ]  26.94MB/52.33MB
+ b0a0cf830b12 Extracting [===============================================>   ]  27.72MB/29.15MB
+ e0d55fdb4d15 Downloading [==========================================>        ]   92.7MB/109MB
+ 648eb81b3252 Downloading [=======================>                           ]     720B/1.561kB
+ 648eb81b3252 Downloading [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Verifying Checksum 
+ 648eb81b3252 Download complete 
+ f9dd052e142d Verifying Checksum 
+ f9dd052e142d Download complete 
+ f9dd052e142d Extracting [>                                                  ]  524.3kB/52.33MB
+ e0d55fdb4d15 Verifying Checksum 
+ e0d55fdb4d15 Download complete 
+ eb77aa907276 Downloading [>                                                  ]  540.7kB/907.7MB
+ 4f4fb700ef54 Downloading [==================================================>]      32B/32B
+ 4f4fb700ef54 Verifying Checksum 
+ 4f4fb700ef54 Download complete 
+ f9dd052e142d Extracting [==>                                                ]  2.621MB/52.33MB
+ 0ffa8f8aba1e Downloading [==================================================>]     226B/226B
+ 0ffa8f8aba1e Verifying Checksum 
+ 0ffa8f8aba1e Download complete 
+ eb77aa907276 Downloading [=>                                                 ]  33.71MB/907.7MB
+ b0a0cf830b12 Extracting [================================================>  ]  28.31MB/29.15MB
+ 2e81b9cb93cd Downloading [===================>                               ]     707B/1.859kB
+ 2e81b9cb93cd Downloading [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Verifying Checksum 
+ 2e81b9cb93cd Download complete 
+ f9dd052e142d Extracting [====>                                              ]  4.719MB/52.33MB
+ 84a2afebaf4d Downloading [>                                                  ]    290kB/28.24MB
+ eb77aa907276 Downloading [===>                                               ]  58.38MB/907.7MB
+ b0a0cf830b12 Extracting [==================================================>]  29.15MB/29.15MB
+ 68bef8a2321a Downloading [================================>                  ]     720B/1.102kB
+ 68bef8a2321a Downloading [==================================================>]  1.102kB/1.102kB
+ 68bef8a2321a Verifying Checksum 
+ 68bef8a2321a Download complete 
+ 84a2afebaf4d Verifying Checksum 
+ 84a2afebaf4d Download complete 
+ f9dd052e142d Extracting [=====>                                             ]  5.767MB/52.33MB
+ 84a2afebaf4d Extracting [>                                                  ]  294.9kB/28.24MB
+ eb77aa907276 Downloading [====>                                              ]  79.85MB/907.7MB
+ b0a0cf830b12 Pull complete 
+ dda3d8fbd5ed Extracting [==================================================>]  1.165kB/1.165kB
+ dda3d8fbd5ed Extracting [==================================================>]  1.165kB/1.165kB
+ dc35057c3d27 Downloading [=========================================>         ]     721B/875B
+ dc35057c3d27 Downloading [==================================================>]     875B/875B
+ dc35057c3d27 Download complete 
+ 762d5b1c0ef7 Downloading [>                                                  ]  14.41kB/1.438MB
+ f9dd052e142d Extracting [==========>                                        ]  11.01MB/52.33MB
+ 762d5b1c0ef7 Verifying Checksum 
+ 762d5b1c0ef7 Download complete 
+ 84a2afebaf4d Extracting [=======>                                           ]  4.129MB/28.24MB
+ eb77aa907276 Downloading [=====>                                             ]  107.1MB/907.7MB
+ 1196a886e941 Downloading [>                                                  ]  155.9kB/15.35MB
+ 96afa962f1ac Downloading [==================================================>]      96B/96B
+ 96afa962f1ac Verifying Checksum 
+ 96afa962f1ac Download complete 
+ f9dd052e142d Extracting [===============>                                   ]  16.25MB/52.33MB
+ 84a2afebaf4d Extracting [==============>                                    ]  7.963MB/28.24MB
+ eb77aa907276 Downloading [=======>                                           ]  137.1MB/907.7MB
+ 1196a886e941 Verifying Checksum 
+ 1196a886e941 Download complete 
+ f9dd052e142d Extracting [====================>                              ]   21.5MB/52.33MB
+ 4f4fb700ef54 Downloading [==================================================>]      32B/32B
+ 4f4fb700ef54 Verifying Checksum 
+ 4f4fb700ef54 Download complete 
+ 84a2afebaf4d Extracting [=================>                                 ]  10.03MB/28.24MB
+ eb77aa907276 Downloading [=========>                                         ]  170.2MB/907.7MB
+ 6475cc3afbe1 Downloading [==================================================>]     573B/573B
+ 6475cc3afbe1 Verifying Checksum 
+ 6475cc3afbe1 Download complete 
+ f9dd052e142d Extracting [=========================>                         ]  26.74MB/52.33MB
+ 84a2afebaf4d Extracting [========================>                          ]  13.57MB/28.24MB
+ eb77aa907276 Downloading [===========>                                       ]  203.9MB/907.7MB
+ 84a2afebaf4d Extracting [==================================>                ]  19.76MB/28.24MB
+ eb77aa907276 Downloading [============>                                      ]  235.4MB/907.7MB
+ f9dd052e142d Extracting [===========================>                       ]  28.84MB/52.33MB
+ eb77aa907276 Downloading [==============>                                    ]  269.8MB/907.7MB
+ 84a2afebaf4d Extracting [=========================================>         ]   23.3MB/28.24MB
+ eb77aa907276 Downloading [================>                                  ]  303.6MB/907.7MB
+ f9dd052e142d Extracting [============================>                      ]  29.88MB/52.33MB
+ eb77aa907276 Downloading [==================>                                ]  329.4MB/907.7MB
+ eb77aa907276 Downloading [====================>                              ]  363.3MB/907.7MB
+ 84a2afebaf4d Extracting [==========================================>        ]  23.89MB/28.24MB
+ f9dd052e142d Extracting [=============================>                     ]  30.41MB/52.33MB
+ eb77aa907276 Downloading [=====================>                             ]  385.7MB/907.7MB
+ 84a2afebaf4d Extracting [===============================================>   ]  26.84MB/28.24MB
+ f9dd052e142d Extracting [===============================>                   ]  33.03MB/52.33MB
+ eb77aa907276 Downloading [=======================>                           ]  425.1MB/907.7MB
+ f9dd052e142d Extracting [=================================>                 ]   34.6MB/52.33MB
+ eb77aa907276 Downloading [=========================>                         ]  461.2MB/907.7MB
+ eb77aa907276 Downloading [===========================>                       ]  500.8MB/907.7MB
+ f9dd052e142d Extracting [===================================>               ]   36.7MB/52.33MB
+ 84a2afebaf4d Extracting [================================================>  ]  27.43MB/28.24MB
+ eb77aa907276 Downloading [=============================>                     ]  528.8MB/907.7MB
+ f9dd052e142d Extracting [=====================================>             ]  39.32MB/52.33MB
+ eb77aa907276 Downloading [==============================>                    ]  557.9MB/907.7MB
+ f9dd052e142d Extracting [======================================>            ]  40.37MB/52.33MB
+ 84a2afebaf4d Extracting [==================================================>]  28.24MB/28.24MB
+ eb77aa907276 Downloading [================================>                  ]  582.5MB/907.7MB
+ 84a2afebaf4d Pull complete 
+ 68bef8a2321a Extracting [==================================================>]  1.102kB/1.102kB
+ 68bef8a2321a Extracting [==================================================>]  1.102kB/1.102kB
+ f9dd052e142d Extracting [========================================>          ]  42.47MB/52.33MB
+ eb77aa907276 Downloading [=================================>                 ]  603.4MB/907.7MB
+ f9dd052e142d Extracting [==========================================>        ]  44.56MB/52.33MB
+ eb77aa907276 Downloading [==================================>                ]    634MB/907.7MB
+ eb77aa907276 Downloading [====================================>              ]  660.3MB/907.7MB
+ f9dd052e142d Extracting [==============================================>    ]  48.23MB/52.33MB
+ eb77aa907276 Downloading [=====================================>             ]  684.6MB/907.7MB
+ eb77aa907276 Downloading [=======================================>           ]    712MB/907.7MB
+ f9dd052e142d Extracting [=================================================> ]  51.38MB/52.33MB
+ eb77aa907276 Downloading [========================================>          ]  744.2MB/907.7MB
+ f9dd052e142d Extracting [==================================================>]  52.33MB/52.33MB
+ eb77aa907276 Downloading [==========================================>        ]  765.2MB/907.7MB
+ eb77aa907276 Downloading [===========================================>       ]  785.5MB/907.7MB
+ eb77aa907276 Downloading [=============================================>     ]  820.5MB/907.7MB
+ eb77aa907276 Downloading [===============================================>   ]  855.5MB/907.7MB
+ eb77aa907276 Downloading [=================================================> ]  893.7MB/907.7MB
+ eb77aa907276 Verifying Checksum 
+ eb77aa907276 Download complete 
+ f9dd052e142d Pull complete 
+ e8c6d4883897 Extracting [>                                                  ]  65.54kB/4.398MB
+ e8c6d4883897 Extracting [==>                                                ]  262.1kB/4.398MB
+ e8c6d4883897 Extracting [========>                                          ]  720.9kB/4.398MB
+ e8c6d4883897 Extracting [===================>                               ]  1.704MB/4.398MB
+ e8c6d4883897 Extracting [=========================>                         ]  2.228MB/4.398MB
+ e8c6d4883897 Extracting [==========================>                        ]  2.359MB/4.398MB
+ e8c6d4883897 Extracting [==============================>                    ]  2.687MB/4.398MB
+ e8c6d4883897 Extracting [====================================>              ]  3.211MB/4.398MB
+ e8c6d4883897 Extracting [=======================================>           ]  3.473MB/4.398MB
+ e8c6d4883897 Extracting [==================================================>]  4.398MB/4.398MB
+ dda3d8fbd5ed Pull complete 
+ 68bef8a2321a Pull complete 
+ e8c6d4883897 Pull complete 
+ 283a477db7bb Extracting [>                                                  ]  65.54kB/4.533MB
+ 648eb81b3252 Extracting [==================================================>]  1.561kB/1.561kB
+ 648eb81b3252 Extracting [==================================================>]  1.561kB/1.561kB
+ dc35057c3d27 Extracting [==================================================>]     875B/875B
+ dc35057c3d27 Extracting [==================================================>]     875B/875B
+ dc35057c3d27 Pull complete 
+ 762d5b1c0ef7 Extracting [=>                                                 ]  32.77kB/1.438MB
+ 648eb81b3252 Pull complete 
+ 762d5b1c0ef7 Extracting [==================================================>]  1.438MB/1.438MB
+ 762d5b1c0ef7 Extracting [==================================================>]  1.438MB/1.438MB
+ eb77aa907276 Extracting [>                                                  ]  557.1kB/907.7MB
+ 762d5b1c0ef7 Pull complete 
+ 1196a886e941 Extracting [>                                                  ]  163.8kB/15.35MB
+ 283a477db7bb Extracting [=================================================> ]  4.522MB/4.533MB
+ 283a477db7bb Extracting [==================================================>]  4.533MB/4.533MB
+ 283a477db7bb Pull complete 
+ 91d2729fa4d5 Extracting [=>                                                 ]  32.77kB/1.45MB
+ eb77aa907276 Extracting [>                                                  ]   15.6MB/907.7MB
+ 1196a886e941 Extracting [===================>                               ]  6.062MB/15.35MB
+ 91d2729fa4d5 Extracting [==================================================>]   1.45MB/1.45MB
+ 91d2729fa4d5 Pull complete 
+ 9739ced65621 Extracting [>                                                  ]   98.3kB/8.069MB
+ eb77aa907276 Extracting [=>                                                 ]  28.41MB/907.7MB
+ 1196a886e941 Extracting [==========================================>        ]  12.94MB/15.35MB
+ 1196a886e941 Extracting [==================================================>]  15.35MB/15.35MB
+ 9739ced65621 Extracting [====================>                              ]  3.342MB/8.069MB
+ 1196a886e941 Pull complete 
+ 96afa962f1ac Extracting [==================================================>]      96B/96B
+ 96afa962f1ac Extracting [==================================================>]      96B/96B
+ 96afa962f1ac Pull complete 
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ eb77aa907276 Extracting [==>                                                ]  44.01MB/907.7MB
+ 4f4fb700ef54 Pull complete 
+ 6475cc3afbe1 Extracting [==================================================>]     573B/573B
+ 6475cc3afbe1 Extracting [==================================================>]     573B/573B
+ 6475cc3afbe1 Pull complete 
+ redis Pulled 
+ 9739ced65621 Extracting [==================================>                ]  5.505MB/8.069MB
+ eb77aa907276 Extracting [===>                                               ]  65.73MB/907.7MB
+ 9739ced65621 Extracting [================================================>  ]  7.864MB/8.069MB
+ 9739ced65621 Extracting [==================================================>]  8.069MB/8.069MB
+ 9739ced65621 Pull complete 
+ ae3bb1b347a4 Extracting [=>                                                 ]  32.77kB/1.196MB
+ eb77aa907276 Extracting [====>                                              ]  81.89MB/907.7MB
+ ae3bb1b347a4 Extracting [==================================================>]  1.196MB/1.196MB
+ ae3bb1b347a4 Extracting [==================================================>]  1.196MB/1.196MB
+ ae3bb1b347a4 Pull complete 
+ f8406d9c00ea Extracting [==================================================>]     116B/116B
+ f8406d9c00ea Extracting [==================================================>]     116B/116B
+ f8406d9c00ea Pull complete 
+ c199bff16b05 Extracting [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Extracting [==================================================>]  3.145kB/3.145kB
+ c199bff16b05 Pull complete 
+ eb77aa907276 Extracting [=====>                                             ]  94.14MB/907.7MB
+ e0d55fdb4d15 Extracting [>                                                  ]  557.1kB/109MB
+ eb77aa907276 Extracting [=====>                                             ]  101.9MB/907.7MB
+ e0d55fdb4d15 Extracting [===>                                               ]  6.685MB/109MB
+ eb77aa907276 Extracting [======>                                            ]  110.3MB/907.7MB
+ e0d55fdb4d15 Extracting [====>                                              ]  10.58MB/109MB
+ eb77aa907276 Extracting [======>                                            ]  118.1MB/907.7MB
+ e0d55fdb4d15 Extracting [=======>                                           ]  16.15MB/109MB
+ eb77aa907276 Extracting [======>                                            ]  125.9MB/907.7MB
+ e0d55fdb4d15 Extracting [=========>                                         ]  21.73MB/109MB
+ eb77aa907276 Extracting [=======>                                           ]  133.7MB/907.7MB
+ e0d55fdb4d15 Extracting [============>                                      ]  26.18MB/109MB
+ eb77aa907276 Extracting [=======>                                           ]  139.8MB/907.7MB
+ e0d55fdb4d15 Extracting [===============>                                   ]  32.87MB/109MB
+ eb77aa907276 Extracting [========>                                          ]  146.5MB/907.7MB
+ e0d55fdb4d15 Extracting [==================>                                ]  40.67MB/109MB
+ eb77aa907276 Extracting [========>                                          ]  153.7MB/907.7MB
+ e0d55fdb4d15 Extracting [======================>                            ]  48.46MB/109MB
+ eb77aa907276 Extracting [========>                                          ]  162.7MB/907.7MB
+ e0d55fdb4d15 Extracting [========================>                          ]  52.92MB/109MB
+ eb77aa907276 Extracting [==========>                                        ]  182.7MB/907.7MB
+ e0d55fdb4d15 Extracting [==========================>                        ]  56.82MB/109MB
+ eb77aa907276 Extracting [===========>                                       ]  202.2MB/907.7MB
+ e0d55fdb4d15 Extracting [=============================>                     ]   63.5MB/109MB
+ eb77aa907276 Extracting [===========>                                       ]  213.4MB/907.7MB
+ e0d55fdb4d15 Extracting [================================>                  ]  71.86MB/109MB
+ eb77aa907276 Extracting [============>                                      ]  222.8MB/907.7MB
+ e0d55fdb4d15 Extracting [====================================>              ]  78.54MB/109MB
+ eb77aa907276 Extracting [============>                                      ]  231.7MB/907.7MB
+ e0d55fdb4d15 Extracting [=======================================>           ]  85.79MB/109MB
+ eb77aa907276 Extracting [=============>                                     ]  240.1MB/907.7MB
+ e0d55fdb4d15 Extracting [==========================================>        ]  91.91MB/109MB
+ eb77aa907276 Extracting [=============>                                     ]    254MB/907.7MB
+ e0d55fdb4d15 Extracting [===========================================>       ]   94.7MB/109MB
+ eb77aa907276 Extracting [===============>                                   ]    273MB/907.7MB
+ e0d55fdb4d15 Extracting [============================================>      ]  97.48MB/109MB
+ eb77aa907276 Extracting [================>                                  ]  297.5MB/907.7MB
+ e0d55fdb4d15 Extracting [==============================================>    ]  101.4MB/109MB
+ eb77aa907276 Extracting [=================>                                 ]  316.4MB/907.7MB
+ e0d55fdb4d15 Extracting [===============================================>   ]  103.6MB/109MB
+ eb77aa907276 Extracting [==================>                                ]  335.9MB/907.7MB
+ e0d55fdb4d15 Extracting [================================================>  ]  105.3MB/109MB
+ eb77aa907276 Extracting [===================>                               ]    356MB/907.7MB
+ eb77aa907276 Extracting [====================>                              ]  364.3MB/907.7MB
+ eb77aa907276 Extracting [====================>                              ]  371.6MB/907.7MB
+ e0d55fdb4d15 Extracting [=================================================> ]  107.5MB/109MB
+ eb77aa907276 Extracting [=====================>                             ]  386.6MB/907.7MB
+ e0d55fdb4d15 Extracting [==================================================>]    109MB/109MB
+ eb77aa907276 Extracting [======================>                            ]  405.5MB/907.7MB
+ eb77aa907276 Extracting [=======================>                           ]  434.5MB/907.7MB
+ eb77aa907276 Extracting [=========================>                         ]  465.1MB/907.7MB
+ eb77aa907276 Extracting [===========================>                       ]  495.2MB/907.7MB
+ eb77aa907276 Extracting [============================>                      ]  526.4MB/907.7MB
+ eb77aa907276 Extracting [==============================>                    ]  556.5MB/907.7MB
+ eb77aa907276 Extracting [================================>                  ]  585.5MB/907.7MB
+ eb77aa907276 Extracting [=================================>                 ]  614.4MB/907.7MB
+ eb77aa907276 Extracting [===================================>               ]  645.1MB/907.7MB
+ eb77aa907276 Extracting [====================================>              ]  668.5MB/907.7MB
+ eb77aa907276 Extracting [======================================>            ]    698MB/907.7MB
+ eb77aa907276 Extracting [=======================================>           ]  725.3MB/907.7MB
+ eb77aa907276 Extracting [=========================================>         ]  750.4MB/907.7MB
+ eb77aa907276 Extracting [==========================================>        ]  773.2MB/907.7MB
+ eb77aa907276 Extracting [===========================================>       ]  795.5MB/907.7MB
+ eb77aa907276 Extracting [=============================================>     ]  818.3MB/907.7MB
+ eb77aa907276 Extracting [==============================================>    ]  840.6MB/907.7MB
+ eb77aa907276 Extracting [===============================================>   ]  862.3MB/907.7MB
+ eb77aa907276 Extracting [================================================>  ]  886.3MB/907.7MB
+ eb77aa907276 Extracting [==================================================>]  907.7MB/907.7MB
+ e0d55fdb4d15 Pull complete 
+ c1cb13b19080 Extracting [==================================================>]  9.925kB/9.925kB
+ c1cb13b19080 Extracting [==================================================>]  9.925kB/9.925kB
+ eb77aa907276 Pull complete 
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Extracting [==================================================>]      32B/32B
+ 4f4fb700ef54 Pull complete 
+ 0ffa8f8aba1e Extracting [==================================================>]     226B/226B
+ 0ffa8f8aba1e Extracting [==================================================>]     226B/226B
+ c1cb13b19080 Pull complete 
+ 873532e5f8c7 Extracting [==================================================>]     128B/128B
+ 873532e5f8c7 Extracting [==================================================>]     128B/128B
+ 0ffa8f8aba1e Pull complete 
+ 2e81b9cb93cd Extracting [==================================================>]  1.859kB/1.859kB
+ 2e81b9cb93cd Extracting [==================================================>]  1.859kB/1.859kB
+ 873532e5f8c7 Pull complete 
+ 050d9f8c3b1c Extracting [==================================================>]     169B/169B
+ 050d9f8c3b1c Extracting [==================================================>]     169B/169B
+ 2e81b9cb93cd Pull complete 
+ 050d9f8c3b1c Pull complete 
+ 710e142705f8 Extracting [==================================================>]  5.421kB/5.421kB
+ 710e142705f8 Extracting [==================================================>]  5.421kB/5.421kB
+ opensearch Pulled 
+ 710e142705f8 Pull complete 
+ cb628c265f09 Extracting [==================================================>]     184B/184B
+ cb628c265f09 Extracting [==================================================>]     184B/184B
+ cb628c265f09 Pull complete 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-redis-1  Started
+ Container docker_services_cli-opensearch-1  Started
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=9::'enablePackrat' deprecated - use 'enable_packrat'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=52::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=53::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=54::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=55::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=56::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=57::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=58::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=59::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=60::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=63::'excludeChars' argument is deprecated, use 'exclude_chars'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=73::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=74::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=119::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=122::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=155::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=157::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=199::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=303::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=304::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py,line=325::'oneOf' deprecated - use 'one_of'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py,line=103::'addParseAction' deprecated - use 'add_parse_action'
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/invenio_requests/services/files/config.py,line=64::Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/invenio_requests/services/files/config.py,line=65::Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/invenio_requests/services/files/config.py,line=66::Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.
+============================= test session starts ==============================
+platform linux -- Python 3.14.2, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched
+configfile: setup.cfg
+testpaths: docs, tests, invenio_requests
+plugins: invenio-4.0.0, time-machine-2.19.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 512 items
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/tests/resources/files/test_request_files_resources.py,line=89::"\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
+
+docs/conf.py ...                                                         [  0%]
+tests/__init__.py ...                                                    [  1%]
+tests/conftest.py ...                                                    [  1%]
+tests/customizations/test_event_types.py .....                           [  2%]
+tests/customizations/test_request_types.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..                         [  3%]
+tests/mock_module/__init__.py ...                                        [  4%]
+tests/mock_module/administration.py ...                                  [  4%]
+tests/mock_module/blueprint.py ...                                       [  5%]
+tests/mock_module/request_type.py ...                                    [  6%]
+tests/records/events/test_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                     [  6%]
+tests/records/systemfields/conftest.py ...                               [  7%]
+tests/records/systemfields/helpers.py ...                                [  7%]
+tests/records/systemfields/test_calculated_systemfield.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.           [  8%]
+tests/records/systemfields/test_last_activity_field.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..             [  9%]
+tests/records/systemfields/test_last_reply_field.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...               [ 10%]
+tests/records/test_request_api.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                                    [ 11%]
+tests/records/test_request_numberseq.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                              [ 11%]
+tests/records/test_systemfield_relatedrecord.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py,line=334::nested transaction already deassociated from connection
+                  [ 13%]
+tests/resources/events/conftest.py ...                                   [ 13%]
+tests/resources/events/test_request_events_resources.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+   [ 16%]
+tests/resources/files/conftest.py ...                                    [ 17%]
+tests/resources/files/test_request_files_resources.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+           [ 18%]
+tests/resources/requests/conftest.py ...                                 [ 19%]
+tests/resources/requests/test_requests_resources.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+             [ 20%]
+tests/resources/user_moderation/test_user_moderation_resources.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+. [ 22%]
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+                                                                  [ 23%]
+tests/services/components/test_request_reviewers_component.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+....... [ 25%]
+.........                                                                [ 27%]
+tests/services/conftest.py ...                                           [ 27%]
+tests/services/events/conftest.py ...                                    [ 28%]
+tests/services/events/test_event_permissions.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.....                 [ 29%]
+tests/services/events/test_request_events_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+..........       [ 32%]
+tests/services/events/test_request_events_service_config.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.         [ 33%]
+tests/services/requests/test_request_permissions.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+............      [ 36%]
+tests/services/requests/test_request_search_permissions.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+           [ 36%]
+tests/services/requests/test_requests_schemas.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.                    [ 37%]
+tests/services/requests/test_requests_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.......              [ 39%]
+tests/services/requests/test_requests_service_config.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+.             [ 40%]
+tests/services/requests/test_requests_tasks.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+                       [ 40%]
+tests/services/user_moderation/test_user_moderation_service.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py,line=29::CSRF validation will be enabled by default in the version 1.3.x
+...... [ 42%]
+                                                                         [ 42%]
+tests/test_alembic.py ..s                                                [ 43%]
+tests/test_invenio_requests.py ....                                      [ 43%]
+tests/test_type_registry.py .....                                        [ 44%]
+tests/ui/conftest.py ...                                                 [ 45%]
+tests/ui/test_request_ui_files_resources.py ...::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py,line=77::Remember me support has been removed.
+                          [ 46%]
+invenio_requests/__init__.py ...                                         [ 46%]
+invenio_requests/alembic/1759321170_add_index_to_request_events_request_id_.py . [ 46%]
+..                                                                       [ 47%]
+invenio_requests/alembic/1763728177_create_request_files_table.py ...    [ 47%]
+invenio_requests/alembic/5cd30a3503c9_create_requests_branch.py ...      [ 48%]
+invenio_requests/alembic/74b23178bfbe_change_datetime_types.py ...       [ 49%]
+invenio_requests/alembic/a14fa442680f_create_tables.py ...               [ 49%]
+invenio_requests/config.py ...                                           [ 50%]
+invenio_requests/customizations/__init__.py ...                          [ 50%]
+invenio_requests/customizations/actions.py ...                           [ 51%]
+invenio_requests/customizations/event_types.py ...                       [ 51%]
+invenio_requests/customizations/request_types.py ...                     [ 52%]
+invenio_requests/customizations/states.py ...                            [ 53%]
+invenio_requests/customizations/user_moderation/__init__.py ...          [ 53%]
+invenio_requests/customizations/user_moderation/user_moderation.py ...   [ 54%]
+invenio_requests/errors.py ...                                           [ 54%]
+invenio_requests/ext.py ...                                              [ 55%]
+invenio_requests/notifications/__init__.py ...                           [ 56%]
+invenio_requests/notifications/builders.py ...                           [ 56%]
+invenio_requests/notifications/filters.py ...                            [ 57%]
+invenio_requests/notifications/generators.py ...                         [ 57%]
+invenio_requests/proxies.py ...                                          [ 58%]
+invenio_requests/records/__init__.py ...                                 [ 58%]
+invenio_requests/records/api.py ...                                      [ 59%]
+invenio_requests/records/dumpers/__init__.py ...                         [ 60%]
+invenio_requests/records/dumpers/calculated.py ...                       [ 60%]
+invenio_requests/records/dumpers/granttokens.py ...                      [ 61%]
+invenio_requests/records/dumpers/parentchild.py ...                      [ 61%]
+invenio_requests/records/jsonschemas/__init__.py ...                     [ 62%]
+invenio_requests/records/mappings/__init__.py ...                        [ 63%]
+invenio_requests/records/mappings/os-v1/__init__.py ...                  [ 63%]
+invenio_requests/records/mappings/os-v2/__init__.py ...                  [ 64%]
+invenio_requests/records/mappings/v7/__init__.py ...                     [ 64%]
+invenio_requests/records/models.py ...                                   [ 65%]
+invenio_requests/records/systemfields/__init__.py ...                    [ 66%]
+invenio_requests/records/systemfields/computed.py ...                    [ 66%]
+invenio_requests/records/systemfields/entity_reference.py ...            [ 67%]
+invenio_requests/records/systemfields/event_type.py ...                  [ 67%]
+invenio_requests/records/systemfields/expired_state.py ...               [ 68%]
+invenio_requests/records/systemfields/files.py ...                       [ 68%]
+invenio_requests/records/systemfields/identity.py ...                    [ 69%]
+invenio_requests/records/systemfields/relatedrecord.py ...               [ 70%]
+invenio_requests/records/systemfields/request_state.py ...               [ 70%]
+invenio_requests/records/systemfields/request_type.py ...                [ 71%]
+invenio_requests/records/systemfields/status.py ...                      [ 71%]
+invenio_requests/records/validators.py ...                               [ 72%]
+invenio_requests/registry.py ...                                         [ 73%]
+invenio_requests/resolvers/__init__.py ...                               [ 73%]
+invenio_requests/resolvers/registry.py ...                               [ 74%]
+invenio_requests/resolvers/requests.py ...                               [ 74%]
+invenio_requests/resources/__init__.py ...                               [ 75%]
+invenio_requests/resources/events/__init__.py ...                        [ 75%]
+invenio_requests/resources/events/config.py ...                          [ 76%]
+invenio_requests/resources/events/resource.py ...                        [ 77%]
+invenio_requests/resources/files/__init__.py ...                         [ 77%]
+invenio_requests/resources/files/config.py ...                           [ 78%]
+invenio_requests/resources/files/resource.py ...                         [ 78%]
+invenio_requests/resources/requests/__init__.py ...                      [ 79%]
+invenio_requests/resources/requests/config.py ...                        [ 80%]
+invenio_requests/resources/requests/fields.py ...                        [ 80%]
+invenio_requests/resources/requests/resource.py ...                      [ 81%]
+invenio_requests/services/__init__.py ...                                [ 81%]
+invenio_requests/services/events/__init__.py ...                         [ 82%]
+invenio_requests/services/events/config.py ...                           [ 83%]
+invenio_requests/services/events/service.py ...                          [ 83%]
+invenio_requests/services/files/__init__.py ...                          [ 84%]
+invenio_requests/services/files/config.py ...                            [ 84%]
+invenio_requests/services/files/errors.py ...                            [ 85%]
+invenio_requests/services/files/service.py ...                           [ 85%]
+invenio_requests/services/generators.py ...                              [ 86%]
+invenio_requests/services/links.py ...                                   [ 87%]
+invenio_requests/services/permissions.py ...                             [ 87%]
+invenio_requests/services/requests/__init__.py ...                       [ 88%]
+invenio_requests/services/requests/components.py ...                     [ 88%]
+invenio_requests/services/requests/config.py ...                         [ 89%]
+invenio_requests/services/requests/facets.py ...                         [ 90%]
+invenio_requests/services/requests/params.py ...                         [ 90%]
+invenio_requests/services/requests/results.py ...                        [ 91%]
+invenio_requests/services/requests/service.py ...                        [ 91%]
+invenio_requests/services/results.py ...                                 [ 92%]
+invenio_requests/services/schemas.py ...                                 [ 92%]
+invenio_requests/services/user_moderation/__init__.py ...                [ 93%]
+invenio_requests/services/user_moderation/errors.py ...                  [ 94%]
+invenio_requests/services/user_moderation/service.py ...                 [ 94%]
+invenio_requests/tasks.py ...                                            [ 95%]
+invenio_requests/views/__init__.py ...                                   [ 95%]
+invenio_requests/views/api.py ...                                        [ 96%]
+invenio_requests/views/decorators.py ...                                 [ 97%]
+invenio_requests/views/files/__init__.py ...                             [ 97%]
+invenio_requests/views/files/requests.py ...                             [ 98%]
+invenio_requests/views/files/ui.py ...                                   [ 98%]
+invenio_requests/views/ui.py ...                                         [ 99%]
+invenio_requests/webpack.py ...                                          [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:9: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    pyparsing.ParserElement.enablePackrat()
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:52: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru12 = oneOf(["%.2d" % i for i in range(1, 13)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:53: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru13 = oneOf(["%.2d" % i for i in range(1, 14)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:54: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru23 = oneOf(["%.2d" % i for i in range(1, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:55: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru23 = oneOf(["%.2d" % i for i in range(0, 24)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:56: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru29 = oneOf(["%.2d" % i for i in range(1, 30)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:57: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru30 = oneOf(["%.2d" % i for i in range(1, 31)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:58: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru31 = oneOf(["%.2d" % i for i in range(1, 32)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:59: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    oneThru59 = oneOf(["%.2d" % i for i in range(1, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:60: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    zeroThru59 = oneOf(["%.2d" % i for i in range(0, 60)])
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:63: PyparsingDeprecationWarning: 'excludeChars' argument is deprecated, use 'exclude_chars'
+    positiveDigit = Word(nums, exact=1, excludeChars="0")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:73: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    (oneOf("01 03 05 07 08 10 12")("month") + "-" + oneThru31("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:74: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    ^ (oneOf("04 06 09 11")("month") + "-" + oneThru30("day"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: 19 warnings
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/parser_classes.py:103: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    p.addParseAction(cls.parse_action)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:119: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    UASymbol = Combine(oneOf("? ~ %"))
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:122: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonNumber = oneOf("21 22 23 24")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:155: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1Start.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:157: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    l1End.addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:199: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    monthWithX = Combine(oneOf("0X 1X") ^ ("X" + digitOrX))("month")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:303: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    earlier = L("..").addParseAction(f)("lower") + date("upper").addParseAction(f)
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:304: PyparsingDeprecationWarning: 'addParseAction' deprecated - use 'add_parse_action'
+    later = date("lower").addParseAction(f) + L("..").addParseAction(f)("upper")
+
+.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/edtf/parser/grammar.py:325: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    seasonL2Number = oneOf("21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41")
+
+invenio_requests/services/files/config.py:64
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/invenio_requests/services/files/config.py:64: DeprecationWarning: Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.
+    "self": RequestFileLink("{+api}/requests/{request_id}/files/{key}"),
+
+invenio_requests/services/files/config.py:65
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/invenio_requests/services/files/config.py:65: DeprecationWarning: Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.
+    "content": RequestFileLink("{+api}/requests/{request_id}/files/{key}/content"),
+
+invenio_requests/services/files/config.py:66
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/invenio_requests/services/files/config.py:66: DeprecationWarning: Link is deprecated and will be removed in v14.0. Use `ExternalLink` for third-party links and `EndpointLink` for InvenioRDM links.
+    "download_html": RequestFileLink("{+ui}/requests/{request_id}/files/{key}"),
+
+tests/resources/files/test_request_files_resources.py:89
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/tests/resources/files/test_request_files_resources.py:89: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
+    assert re.match(key_base + "-\w{5}-\w{5}" + key_ext, unique_key)
+
+tests/customizations/test_request_types.py: 1 warning
+tests/records/events/test_api.py: 1 warning
+tests/records/systemfields/test_calculated_systemfield.py: 1 warning
+tests/records/systemfields/test_last_activity_field.py: 1 warning
+tests/records/systemfields/test_last_reply_field.py: 1 warning
+tests/records/test_request_api.py: 1 warning
+tests/records/test_request_numberseq.py: 1 warning
+tests/records/test_systemfield_relatedrecord.py: 1 warning
+tests/resources/events/test_request_events_resources.py: 1 warning
+tests/resources/files/test_request_files_resources.py: 1 warning
+tests/resources/requests/test_requests_resources.py: 1 warning
+tests/resources/user_moderation/test_user_moderation_resources.py: 1 warning
+tests/services/components/test_request_reviewers_component.py: 1 warning
+tests/services/events/test_event_permissions.py: 1 warning
+tests/services/events/test_request_events_service.py: 1 warning
+tests/services/events/test_request_events_service_config.py: 1 warning
+tests/services/requests/test_request_permissions.py: 1 warning
+tests/services/requests/test_request_search_permissions.py: 1 warning
+tests/services/requests/test_requests_schemas.py: 1 warning
+tests/services/requests/test_requests_service.py: 1 warning
+tests/services/requests/test_requests_service_config.py: 1 warning
+tests/services/requests/test_requests_tasks.py: 1 warning
+tests/services/user_moderation/test_user_moderation_service.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_rest/ext.py:29: FutureWarning: CSRF validation will be enabled by default in the version 1.3.x
+    self.init_app(app)
+
+tests/records/test_systemfield_relatedrecord.py::test_no_assignment
+tests/records/test_systemfield_relatedrecord.py::test_record_assignment
+tests/records/test_systemfield_relatedrecord.py::test_id_assignment
+tests/records/test_systemfield_relatedrecord.py::test_remove_assignment
+tests/records/test_systemfield_relatedrecord.py::test_dump_created_by
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/invenio_records/api.py:334: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+
+tests/resources/events/test_request_events_resources.py: 14 warnings
+tests/resources/files/test_request_files_resources.py: 8 warnings
+tests/resources/requests/test_requests_resources.py: 6 warnings
+tests/resources/user_moderation/test_user_moderation_resources.py: 11 warnings
+tests/ui/test_request_ui_files_resources.py: 1 warning
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-requests/patched/.venv/lib/python3.14/site-packages/flask_security/utils.py:77: DeprecationWarning: Remember me support has been removed.
+    warnings.warn("Remember me support has been removed.", DeprecationWarning)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.2-final-0 ________________
+
+Name                                                                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------------------------------
+invenio_requests/__init__.py                                                         5      0   100%
+invenio_requests/alembic/5cd30a3503c9_create_requests_branch.py                      8      2    75%   18, 23
+invenio_requests/alembic/74b23178bfbe_change_datetime_types.py                      15      8    47%   25-28, 33-36
+invenio_requests/alembic/1759321170_add_index_to_request_events_request_id_.py       9      2    78%   21, 31
+invenio_requests/alembic/1763728177_create_request_files_table.py                   24     14    42%   23-95, 107-119
+invenio_requests/alembic/a14fa442680f_create_tables.py                              18      8    56%   23-95, 109-112
+invenio_requests/config.py                                                          47      0   100%
+invenio_requests/customizations/__init__.py                                          5      0   100%
+invenio_requests/customizations/actions.py                                          64      1    98%   89
+invenio_requests/customizations/event_types.py                                      86      7    92%   27-28, 102-104, 109, 113
+invenio_requests/customizations/request_types.py                                    96      8    92%   131, 199-204, 256-257, 291
+invenio_requests/customizations/states.py                                            5      0   100%
+invenio_requests/customizations/user_moderation/__init__.py                          2      0   100%
+invenio_requests/customizations/user_moderation/user_moderation.py                  29      0   100%
+invenio_requests/errors.py                                                          41      5    88%   72, 92, 104-108
+invenio_requests/ext.py                                                             72      1    99%   138
+invenio_requests/notifications/__init__.py                                           0      0   100%
+invenio_requests/notifications/builders.py                                          21      0   100%
+invenio_requests/notifications/filters.py                                           14      1    93%   28
+invenio_requests/notifications/generators.py                                        59      3    95%   33, 131-133
+invenio_requests/proxies.py                                                         18      0   100%
+invenio_requests/records/__init__.py                                                 3      0   100%
+invenio_requests/records/api.py                                                     97      3    97%   106-109
+invenio_requests/records/dumpers/__init__.py                                         4      0   100%
+invenio_requests/records/dumpers/calculated.py                                      10      0   100%
+invenio_requests/records/dumpers/granttokens.py                                     20      2    90%   35-36
+invenio_requests/records/dumpers/parentchild.py                                      8      0   100%
+invenio_requests/records/jsonschemas/__init__.py                                     0      0   100%
+invenio_requests/records/mappings/__init__.py                                        0      0   100%
+invenio_requests/records/mappings/os-v1/__init__.py                                  0      0   100%
+invenio_requests/records/mappings/os-v2/__init__.py                                  0      0   100%
+invenio_requests/records/mappings/v7/__init__.py                                     0      0   100%
+invenio_requests/records/models.py                                                  53      0   100%
+invenio_requests/records/systemfields/__init__.py                                    9      0   100%
+invenio_requests/records/systemfields/computed.py                                   65      1    98%   123
+invenio_requests/records/systemfields/entity_reference.py                           15      0   100%
+invenio_requests/records/systemfields/event_type.py                                 48      2    96%   32, 62
+invenio_requests/records/systemfields/expired_state.py                              13      0   100%
+invenio_requests/records/systemfields/files.py                                       7      2    71%   25-27
+invenio_requests/records/systemfields/identity.py                                   11      2    82%   20-21
+invenio_requests/records/systemfields/relatedrecord.py                              96     20    79%   33, 37-39, 47-49, 57-58, 65-67, 136-137, 156-159, 170-171, 183
+invenio_requests/records/systemfields/request_state.py                              10      0   100%
+invenio_requests/records/systemfields/request_type.py                               30      1    97%   41
+invenio_requests/records/systemfields/status.py                                     11      0   100%
+invenio_requests/records/validators.py                                               6      4    33%   20-24
+invenio_requests/registry.py                                                        17      0   100%
+invenio_requests/resolvers/__init__.py                                               1      0   100%
+invenio_requests/resolvers/registry.py                                               6      0   100%
+invenio_requests/resolvers/requests.py                                              15      4    73%   28, 37, 47, 56
+invenio_requests/resources/__init__.py                                               4      0   100%
+invenio_requests/resources/events/__init__.py                                        3      0   100%
+invenio_requests/resources/events/config.py                                         15      0   100%
+invenio_requests/resources/events/resource.py                                       79      4    95%   172-179, 202-210
+invenio_requests/resources/files/__init__.py                                         3      0   100%
+invenio_requests/resources/files/config.py                                          11      0   100%
+invenio_requests/resources/files/resource.py                                        25      0   100%
+invenio_requests/resources/requests/__init__.py                                      3      0   100%
+invenio_requests/resources/requests/config.py                                       22      0   100%
+invenio_requests/resources/requests/fields.py                                       16      6    62%   30, 32, 41-46
+invenio_requests/resources/requests/resource.py                                     67      6    91%   86-92, 114-120, 126-130
+invenio_requests/services/__init__.py                                                5      0   100%
+invenio_requests/services/events/__init__.py                                         3      0   100%
+invenio_requests/services/events/config.py                                         142     16    89%   46, 80, 86, 111, 147-148, 151-156, 310-317
+invenio_requests/services/events/service.py                                        207     54    74%   105, 228, 327, 423-474, 607-664, 693, 706
+invenio_requests/services/files/__init__.py                                          3      0   100%
+invenio_requests/services/files/config.py                                           27      1    96%   30
+invenio_requests/services/files/errors.py                                           10      1    90%   35
+invenio_requests/services/files/service.py                                          61      2    97%   71, 99
+invenio_requests/services/generators.py                                             89      9    90%   49, 74, 112, 141, 172, 178, 185, 195, 199
+invenio_requests/services/links.py                                                  71      1    99%   91
+invenio_requests/services/permissions.py                                            25      0   100%
+invenio_requests/services/requests/__init__.py                                       5      0   100%
+invenio_requests/services/requests/components.py                                   125      5    96%   183-192
+invenio_requests/services/requests/config.py                                        37      0   100%
+invenio_requests/services/requests/facets.py                                         5      0   100%
+invenio_requests/services/requests/params.py                                        57     11    81%   34, 60, 81, 83, 110-124, 137-138
+invenio_requests/services/requests/results.py                                       84      8    90%   53, 63, 88-90, 97, 103, 118
+invenio_requests/services/requests/service.py                                      106      2    98%   48, 337
+invenio_requests/services/results.py                                                50     20    60%   32, 62-63, 67, 80-83, 88-90, 95-101, 105-107
+invenio_requests/services/schemas.py                                                59      0   100%
+invenio_requests/services/user_moderation/__init__.py                                2      0   100%
+invenio_requests/services/user_moderation/errors.py                                  5      0   100%
+invenio_requests/services/user_moderation/service.py                                36      1    97%   100
+invenio_requests/tasks.py                                                           25      7    72%   47-49, 61-66
+invenio_requests/views/__init__.py                                                   5      0   100%
+invenio_requests/views/api.py                                                        9      0   100%
+invenio_requests/views/decorators.py                                                13      9    31%   21-34
+invenio_requests/views/files/__init__.py                                             2      0   100%
+invenio_requests/views/files/requests.py                                             5      0   100%
+invenio_requests/views/files/ui.py                                                  11      1    91%   20
+invenio_requests/views/ui.py                                                        18      5    72%   23, 28, 33-36
+invenio_requests/webpack.py                                                          2      0   100%
+--------------------------------------------------------------------------------------------------------------
+TOTAL                                                                             2745    270    90%
+=========== 511 passed, 1 skipped, 114 warnings in 108.62s (0:01:48) ===========
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

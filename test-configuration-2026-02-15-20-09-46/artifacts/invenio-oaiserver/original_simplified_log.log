@@ -1,0 +1,220 @@
+running extract_messages
+extracting messages from invenio_oaiserver/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/admin.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/config.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/errors.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/ext.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/fetchers.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/minters.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/models.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/percolator.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/provider.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/proxies.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/query.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/receivers.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/response.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/resumption_token.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/utils.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/verbs.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/alembic/5d25c1981985_add_system_created_field.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/alembic/759d47cbdba7_create_oaiserver_branch.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/alembic/e655021de0de_create_oiaserver_tables.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/alembic/f9b1e3f7d3b1_change_datetime_types.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/schemas/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/search/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/search/component_templates/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/search/component_templates/os-v2/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/search/component_templates/v7/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/views/__init__.py (encoding="utf-8")
+extracting messages from invenio_oaiserver/views/server.py (encoding="utf-8")
+writing PO template file to /dev/null
+  __import__('pkg_resources').declare_namespace(__name__)
+ rabbitmq Pulling 
+ opensearch Pulling 
+ postgresql Pulling 
+ 4f4fb700ef54 Already exists 
+ rabbitmq Pulled 
+ postgresql Pulled 
+ opensearch Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-opensearch-1  Creating
+ Container docker_services_cli-rabbitmq-1  Creating
+ Container docker_services_cli-rabbitmq-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-opensearch-1  Created
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-opensearch-1  Starting
+ Container docker_services_cli-rabbitmq-1  Starting
+ Container docker_services_cli-rabbitmq-1  Started
+ Container docker_services_cli-opensearch-1  Started
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original
+configfile: setup.cfg
+testpaths: tests, invenio_oaiserver
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 146 items
+tests/conftest.py ...                                                    [  2%]
+tests/data/__init__.py ...                                               [  4%]
+tests/data/os-v1/__init__.py ...                                         [  6%]
+tests/data/os-v2/__init__.py ...                                         [  8%]
+tests/data/v7/__init__.py ...                                            [ 10%]
+tests/helpers.py ...                                                     [ 12%]
+tests/test_admin.py 
+                                                  [ 14%]
+tests/test_app.py ....                                                   [ 17%]
+tests/test_invenio_oaiserver.py 
+s                                 [ 22%]
+tests/test_percolator.py 
+                                          [ 26%]
+tests/test_verbs.py 
+                              [ 42%]
+invenio_oaiserver/__init__.py ...                                        [ 44%]
+invenio_oaiserver/admin.py ...                                           [ 46%]
+invenio_oaiserver/alembic/5d25c1981985_add_system_created_field.py ...   [ 48%]
+invenio_oaiserver/alembic/759d47cbdba7_create_oaiserver_branch.py ...    [ 50%]
+invenio_oaiserver/alembic/e655021de0de_create_oiaserver_tables.py ...    [ 52%]
+invenio_oaiserver/alembic/f9b1e3f7d3b1_change_datetime_types.py ...      [ 54%]
+invenio_oaiserver/config.py ...                                          [ 56%]
+invenio_oaiserver/errors.py ...                                          [ 58%]
+invenio_oaiserver/ext.py ...                                             [ 60%]
+invenio_oaiserver/fetchers.py ...                                        [ 63%]
+invenio_oaiserver/minters.py ...                                         [ 65%]
+invenio_oaiserver/models.py ...                                          [ 67%]
+invenio_oaiserver/percolator.py ...                                      [ 69%]
+invenio_oaiserver/provider.py ...                                        [ 71%]
+invenio_oaiserver/proxies.py ...                                         [ 73%]
+invenio_oaiserver/query.py ...                                           [ 75%]
+invenio_oaiserver/receivers.py ...                                       [ 77%]
+invenio_oaiserver/response.py ...                                        [ 79%]
+invenio_oaiserver/resumption_token.py ...                                [ 81%]
+invenio_oaiserver/schemas/__init__.py ...                                [ 83%]
+invenio_oaiserver/search/__init__.py ...                                 [ 85%]
+invenio_oaiserver/search/component_templates/__init__.py ...             [ 87%]
+invenio_oaiserver/search/component_templates/os-v2/__init__.py ...       [ 89%]
+invenio_oaiserver/search/component_templates/v7/__init__.py ...          [ 91%]
+invenio_oaiserver/utils.py ...                                           [ 93%]
+invenio_oaiserver/verbs.py ...                                           [ 95%]
+invenio_oaiserver/views/__init__.py ...                                  [ 97%]
+invenio_oaiserver/views/server.py ...                                    [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/__init__.py:13
+    __version_info__ = tuple(LooseVersion(__version__).version)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:2560
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(parent)
+tests/test_admin.py::test_admin
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original/.venv/lib/python3.14/site-packages/flask_admin/contrib/sqla/view.py:1119: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    return self.session.query(self.model).get(tools.iterdecode(id))
+tests/test_invenio_oaiserver.py::test_init
+    warnings.warn(
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original/.venv/lib/python3.14/site-packages/invenio_records/api.py:334: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_verbs.py::test_getrecord
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original/tests/test_verbs.py:263: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_verbs.py::test_listmetadataformats_record
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original/tests/test_verbs.py:366: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_verbs.py::test_listrecords
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original/tests/test_verbs.py:600: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_list_sets_long
+tests/test_verbs.py::test_list_sets_long
+    kwargs=schema.dump(schema_kwargs).data,
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_list_sets_long
+tests/test_verbs.py::test_list_sets_long
+    result["kwargs"] = _schema_from_verb(data["verb"]).load(schema_kwargs).data
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_list_sets_long
+tests/test_verbs.py::test_list_sets_long
+    result.data.get("resumptionToken", {}).update(
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_listrecords
+tests/test_verbs.py::test_list_sets_long
+tests/test_verbs.py::test_list_sets_long
+    result.data.get("resumptionToken", {}).get("kwargs", {})
+tests/test_verbs.py::test_listidentifiers
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-oaiserver/original/tests/test_verbs.py:910: SAWarning: nested transaction already deassociated from connection
+    with db.session.begin_nested():
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                                                                 Stmts   Miss  Cover   Missing
+invenio_oaiserver/__init__.py                                            4      0   100%
+invenio_oaiserver/admin.py                                              21      3    86%   52-54
+invenio_oaiserver/alembic/5d25c1981985_add_system_created_field.py      10      2    80%   22, 36
+invenio_oaiserver/alembic/759d47cbdba7_create_oaiserver_branch.py       10      2    80%   23, 28
+invenio_oaiserver/alembic/e655021de0de_create_oiaserver_tables.py       12      4    67%   23-35, 42-43
+invenio_oaiserver/alembic/f9b1e3f7d3b1_change_datetime_types.py         13      6    54%   25-27, 32-34
+invenio_oaiserver/config.py                                             54      0   100%
+invenio_oaiserver/errors.py                                              3      0   100%
+invenio_oaiserver/ext.py                                                78      4    95%   76-77, 83-84
+invenio_oaiserver/fetchers.py                                           17      2    88%   30, 44
+invenio_oaiserver/minters.py                                            13      0   100%
+invenio_oaiserver/models.py                                             23      1    96%   82
+invenio_oaiserver/percolator.py                                         72      9    88%   69, 77-78, 91, 118-139, 146, 178
+invenio_oaiserver/provider.py                                           16      0   100%
+invenio_oaiserver/proxies.py                                             4      0   100%
+invenio_oaiserver/query.py                                              61      1    98%   27
+invenio_oaiserver/receivers.py                                           8      1    88%   28
+invenio_oaiserver/response.py                                          176      4    98%   148-152, 245
+invenio_oaiserver/resumption_token.py                                   35      0   100%
+invenio_oaiserver/schemas/__init__.py                                    0      0   100%
+invenio_oaiserver/search/__init__.py                                     0      0   100%
+invenio_oaiserver/search/component_templates/__init__.py                 0      0   100%
+invenio_oaiserver/search/component_templates/os-v2/__init__.py           0      0   100%
+invenio_oaiserver/search/component_templates/v7/__init__.py              0      0   100%
+invenio_oaiserver/utils.py                                              83      3    96%   55, 82, 185
+invenio_oaiserver/verbs.py                                              71      5    93%   51-53, 60, 67
+invenio_oaiserver/views/__init__.py                                      0      0   100%
+invenio_oaiserver/views/server.py                                       45      7    84%   48-55, 77
+TOTAL                                                                  829     54    93%
+================= 145 passed, 1 skipped, 53 warnings in 24.00s =================
+ Container docker_services_cli-opensearch-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-rabbitmq-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-opensearch-1  Stopped
+ Container docker_services_cli-opensearch-1  Removing
+ Container docker_services_cli-opensearch-1  Removed
+ Container docker_services_cli-rabbitmq-1  Stopped
+ Container docker_services_cli-rabbitmq-1  Removing
+ Container docker_services_cli-rabbitmq-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

@@ -1,0 +1,37 @@
+{
+  "dependencies": [],
+  "package": {
+    "extras": [
+      "tests",
+      "opensearch2",
+      "s3",
+      "devs",
+      "s3fs",
+      "oaipmh",
+      "rdf",
+      "sparql",
+      "postgresql",
+      "admin"
+    ],
+    "freeze": [
+      "setuptools<82.0.0"
+    ],
+    "patches": [],
+    "reference": {
+      "actual_version": "4.1.1",
+      "base": null,
+      "branch": "v4.1.1",
+      "commit": "4f29387ac379122457395609626d53cca1abf978",
+      "commits_from_version": [],
+      "org": "inveniosoftware",
+      "package": "invenio-userprofiles",
+      "pr": null,
+      "pr_info": null,
+      "repo": "invenio-userprofiles"
+    },
+    "test": [
+      "./run-tests.sh"
+    ]
+  },
+  "status": "skipped"
+}

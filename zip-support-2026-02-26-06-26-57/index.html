@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invenio Test Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Source Sans 3', sans-serif;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        .status-complete {
+            background-color: #198754;
+            color: white;
+        }
+        .status-complete-errors {
+            background-color: #dc3545;
+            color: white;
+        }
+        .status-in-progress {
+            background-color: #0dcaf0;
+            color: #000;
+        }
+        .status-in-progress-errors {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            margin-bottom: 1.5rem;
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 500;
+            font-size: 1.25rem;
+            padding: 1rem 1.25rem;
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .table th {
+            background-color: #e9ecef;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #495057;
+        }
+        .result-icon {
+            font-size: 1.2rem;
+            margin-right: 0.25rem;
+        }
+        .package-name {
+            font-weight: 500;
+        }
+        .link-list {
+            font-size: 0.875rem;
+            line-height: 1.2;
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+        }
+        .link-list a {
+            text-decoration: none;
+        }
+        .link-list li {
+            margin: 0;
+            padding: 0;
+        }
+        .emoji-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            /* box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); */
+        }
+        .metric-card.success {
+            border: 2px solid #198754;
+        }
+        .metric-card.success .metric-value {
+            color: #198754;
+        }
+        .metric-card.danger {
+            border: 2px solid #dc3545;
+        }
+        .metric-card.danger .metric-value {
+            color: #dc3545;
+        }
+        .metric-card.warning {
+            border: 2px solid #ffc107;
+        }
+        .metric-card.warning .metric-value {
+            color: #fd7e14;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+        .metric-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .metric-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .header-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            display: inline-block;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+        .header-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        .back-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            display: inline-block;
+            margin-top: 0.5rem;
+            margin-right: 1rem;
+        }
+        .back-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="mb-2">ZIP support</h1>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="mb-2">
+                        <span class="status-badge status-complete-errors">
+                            ❌ Status: Complete with Errors
+                        </span>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-4">
+                    
+                    <p class="mb-1"><em>Started: 2026-02-26 06:26:05 UTC</em></p>
+                    
+                    <p class="mb-1"><em>Last updated: 2026-02-26 06:57:51 UTC</em></p>
+                    
+                    <p class="mb-1"><em>Python: 3.14.2</em></p>
+                    
+                </div>
+                <div class="col-md-8 text-md-end">
+                    
+                    <p class="mb-1"><em>Patch Mode: Upstream baseline (patches overwrite upstream, unpatched are upstream)</em></p>
+                    
+                    
+                    <p class="mb-1"><em>Test Scope: All packages</em></p>
+                    
+                    
+                    <p class="mb-1"><em>Test Mode: Test patched first, retry unpatched on failure</em></p>
+                    
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <a href="../index.html" class="back-link">← Back to Reports Index</a>
+                    <a href="warnings.html" class="header-link">⚠️ View Warnings Report →</a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="data.json" class="header-link">📊 data.json</a>
+                    <a href="warnings.json" class="header-link">⚠️ warnings.json</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <!-- Overall Status -->
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">📊</span>Overall Status
+            </div>
+            <div class="card-body">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">18 / 52</div>
+                        <div class="metric-label">Tested / Total Packages</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-value">16</div>
+                        <div class="metric-label">✅ &nbsp;Tests Passing</div>
+                    </div>
+                    
+                    <div class="metric-card danger">
+                        <div class="metric-value">1</div>
+                        <div class="metric-label">❌ &nbsp;Regressions</div>
+                    </div>
+                    
+                    <div class="metric-card warning">
+                        <div class="metric-value">1</div>
+                        <div class="metric-label">⚠️ &nbsp;Still Failing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configured Patches -->
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">🔧</span>Configured Patches
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Patched Package</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            
+                            <tr>
+                                <td>
+                                    <a href="" target="_blank" class="text-decoration-none">
+                                        invenio-rdm-records
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://github.com/inveniosoftware/invenio-rdm-records/pull/2222" target="_blank" class="text-decoration-none">
+                                        inveniosoftware/invenio-rdm-records#2222
+                                    </a>
+                                </td>
+                            
+                        
+                            
+                            <tr>
+                                <td>
+                                    <a href="" target="_blank" class="text-decoration-none">
+                                        invenio-app-rdm
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://github.com/inveniosoftware/invenio-app-rdm/pull/3266" target="_blank" class="text-decoration-none">
+                                        inveniosoftware/invenio-app-rdm#3266
+                                    </a>
+                                </td>
+                            
+                        
+                            
+                            <tr>
+                                <td>
+                                    <a href="" target="_blank" class="text-decoration-none">
+                                        invenio-previewer
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://github.com/inveniosoftware/invenio-previewer/pull/243" target="_blank" class="text-decoration-none">
+                                        inveniosoftware/invenio-previewer#243
+                                    </a>
+                                </td>
+                            
+                        
+                            
+                            <tr>
+                                <td>
+                                    <a href="" target="_blank" class="text-decoration-none">
+                                        invenio-records-resources
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank" class="text-decoration-none">
+                                        inveniosoftware/invenio-records-resources#666
+                                    </a>
+                                </td>
+                            
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+        <!-- Patched Packages -->
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">🔄</span>Packages with Patches Applied
+            </div>
+            <div class="card-body">
+                
+                    <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Package</th>
+                
+                <th style="width: 15%;">Patches Applied</th>
+                
+                <th style="width: 20%;">Original</th>
+                
+                <th style="width: 25%;">Patched</th>
+                <th style="width: 25%;">Result</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-rdm-records/tree/v22.7.3" target="_blank">invenio-rdm-records</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-rdm-records/pull/2222" target="_blank">inveniosoftware/invenio-rdm-records#2222</a>
+                            
+                        
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-rdm-records/original_status.json" target="_blank">status</a> | <a href="artifacts/invenio-rdm-records/original_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-rdm-records/original_log.log" target="_blank">log</a> | <a href="artifacts/invenio-rdm-records/original_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-rdm-records/warnings_original.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">❌</span><strong>Fail</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-rdm-records/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-rdm-records/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-rdm-records/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-rdm-records/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-rdm-records/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">❌</span>Regression detected
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-app-rdm/tree/v14.0.0b3.dev6" target="_blank">invenio-app-rdm</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-app-rdm/pull/3266" target="_blank">inveniosoftware/invenio-app-rdm#3266</a>
+                            
+                        
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-previewer/pull/243" target="_blank">inveniosoftware/invenio-previewer#243</a>
+                            
+                        
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-rdm-records/pull/2222" target="_blank">inveniosoftware/invenio-rdm-records#2222</a>
+                            
+                        
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-app-rdm/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-app-rdm/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-app-rdm/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-app-rdm/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-app-rdm/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-previewer/tree/v3.5.1" target="_blank">invenio-previewer</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-previewer/pull/243" target="_blank">inveniosoftware/invenio-previewer#243</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-previewer/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-previewer/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-previewer/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-previewer/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-previewer/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-records-resources/tree/fix-read-many" target="_blank">invenio-records-resources</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-records-resources/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-records-resources/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-records-resources/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-records-resources/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-records-resources/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Packages With Patched Dependencies -->
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">�</span>Packages Depending on Patched Packages
+            </div>
+            <div class="card-body">
+                
+                <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Package</th>
+                
+                <th style="width: 15%;">Patches Applied</th>
+                
+                <th style="width: 20%;">Original</th>
+                
+                <th style="width: 25%;">Patched</th>
+                <th style="width: 25%;">Result</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-communities/tree/v21.2.0" target="_blank">invenio-communities</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">❌</span><strong>Fail</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-communities/original_status.json" target="_blank">status</a> | <a href="artifacts/invenio-communities/original_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-communities/original_log.log" target="_blank">log</a> | <a href="artifacts/invenio-communities/original_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-communities/warnings_original.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">❌</span><strong>Fail</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-communities/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-communities/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-communities/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-communities/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-communities/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">⚠️</span>Still failing
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-administration/tree/v4.3.2" target="_blank">invenio-administration</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-administration/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-administration/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-administration/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-administration/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-administration/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-audit-logs/tree/v0.3.2" target="_blank">invenio-audit-logs</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-audit-logs/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-audit-logs/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-audit-logs/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-audit-logs/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-audit-logs/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-banners/tree/v5.2.1" target="_blank">invenio-banners</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-banners/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-banners/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-banners/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-banners/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-banners/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-checks/tree/v2.0.0" target="_blank">invenio-checks</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-checks/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-checks/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-checks/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-checks/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-checks/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-collections/tree/v2.1.0" target="_blank">invenio-collections</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-rdm-records/pull/2222" target="_blank">inveniosoftware/invenio-rdm-records#2222</a>
+                            
+                        
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-collections/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-collections/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-collections/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-collections/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-collections/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-drafts-resources/tree/v7.3.1" target="_blank">invenio-drafts-resources</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-drafts-resources/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-drafts-resources/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-drafts-resources/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-drafts-resources/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-drafts-resources/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-github/tree/v4.0.0" target="_blank">invenio-github</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-github/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-github/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-github/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-github/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-github/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-jobs/tree/v6.1.1" target="_blank">invenio-jobs</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-jobs/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-jobs/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-jobs/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-jobs/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-jobs/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-notifications/tree/v1.2.3" target="_blank">invenio-notifications</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-notifications/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-notifications/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-notifications/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-notifications/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-notifications/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-pages/tree/v7.2.1" target="_blank">invenio-pages</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-pages/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-pages/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-pages/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-pages/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-pages/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-requests/tree/v10.5.0" target="_blank">invenio-requests</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-requests/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-requests/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-requests/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-requests/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-requests/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-users-resources/tree/v9.0.3" target="_blank">invenio-users-resources</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-users-resources/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-users-resources/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-users-resources/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-users-resources/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-users-resources/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-vocabularies/tree/v9.1.2" target="_blank">invenio-vocabularies</a>
+                    </span>
+                </td>
+                
+                <td>
+                    
+                    
+                    
+                        
+                            <a href="https://github.com/inveniosoftware/invenio-records-resources/pull/666" target="_blank">inveniosoftware/invenio-records-resources#666</a>
+                            
+                        
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">✅</span><strong>Pass</strong>
+                        
+                    </div>
+                    
+                    <ul class="link-list">
+                        <li><a href="artifacts/invenio-vocabularies/patched_status.json" target="_blank">status</a> | <a href="artifacts/invenio-vocabularies/patched_freeze.txt" target="_blank">freeze</a></li>
+                        <li><a href="artifacts/invenio-vocabularies/patched_log.log" target="_blank">log</a> | <a href="artifacts/invenio-vocabularies/patched_simplified_log.log" target="_blank">simplified</a></li>
+                        <li><a href="artifacts/invenio-vocabularies/warnings_patched.json" target="_blank">warnings</a></li>
+                    </ul>
+                    
+                </td>
+                <td>
+                    
+                        <span class="result-icon">✅</span>Patch applied successfully, tests passed
+                    
+                </td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Packages Without Patched Dependencies -->
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">📦</span>Packages Without Patched Dependencies
+            </div>
+            <div class="card-body">
+                
+                    <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Package</th>
+                
+                <th style="width: 20%;">Original</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-access/tree/v4.2.1" target="_blank">invenio-access</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-accounts/tree/v6.3.0" target="_blank">invenio-accounts</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-app/tree/v2.3.0" target="_blank">invenio-app</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-assets/tree/v4.2.1" target="_blank">invenio-assets</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-base/tree/v2.4.0" target="_blank">invenio-base</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-cache/tree/v2.1.0" target="_blank">invenio-cache</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-celery/tree/v2.2.0" target="_blank">invenio-celery</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-config/tree/v1.1.0" target="_blank">invenio-config</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-db/tree/v2.1.2" target="_blank">invenio-db</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-files-rest/tree/v3.4.1" target="_blank">invenio-files-rest</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-formatter/tree/v3.3.1" target="_blank">invenio-formatter</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-i18n/tree/v3.4.3" target="_blank">invenio-i18n</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-indexer/tree/v3.1.0" target="_blank">invenio-indexer</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-jsonschemas/tree/v2.1.0" target="_blank">invenio-jsonschemas</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-logging/tree/v4.1.1" target="_blank">invenio-logging</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-mail/tree/v2.3.0" target="_blank">invenio-mail</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-oaiserver/tree/v3.7.4" target="_blank">invenio-oaiserver</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-oauth2server/tree/v3.3.2" target="_blank">invenio-oauth2server</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-oauthclient/tree/v6.1.1" target="_blank">invenio-oauthclient</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-pidstore/tree/v2.2.2" target="_blank">invenio-pidstore</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-queues/tree/v1.0.2" target="_blank">invenio-queues</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-records/tree/v3.1.1" target="_blank">invenio-records</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-records-files/tree/v1.2.1" target="_blank">invenio-records-files</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-records-permissions/tree/v1.2.1" target="_blank">invenio-records-permissions</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-records-rest/tree/v3.2.1" target="_blank">invenio-records-rest</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-records-ui/tree/v2.1.2" target="_blank">invenio-records-ui</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-rest/tree/v2.0.5" target="_blank">invenio-rest</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-search/tree/v3.1.2" target="_blank">invenio-search</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-search-ui/tree/v4.1.5" target="_blank">invenio-search-ui</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-sitemap/tree/v0.3.0" target="_blank">invenio-sitemap</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-stats/tree/v5.1.1" target="_blank">invenio-stats</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-theme/tree/v4.5.0" target="_blank">invenio-theme</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-userprofiles/tree/v4.1.1" target="_blank">invenio-userprofiles</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+            <tr>
+                <td>
+                    <span class="package-name">
+                        <a href="https://github.com/inveniosoftware/invenio-webhooks/tree/v1.1.0" target="_blank">invenio-webhooks</a>
+                    </span>
+                </td>
+                
+                <td>
+                    <div>
+                        
+                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                        
+                    </div>
+                    
+                </td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+                
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

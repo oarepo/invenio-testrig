@@ -1,0 +1,168 @@
+ postgresql Pulling 
+ cb628c265f09 Pulling fs layer 
+ f8406d9c00ea Pulling fs layer 
+ c199bff16b05 Pulling fs layer 
+ e0d55fdb4d15 Pulling fs layer 
+ b0a0cf830b12 Pulling fs layer 
+ 050d9f8c3b1c Pulling fs layer 
+ 91d2729fa4d5 Pulling fs layer 
+ 9739ced65621 Pulling fs layer 
+ ae3bb1b347a4 Pulling fs layer 
+ dda3d8fbd5ed Pulling fs layer 
+ 710e142705f8 Pulling fs layer 
+ 283a477db7bb Pulling fs layer 
+ 873532e5f8c7 Pulling fs layer 
+ c1cb13b19080 Pulling fs layer 
+ f8406d9c00ea Download complete 
+ 050d9f8c3b1c Download complete 
+ cb628c265f09 Download complete 
+ c199bff16b05 Download complete 
+ c1cb13b19080 Download complete 
+ b0a0cf830b12 Downloading [=>                                                 ]  1.049MB/29.15MB
+ 873532e5f8c7 Download complete 
+ 9739ced65621 Downloading [=========>                                         ]  1.479MB/8.069MB
+ ae3bb1b347a4 Download complete 
+ dda3d8fbd5ed Download complete 
+ e0d55fdb4d15 Downloading [>                                                  ]  1.049MB/109MB
+ 91d2729fa4d5 Download complete 
+ 710e142705f8 Download complete 
+ 283a477db7bb Downloading [===========>                                       ]  1.049MB/4.533MB
+ 283a477db7bb Download complete 
+ 5682dec5b749 Download complete 
+ b0a0cf830b12 Downloading [=====>                                             ]  3.146MB/29.15MB
+ 9739ced65621 Download complete 
+ 56b5e4f0933d Download complete 
+ e0d55fdb4d15 Downloading [===>                                               ]   7.34MB/109MB
+ e0d55fdb4d15 Downloading [========>                                          ]  18.87MB/109MB
+ b0a0cf830b12 Downloading [=================>                                 ]  10.49MB/29.15MB
+ e0d55fdb4d15 Downloading [=================>                                 ]  37.93MB/109MB
+ b0a0cf830b12 Downloading [=======================================>           ]  23.07MB/29.15MB
+ b0a0cf830b12 Downloading [===========================================>       ]  25.17MB/29.15MB
+ e0d55fdb4d15 Downloading [===========================>                       ]  60.82MB/109MB
+ e0d55fdb4d15 Downloading [================================>                  ]   71.3MB/109MB
+ b0a0cf830b12 Downloading [================================================>  ]  28.31MB/29.15MB
+ e0d55fdb4d15 Downloading [=====================================>             ]  80.74MB/109MB
+ b0a0cf830b12 Downloading [================================================>  ]  28.31MB/29.15MB
+ e0d55fdb4d15 Downloading [==========================================>        ]  93.32MB/109MB
+ b0a0cf830b12 Download complete 
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Downloading [===============================================>   ]  102.8MB/109MB
+ b0a0cf830b12 Extracting 1 s
+ e0d55fdb4d15 Download complete 
+ b0a0cf830b12 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ b0a0cf830b12 Extracting 1 s
+ dda3d8fbd5ed Pull complete 
+ 283a477db7bb Extracting 1 s
+ b0a0cf830b12 Pull complete 
+ 91d2729fa4d5 Pull complete 
+ 283a477db7bb Pull complete 
+ 9739ced65621 Extracting 1 s
+ 9739ced65621 Extracting 1 s
+ ae3bb1b347a4 Pull complete 
+ 9739ced65621 Pull complete 
+ f8406d9c00ea Pull complete 
+ c199bff16b05 Pull complete 
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 1 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ e0d55fdb4d15 Extracting 2 s
+ 050d9f8c3b1c Pull complete 
+ cb628c265f09 Pull complete 
+ c1cb13b19080 Pull complete 
+ 873532e5f8c7 Pull complete 
+ 710e142705f8 Pull complete 
+ e0d55fdb4d15 Pull complete 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original
+configfile: setup.cfg
+testpaths: tests, invenio_db
+plugins: isort-4.0.0, flask-1.3.0, black-ng-0.4.1, invenio-3.4.2, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, pycodestyle-2.5.0
+collected 75 items
+
+tests/conftest.py ...                                                    [  4%]
+tests/demo/__init__.py ...                                               [  8%]
+tests/demo/child.py ...                                                  [ 12%]
+tests/demo/parent.py ...                                                 [ 16%]
+tests/demo/versioned_a.py ...                                            [ 20%]
+tests/demo/versioned_b.py ...                                            [ 24%]
+tests/mocks.py ...                                                       [ 28%]
+tests/test_db.py ....::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+.::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+..::warning file=/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original/.venv/lib/python3.14/site-packages/alembic/config.py,line=580::No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+                                               [ 40%]
+tests/test_uow.py ....                                                   [ 45%]
+tests/test_utils.py ....                                                 [ 50%]
+tests/test_versioning.py .......                                         [ 60%]
+invenio_db/__init__.py ...                                               [ 64%]
+invenio_db/alembic/35c1075e6360_force_naming_convention.py ...           [ 68%]
+invenio_db/alembic/96e796392533_create_database_migrations.py ...        [ 72%]
+invenio_db/alembic/dbdbc1b19cf2_create_transaction_table.py ...          [ 76%]
+invenio_db/cli.py ...                                                    [ 80%]
+invenio_db/ext.py ...                                                    [ 84%]
+invenio_db/proxies.py ...                                                [ 88%]
+invenio_db/shared.py ...                                                 [ 92%]
+invenio_db/uow.py ...                                                    [ 96%]
+invenio_db/utils.py ...                                                  [100%]
+
+=============================== warnings summary ===============================
+tests/test_db.py::test_alembic
+tests/test_db.py::test_naming_convention
+tests/test_db.py::test_naming_convention
+tests/test_db.py::test_entry_points
+tests/test_db.py::test_db_create_alembic_upgrade
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-db/original/.venv/lib/python3.14/site-packages/alembic/config.py:580: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces/commas for version_locations.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+
+Name                                                            Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------------------------
+invenio_db/__init__.py                                              4      0   100%
+invenio_db/alembic/35c1075e6360_force_naming_convention.py         57      2    96%   86, 107
+invenio_db/alembic/96e796392533_create_database_migrations.py       8      0   100%
+invenio_db/alembic/dbdbc1b19cf2_create_transaction_table.py        16      0   100%
+invenio_db/cli.py                                                  58      5    91%   23, 102-105
+invenio_db/ext.py                                                  65      3    95%   42, 98-99
+invenio_db/proxies.py                                               3      0   100%
+invenio_db/shared.py                                               74     42    43%   46-62, 66-79, 116, 128, 135-181, 191-193, 203
+invenio_db/uow.py                                                  79     16    80%   143-144, 148, 188, 244-259
+invenio_db/utils.py                                                67      6    91%   100-101, 118, 131-133, 140
+---------------------------------------------------------------------------------------------
+TOTAL                                                             431     74    83%
+======================== 75 passed, 5 warnings in 6.00s ========================
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed

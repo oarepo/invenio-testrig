@@ -1,0 +1,296 @@
+running extract_messages
+extracting messages from invenio_accounts/__init__.py (encoding="utf-8")
+extracting messages from invenio_accounts/admin.py (encoding="utf-8")
+extracting messages from invenio_accounts/api.py (encoding="utf-8")
+extracting messages from invenio_accounts/cli.py (encoding="utf-8")
+extracting messages from invenio_accounts/config.py (encoding="utf-8")
+extracting messages from invenio_accounts/datastore.py (encoding="utf-8")
+extracting messages from invenio_accounts/domains.py (encoding="utf-8")
+extracting messages from invenio_accounts/errors.py (encoding="utf-8")
+extracting messages from invenio_accounts/ext.py (encoding="utf-8")
+extracting messages from invenio_accounts/forms.py (encoding="utf-8")
+extracting messages from invenio_accounts/hash.py (encoding="utf-8")
+extracting messages from invenio_accounts/models.py (encoding="utf-8")
+extracting messages from invenio_accounts/proxies.py (encoding="utf-8")
+extracting messages from invenio_accounts/sessions.py (encoding="utf-8")
+extracting messages from invenio_accounts/signals.py (encoding="utf-8")
+extracting messages from invenio_accounts/tasks.py (encoding="utf-8")
+extracting messages from invenio_accounts/testutils.py (encoding="utf-8")
+extracting messages from invenio_accounts/utils.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/037afe10e9ff_add_user_moderation_fields.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/23e196599f9f_change_datetime_types.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/62efc52773d4_create_useridentity_table.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/6ec5ce377ca3_create_domains.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/843bc79c426f_create_accounts_branch.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/999dcbd19ace_users_versioning.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/dfbdf43a3e96_separate_login_info.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/e12419831262_add_new_columns_on_sessionactivity.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/eb9743315a9d_add_userprofile.py (encoding="utf-8")
+extracting messages from invenio_accounts/alembic/f2522cdd5fcd_change_accountsrole_primary_key_to_string.py (encoding="utf-8")
+extracting messages from invenio_accounts/context_processors/__init__.py (encoding="utf-8")
+extracting messages from invenio_accounts/context_processors/jwt.py (encoding="utf-8")
+extracting messages from invenio_accounts/profiles/__init__.py (encoding="utf-8")
+extracting messages from invenio_accounts/profiles/dicts.py (encoding="utf-8")
+extracting messages from invenio_accounts/profiles/schemas.py (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/_macros.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/base.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/base_cover.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/change_password.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/forgot_password.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/jwt.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/login_user.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/register_user.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/reset_password.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/send_confirmation.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/send_login.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/settings/base.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/invenio_accounts/settings/security.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/security/email/change_notice_rest.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/_macros.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/base.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/base_cover.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/change_password.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/forgot_password.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/jwt.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/login_user.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/register_user.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/reset_password.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/send_confirmation.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/send_login.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/settings/base.html (encoding="utf-8")
+extracting messages from invenio_accounts/templates/semantic-ui/invenio_accounts/settings/security.html (encoding="utf-8")
+extracting messages from invenio_accounts/views/__init__.py (encoding="utf-8")
+extracting messages from invenio_accounts/views/rest.py (encoding="utf-8")
+extracting messages from invenio_accounts/views/security.py (encoding="utf-8")
+extracting messages from invenio_accounts/views/settings.py (encoding="utf-8")
+writing PO template file to /dev/null
+  __import__('pkg_resources').declare_namespace(__name__)
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/admin.py:docstring of invenio_accounts.admin.RoleView.column_filters:3: WARNING: py:class reference target not found: flask_admin.contrib.sqla.filters.BaseSQLAFilter [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/admin.py:docstring of invenio_accounts.admin.SessionActivityView.column_filters:3: WARNING: py:class reference target not found: flask_admin.contrib.sqla.filters.BaseSQLAFilter [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/admin.py:docstring of invenio_accounts.admin.UserView.column_filters:3: WARNING: py:class reference target not found: flask_admin.contrib.sqla.filters.BaseSQLAFilter [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/forms.py:docstring of invenio_accounts.forms.RegistrationFormRecaptcha:19: WARNING: py:attr reference target not found: meta [ref.attr]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/forms.py:docstring of invenio_accounts.forms.RevokeForm:19: WARNING: py:attr reference target not found: meta [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: _HasClauseElement [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: _T [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: SQLColumnExpression [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: _T [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.Domain.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.DomainCategory.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.DomainOrg.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.LoginInformation.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.Role.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.SessionActivity.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.User.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+<unknown>:1: WARNING: py:class reference target not found: t.ClassVar [ref.class]
+<unknown>:1: WARNING: py:class reference target not found: Query [ref.class]
+/home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/invenio_accounts/models.py:docstring of invenio_accounts.models.UserIdentity.query:1: WARNING: py:attr reference target not found: query_class [ref.attr]
+ postgresql Pulling 
+ redis Pulling 
+ 4f4fb700ef54 Already exists 
+ redis Pulled 
+ postgresql Pulled 
+ Network docker_services_cli_default  Creating
+ Network docker_services_cli_default  Created
+ Container docker_services_cli-redis-1  Creating
+ Container docker_services_cli-postgresql-1  Creating
+ Container docker_services_cli-redis-1  Created
+ Container docker_services_cli-postgresql-1  Created
+ Container docker_services_cli-postgresql-1  Starting
+ Container docker_services_cli-redis-1  Starting
+ Container docker_services_cli-postgresql-1  Started
+ Container docker_services_cli-redis-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.14.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original
+configfile: setup.cfg
+testpaths: tests, invenio_accounts
+plugins: invenio-4.0.0, isort-4.0.0, flask-1.3.0, github-actions-annotate-failures-0.3.0, pydocstyle-2.4.0, cov-7.0.0, black-0.6.0, pycodestyle-2.5.0
+collected 250 items / 1 skipped
+tests/conftest.py ...                                                    [  1%]
+tests/e2e/conftest.py ...                                                [  2%]
+tests/e2e/e2e_basic_test.py ...                                          [  3%]
+tests/test_admin.py 
+                                                [  5%]
+tests/test_cli.py 
+                                                 [  8%]
+tests/test_forms.py ....                                                 [  9%]
+tests/test_hash.py 
+                                          [ 14%]
+tests/test_invenio_accounts.py ......s
+                         [ 21%]
+tests/test_models.py ..........                                          [ 25%]
+tests/test_schemas.py .....                                              [ 27%]
+tests/test_sessions.py .....ss.....                                      [ 32%]
+tests/test_tasks.py ......                                               [ 34%]
+tests/test_template_context_processors.py 
+                           [ 36%]
+tests/test_token_duration.py .....                                       [ 38%]
+tests/test_utils.py 
+                                           [ 42%]
+tests/test_validated_dicts.py .....                                      [ 44%]
+tests/test_views.py ........                                             [ 47%]
+tests/test_views_rest.py 
+                              [ 54%]
+invenio_accounts/__init__.py ...                                         [ 55%]
+invenio_accounts/admin.py ...                                            [ 56%]
+invenio_accounts/alembic/037afe10e9ff_add_user_moderation_fields.py ...  [ 58%]
+invenio_accounts/alembic/23e196599f9f_change_datetime_types.py ...       [ 59%]
+invenio_accounts/alembic/62efc52773d4_create_useridentity_table.py ...   [ 60%]
+invenio_accounts/alembic/6ec5ce377ca3_create_domains.py ...              [ 61%]
+invenio_accounts/alembic/843bc79c426f_create_accounts_branch.py ...      [ 62%]
+invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py ...      [ 64%]
+invenio_accounts/alembic/999dcbd19ace_users_versioning.py ...            [ 65%]
+invenio_accounts/alembic/dfbdf43a3e96_separate_login_info.py ...         [ 66%]
+invenio_accounts/alembic/e12419831262_add_new_columns_on_sessionactivity.py . [ 66%]
+                                                                       [ 67%]
+invenio_accounts/alembic/eb9743315a9d_add_userprofile.py ...             [ 68%]
+invenio_accounts/alembic/f2522cdd5fcd_change_accountsrole_primary_key_to_string.py . [ 69%]
+                                                                       [ 70%]
+invenio_accounts/api.py ...                                              [ 71%]
+invenio_accounts/cli.py ...                                              [ 72%]
+invenio_accounts/config.py ...                                           [ 73%]
+invenio_accounts/context_processors/__init__.py ...                      [ 74%]
+invenio_accounts/context_processors/jwt.py ...                           [ 76%]
+invenio_accounts/datastore.py ...                                        [ 77%]
+invenio_accounts/domains.py ...                                          [ 78%]
+invenio_accounts/errors.py ...                                           [ 79%]
+invenio_accounts/ext.py ...                                              [ 80%]
+invenio_accounts/forms.py ...                                            [ 82%]
+invenio_accounts/hash.py ...                                             [ 83%]
+invenio_accounts/models.py ...                                           [ 84%]
+invenio_accounts/profiles/__init__.py ...                                [ 85%]
+invenio_accounts/profiles/dicts.py ...                                   [ 86%]
+invenio_accounts/profiles/schemas.py ...                                 [ 88%]
+invenio_accounts/proxies.py ...                                          [ 89%]
+invenio_accounts/sessions.py ...                                         [ 90%]
+invenio_accounts/signals.py ...                                          [ 91%]
+invenio_accounts/tasks.py ...                                            [ 92%]
+invenio_accounts/testutils.py ...                                        [ 94%]
+invenio_accounts/utils.py ...                                            [ 95%]
+invenio_accounts/views/__init__.py ...                                   [ 96%]
+invenio_accounts/views/rest.py ...                                       [ 97%]
+invenio_accounts/views/security.py ...                                   [ 98%]
+invenio_accounts/views/settings.py ...                                   [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/compat.py:8
+    MARSHMALLOW_VERSION_INFO = tuple(LooseVersion(ma.__version__).version)  # type: tuple
+venv/lib/python3.14/site-packages/webargs/__init__.py:13
+    __version_info__ = tuple(LooseVersion(__version__).version)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:3148
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+venv/lib/python3.14/site-packages/flask_admin/contrib/__init__.py:2
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    __import__('pkg_resources').declare_namespace(__name__)
+venv/lib/python3.14/site-packages/pkg_resources/__init__.py:2560
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(parent)
+    warnings.warn(
+tests/test_admin.py::test_admin_createuser
+tests/test_admin.py::test_admin_createuser
+tests/test_admin.py::test_admin_createuser
+tests/test_admin.py::test_admin_createuser
+    return self.field_class(*self.args, **kw)
+tests/test_admin.py::test_admin_sessions
+tests/test_admin.py::test_admin_sessions
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/.venv/lib/python3.14/site-packages/flask_admin/contrib/sqla/view.py:1119: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    return self.session.query(self.model).get(tools.iterdecode(id))
+tests/test_hash.py::test_unicode_regression
+tests/test_hash.py::test_invenio_aes_encrypted_email
+tests/test_hash.py::test_legacy_user_login
+tests/test_hash.py::test_monkey_patch_legacy
+    encrypted_password = ctx.encrypt(
+tests/test_hash.py::test_unicode_regression
+tests/test_hash.py::test_invenio_aes_encrypted_email
+tests/test_hash.py::test_legacy_user_login
+tests/test_hash.py::test_monkey_patch_legacy
+    warn("CryptContext.hash(): 'scheme' keyword is deprecated as of "
+tests/test_hash.py::test_unicode_regression
+tests/test_hash.py::test_invenio_aes_encrypted_email
+tests/test_hash.py::test_legacy_user_login
+tests/test_hash.py::test_monkey_patch_legacy
+    return self.hash(*args, **kwds)
+tests/test_template_context_processors.py::test_context_processor_jwt
+tests/test_template_context_processors.py::test_context_processor_jwt_token
+tests/test_utils.py::test_jwt_token
+tests/test_utils.py::test_jwt_expired_token
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:153: InsecureKeyLengthWarning: The HMAC key is 9 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2
+    return self._jws.encode(
+tests/test_utils.py::test_jwt_token
+tests/test_utils.py::test_jwt_expired_token
+  /home/runner/work/invenio-testrig/invenio-testrig/workdir/tests/invenio-accounts/original/.venv/lib/python3.14/site-packages/jwt/api_jwt.py:371: InsecureKeyLengthWarning: The HMAC key is 9 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2
+    decoded = self.decode_complete(
+    self.init_app(app)
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.3-final-0 ________________
+Name                                                                                 Stmts   Miss  Cover   Missing
+invenio_accounts/__init__.py                                                            11      4    64%   48-54
+invenio_accounts/admin.py                                                              118      8    93%   77, 197-203
+invenio_accounts/alembic/6ec5ce377ca3_create_domains.py                                 18      8    56%   24-85, 92-95
+invenio_accounts/alembic/23e196599f9f_change_datetime_types.py                          23     16    30%   25-41, 48-64
+invenio_accounts/alembic/037afe10e9ff_add_user_moderation_fields.py                     14      6    57%   22-26, 31-33
+invenio_accounts/alembic/62efc52773d4_create_useridentity_table.py                      11      3    73%   22-36, 46
+invenio_accounts/alembic/843bc79c426f_create_accounts_branch.py                          8      0   100%
+invenio_accounts/alembic/999dcbd19ace_users_versioning.py                               33     24    27%   24-55, 60-66
+invenio_accounts/alembic/9848d0149abd_create_accounts_tables.py                         29     19    34%   25-93, 98-111
+invenio_accounts/alembic/dfbdf43a3e96_separate_login_info.py                            26     16    38%   26-59, 65-104
+invenio_accounts/alembic/e12419831262_add_new_columns_on_sessionactivity.py             22     14    36%   23-29, 34-40
+invenio_accounts/alembic/eb9743315a9d_add_userprofile.py                                20     10    50%   24-64, 71-77
+invenio_accounts/alembic/f2522cdd5fcd_change_accountsrole_primary_key_to_string.py      39     28    28%   27-75, 87-132
+invenio_accounts/api.py                                                                 40      9    78%   56-58, 62-64, 68-70
+invenio_accounts/cli.py                                                                125     14    89%   75, 96-101, 182-189
+invenio_accounts/config.py                                                             134      0   100%
+invenio_accounts/context_processors/__init__.py                                          0      0   100%
+invenio_accounts/context_processors/jwt.py                                              10      0   100%
+invenio_accounts/datastore.py                                                           82     23    72%   31-37, 41-46, 90-96, 112, 117, 121, 124-127
+invenio_accounts/domains.py                                                             15      3    80%   31-33
+invenio_accounts/errors.py                                                               7      2    71%   29-30
+invenio_accounts/ext.py                                                                141     23    84%   68, 75, 104-109, 324-325, 335-337, 342-344, 349-360, 368-371, 379-390
+invenio_accounts/forms.py                                                               49      6    88%   52, 106-111
+invenio_accounts/hash.py                                                                56      0   100%
+invenio_accounts/models.py                                                             322     26    92%   213-214, 241, 243-248, 256, 265, 267-272, 280, 308, 461-466, 477-481, 490-491, 496-497
+invenio_accounts/profiles/__init__.py                                                    3      0   100%
+invenio_accounts/profiles/dicts.py                                                      50      2    96%   54-55
+invenio_accounts/profiles/schemas.py                                                    25      0   100%
+invenio_accounts/proxies.py                                                             15      0   100%
+invenio_accounts/sessions.py                                                            62      2    97%   59, 137
+invenio_accounts/signals.py                                                              6      0   100%
+invenio_accounts/tasks.py                                                               40     12    70%   59-60, 88-158
+invenio_accounts/testutils.py                                                           37      6    84%   115-120, 129
+invenio_accounts/utils.py                                                              134      8    94%   93, 144, 160, 248-249, 254-255, 278
+invenio_accounts/views/__init__.py                                                       2      0   100%
+invenio_accounts/views/rest.py                                                         264     10    96%   74, 174, 261, 263, 316, 350, 418, 420, 464, 554
+invenio_accounts/views/security.py                                                      31      2    94%   50, 64
+invenio_accounts/views/settings.py                                                      18      0   100%
+TOTAL                                                                                 2040    304    85%
+============ 247 passed, 4 skipped, 65 warnings in 95.02s (0:01:35) ============
+  __import__('pkg_resources').declare_namespace(__name__)
+ Container docker_services_cli-redis-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopping
+ Container docker_services_cli-postgresql-1  Stopped
+ Container docker_services_cli-postgresql-1  Removing
+ Container docker_services_cli-postgresql-1  Removed
+ Container docker_services_cli-redis-1  Stopped
+ Container docker_services_cli-redis-1  Removing
+ Container docker_services_cli-redis-1  Removed
+ Network docker_services_cli_default  Removing
+ Network docker_services_cli_default  Removed
