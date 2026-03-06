@@ -212,6 +212,22 @@ def filter_packages(
             freeze=github_entry.freeze or [],
         )
 
+    for patch in config.patches:
+        if patch.package in tested_packages:
+            continue
+        github_entry = _find_git_repository_config(config, patch.package)
+        if not github_entry:
+            raise ValueError(
+                f"Patch {patch} applies to package {patch.package} which is not included "
+                "in the tested packages and does not match any GitHub configuration entry."
+            )
+        tested_packages[package_name] = TestedPackageInfo(
+            reference=patch,
+            test=github_entry.test,
+            extras=github_entry.extras or [],
+            freeze=github_entry.freeze or [],
+        )
+
     # Add tested packages to the config
     config.tested_packages = tested_packages
 

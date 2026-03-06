@@ -38,6 +38,7 @@ github:
     # Only packages matching at least one pattern will be tested.
     include: 
       - "invenio-.*"
+      - "pytest-invenio"
 
     # Packages to exclude from testing, even if they match the include patterns.
     exclude:
