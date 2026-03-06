@@ -190,6 +190,21 @@ jobs:
             report_name: ${{ steps.prepare-and-push-report.outputs.report-name }}
             report_url: ${{ steps.prepare-and-push-report.outputs.report-url }}
         steps:
+            # clone original repository if called from workflow_call
+            - name: Clone original repository
+              if: github.event_name == 'workflow_call'
+              uses: actions/checkout@v4
+              with:
+                  path: .
+
+            - name: Remove .git so that it does not interfere with testrig
+              if: github.event_name == 'workflow_call'
+              shell: bash
+              run: |
+                  if [ -d ".git" ]; then
+                      rm -rf .git
+                  fi
+
             - name: Checkout the testrig repository to .pipeline
               uses: actions/checkout@v4
               with:
