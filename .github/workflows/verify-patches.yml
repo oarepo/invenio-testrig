@@ -222,9 +222,6 @@ jobs:
               shell: bash
               run: |
 
-                  pwd
-                  ls -la
-
                   echo "::group::⚙️ Setting up testrig (init, collect, filter, select-patches, clone)"
                   setup_args=("--verbose")
 
