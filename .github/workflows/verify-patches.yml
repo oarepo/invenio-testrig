@@ -192,13 +192,11 @@ jobs:
         steps:
             # clone original repository if called from workflow_call
             - name: Clone original repository
-              if: ${{ github.event.workflow_call }}
               uses: actions/checkout@v4
               with:
                   path: .
 
             - name: Remove .git so that it does not interfere with testrig
-              if: ${{ github.event.workflow_call }}
               shell: bash
               run: |
                   if [ -d ".git" ]; then
