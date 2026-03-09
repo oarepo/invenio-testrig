@@ -7,9 +7,9 @@ github:
   # can be specified, and the same organization can appear multiple times with
   # different branch configurations or regex patterns.
   - org: "CERNDocumentServer"
-    include: 
+    include:
       - "invenio-cern-sync"
-    test: 
+    test:
       - ./run-tests.sh
     extras:
       - tests
@@ -20,9 +20,9 @@ github:
       - setuptools<82.0.0
 
   - org: "tu-graz-library"
-    include: 
+    include:
       - "invenio-curations"
-    test: 
+    test:
       - ./run-tests.sh
     extras:
       - tests
@@ -36,7 +36,7 @@ github:
 
     # Regular expressions to filter packages for testing.
     # Only packages matching at least one pattern will be tested.
-    include: 
+    include:
       - "invenio-.*"
       - "pytest-invenio"
 
@@ -44,14 +44,14 @@ github:
     exclude:
       - "invenio-xrootd"
       - "invenio-swh"
-    
+
     # how to run tests for the packages matching this github configuration. Required.
-    test: 
+    test:
       - ./run-tests.sh
 
     # extras to install for the packages matching this github configuration. Optional.
-    # Note: this is a union of all invenio packages but fortunately it doesn't need 
-    # to be exact - if the extra doesn't exist for a package, pip will just ignore it 
+    # Note: this is a union of all invenio packages but fortunately it doesn't need
+    # to be exact - if the extra doesn't exist for a package, pip will just ignore it
     # and install the package without that extra.
     extras:
       - tests
@@ -62,14 +62,13 @@ github:
       - oaipmh
       - rdf
       - sparql
-      - postgresql    
+      - postgresql
       - admin
     freeze:
       - setuptools<82.0.0
 
 # Repository to test - used for extracting dependencies and optionally running e2e tests.
 seed_repository:
-
   # Git repository to install and test. It will be installed (using uv sync) and used to:
   #   1. Extract dependencies matching the github filters - these packages will be tested.
   #   2. Run e2e tests (if e2e configuration is provided).
@@ -81,6 +80,11 @@ seed_repository:
   #
   # e2e: oarepo/invenio-e2e@log-xhr
   e2e:
+
+  #
+  # cmdline tests - array, command and its arguments as items of the array
+  #
+  tests: []
 
 # Timeout for each tested package (in minutes)
 test_timeout: 90

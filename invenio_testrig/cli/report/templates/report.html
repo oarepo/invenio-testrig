@@ -282,6 +282,66 @@
         </div>
         {% endif %}
 
+        <!-- Repository Tests -->
+        {% if repository %}
+        <div class="card">
+            <div class="card-header">
+                <span class="emoji-icon">🏛️</span>Repository Tests
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;">Repository</th>
+                                <th style="width: 40%;">Test Result</th>
+                                <th style="width: 40%;">Artifacts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="package-name">
+                                        <a href="{{ repository.info.reference.github_url }}" target="_blank">{{ repository.info.reference.package }}</a>
+                                    </span>
+                                </td>
+                                <td>
+                                    <div>
+                                        {% if repository.patched.status == "success" %}
+                                            <span class="result-icon">✅</span><strong>Pass</strong>
+                                        {% elif repository.patched.status == "failed" %}
+                                            <span class="result-icon">❌</span><strong>Fail</strong>
+                                        {% elif repository.patched.status == "skipped" %}
+                                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                                        {% else %}
+                                            <strong>{{ repository.patched.status }}</strong>
+                                        {% endif %}
+                                    </div>
+                                    {% if repository.patched.dependencies and repository.patched.dependencies|length > 0 %}
+                                    <div style="margin-top: 0.5rem; font-size: 0.875rem;">
+                                        <em>With {{ repository.patched.dependencies|length }} patched package(s)</em>
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if repository.patched.status != "skipped" and repository.patched.status != "pending" %}
+                                    <ul class="link-list">
+                                        <li><a href="{{ repository.artefact_dir }}/patched_status.json" target="_blank">status</a> | <a href="{{ repository.artefact_dir }}/patched_freeze.txt" target="_blank">freeze</a></li>
+                                        <li><a href="{{ repository.artefact_dir }}/patched_log.log" target="_blank">log</a> | <a href="{{ repository.artefact_dir }}/patched_simplified_log.log" target="_blank">simplified</a></li>
+                                        <li><a href="{{ repository.artefact_dir }}/warnings_patched.json" target="_blank">warnings</a></li>
+                                    </ul>
+                                    {% else %}
+                                    <span style="color: #6c757d; font-style: italic;">No artifacts</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Patched Packages -->
         {% if patched_packages and patched_packages|length > 0 %}
         <div class="card">
@@ -328,4 +388,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

@@ -12,11 +12,8 @@ versions, manages virtual environments, captures test output, and saves
 execution status for report generation.
 """
 
-import json
-import re
 import shutil
 import subprocess
-from collections import defaultdict
 from pathlib import Path
 
 import click
@@ -29,6 +26,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
+from invenio_testrig.cli.utils import process_warnings
 from invenio_testrig.config import (
     Config,
     save_execution_status,
@@ -370,7 +368,7 @@ def _run_tests(
         progress.success(f"Tests completed successfully for package '{package_name}'")
 
         # Process warnings from log file
-        _process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(log_file, warnings_file, simplified_log_file)
 
         status = "success"
         save_execution_status(
@@ -389,7 +387,7 @@ def _run_tests(
             progress.info(f"Check the output log at: {log_file}", icon="💡")
 
         # Process warnings from log file even on failure
-        _process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(log_file, warnings_file, simplified_log_file)
 
         save_execution_status(
             status_file,
@@ -408,7 +406,7 @@ def _run_tests(
             progress.info(f"Check the output log at: {log_file}", icon="💡")
 
         # Process warnings from log file even on timeout
-        _process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(log_file, warnings_file, simplified_log_file)
 
         save_execution_status(
             status_file,
@@ -450,91 +448,6 @@ def _disable_codestyle_checks(package_path: Path) -> None:
 
 
 # region Output Processing
-
-_WARNING_TYPE_RE = re.compile(
-    r"DeprecationWarning|PendingDeprecationWarning|ResourceWarning|"
-    r"UserWarning|FutureWarning|ImportWarning|RuntimeWarning"
-)
-_DOCKER_PULL_RE = re.compile(
-    r"^\s*[0-9a-f]{12}\s+(?:Waiting|Pulling|Downloading|Verifying|Download|Extracting|Pull complete)"
-)
-
-
-def _filter_log_line(line: str) -> str | None:
-    """Filter/clean one log line; returns None if the line should be dropped."""
-    if line.strip().startswith("::warning file="):
-        return None
-    line = re.sub(r"::warning file=.*", "", line)
-    if _WARNING_TYPE_RE.search(line):
-        return None
-    if re.match(r"^\s*warnings summary", line):
-        return None
-    if re.match(r"^\s*--.*warnings", line):
-        return None
-    if re.search(r"[0-9]+ warnings?$", line):
-        return None
-    if _DOCKER_PULL_RE.match(line):
-        return None
-    if re.match(r"^[=\-]{10,}$", line.strip()):
-        return None
-    line = re.sub(r"^\.+", "", line)
-    line = re.sub(r"\.+$", "", line)
-    return line if line.strip() else None
-
-
-def _process_warnings(
-    input_log_path: Path, warnings_json_path: Path, output_log_path: Path
-) -> None:
-    """Extract warnings from log file and create a filtered version without warnings.
-
-    This function:
-    1. Extracts Python warnings from the log file (e.g., DeprecationWarning, RuntimeWarning)
-    2. Normalizes and counts occurrences of each warning
-    3. Saves warnings to a JSON file
-    4. Creates a filtered log file with warnings and other noise removed
-
-    :param input_log_path: Path to the input log file
-    :param warnings_json_path: Path where warnings JSON should be saved
-    :param output_log_path: Path where filtered log (without warnings) should be saved
-    """
-    if not input_log_path.exists():
-        # If input log doesn't exist, create empty output files
-        warnings_json_path.write_text("{}")
-        output_log_path.write_text("")
-        return
-
-    # Extract warnings
-    warnings: dict[str, int] = defaultdict(int)
-    warning_pattern = re.compile(r"(\w+Warning:.*?)$")
-
-    with input_log_path.open("r", encoding="utf-8", errors="ignore") as f:
-        content = f.read()
-        for line in content.splitlines():
-            match = warning_pattern.search(line)
-            if match:
-                warning_text = match.group(1).strip()
-                # Normalize by replacing memory addresses with [id]
-                warning_text = re.sub(r"0x[0-9a-fA-F]+", "[id]", warning_text)
-                warnings[warning_text] += 1
-
-    # Save warnings to JSON
-    warnings_json_path.parent.mkdir(parents=True, exist_ok=True)
-    warnings_json_path.write_text(json.dumps(dict(warnings), indent=2))
-
-    # Create filtered log without warnings
-    output_log_path.parent.mkdir(parents=True, exist_ok=True)
-
-    with input_log_path.open("r", encoding="utf-8", errors="ignore") as f:
-        lines = f.readlines()
-
-    filtered_lines = []
-    for raw_line in lines:
-        cleaned = _filter_log_line(raw_line)
-        if cleaned is not None:
-            filtered_lines.append(cleaned)
-
-    # Write filtered output
-    output_log_path.write_text("".join(filtered_lines))
 
 
 # endregion

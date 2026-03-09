@@ -20,7 +20,10 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.report.data import load_test_artifacts
+from invenio_testrig.cli.report.data import (
+    load_repository_artifact,
+    load_test_artifacts,
+)
 from invenio_testrig.cli.report.report_utils import (
     build_base_jinja_context,
     get_jinja_template,
@@ -136,6 +139,7 @@ def generate_report(
     config: Config,
     completed: bool,
     test_results: list[ReportPackageData],
+    repository_result: ReportPackageData | None,
     report_output_path: Path,
     progress: Progress,
 ) -> None:
@@ -159,6 +163,7 @@ def generate_report(
         "completed": completed,
         "has_errors": has_errors,
         "packages": test_results,
+        "repository": repository_result,
         **counts,
     }
 
@@ -243,6 +248,9 @@ def report_cmd(
         progress.info(f"  ... and {len(config.tested_packages) - 5} more")
 
     test_result_data = load_test_artifacts(config, artefacts_path, progress=progress)
+    repository_result_data = load_repository_artifact(
+        config, artefacts_path, progress=progress
+    )
 
     # Debug: Check loaded test results
     progress.info(f"Loaded {len(test_result_data)} test result entries")
@@ -257,6 +265,7 @@ def report_cmd(
         config,
         completed,
         test_result_data,
+        repository_result_data,
         report_output_path=report_output_path,
         progress=progress,
     )
