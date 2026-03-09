@@ -84,7 +84,7 @@ seed_repository:
   #
   # cmdline tests - array, command and its arguments as items of the array
   #
-  tests: []
+  test: []
 
 # Timeout for each tested package (in minutes)
 test_timeout: 90
