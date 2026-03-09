@@ -501,6 +501,7 @@ class PythonAPI:
         :raises subprocess.TimeoutExpired: If the command exceeds the timeout
         """
         if capture_to_file is None:
+            print(f"Running command {command} in directory {project_path}")
             subprocess.run(
                 command,
                 cwd=project_path,
@@ -516,7 +517,7 @@ class PythonAPI:
 
             # Use bash with tee to capture output to file and print to stdout/stderr
             bash_command = f"set -o pipefail; {escaped_command} 2>&1 | tee {shlex.quote(str(capture_to_file))}"
-
+            print(f"Running bash command: {bash_command} in directory {project_path}")
             subprocess.run(
                 ["bash", "-c", bash_command],
                 cwd=project_path,

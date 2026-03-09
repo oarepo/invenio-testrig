@@ -15,6 +15,7 @@ import click
 
 from invenio_testrig.cli.github import github_cmd  # noqa
 from invenio_testrig.cli.matrix import matrix_cmd  # noqa
+from invenio_testrig.cli.repo_test import cmd_repo
 from invenio_testrig.cli.report import (  # noqa
     archive_report_cmd,
     report_cmd,
@@ -38,6 +39,7 @@ def cli():
 cli.add_command(github_cmd)
 cli.add_command(setup_cmd)
 cli.add_command(cmd_test)
+cli.add_command(cmd_repo)
 cli.add_command(report_cmd)
 cli.add_command(reports_index_cmd)
 cli.add_command(archive_report_cmd)

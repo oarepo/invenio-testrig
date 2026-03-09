@@ -10,7 +10,12 @@
 from pathlib import Path
 
 from invenio_testrig.config import Config, load_execution_status
-from invenio_testrig.types import ExecutionStatus, Progress, ReportPackageData
+from invenio_testrig.types import (
+    ExecutionStatus,
+    Progress,
+    ReportPackageData,
+    TestedPackageInfo,
+)
 
 
 def load_test_artifacts(
@@ -93,3 +98,64 @@ def load_test_artifacts(
         return (priority, pkg.info.reference.package)
 
     return sorted(package_data.values(), key=sort_key)
+
+
+def load_repository_artifact(
+    config: Config, artefacts_path: Path, progress: Progress
+) -> ReportPackageData | None:
+    """Load repository test artifacts from the artifacts directory.
+
+    Scans the artifacts/repo directory for test execution status files.
+
+    :param config: Configuration containing repository information
+    :param artefacts_path: Path to the directory containing test artifacts
+    :param progress: Progress reporter for status updates
+
+    :return: :class:`~invenio_testrig.types.ReportPackageData` with repository
+        test execution status, or None if no repository tests configured
+    """
+    if not config.seed_repository.git:
+        return None
+
+    repo_dir = artefacts_path / "repo"
+
+    # Create a minimal TestedPackageInfo for the repository
+    repo_info = TestedPackageInfo(
+        reference=config.seed_repository.git,
+        test=config.seed_repository.test or [],
+        extras=[],
+        freeze=[],
+        patches=[],
+    )
+
+    repo_data = ReportPackageData(
+        info=repo_info,
+        artefact_dir="artifacts/repo",
+        patched=ExecutionStatus(status="pending", package=repo_info),
+        original=ExecutionStatus(status="pending", package=repo_info),
+    )
+
+    if not repo_dir.exists():
+        progress.warning(f"Repository artifacts directory does not exist: {repo_dir}")
+        return repo_data
+
+    status_files = list(repo_dir.glob("*_status.json"))
+
+    # The directory is present, thus the repository test is not pending
+    repo_data.patched.status = "skipped"
+    repo_data.original.status = "skipped"
+
+    # Now overwrite with actual status if status files are present
+    for status_file in status_files:
+        loaded_status = load_execution_status(status_file)
+        match status_file.stem:
+            case "patched_status":
+                repo_data.patched = loaded_status
+            case "original_status":
+                repo_data.original = loaded_status
+            case _:
+                progress.warning(
+                    f"Found unexpected status file '{status_file.name}' in repository artifacts, skipping"
+                )
+
+    return repo_data

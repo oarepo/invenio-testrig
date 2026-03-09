@@ -39,7 +39,13 @@ class Repository(ExtensibleMixin):
     """
 
     git: GitReference
+    """Git reference to the seed repository/repository to test."""
+
     e2e: GitReference | None
+    """Git reference to the E2E package that will be used for testing."""
+
+    test: list[str] | None
+    """Test command to run on the installed repository."""
 
 
 @dataclass(init=False)
@@ -66,8 +72,8 @@ class Github(ExtensibleMixin):
 
     freeze: list[str] | None = field(default_factory=list)
     """List of version constraints to apply when resolving dependencies for tested packages that match include directive.
-    
-    If specified, these packages will be reinstalled with the specified version constraints before running the tests. 
+
+    If specified, these packages will be reinstalled with the specified version constraints before running the tests.
     """
 
     def __post_init__(self):
