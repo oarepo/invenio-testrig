@@ -461,7 +461,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: test-results-repo
-          path: ${{ env.WORKDIR }}/artifacts/repo
+          path: ${{ env.WORKDIR }}/artifacts
           retention-days: 1
 
   report:
