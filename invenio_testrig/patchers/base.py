@@ -50,7 +50,9 @@ class Patcher:
         self.patched_dir = patched_dir
         self.progress = progress
 
-    def clone_and_patch_package(self, package: str) -> tuple[
+    def clone_and_patch_package(
+        self, package: str
+    ) -> tuple[
         tuple[GitReference, list[tuple[str, str]]],
         tuple[GitReference | None, list[tuple[str, str]] | None],
     ]:
@@ -72,7 +74,7 @@ class Patcher:
         unpatched_commits = self.git_api.get_last_commits(
             unpatched_reference_path, MAX_COMMITS_TO_DISPLAY
         )
-        self._show_commit_log(unpatched_commits)
+        self._show_commit_log("unpatched", unpatched_commits)
 
         patched_reference = self._build_patched_reference(name, info)
         patched_reference_path = None
@@ -85,7 +87,7 @@ class Patcher:
             patched_commits = self.git_api.get_last_commits(
                 patched_reference_path, MAX_COMMITS_TO_DISPLAY
             )
-            self._show_commit_log(patched_commits)
+            self._show_commit_log("before patch", patched_commits)
             self._apply_patches(patched_reference_path, name, info, patched_reference)
             self._add_patch_info(
                 patched_reference_path,
@@ -93,6 +95,10 @@ class Patcher:
                 reference=patched_reference,
                 applied_patches=info.patches or [],
             )
+            patched_commits = self.git_api.get_last_commits(
+                patched_reference_path, MAX_COMMITS_TO_DISPLAY
+            )
+            self._show_commit_log("after patch", patched_commits)
 
         # remove the .git directory after cloning
         self._post_process_clone(unpatched_reference_path)
@@ -157,7 +163,10 @@ class Patcher:
         """
         for patch in package_info.patches:
             self.progress.info(f" ... applying patch {str(patch)}")
-            self.git_api.apply_pr_commits(patched_reference_path, patch)
+            if patch.pr_info:
+                self.git_api.apply_pr_commits(patched_reference_path, patch)
+            else:
+                self.git_api.apply_branch(patched_reference_path, patch)
 
     def _post_process_clone(self, path: Path | None) -> None:
         """Remove .git directory and fix test scripts after cloning.
@@ -170,13 +179,13 @@ class Patcher:
         self._fix_check_manifest(path)
         self._fix_run_sphinx(path)
 
-    def _show_commit_log(self, commits: list[tuple[str, str]]) -> None:
+    def _show_commit_log(self, message, commits: list[tuple[str, str]]) -> None:
         """Get and display the last N commits from a repository.
 
         :param commits: List of tuples containing commit hash and commit message
         """
         if commits:
-            self.progress.info(f"\nLast {len(commits)} commits:")
+            self.progress.info(f"\nLast {len(commits)} {message} commits:")
             for commit_hash, commit_message in commits:
                 self.progress.info(f"  {commit_hash} - {commit_message}")
             self.progress.info("")  # Empty line for readability
