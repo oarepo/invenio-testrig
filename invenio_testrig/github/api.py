@@ -418,6 +418,233 @@ class GitApi:
             # If cleanup fails, it's not critical
             log.debug(f"Failed to remove remote {remote_name}, continuing anyway")
 
+    def apply_branch(self, directory: Path, reference: GitReference) -> None:
+        """
+        Apply commits from a branch reference to an existing repository.
+
+        Cherry-picks all commits from the branch that are not in the current
+        repository. Finds the most recent common commit between the current
+        directory and the branch, then cherry-picks all commits from that
+        point to the head of the branch.
+
+        If the reference does not specify a branch or the specified branch is not found,
+        falls back to the default branch.
+
+        :param directory: Path to the git repository where commits should be applied
+        :param reference: GitReference to apply commits from
+
+        :raises subprocess.CalledProcessError: If git operations fail
+        """
+        # Get commits from the current directory
+        directory_commits = self._get_commit_history(directory)
+
+        # Setup remote and fetch the branch
+        remote_name, remote_url = self._setup_branch_remote(directory, reference)
+        actual_branch = self._fetch_branch_from_remote(
+            directory, remote_name, remote_url, reference
+        )
+
+        # Get commits from the branch (using the actual branch that was fetched)
+        branch_commits = self._get_branch_commit_history(
+            directory, remote_name, reference, actual_branch
+        )
+
+        # Find the most recent common commit
+        common_commit = self._find_common_commit(directory_commits, branch_commits)
+
+        # Get commits to cherry-pick (from common commit to branch head)
+        commits_to_apply = self._get_commits_to_apply(branch_commits, common_commit)
+
+        if commits_to_apply:
+            self._cherry_pick_commits(directory, commits_to_apply, reference)
+
+        self._cleanup_remote(directory, remote_name)
+
+    def _get_commit_history(self, directory: Path) -> list[str]:
+        """Get the commit history of the current HEAD in the directory.
+
+        :param directory: Path to the git repository
+
+        :return: List of commit SHAs from HEAD to root, in reverse chronological order
+        """
+        try:
+            result = subprocess.run(
+                ["git", "rev-list", "HEAD"],
+                cwd=directory,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            return result.stdout.strip().split("\n") if result.stdout.strip() else []
+        except subprocess.CalledProcessError as e:
+            log.error(f"Failed to get commit history from {directory}: {e}")
+            return []
+
+    def _setup_branch_remote(
+        self, directory: Path, reference: GitReference
+    ) -> tuple[str, str]:
+        """Add branch repository as a git remote if it doesn't exist.
+
+        :param directory: Path to the git repository
+        :param reference: GitReference containing branch information
+
+        :return: Tuple of ``(remote_name, remote_url)``
+        """
+        assert reference.branch is not None
+
+        # Create a unique remote name based on org/repo/branch
+        remote_identifier = f"{reference.org}-{reference.repo}-{reference.branch}"
+        remote_name = f"branch-{remote_identifier}"
+        remote_url = f"https://github.com/{reference.org}/{reference.repo}.git"
+
+        # Try to add the remote (ignore if it already exists)
+        try:
+            call_executable_quietly(
+                ["git", "remote", "add", remote_name, remote_url],
+                cwd=directory,
+            )
+        except subprocess.CalledProcessError:
+            # Remote might already exist, which is fine
+            log.debug(f"Remote {remote_name} already exists or failed to add")
+
+        return remote_name, remote_url
+
+    def _fetch_branch_from_remote(
+        self,
+        directory: Path,
+        remote_name: str,
+        remote_url: str,
+        reference: GitReference,
+    ) -> str:
+        """Fetch the branch from the remote.
+
+        If the specified branch is not found, falls back to the default branch.
+
+        :param directory: Path to the git repository
+        :param remote_name: Name of the remote to fetch from
+        :param remote_url: URL of the remote repository
+        :param reference: GitReference for error reporting
+
+        :return: The actual branch name that was fetched
+
+        :raises PatchApplicationError: If fetch fails
+        """
+        branch_to_fetch = reference.branch
+
+        # If no branch specified, use default branch
+        if not branch_to_fetch:
+            branch_to_fetch = self.get_default_branch(reference.org, reference.repo)
+            log.info(f"No branch specified, using default branch: {branch_to_fetch}")
+
+        try:
+            call_executable_quietly(
+                ["git", "fetch", remote_name, branch_to_fetch],
+                cwd=directory,
+            )
+            return branch_to_fetch
+        except subprocess.CalledProcessError:
+            # Branch not found, try default branch
+            log.warning(
+                f"Branch {branch_to_fetch} not found in {remote_url}, "
+                f"falling back to default branch"
+            )
+            default_branch = self.get_default_branch(reference.org, reference.repo)
+            try:
+                call_executable_quietly(
+                    ["git", "fetch", remote_name, default_branch],
+                    cwd=directory,
+                )
+                log.info(f"Successfully fetched default branch: {default_branch}")
+                return default_branch
+            except subprocess.CalledProcessError as e2:
+                error_msg = (
+                    f"Failed to fetch branch {branch_to_fetch} and "
+                    f"default branch {default_branch} from {remote_url}"
+                )
+                raise PatchApplicationError(
+                    error_msg,
+                    patch_reference=reference,
+                    repository_path=directory,
+                ) from e2
+
+    def _get_branch_commit_history(
+        self,
+        directory: Path,
+        remote_name: str,
+        reference: GitReference,
+        actual_branch: str | None = None,
+    ) -> list[str]:
+        """Get the commit history of the branch.
+
+        :param directory: Path to the git repository
+        :param remote_name: Name of the remote
+        :param reference: GitReference containing branch information
+        :param actual_branch: The actual branch name to use (if different from reference.branch)
+
+        :return: List of commit SHAs from branch head to root, in reverse chronological order
+        """
+        branch_name = actual_branch or reference.branch
+        assert branch_name is not None
+
+        try:
+            result = subprocess.run(
+                ["git", "rev-list", f"{remote_name}/{branch_name}"],
+                cwd=directory,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            return result.stdout.strip().split("\n") if result.stdout.strip() else []
+        except subprocess.CalledProcessError as e:
+            log.error(f"Failed to get commit history for branch {branch_name}: {e}")
+            return []
+
+    def _find_common_commit(
+        self, directory_commits: list[str], branch_commits: list[str]
+    ) -> str | None:
+        """Find the most recent common commit between two commit lists.
+
+        :param directory_commits: List of commits from the directory
+        :param branch_commits: List of commits from the branch
+
+        :return: The SHA of the most recent common commit, or None if no common commit
+        """
+        # Convert directory commits to a set for faster lookup
+        directory_commit_set = set(directory_commits)
+
+        # Find the first commit in branch_commits that exists in directory_commits
+        for commit in branch_commits:
+            if commit in directory_commit_set:
+                return commit
+
+        return None
+
+    def _get_commits_to_apply(
+        self, branch_commits: list[str], common_commit: str | None
+    ) -> list[str]:
+        """Get the list of commits from common commit to branch head.
+
+        :param branch_commits: List of commits from the branch (reverse chronological)
+        :param common_commit: The most recent common commit SHA
+
+        :return: List of commits to apply, in chronological order (oldest first)
+        """
+        if common_commit is None:
+            # No common commit, apply all branch commits
+            # Reverse to get chronological order
+            return list(reversed(branch_commits))
+
+        # Find the index of the common commit
+        try:
+            common_index = branch_commits.index(common_commit)
+            # Get all commits before the common commit (they are newer)
+            # Reverse to get chronological order
+            return list(reversed(branch_commits[:common_index]))
+        except ValueError:
+            # Common commit not found in branch commits (shouldn't happen)
+            log.warning(f"Common commit {common_commit} not found in branch commits")
+            return []
+
     def get_last_version_before_commit(self, ref: GitReference) -> str | None:
         """
         Get the last version tag that is an ancestor of the specified commit.
