@@ -327,7 +327,7 @@ jobs:
       matrix:
         package: ${{ fromJson(needs.prepare.outputs.matrix_tested_packages) }}
       fail-fast: false
-      # max-parallel: 1
+
     steps:
       - name: Checkout the testrig repository to .pipeline
         uses: actions/checkout@v4
@@ -349,76 +349,13 @@ jobs:
           testrig-directory: ${{ github.workspace }}/.pipeline
           hook-libraries: ${{ env.HOOK_LIBRARIES }}
 
-      - name: Run tests for the patched version of the package
-        shell: bash
-        id: run-patched
-        run: |
-          echo "::group::🧪 Running tests for package ${{ matrix.package }}"
-          invenio-testrig test \
-              $WORKDIR \
-              ${{ matrix.package }} \
-              --apply-patches \
-              || true
-          echo "::endgroup::"
-
-          STATUS_FILE=$WORKDIR/artifacts/${{ matrix.package }}/patched_status.json
-
-          echo "test_patch_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
-          status=$(cat $STATUS_FILE | jq -r '.status')
-
-          if [ "$status" == "failed" ]; then
-              exit 1
-          fi
-
-      - name: Run unpatched tests for the package
-        shell: bash
-        id: run-unpatched
-        if: |
-          ${{
-            env.TEST_MODE == 'run-all' ||
-            (env.TEST_MODE == 'stop-on-success' && failure()) ||
-            (steps.run-patched.outputs.test_patch_status == 'skipped' && env.TEST_SCOPE == 'all')
-          }}
-        run: |
-          echo "::group::🧪 Running tests for the unpatched version of package ${{ matrix.package }}"
-          invenio-testrig test \
-              $WORKDIR \
-              ${{ matrix.package }} \
-              || true
-          echo "::endgroup::"
-
-          STATUS_FILE=$WORKDIR/artifacts/${{ matrix.package }}/original_status.json
-
-          echo "test_original_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
-          status=$(cat $STATUS_FILE | jq -r '.status')
-
-          if [ "$status" == "failed" ] || [ "$status" == "skipped" ]; then
-              exit 1
-          fi
-
-      - name: Store test results as artifact
-        if: always()
-        uses: actions/upload-artifact@v6
+      - name: Test package
+        uses: ./.pipeline/.github/actions/test-package
         with:
-          name: test-results-${{ matrix.package }}
-          path: ${{ env.WORKDIR }}/artifacts
-          retention-days: 1
-
-      # Note: commented out because of github limits on the frequency of
-      # publishing github pages - about 10 publishes per hour
-      #
-      # - name: Regenerate and upload partial report for the package
-      #   if: ${{ always() && !inputs.skip-report }}
-      #   uses: ./.pipeline/.github/actions/generate-and-push-report
-      #   with:
-      #       workdir: ${{ env.WORKDIR }}
-      #       report-repository: ${{ env.REPORT_REPOSITORY }}
-      #       report-branch: ${{ env.REPORT_BRANCH }}
-      #       report-directory: ${{ needs.prepare.outputs.report_name }}
-      #       github-token: ${{ env.REPORT_TOKEN }}
-      #       completed: "false"
-      #       download-artifacts: "true"
-      #       max-retries: "5"
+          workdir: ${{ env.WORKDIR }}
+          package: ${{ matrix.package }}
+          test-mode: ${{ env.TEST_MODE }}
+          test-scope: ${{ env.TEST_SCOPE }}
 
   test_slow:
     needs:
@@ -429,7 +366,7 @@ jobs:
       matrix:
         package: ${{ fromJson(needs.prepare.outputs.matrix_slow_tested_packages) }}
       fail-fast: false
-      # max-parallel: 1
+
     steps:
       - name: Checkout the testrig repository to .pipeline
         uses: actions/checkout@v4
@@ -451,76 +388,13 @@ jobs:
           testrig-directory: ${{ github.workspace }}/.pipeline
           hook-libraries: ${{ env.HOOK_LIBRARIES }}
 
-      - name: Run tests for the patched version of the package
-        shell: bash
-        id: run-patched
-        run: |
-          echo "::group::🧪 Running tests for package ${{ matrix.package }}"
-          invenio-testrig test \
-              $WORKDIR \
-              ${{ matrix.package }} \
-              --apply-patches \
-              || true
-          echo "::endgroup::"
-
-          STATUS_FILE=$WORKDIR/artifacts/${{ matrix.package }}/patched_status.json
-
-          echo "test_patch_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
-          status=$(cat $STATUS_FILE | jq -r '.status')
-
-          if [ "$status" == "failed" ]; then
-              exit 1
-          fi
-
-      - name: Run unpatched tests for the package
-        shell: bash
-        id: run-unpatched
-        if: |
-          ${{
-            env.TEST_MODE == 'run-all' ||
-            (env.TEST_MODE == 'stop-on-success' && failure()) ||
-            (steps.run-patched.outputs.test_patch_status == 'skipped' && env.TEST_SCOPE == 'all')
-          }}
-        run: |
-          echo "::group::🧪 Running tests for the unpatched version of package ${{ matrix.package }}"
-          invenio-testrig test \
-              $WORKDIR \
-              ${{ matrix.package }} \
-              || true
-          echo "::endgroup::"
-
-          STATUS_FILE=$WORKDIR/artifacts/${{ matrix.package }}/original_status.json
-
-          echo "test_original_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
-          status=$(cat $STATUS_FILE | jq -r '.status')
-
-          if [ "$status" == "failed" ] || [ "$status" == "skipped" ]; then
-              exit 1
-          fi
-
-      - name: Store test results as artifact
-        if: always()
-        uses: actions/upload-artifact@v6
+      - name: Test package
+        uses: ./.pipeline/.github/actions/test-package
         with:
-          name: test-results-${{ matrix.package }}
-          path: ${{ env.WORKDIR }}/artifacts
-          retention-days: 1
-
-      # Note: commented out because of github limits on the frequency of
-      # publishing github pages - about 10 publishes per hour
-      #
-      # - name: Regenerate and upload partial report for the package
-      #   if: ${{ always() && !inputs.skip-report }}
-      #   uses: ./.pipeline/.github/actions/generate-and-push-report
-      #   with:
-      #       workdir: ${{ env.WORKDIR }}
-      #       report-repository: ${{ env.REPORT_REPOSITORY }}
-      #       report-branch: ${{ env.REPORT_BRANCH }}
-      #       report-directory: ${{ needs.prepare.outputs.report_name }}
-      #       github-token: ${{ env.REPORT_TOKEN }}
-      #       completed: "false"
-      #       download-artifacts: "true"
-      #       max-retries: "5"
+          workdir: ${{ env.WORKDIR }}
+          package: ${{ matrix.package }}
+          test-mode: ${{ env.TEST_MODE }}
+          test-scope: ${{ env.TEST_SCOPE }}
 
   test_repository:
     needs:

@@ -1,0 +1,79 @@
+name: 'Test Package'
+description: 'Run tests for a package (patched and optionally unpatched versions)'
+inputs:
+  workdir:
+    description: 'Working directory containing the test environment'
+    required: true
+  package:
+    description: 'Package name to test'
+    required: true
+  test-mode:
+    description: 'Test mode (stop-on-success, run-all)'
+    required: true
+  test-scope:
+    description: 'Test scope (affected, all)'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run tests for the patched version of the package
+      shell: bash
+      id: run-patched
+      env:
+        WORKDIR: ${{ inputs.workdir }}
+        PACKAGE: ${{ inputs.package }}
+      run: |
+        echo "::group::🧪 Running tests for package $PACKAGE"
+        invenio-testrig test \
+            $WORKDIR \
+            $PACKAGE \
+            --apply-patches \
+            || true
+        echo "::endgroup::"
+
+        STATUS_FILE=$WORKDIR/artifacts/$PACKAGE/patched_status.json
+
+        echo "test_patch_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
+        status=$(cat $STATUS_FILE | jq -r '.status')
+
+        if [ "$status" == "failed" ]; then
+            exit 1
+        fi
+
+    - name: Run unpatched tests for the package
+      shell: bash
+      id: run-unpatched
+      if: |
+        ${{
+          inputs.test-mode == 'run-all' ||
+          (inputs.test-mode == 'stop-on-success' && failure()) ||
+          (steps.run-patched.outputs.test_patch_status == 'skipped' && inputs.test-scope == 'all')
+        }}
+      env:
+        WORKDIR: ${{ inputs.workdir }}
+        PACKAGE: ${{ inputs.package }}
+      run: |
+        echo "::group::🧪 Running tests for the unpatched version of package $PACKAGE"
+        invenio-testrig test \
+            $WORKDIR \
+            $PACKAGE \
+            || true
+        echo "::endgroup::"
+
+        STATUS_FILE=$WORKDIR/artifacts/$PACKAGE/original_status.json
+
+        echo "test_original_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
+        status=$(cat $STATUS_FILE | jq -r '.status')
+
+        if [ "$status" == "failed" ] || [ "$status" == "skipped" ]; then
+            exit 1
+        fi
+
+    - name: Store test results as artifact
+      if: always()
+      uses: actions/upload-artifact@v6
+      with:
+        name: test-results-${{ inputs.package }}
+        path: ${{ inputs.workdir }}/artifacts
+        retention-days: 1
