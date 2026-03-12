@@ -76,6 +76,13 @@ class Github(ExtensibleMixin):
     If specified, these packages will be reinstalled with the specified version constraints before running the tests.
     """
 
+    slow_packages: list[str] | None = field(default_factory=list)
+    """List of packages that are slow to test.
+
+    Testrig will try to run these packages first and in parallel with the rest of the packages,
+    so that we can get results faster.
+    """
+
     def __post_init__(self):
         """Normalize package lists to lowercase for case-insensitive matching.
 

@@ -210,6 +210,7 @@ def filter_packages(
             test=github_entry.test,
             extras=github_entry.extras or [],
             freeze=github_entry.freeze or [],
+            slow=package_name in (github_entry.slow_packages or []),
         )
 
     for patch in config.patches:
@@ -226,6 +227,7 @@ def filter_packages(
             test=github_entry.test,
             extras=github_entry.extras or [],
             freeze=github_entry.freeze or [],
+            slow=package_name in (github_entry.slow_packages or []),
         )
 
     # Add tested packages to the config
