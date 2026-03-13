@@ -371,6 +371,9 @@ def _update_workflow_file(
             "testrig.yml has been customized (doesn't match any known version)"
         )
         progress.warning("Please review the diff below and update manually if needed:")
+        progress.warning(
+            "Alternatively, use --overwrite-testrig-file to force update to the latest version, removing any customizations you may have added."
+        )
         progress.text("")
 
         # Show diff
