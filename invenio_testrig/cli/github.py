@@ -12,9 +12,11 @@ by creating/updating a test repository, dispatching a workflow run with optional
 and opening the workflow page in a browser.
 """
 
+import base64
 import difflib
 import hashlib
 import json
+import lzma
 import re
 import shutil
 import subprocess
@@ -24,6 +26,7 @@ from importlib.resources import files
 from pathlib import Path
 
 import click
+import yaml
 
 from invenio_testrig.cli.base import with_progress
 from invenio_testrig.types import Progress
@@ -75,6 +78,31 @@ from invenio_testrig.utils import call_executable_quietly
     is_flag=True,
     help="Force overwrite testrig.yml with latest version, even if customized",
 )
+@click.option(
+    "--testrig-repository",
+    help="Repository containing invenio-testrig (owner/repo)",
+)
+@click.option(
+    "--testrig-branch",
+    help="Branch of invenio-testrig to use",
+)
+@click.option(
+    "--repository",
+    help="Override seed repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)",
+)
+@click.option(
+    "--e2e",
+    help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
+)
+@click.option(
+    "--ignore-uv-lock",
+    is_flag=True,
+    help="Ignore uv.lock files and use latest compatible versions for tests",
+)
+@click.option(
+    "--config-file",
+    help="Path to the configuration file or URL (local files will be converted to data URLs)",
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -85,6 +113,12 @@ def github_cmd(
     test_scope: str,
     test_mode: str,
     overwrite_testrig_file: bool,
+    testrig_repository: str | None,
+    testrig_branch: str | None,
+    repository: str | None,
+    e2e: str | None,
+    ignore_uv_lock: bool,
+    config_file: str | None,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -97,13 +131,12 @@ def github_cmd(
 
     invenio-testrig github
 
-    invenio-testrig github --target myorg/my-testrig
-
     invenio-testrig github inveniosoftware/invenio-records-resources#123
 
     invenio-testrig github org/package#456 org/another#789
 
     invenio-testrig github --patch-mode upstream --test-scope all org/package#123
+
 
     This function:
     1. Creates a repository if it doesn't exist (with testrig client files and gh-pages branch)
@@ -132,6 +165,12 @@ def github_cmd(
         patch_mode,
         test_scope,
         test_mode,
+        testrig_repository,
+        testrig_branch,
+        repository,
+        e2e,
+        ignore_uv_lock,
+        config_file,
         progress,
     )
 
@@ -527,6 +566,36 @@ def _update_existing_repository_workflow(
 # region Workflow Management
 
 
+def _convert_config_to_data_url(config_path: str) -> str:
+    """Convert config file to data URL, handling local files and URLs.
+
+    Args:
+        config_path: Path to local config file or URL
+
+    Returns:
+        URL (unchanged if already URL) or data URL with xz-compressed content
+    """
+    # If it's already a URL (http/https or data URL), return as-is
+    if config_path.startswith(("http://", "https://", "data:")):
+        return config_path
+
+    # Local file - read, parse YAML, and convert to xz-compressed data URL
+    with open(config_path, "r") as f:
+        config_data = yaml.safe_load(f)
+
+    # Dump YAML without comments to minimize size
+    yaml_str = yaml.safe_dump(config_data, default_flow_style=False)
+
+    # Compress with xz
+    compressed = lzma.compress(yaml_str.encode("utf-8"))
+
+    # Encode as base64
+    encoded = base64.b64encode(compressed).decode("ascii")
+
+    # Create data URL
+    return f"data:application/x-xz;base64,{encoded}"
+
+
 def _dispatch_workflow(
     target_repo: str,
     patches: list[str],
@@ -536,6 +605,12 @@ def _dispatch_workflow(
     patch_mode: str,
     test_scope: str,
     test_mode: str,
+    testrig_repository: str | None,
+    testrig_branch: str | None,
+    repository: str | None,
+    e2e: str | None,
+    ignore_uv_lock: bool,
+    config_file: str | None,
     progress: Progress,
 ) -> str | None:
     """Dispatch workflow or return workflow page URL.
@@ -548,6 +623,12 @@ def _dispatch_workflow(
     :param patch_mode: Test upstream or pinned versions
     :param test_scope: Test scope ('affected' or 'all')
     :param test_mode: Test selection for patched packages
+    :param testrig_repository: Repository containing invenio-testrig (owner/repo)
+    :param testrig_branch: Branch of invenio-testrig to use
+    :param repository: Override repository.git configuration
+    :param e2e: Override repository.e2e configuration
+    :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
+    :param config_file: Path to configuration file or URL
     :param progress: Progress reporter for status updates
 
     :return: Workflow URL if available, None otherwise
@@ -590,6 +671,31 @@ def _dispatch_workflow(
         # Add name if provided
         if name:
             workflow_cmd.extend(["-f", f"name={name}"])
+
+        # Add testrig-repository if provided
+        if testrig_repository:
+            workflow_cmd.extend(["-f", f"testrig-repository={testrig_repository}"])
+
+        # Add testrig-branch if provided
+        if testrig_branch:
+            workflow_cmd.extend(["-f", f"testrig-branch={testrig_branch}"])
+
+        # Add repository if provided
+        if repository:
+            workflow_cmd.extend(["-f", f"repository={repository}"])
+
+        # Add e2e if provided
+        if e2e:
+            workflow_cmd.extend(["-f", f"e2e={e2e}"])
+
+        # Add ignore-uv-lock if provided
+        if ignore_uv_lock:
+            workflow_cmd.extend(["-f", f"ignore-uv-lock={str(ignore_uv_lock).lower()}"])
+
+        # Add config-file if provided (convert local files to data URLs)
+        if config_file:
+            config_url = _convert_config_to_data_url(config_file)
+            workflow_cmd.extend(["-f", f"config-file={config_url}"])
 
         # Dispatch the workflow
         call_executable_quietly(workflow_cmd)
