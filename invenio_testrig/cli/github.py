@@ -12,7 +12,10 @@ by creating/updating a test repository, dispatching a workflow run with optional
 and opening the workflow page in a browser.
 """
 
+import difflib
+import hashlib
 import json
+import re
 import shutil
 import subprocess
 import time
@@ -108,6 +111,9 @@ def github_cmd(
 
     if not repo_exists:
         _create_repository(target_repo, username, progress)
+    else:
+        # Repository exists - check if workflow needs updating
+        _update_existing_repository_workflow(target_repo, progress)
 
     workflow_url = _dispatch_workflow(
         target_repo,
@@ -131,6 +137,165 @@ def github_cmd(
 
 
 # region Repository Setup
+
+
+def _get_latest_testrig_version() -> tuple[int, int, int]:
+    """Find the latest testrig workflow version.
+
+    Searches for testrig-X.Y.Z.yml files and returns the highest version.
+
+    :return: Tuple of (major, minor, patch) version numbers
+    """
+    testrig_client_path = files("invenio_testrig.testrig_client")
+    workflows_path = testrig_client_path / ".github" / "workflows"
+
+    versions = []
+    for item in workflows_path.iterdir():
+        if item.name.startswith("testrig-") and item.name.endswith(".yml"):
+            # Extract version from filename: testrig-X.Y.Z.yml
+            version_str = item.name[8:-4]  # Remove "testrig-" and ".yml"
+            try:
+                parts = version_str.split(".")
+                if len(parts) == 3:
+                    version = tuple(int(p) for p in parts)
+                    versions.append(version)
+            except ValueError:
+                continue
+
+    if not versions:
+        raise RuntimeError("No versioned testrig workflow files found")
+
+    return max(versions)
+
+
+def _get_testrig_version_md5s() -> dict[tuple[int, int, int], str]:
+    """Get MD5 hashes for all versioned testrig workflow files.
+
+    :return: Dictionary mapping version tuples to MD5 hashes
+    """
+    testrig_client_path = files("invenio_testrig.testrig_client")
+    workflows_path = testrig_client_path / ".github" / "workflows"
+
+    version_md5s = {}
+    for item in workflows_path.iterdir():
+        if item.name.startswith("testrig-") and item.name.endswith(".yml"):
+            version_str = item.name[8:-4]
+            try:
+                parts = version_str.split(".")
+                if len(parts) == 3:
+                    version = tuple(int(p) for p in parts)
+                    content = item.read_text()
+                    md5 = hashlib.md5(content.encode("utf-8")).hexdigest()
+                    version_md5s[version] = md5
+            except ValueError:
+                continue
+
+    return version_md5s
+
+
+def _get_file_md5(file_path: Path) -> str:
+    """Calculate MD5 hash of a file.
+
+    :param file_path: Path to the file
+    :return: MD5 hash as hex string
+    """
+    content = file_path.read_text()
+    return hashlib.md5(content.encode("utf-8")).hexdigest()
+
+
+def _update_workflow_file(temp_dir: Path, progress: Progress) -> None:
+    """Update or create testrig.yml workflow file with version management.
+
+    For new repositories: Copy the latest version as testrig.yml
+    For existing repositories: Check MD5 and update if it matches a known version,
+                              otherwise show diff and warning
+
+    :param temp_dir: Temporary directory with cloned repository
+    :param progress: Progress reporter for status updates
+    """
+    workflows_dir = temp_dir / ".github" / "workflows"
+    target_file = workflows_dir / "testrig.yml"
+
+    # Get latest version
+    latest_version = _get_latest_testrig_version()
+    version_str = f"{latest_version[0]}.{latest_version[1]}.{latest_version[2]}"
+
+    # Get path to latest versioned file
+    testrig_client_path = files("invenio_testrig.testrig_client")
+    source_file = (
+        testrig_client_path / ".github" / "workflows" / f"testrig-{version_str}.yml"
+    )
+    latest_content = source_file.read_text()
+
+    # Check if target file exists
+    if not target_file.exists():
+        # New repository - just copy the latest version
+        workflows_dir.mkdir(parents=True, exist_ok=True)
+        target_file.write_text(latest_content)
+        progress.info(f"Created testrig.yml (version {version_str})")
+        return
+
+    # Existing repository - check if we should update
+    current_md5 = _get_file_md5(target_file)
+    version_md5s = _get_testrig_version_md5s()
+
+    # Check if current file matches any known version
+    matching_version = None
+    for version, md5 in version_md5s.items():
+        if md5 == current_md5:
+            matching_version = version
+            break
+
+    if matching_version:
+        # File matches a known version
+        if matching_version == latest_version:
+            progress.info(f"testrig.yml is already at latest version {version_str}")
+        else:
+            # Update to latest version
+            old_version_str = (
+                f"{matching_version[0]}.{matching_version[1]}.{matching_version[2]}"
+            )
+            target_file.write_text(latest_content)
+            progress.success(
+                f"Updated testrig.yml from {old_version_str} to {version_str}"
+            )
+    else:
+        # File doesn't match any known version - user has customized it
+        progress.warning(
+            "testrig.yml has been customized (doesn't match any known version)"
+        )
+        progress.warning("Please review the diff below and update manually if needed:")
+        progress.text("")
+
+        # Show diff
+        current_content = target_file.read_text()
+        current_lines = current_content.splitlines(keepends=True)
+        latest_lines = latest_content.splitlines(keepends=True)
+
+        diff = difflib.unified_diff(
+            current_lines,
+            latest_lines,
+            fromfile="testrig.yml (current/customized)",
+            tofile=f"testrig.yml (latest version {version_str})",
+            lineterm="",
+        )
+
+        for line in diff:
+            line = line.rstrip()
+            if line.startswith("+"):
+                progress.text(line, fg="green")
+            elif line.startswith("-"):
+                progress.text(line, fg="red")
+            elif line.startswith("@@"):
+                progress.text(line, fg="cyan")
+            else:
+                progress.text(line, dim=True)
+
+        progress.text("")
+        progress.warning("testrig.yml was NOT updated automatically")
+        progress.info(
+            f"To update manually, replace .github/workflows/testrig.yml with version {version_str}"
+        )
 
 
 def _get_current_github_username() -> str:
@@ -222,12 +387,19 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
             # Clone the repository
             call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
 
-            # Copy all files from testrig_client to the repository
+            # Copy all files from testrig_client to the repository (except versioned workflows)
             testrig_client_path = files("invenio_testrig.testrig_client")
 
             def copy_resources(source_path, dest_path: Path):
                 """Recursively copy all files from importlib.resources to destination."""
                 if source_path.is_file():
+                    # Skip versioned testrig workflow files (testrig-X.Y.Z.yml)
+                    if source_path.name.startswith(
+                        "testrig-"
+                    ) and source_path.name.endswith(".yml"):
+                        if re.match(r"testrig-\d+\.\d+\.\d+\.yml", source_path.name):
+                            return
+
                     # It's a file, copy it
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
                     dest_path.write_text(source_path.read_text())
@@ -241,10 +413,13 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
                             ) or item_name.endswith(".pyc"):
                                 continue
                             copy_resources(item, dest_path / item_name)
-                    except (NotADirectoryError, AttributeError):
+                    except NotADirectoryError, AttributeError:
                         pass
 
             copy_resources(testrig_client_path, temp_dir)
+
+            # Handle testrig.yml workflow file with version management
+            _update_workflow_file(temp_dir, progress)
 
             # Commit and push
             call_executable_quietly(["git", "add", "."], cwd=temp_dir)
@@ -276,6 +451,51 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
     except subprocess.CalledProcessError as e:
         progress.error(f"Failed to create repository: {e}")
         raise SystemExit(1)
+
+
+def _update_existing_repository_workflow(target_repo: str, progress: Progress) -> None:
+    """Update workflow file in existing repository if needed.
+
+    :param target_repo: Repository name in format 'org/repo'
+    :param progress: Progress reporter for status updates
+    """
+    progress.start("Checking workflow file version", icon="🔍")
+
+    temp_dir = Path.cwd() / ".tmp_invenio_testrig_client_update"
+    if temp_dir.exists():
+        shutil.rmtree(temp_dir)
+
+    try:
+        # Clone the repository
+        call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
+
+        # Update workflow file
+        _update_workflow_file(temp_dir, progress)
+
+        # Check if there are changes to commit
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=temp_dir,
+            capture_output=True,
+            text=True,
+        )
+
+        if result.stdout.strip():
+            # There are changes, commit and push
+            call_executable_quietly(
+                ["git", "add", ".github/workflows/testrig.yml"], cwd=temp_dir
+            )
+            call_executable_quietly(
+                ["git", "commit", "-m", "Update testrig.yml workflow"], cwd=temp_dir
+            )
+            call_executable_quietly(["git", "push", "origin", "HEAD"], cwd=temp_dir)
+            progress.success("Workflow file updated in repository")
+
+    except subprocess.CalledProcessError:
+        progress.warning("Could not update workflow file in existing repository")
+    finally:
+        if temp_dir.exists():
+            shutil.rmtree(temp_dir)
 
 
 # endregion

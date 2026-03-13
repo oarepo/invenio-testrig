@@ -1,0 +1,66 @@
+name: Run on testrig
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Test name"
+        required: false
+        type: string
+      python-version:
+        description: "Python version to use"
+        required: false
+        type: string
+        default: "3.14.2"
+      disable-codestyle-checks:
+        description: "Disable codestyle checks (black/isort) during tests"
+        required: false
+        type: boolean
+        default: false
+      patches:
+        description: "Space-separated list of patches"
+        required: false
+        type: string
+      patch-mode:
+        description: "Test upstream or pinned versions"
+        required: false
+        type: choice
+        options:
+          - upstream
+          - pinned
+      test-scope:
+        description: "Test scope: 'affected' (only packages affected by patches), 'all'"
+        required: false
+        type: choice
+        default: "affected"
+        options:
+          - affected
+          - all
+      test-mode:
+        description: "Test selection for patched packages: 'stop-on-success', 'run-all'"
+        required: false
+        type: choice
+        default: "stop-on-success"
+        options:
+          - stop-on-success
+          - run-all
+
+permissions:
+  contents: write # Required for pushing reports to the repository
+  id-token: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
+  pages: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  verify-patches:
+    uses: oarepo/invenio-testrig/.github/workflows/verify-patches.yml@master
+    with:
+      name: ${{ inputs.name || 'Invenio Testrig' }}
+      python-version: ${{ inputs.python-version }}
+      disable-codestyle-checks: ${{ inputs.disable-codestyle-checks }}
+      patches: ${{ inputs.patches }}
+      patch-mode: ${{ inputs.patch-mode }}
+      test-scope: ${{ inputs.test-scope }}
+      test-mode: ${{ inputs.test-mode }}
