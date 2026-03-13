@@ -70,6 +70,11 @@ from invenio_testrig.utils import call_executable_quietly
     default="stop-on-success",
     help="Test selection for patched packages",
 )
+@click.option(
+    "--overwrite-testrig-file",
+    is_flag=True,
+    help="Force overwrite testrig.yml with latest version, even if customized",
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -79,6 +84,7 @@ def github_cmd(
     patch_mode: str,
     test_scope: str,
     test_mode: str,
+    overwrite_testrig_file: bool,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -110,10 +116,12 @@ def github_cmd(
     repo_exists = _check_repository_exists(target_repo, progress)
 
     if not repo_exists:
-        _create_repository(target_repo, username, progress)
+        _create_repository(target_repo, username, progress, overwrite_testrig_file)
     else:
         # Repository exists - check if workflow needs updating
-        _update_existing_repository_workflow(target_repo, progress)
+        _update_existing_repository_workflow(
+            target_repo, progress, overwrite_testrig_file
+        )
 
     workflow_url = _dispatch_workflow(
         target_repo,
@@ -203,7 +211,9 @@ def _get_file_md5(file_path: Path) -> str:
     return hashlib.md5(content.encode("utf-8")).hexdigest()
 
 
-def _update_workflow_file(temp_dir: Path, progress: Progress) -> None:
+def _update_workflow_file(
+    temp_dir: Path, progress: Progress, force_overwrite: bool = False
+) -> None:
     """Update or create testrig.yml workflow file with version management.
 
     For new repositories: Copy the latest version as testrig.yml
@@ -212,6 +222,7 @@ def _update_workflow_file(temp_dir: Path, progress: Progress) -> None:
 
     :param temp_dir: Temporary directory with cloned repository
     :param progress: Progress reporter for status updates
+    :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
     """
     workflows_dir = temp_dir / ".github" / "workflows"
     target_file = workflows_dir / "testrig.yml"
@@ -238,6 +249,12 @@ def _update_workflow_file(temp_dir: Path, progress: Progress) -> None:
     # Existing repository - check if we should update
     current_md5 = _get_file_md5(target_file)
     version_md5s = _get_testrig_version_md5s()
+
+    # Check if force overwrite is requested
+    if force_overwrite:
+        target_file.write_text(latest_content)
+        progress.success(f"Forced overwrite of testrig.yml to version {version_str}")
+        return
 
     # Check if current file matches any known version
     matching_version = None
@@ -352,12 +369,15 @@ def _check_repository_exists(target_repo: str, progress: Progress) -> bool:
         return False
 
 
-def _create_repository(target_repo: str, username: str, progress: Progress) -> None:
+def _create_repository(
+    target_repo: str, username: str, progress: Progress, force_overwrite: bool = False
+) -> None:
     """Create a new empty repository with testrig client files and gh-pages branch.
 
     :param target_repo: Repository name in format 'org/repo'
     :param username: GitHub username of the current user
     :param progress: Progress reporter for status updates
+    :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
 
     :raises SystemExit: If repository creation fails
     """
@@ -419,7 +439,7 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
             copy_resources(testrig_client_path, temp_dir)
 
             # Handle testrig.yml workflow file with version management
-            _update_workflow_file(temp_dir, progress)
+            _update_workflow_file(temp_dir, progress, force_overwrite)
 
             # Commit and push
             call_executable_quietly(["git", "add", "."], cwd=temp_dir)
@@ -453,11 +473,14 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
         raise SystemExit(1)
 
 
-def _update_existing_repository_workflow(target_repo: str, progress: Progress) -> None:
+def _update_existing_repository_workflow(
+    target_repo: str, progress: Progress, force_overwrite: bool = False
+) -> None:
     """Update workflow file in existing repository if needed.
 
     :param target_repo: Repository name in format 'org/repo'
     :param progress: Progress reporter for status updates
+    :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
     """
     progress.start("Checking workflow file version", icon="🔍")
 
@@ -470,7 +493,7 @@ def _update_existing_repository_workflow(target_repo: str, progress: Progress) -
         call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
 
         # Update workflow file
-        _update_workflow_file(temp_dir, progress)
+        _update_workflow_file(temp_dir, progress, force_overwrite)
 
         # Check if there are changes to commit
         result = subprocess.run(
@@ -531,16 +554,16 @@ def _dispatch_workflow(
     """
     workflow_url = None
 
-    if not patches:
-        progress.info(
-            "No patches provided. You can start the workflow manually from the Actions tab."
-        )
-        return f"https://github.com/{target_repo}/actions/workflows/testrig.yml"
+    # Dispatch workflow even without patches (use empty string)
+    patches_str = " ".join(patches) if patches else ""
 
-    progress.start("Dispatching workflow with patches", icon="🚀")
+    if patches:
+        progress.start("Dispatching workflow with patches", icon="🚀")
+    else:
+        progress.start("Dispatching workflow", icon="🚀")
+
     try:
         # Build workflow dispatch command
-        patches_str = " ".join(patches)
         workflow_cmd = [
             "gh",
             "workflow",
@@ -548,8 +571,6 @@ def _dispatch_workflow(
             "testrig.yml",
             "--repo",
             target_repo,
-            "-f",
-            f"patches={patches_str}",
             "-f",
             f"python-version={python_version}",
             "-f",
@@ -561,6 +582,10 @@ def _dispatch_workflow(
             "-f",
             f"test-mode={test_mode}",
         ]
+
+        # Add patches if provided
+        if patches_str:
+            workflow_cmd.extend(["-f", f"patches={patches_str}"])
 
         # Add name if provided
         if name:
