@@ -22,11 +22,69 @@ from invenio_testrig.types import Progress
 
 
 def _load_yaml_config_data(config_yaml_path_or_url: str | None) -> dict:
-    """Load raw YAML config data from a file path, URL, or built-in default."""
+    """Load raw YAML config data from a file path, URL, data URL, or built-in default.
+
+    Args:
+        config_yaml_path_or_url: One of:
+            - None: Use built-in default config
+            - File path: Load from local file
+            - HTTP(S) URL: Fetch from web
+            - Data URL: Inline YAML data (base64 or URL-encoded, optionally xz-compressed)
+
+    Returns:
+        Parsed YAML data as a dictionary
+
+    Examples:
+        # Data URL with base64 encoding
+        data:text/yaml;base64,Z2l0aHViOgogIC0gcGFja2FnZTogdGVzdA==
+
+        # Data URL with URL encoding
+        data:text/yaml,github%3A%0A%20%20-%20package%3A%20test
+
+        # Data URL with xz compression (base64 encoded)
+        data:application/x-xz;base64,<base64-encoded-xz-compressed-yaml>
+
+    Raises:
+        ValueError: If data URL format is invalid
+    """
     if config_yaml_path_or_url is None:
         return yaml.safe_load(
             importlib_resources.read_text("invenio_testrig", "default_config.yaml")
         )
+    if config_yaml_path_or_url.startswith("data:"):
+        import base64
+        import lzma
+        import urllib.parse
+
+        # Parse data URL: data:[<mediatype>][;base64],<data>
+        # Remove 'data:' prefix
+        data_part = config_yaml_path_or_url[5:]
+
+        # Split at comma to separate metadata from data
+        if "," not in data_part:
+            raise ValueError("Invalid data URL format: missing comma separator")
+
+        metadata, encoded_data = data_part.split(",", 1)
+
+        # Decode the data
+        if ";base64" in metadata:
+            decoded_bytes = base64.b64decode(encoded_data)
+        else:
+            # URL-encoded data
+            decoded_bytes = urllib.parse.unquote(encoded_data).encode("utf-8")
+
+        # Check if data is xz-compressed
+        if "application/x-xz" in metadata:
+            # Decompress xz data
+            decoded_data = lzma.decompress(decoded_bytes).decode("utf-8")
+        else:
+            # Not compressed, just decode bytes to string
+            if isinstance(decoded_bytes, bytes):
+                decoded_data = decoded_bytes.decode("utf-8")
+            else:
+                decoded_data = decoded_bytes
+
+        return yaml.safe_load(decoded_data)
     if config_yaml_path_or_url.startswith(
         "http://"
     ) or config_yaml_path_or_url.startswith("https://"):
