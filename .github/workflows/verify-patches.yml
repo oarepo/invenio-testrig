@@ -314,7 +314,7 @@ jobs:
         shell: bash
         run: |
           echo "Waiting 15 seconds to ensure slow tests start before fast tests..."
-          sleep 15
+          sleep 5
           echo "Wait complete. Fast tests can now start."
 
   test:

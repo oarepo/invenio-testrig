@@ -144,16 +144,33 @@ def github_cmd(
     3. Opens a browser window with the workflow run
     """
 
+    # Set defaults for testrig repository and branch
+    if testrig_repository is None:
+        testrig_repository = "oarepo/invenio-testrig"
+    if testrig_branch is None:
+        testrig_branch = "master"
+
     username = _get_current_github_username()
     target_repo = _determine_target_repository(target, username, progress)
     repo_exists = _check_repository_exists(target_repo, progress)
 
     if not repo_exists:
-        _create_repository(target_repo, username, progress, overwrite_testrig_file)
+        _create_repository(
+            target_repo,
+            username,
+            progress,
+            overwrite_testrig_file,
+            testrig_repository,
+            testrig_branch,
+        )
     else:
         # Repository exists - check if workflow needs updating
         _update_existing_repository_workflow(
-            target_repo, progress, overwrite_testrig_file
+            target_repo,
+            progress,
+            overwrite_testrig_file,
+            testrig_repository,
+            testrig_branch,
         )
 
     workflow_url = _dispatch_workflow(
@@ -215,9 +232,14 @@ def _get_latest_testrig_version() -> tuple[int, int, int]:
     return max(versions)
 
 
-def _get_testrig_version_md5s() -> dict[tuple[int, int, int], str]:
+def _get_testrig_version_md5s(
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> dict[tuple[int, int, int], str]:
     """Get MD5 hashes for all versioned testrig workflow files.
 
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
     :return: Dictionary mapping version tuples to MD5 hashes
     """
     testrig_client_path = files("invenio_testrig.testrig_client")
@@ -232,6 +254,11 @@ def _get_testrig_version_md5s() -> dict[tuple[int, int, int], str]:
                 if len(parts) == 3:
                     version = tuple(int(p) for p in parts)
                     content = item.read_text()
+                    # Interpolate placeholders before computing MD5
+                    content = content.replace(
+                        '"${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"',
+                        f'"{testrig_repository}/.github/workflows/verify-patches.yml@{testrig_branch}"',
+                    )
                     md5 = hashlib.md5(content.encode("utf-8")).hexdigest()
                     version_md5s[version] = md5
             except ValueError:
@@ -240,18 +267,33 @@ def _get_testrig_version_md5s() -> dict[tuple[int, int, int], str]:
     return version_md5s
 
 
-def _get_file_md5(file_path: Path) -> str:
-    """Calculate MD5 hash of a file.
+def _get_file_md5(
+    file_path: Path,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> str:
+    """Calculate MD5 hash of a file after interpolating placeholders.
 
     :param file_path: Path to the file
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
     :return: MD5 hash as hex string
     """
     content = file_path.read_text()
+    # Interpolate placeholders before computing MD5
+    content = content.replace(
+        '"${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"',
+        f'"{testrig_repository}/.github/workflows/verify-patches.yml@{testrig_branch}"',
+    )
     return hashlib.md5(content.encode("utf-8")).hexdigest()
 
 
 def _update_workflow_file(
-    temp_dir: Path, progress: Progress, force_overwrite: bool = False
+    temp_dir: Path,
+    progress: Progress,
+    force_overwrite: bool = False,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
 ) -> None:
     """Update or create testrig.yml workflow file with version management.
 
@@ -262,6 +304,8 @@ def _update_workflow_file(
     :param temp_dir: Temporary directory with cloned repository
     :param progress: Progress reporter for status updates
     :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
     """
     workflows_dir = temp_dir / ".github" / "workflows"
     target_file = workflows_dir / "testrig.yml"
@@ -277,6 +321,12 @@ def _update_workflow_file(
     )
     latest_content = source_file.read_text()
 
+    # Interpolate testrig-repository and testrig-branch placeholders
+    latest_content = latest_content.replace(
+        '"${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"',
+        f'"{testrig_repository}/.github/workflows/verify-patches.yml@{testrig_branch}"',
+    )
+
     # Check if target file exists
     if not target_file.exists():
         # New repository - just copy the latest version
@@ -286,8 +336,8 @@ def _update_workflow_file(
         return
 
     # Existing repository - check if we should update
-    current_md5 = _get_file_md5(target_file)
-    version_md5s = _get_testrig_version_md5s()
+    current_md5 = _get_file_md5(target_file, testrig_repository, testrig_branch)
+    version_md5s = _get_testrig_version_md5s(testrig_repository, testrig_branch)
 
     # Check if force overwrite is requested
     if force_overwrite:
@@ -409,7 +459,12 @@ def _check_repository_exists(target_repo: str, progress: Progress) -> bool:
 
 
 def _create_repository(
-    target_repo: str, username: str, progress: Progress, force_overwrite: bool = False
+    target_repo: str,
+    username: str,
+    progress: Progress,
+    force_overwrite: bool = False,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
 ) -> None:
     """Create a new empty repository with testrig client files and gh-pages branch.
 
@@ -417,6 +472,8 @@ def _create_repository(
     :param username: GitHub username of the current user
     :param progress: Progress reporter for status updates
     :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
 
     :raises SystemExit: If repository creation fails
     """
@@ -478,7 +535,9 @@ def _create_repository(
             copy_resources(testrig_client_path, temp_dir)
 
             # Handle testrig.yml workflow file with version management
-            _update_workflow_file(temp_dir, progress, force_overwrite)
+            _update_workflow_file(
+                temp_dir, progress, force_overwrite, testrig_repository, testrig_branch
+            )
 
             # Commit and push
             call_executable_quietly(["git", "add", "."], cwd=temp_dir)
@@ -513,13 +572,19 @@ def _create_repository(
 
 
 def _update_existing_repository_workflow(
-    target_repo: str, progress: Progress, force_overwrite: bool = False
+    target_repo: str,
+    progress: Progress,
+    force_overwrite: bool = False,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
 ) -> None:
     """Update workflow file in existing repository if needed.
 
     :param target_repo: Repository name in format 'org/repo'
     :param progress: Progress reporter for status updates
     :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
     """
     progress.start("Checking workflow file version", icon="🔍")
 
@@ -532,7 +597,9 @@ def _update_existing_repository_workflow(
         call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
 
         # Update workflow file
-        _update_workflow_file(temp_dir, progress, force_overwrite)
+        _update_workflow_file(
+            temp_dir, progress, force_overwrite, testrig_repository, testrig_branch
+        )
 
         # Check if there are changes to commit
         result = subprocess.run(
