@@ -49,9 +49,12 @@ github:
     test:
       - ./run-tests.sh
 
-    # Packages that have slow tests and should be run first and in parallel with the rest.
+    # Packages that have slow tests will be split in parts. The array below specifies
+    # where the part starts. In this case, the package will be tested in two parts:
+    # one with alphabetically ordered tests up to (but not including) tests/resources,
+    # and one with tests/resources and beyond.
     slow_packages:
-      - "invenio-rdm-records"
+      invenio-rdm-records: ["tests/resources", "tests/services"]
 
     # extras to install for the packages matching this github configuration. Optional.
     # Note: this is a union of all invenio packages but fortunately it doesn't need

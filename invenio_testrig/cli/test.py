@@ -53,6 +53,12 @@ from invenio_testrig.types import ExecutionStatus, Progress, TestedPackageInfo
     is_flag=True,
     help="Test all packages in config.tested_packages",
 )
+@click.option(
+    "--part",
+    "part",
+    type=str,
+    help="Test a specific part of the package (for slow tests)",
+)
 @with_verbose
 @with_debug
 def cmd_test(
@@ -60,9 +66,17 @@ def cmd_test(
     package_name: str | None,
     apply_patches: bool,
     all_packages: bool,
+    part: str | None,
     progress: Progress,
 ):
     """2/ Test the package locally - be sure to call setup first."""
+    if part and part.lower() == "none":
+        part = None
+
+    if part:
+        part_number = int(part)
+    else:
+        part_number = None
 
     # Validation: both --all and package_name cannot be used together
     if all_packages and package_name:
@@ -80,7 +94,7 @@ def cmd_test(
     else:
         # Test single package
         assert package_name is not None  # This is guaranteed by validation above
-        _run_test_package(config, package_name, apply_patches, progress)
+        _run_test_package(config, package_name, apply_patches, part_number, progress)
 
 
 # endregion
@@ -109,10 +123,10 @@ def _run_test_all_packages(config: Config, apply_patches: bool, progress: Progre
         )
 
         try:
-            _run_test_package(config, package_name, apply_patches, progress)
+            _run_test_package(config, package_name, apply_patches, None, progress)
             results[package_name] = "✅ PASSED"
             progress.success(f"Package '{package_name}' tests passed")
-        except (click.Abort, subprocess.CalledProcessError, ValueError):
+        except click.Abort, subprocess.CalledProcessError, ValueError:
             results[package_name] = "❌ FAILED"
             has_failures = True
             progress.error(f"Package '{package_name}' tests failed")
@@ -152,6 +166,7 @@ def _run_test_package(
     config: Config,
     package_name: str,
     apply_patches: bool,
+    part_number: int | None,
     progress: Progress,
 ):
     log_dir = config.workdir_path("artifacts") / package_name
@@ -206,6 +221,7 @@ def _run_test_package(
             library_patches,
             apply_patches,
             patched,
+            part_number,
             progress,
         )
         progress.text("::endgroup::")
@@ -307,6 +323,7 @@ def _run_tests(
     library_patches: list[TestedPackageInfo],
     apply_patches: bool,
     patched: bool,
+    part_number: int | None,
     progress: Progress,
 ) -> str:
     """Run tests for an installed package.
@@ -318,6 +335,7 @@ def _run_tests(
     :param library_patches: List of dependency packages with configuration
     :param apply_patches: Whether patches were applied
     :param patched: Whether any patches were applied to package or dependencies
+    :param part_number: Part number of the test to run (None for all parts)
     :param progress: Progress reporter for status updates
 
     :return: Test status ("success", "failed", or "skipped")
@@ -358,10 +376,64 @@ def _run_tests(
         icon="🚀",
     )
 
+    filtered_tests = []
+    if part_number is not None:
+        # we support this only for pytest just now ...
+        tests = api.run_in_venv(
+            working_dir, ["pytest", "--co", "-q"], check_output=True
+        )
+        split_points = config.tested_packages[package_name].slow_split
+        assert split_points is not None
+        split_start = split_points[part_number - 1] if part_number > 0 else None
+        split_end = (
+            split_points[part_number] if part_number < len(split_points) else None
+        )
+        splitting = split_start is None
+        seen_tests = set()
+        for line in tests.splitlines():
+            line = line.strip()
+            if not splitting:
+                if split_start and line.startswith(split_start):
+                    splitting = True
+                else:
+                    continue
+
+            if split_end and line.startswith(split_end):
+                break
+
+            # Remove :: suffix (e.g., ::ISORT, ::BLACK, ::test_name) to get just the file path
+            test_path = line.split("::")[0] if "::" in line else line
+
+            # Only include Python test files that start with test_
+            if (
+                test_path
+                and test_path.startswith("tests/")
+                and test_path.endswith(".py")
+            ):
+                filename = Path(test_path).name
+                if filename.startswith("test_") and test_path not in seen_tests:
+                    seen_tests.add(test_path)
+                    filtered_tests.append(test_path)
+        if not filtered_tests:
+            raise Exception(
+                f"Wrong part number for package '{package_name}', no tests found between '{split_start}' and '{split_end}'"
+            )
+
     try:
+        test_command = package_config.test
+        if filtered_tests:
+            # Write filtered tests to a file and use @ syntax to avoid long command lines
+            selected_tests_file = log_dir / "selected_tests.txt"
+            selected_tests_file.write_text("\n".join(filtered_tests))
+            test_command = package_config.test + [f"@{selected_tests_file}"]
+            progress.info(
+                f"Running {len(filtered_tests)} filtered tests from {selected_tests_file}"
+            )
+            progress.info(selected_tests_file.read_text())
+
         api.run_in_venv(
             working_dir,
-            package_config.test,
+            test_command,
             log_file,
             timeout=config.test_timeout * 60,
         )

@@ -103,6 +103,11 @@ from invenio_testrig.utils import call_executable_quietly
     "--config-file",
     help="Path to the configuration file or URL (local files will be converted to data URLs)",
 )
+@click.option(
+    "--slow-test-splitting/--no-slow-test-splitting",
+    default=True,
+    help="Enable or disable splitting of slow tests into multiple parts",
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -119,6 +124,7 @@ def github_cmd(
     e2e: str | None,
     ignore_uv_lock: bool,
     config_file: str | None,
+    slow_test_splitting: bool,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -188,6 +194,7 @@ def github_cmd(
         e2e,
         ignore_uv_lock,
         config_file,
+        slow_test_splitting,
         progress,
     )
 
@@ -681,6 +688,7 @@ def _dispatch_workflow(
     e2e: str | None,
     ignore_uv_lock: bool,
     config_file: str | None,
+    slow_test_splitting: bool,
     progress: Progress,
 ) -> str | None:
     """Dispatch workflow or return workflow page URL.
@@ -699,6 +707,7 @@ def _dispatch_workflow(
     :param e2e: Override repository.e2e configuration
     :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
     :param config_file: Path to configuration file or URL
+    :param slow_test_splitting: Enable splitting of slow tests into multiple parts
     :param progress: Progress reporter for status updates
 
     :return: Workflow URL if available, None otherwise
@@ -761,6 +770,11 @@ def _dispatch_workflow(
         # Add ignore-uv-lock if provided
         if ignore_uv_lock:
             workflow_cmd.extend(["-f", f"ignore-uv-lock={str(ignore_uv_lock).lower()}"])
+
+        # Add slow-test-splitting
+        workflow_cmd.extend(
+            ["-f", f"slow-test-splitting={str(slow_test_splitting).lower()}"]
+        )
 
         # Add config-file if provided (convert local files to data URLs)
         if config_file:

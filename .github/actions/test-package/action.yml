@@ -1,21 +1,24 @@
-name: 'Test Package'
-description: 'Run tests for a package (patched and optionally unpatched versions)'
+name: "Test Package"
+description: "Run tests for a package (patched and optionally unpatched versions)"
 inputs:
   workdir:
-    description: 'Working directory containing the test environment'
+    description: "Working directory containing the test environment"
     required: true
   package:
-    description: 'Package name to test'
+    description: "Package name to test"
     required: true
+  part:
+    description: "Part number of the package to test (optional)"
+    required: false
   test-mode:
-    description: 'Test mode (stop-on-success, run-all)'
+    description: "Test mode (stop-on-success, run-all)"
     required: true
   test-scope:
-    description: 'Test scope (affected, all)'
+    description: "Test scope (affected, all)"
     required: true
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: Run tests for the patched version of the package
       shell: bash
@@ -29,6 +32,7 @@ runs:
             $WORKDIR \
             $PACKAGE \
             --apply-patches \
+            ${{ inputs.part && format('--part {0}', inputs.part) || '' }} \
             || true
         echo "::endgroup::"
 
@@ -58,6 +62,7 @@ runs:
         invenio-testrig test \
             $WORKDIR \
             $PACKAGE \
+            ${{ inputs.part && format('--part {0}', inputs.part) || '' }} \
             || true
         echo "::endgroup::"
 
@@ -70,10 +75,28 @@ runs:
             exit 1
         fi
 
+    - name: Apply part number
+      if: always() && inputs.part != ''
+      shell: bash
+      env:
+        WORKDIR: ${{ inputs.workdir }}
+        PACKAGE: ${{ inputs.package }}
+      run: |
+        cd $WORKDIR
+        mv "artifacts/$PACKAGE" "artifacts/${PACKAGE}-${{ inputs.part }}"
+
     - name: Store test results as artifact
-      if: always()
+      if: always() && inputs.part == ''
       uses: actions/upload-artifact@v6
       with:
         name: test-results-${{ inputs.package }}
+        path: ${{ inputs.workdir }}/artifacts
+        retention-days: 1
+
+    - name: Store test results for part as artifact
+      if: always() && inputs.part != ''
+      uses: actions/upload-artifact@v6
+      with:
+        name: test-results-${{ inputs.package }}-${{ inputs.part }}
         path: ${{ inputs.workdir }}/artifacts
         retention-days: 1

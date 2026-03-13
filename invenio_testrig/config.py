@@ -76,7 +76,7 @@ class Github(ExtensibleMixin):
     If specified, these packages will be reinstalled with the specified version constraints before running the tests.
     """
 
-    slow_packages: list[str] | None = field(default_factory=list)
+    slow_packages: dict[str, list[str]] | None = field(default_factory=dict)
     """List of packages that are slow to test.
 
     Testrig will try to run these packages first and in parallel with the rest of the packages,

@@ -45,6 +45,11 @@ on:
         options:
           - stop-on-success
           - run-all
+      slow-test-splitting:
+        description: "Enable splitting of slow tests into multiple parts"
+        required: false
+        type: boolean
+        default: true
 
   # or called from another workflow from another repository
   workflow_call:
@@ -134,10 +139,15 @@ on:
         required: false
         type: string
       skip-tests:
-        description: "Skip running tests (only prepare configuration and apply patches)"
+        description: "Skip running tests"
         required: false
         type: boolean
         default: false
+      slow-test-splitting:
+        description: "Enable splitting of slow tests into multiple parts"
+        required: false
+        type: boolean
+        default: true
 
 env:
   PYTHONUNBUFFERED: 1
@@ -146,6 +156,7 @@ env:
   TEST_SCOPE: ${{ inputs.test-scope || 'affected' }}
   TEST_MODE: ${{ inputs.test-mode || 'stop-on-success' }}
   IGNORE_UV_LOCK: ${{ inputs.ignore-uv-lock || false }}
+  SLOW_TEST_SPLITTING: ${{ inputs.slow-test-splitting != false }}
 
   # if the workflow is called from another workflow, we use the defaults
   TESTRIG_REPOSITORY: ${{ inputs.testrig-repository || github.repository }}
@@ -223,6 +234,14 @@ jobs:
         shell: bash
         run: |
 
+          echo "::group::🔍 Debug: Environment Variables"
+          echo "SLOW_TEST_SPLITTING=$SLOW_TEST_SPLITTING"
+          echo "DISABLE_CODESTYLE_CHECKS=$DISABLE_CODESTYLE_CHECKS"
+          echo "IGNORE_UV_LOCK=$IGNORE_UV_LOCK"
+          echo "TEST_SCOPE=$TEST_SCOPE"
+          echo "TEST_MODE=$TEST_MODE"
+          echo "::endgroup::"
+
           echo "::group::⚙️ Setting up testrig (init, collect, filter, select-patches, clone)"
           setup_args=("--verbose")
 
@@ -231,6 +250,9 @@ jobs:
           fi
           if [ "$IGNORE_UV_LOCK" == "true" ]; then
               setup_args+=("--ignore-uv-lock")
+          fi
+          if [ "$SLOW_TEST_SPLITTING" == "false" ]; then
+              setup_args+=("--no-slow-test-splitting")
           fi
           setup_args+=("--python" "$PYTHON_VERSION")
           setup_args+=("--test-scope" "$TEST_SCOPE")
@@ -267,6 +289,10 @@ jobs:
                   patch_args+=("$patch")
               done
           fi
+
+          echo "::group::🔍 Debug: Setup Command Arguments"
+          echo "Full command: invenio-testrig setup --workdir $WORKDIR ${setup_args[@]} ${patch_args[@]}"
+          echo "::endgroup::"
 
           invenio-testrig setup --workdir "$WORKDIR" "${setup_args[@]}" "${patch_args[@]}"
           echo "::endgroup::"
@@ -364,7 +390,7 @@ jobs:
     if: ${{ !inputs.skip-tests }}
     strategy:
       matrix:
-        package: ${{ fromJson(needs.prepare.outputs.matrix_slow_tested_packages) }}
+        package_with_part: ${{ fromJson(needs.prepare.outputs.matrix_slow_tested_packages) }}
       fail-fast: false
 
     steps:
@@ -388,11 +414,24 @@ jobs:
           testrig-directory: ${{ github.workspace }}/.pipeline
           hook-libraries: ${{ env.HOOK_LIBRARIES }}
 
+      - name: Get package name and part
+        shell: bash
+        id: split-slow-package-name
+        run: |
+          # the matrix.package_with_part is in the format package_name#part
+          package_name=$(echo ${{ matrix.package_with_part }} | cut -d '#' -f 1)
+          package_part=$(echo ${{ matrix.package_with_part }} | cut -d '#' -f 2)
+          echo "Package name: $package_name"
+          echo "Package part: $package_part"
+          echo "package=$package_name" >>$GITHUB_OUTPUT
+          echo "package_part=$package_part" >>$GITHUB_OUTPUT
+
       - name: Test package
         uses: ./.pipeline/.github/actions/test-package
         with:
           workdir: ${{ env.WORKDIR }}
-          package: ${{ matrix.package }}
+          package: ${{ steps.split-slow-package-name.outputs.package }}
+          part: ${{ steps.split-slow-package-name.outputs.package_part }}
           test-mode: ${{ env.TEST_MODE }}
           test-scope: ${{ env.TEST_SCOPE }}
 

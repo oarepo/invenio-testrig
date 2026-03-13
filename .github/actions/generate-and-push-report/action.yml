@@ -2,284 +2,292 @@ name: Generate and Push Report to Repository
 description: Generates test report from workdir/artifacts and pushes it to a GitHub repository with retry logic
 
 inputs:
-    workdir:
-        description: Path to the working directory containing config.json and artifacts
-        required: true
-    report-repository:
-        description: Repository to push the report to (owner/repo)
-        required: true
-    report-branch:
-        description: Branch to push the report to
-        required: true
-        default: gh-pages
-    report-directory:
-        description: Directory name within the repository to store the report
-        required: true
-    github-token:
-        description: GitHub token with permissions to push to the report repository
-        required: true
-    max-retries:
-        description: Maximum number of retries on push conflicts
-        required: false
-        default: "3"
-    completed:
-        description: Whether to generate a completed report (--completed flag)
-        required: false
-        default: "false"
-    download-artifacts:
-        description: Whether to download test result artifacts before generating report
-        required: false
-        default: "false"
-    max-reports:
-        description: Maximum number of reports to keep in the repository (oldest will be deleted)
-        required: false
-        default: "10"
-    force-report:
-        description: Force report generation and push regardless of last modification time
-        required: false
-        default: "false"
+  workdir:
+    description: Path to the working directory containing config.json and artifacts
+    required: true
+  report-repository:
+    description: Repository to push the report to (owner/repo)
+    required: true
+  report-branch:
+    description: Branch to push the report to
+    required: true
+    default: gh-pages
+  report-directory:
+    description: Directory name within the repository to store the report
+    required: true
+  github-token:
+    description: GitHub token with permissions to push to the report repository
+    required: true
+  max-retries:
+    description: Maximum number of retries on push conflicts
+    required: false
+    default: "3"
+  completed:
+    description: Whether to generate a completed report (--completed flag)
+    required: false
+    default: "false"
+  download-artifacts:
+    description: Whether to download test result artifacts before generating report
+    required: false
+    default: "false"
+  max-reports:
+    description: Maximum number of reports to keep in the repository (oldest will be deleted)
+    required: false
+    default: "10"
+  force-report:
+    description: Force report generation and push regardless of last modification time
+    required: false
+    default: "false"
 
 runs:
-    using: composite
-    steps:
-        - name: Download test result artifacts
-          if: ${{ inputs.download-artifacts == 'true' }}
-          uses: actions/download-artifact@v7
-          with:
-              pattern: test-results-*
-              path: ${{ inputs.workdir }}/artifacts
-              merge-multiple: true
+  using: composite
+  steps:
+    - name: Download test result artifacts
+      if: ${{ inputs.download-artifacts == 'true' }}
+      uses: actions/download-artifact@v7
+      with:
+        pattern: test-results-*
+        path: ${{ inputs.workdir }}/artifacts
+        merge-multiple: true
 
-        - name: Generate report
-          shell: bash
-          env:
-              WORKDIR: ${{ inputs.workdir }}
-              COMPLETED: ${{ inputs.completed }}
-          run: |
-              echo "::group::📊 Generating test report"
-              REPORT_PATH=${{ runner.temp }}/generated-report
+    - name: Merge split tests
+      shell: bash
+      env:
+        WORKDIR: ${{ inputs.workdir }}
+      run: |
+        echo "::group::🔄 Merging split tests"
+        invenio-testrig merge-test-artifacts $WORKDIR
 
-              if [ ! -d "$WORKDIR/artifacts" ]; then
-                  mkdir -p "$WORKDIR/artifacts"
-              fi
+    - name: Generate report
+      shell: bash
+      env:
+        WORKDIR: ${{ inputs.workdir }}
+        COMPLETED: ${{ inputs.completed }}
+      run: |
+        echo "::group::📊 Generating test report"
+        REPORT_PATH=${{ runner.temp }}/generated-report
 
-              echo "Downloaded artifacts:"
-              tree "$WORKDIR/artifacts"
-              
-              if [ "$COMPLETED" == "true" ]; then
-                  echo "Generating completed report..."
-                  invenio-testrig report $WORKDIR $REPORT_PATH --completed
-              else
-                  echo "Generating initial report..."
-                  invenio-testrig report $WORKDIR $REPORT_PATH
-              fi
-              
-              # Copy artifacts to report directory if they exist
-              if [ -d "$WORKDIR/artifacts" ]; then
-                  cp -r $WORKDIR/artifacts $REPORT_PATH/
-              fi
-              
-              # Copy top_commits to report directory if they exist
-              if [ -d "$WORKDIR/cloned_repos/top_commits" ]; then
-                  cp -r $WORKDIR/cloned_repos/top_commits $REPORT_PATH/
-              fi
+        if [ ! -d "$WORKDIR/artifacts" ]; then
+            mkdir -p "$WORKDIR/artifacts"
+        fi
 
-              echo "::endgroup::"
-              echo "::notice::✅ Report generated"
+        echo "Downloaded artifacts:"
+        tree "$WORKDIR/artifacts"
 
-        - name: Push report to repository
-          id: push-report
-          shell: bash
-          env:
-              REPORT_PATH: ${{ runner.temp }}/generated-report
-              REPORT_REPOSITORY: ${{ inputs.report-repository }}
-              REPORT_BRANCH: ${{ inputs.report-branch }}
-              REPORT_DIRECTORY: ${{ inputs.report-directory }}
-              GITHUB_TOKEN: ${{ inputs.github-token }}
-              MAX_RETRIES: ${{ inputs.max-retries }}
-              MAX_REPORTS: ${{ inputs.max-reports }}
-              COMPLETED: ${{ inputs.completed }}
-              FORCE_REPORT: ${{ inputs.force-report }}
-          run: |
-              set -e
-              
-              CHECKOUT_DIR="${GITHUB_WORKSPACE}/report-repo-checkout"
-              RETRY_COUNT=0
-              SUCCESS=false
-              PUSHED=false
-              
-              # For partial reports (not forced, not completed), limit retries to 1
-              if [ "$COMPLETED" != "true" ] && [ "$FORCE_REPORT" != "true" ]; then
-                  EFFECTIVE_MAX_RETRIES=1
-              else
-                  EFFECTIVE_MAX_RETRIES=$MAX_RETRIES
-              fi
-              
-              while [ $RETRY_COUNT -lt $EFFECTIVE_MAX_RETRIES ] && [ "$SUCCESS" = "false" ]; do
-                  echo "::group::📤 Attempt $((RETRY_COUNT + 1))/$EFFECTIVE_MAX_RETRIES: Pushing report to $REPORT_REPOSITORY/$REPORT_BRANCH"
-                  
-                  # Wait before retry (skip on first attempt)
-                  if [ $RETRY_COUNT -gt 0 ]; then
-                      RANDOM_INTERVAL=$((RANDOM % 10))
-                      echo "Waiting 5 seconds plus random interval of $RANDOM_INTERVAL seconds before retry..."
-                      sleep $((5 + RANDOM_INTERVAL))
-                  fi
-                  
-                  # Ensure we're in a valid directory before operations
-                  cd "${GITHUB_WORKSPACE}"
-                  
-                  # Clean up any previous checkout
-                  if [ -d "$CHECKOUT_DIR" ]; then
-                      rm -rf "$CHECKOUT_DIR"
-                  fi
-                  
-                  # Ensure parent directory exists
-                  PARENT_CHECKOUT_DIR=$(dirname "$CHECKOUT_DIR")
-                  if [ ! -d "$PARENT_CHECKOUT_DIR" ]; then
-                      echo "Creating parent directory: $PARENT_CHECKOUT_DIR"
-                      mkdir -p "$PARENT_CHECKOUT_DIR"
-                  fi
-                  
-                  # Clone the repository (or create orphan branch if it doesn't exist)
-                  echo "Cloning repository $REPORT_REPOSITORY..."
-                  if git clone --depth 1 --branch "$REPORT_BRANCH" \
-                      "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPORT_REPOSITORY}.git" \
-                      "$CHECKOUT_DIR"; then
-                      echo "✅ Branch $REPORT_BRANCH exists, cloned successfully"
-                  else
-                      echo "⚠️  Failed to clone repository"
-                      RETRY_COUNT=$((RETRY_COUNT + 1))
-                      echo "::endgroup::"
-                      continue
-                  fi
-                  
-                  # Check if report was recently updated (only if not generating completed report and not forcing)
-                  if [ "$COMPLETED" != "true" ] && [ "$FORCE_REPORT" != "true" ]; then
-                      LAST_UPDATED_FILE="$CHECKOUT_DIR/last-updated.txt"
-                      if [ -f "$LAST_UPDATED_FILE" ]; then
-                          LAST_TIMESTAMP=$(cat "$LAST_UPDATED_FILE")
-                          CURRENT_TIMESTAMP=$(date +%s)
-                          TIME_DIFF=$((CURRENT_TIMESTAMP - LAST_TIMESTAMP))
-                          
-                          echo "⏱️  Last update: $LAST_TIMESTAMP"
-                          echo "⏱️  Current time: $CURRENT_TIMESTAMP"
-                          echo "⏱️  Time difference: ${TIME_DIFF} seconds"
-                          
-                          if [ $TIME_DIFF -lt 15 ]; then
-                              echo "⏭️  Skipping report - last update was ${TIME_DIFF} seconds ago (< 15 seconds)"
-                              echo "::notice::⏭️  Report skipped - last update was ${TIME_DIFF} seconds ago"
-                              SUCCESS=true
-                              echo "::endgroup::"
-                              break
-                          else
-                              echo "✅ Proceeding - last update was ${TIME_DIFF} seconds ago (>= 15 seconds)"
-                          fi
-                      else
-                          echo "ℹ️  No previous timestamp found, proceeding with update"
-                      fi
-                  else
-                      if [ "$COMPLETED" = "true" ]; then
-                          echo "ℹ️  Generating completed report, skipping timestamp check"
-                      elif [ "$FORCE_REPORT" = "true" ]; then
-                          echo "ℹ️  Force report enabled, skipping timestamp check"
-                      fi
-                  fi
-                  
-                  # Compress artifacts for older reports (beyond MAX_REPORTS newest)
-                  cd "$CHECKOUT_DIR"
-                  echo "Compressing artifacts for older reports (keeping $MAX_REPORTS newest uncompressed)..."
-                  REPORT_COUNT=$(find . -maxdepth 1 -type d ! -name '.' ! -name '.git' | wc -l)
-                  if [ $REPORT_COUNT -gt $MAX_REPORTS ]; then
-                      # List directories by modification time, skip the newest MAX_REPORTS, archive the rest
-                      find . -maxdepth 1 -type d ! -name '.' ! -name '.git' -printf '%T@ %p\n' | \
-                          sort -rn | \
-                          tail -n +$((MAX_REPORTS + 1)) | \
-                          cut -d' ' -f2- | \
-                          while read -r dir; do
-                              if [ ! -f $dir/report.zip ] ; then
-                                  if invenio-testrig archive-report "$dir"; then
-                                      git add "$dir"
-                                  else
-                                      echo "  ⚠️  Failed to archive $dir"
-                                  fi
-                              fi
-                          done
-                      echo "✅ Processed $((REPORT_COUNT - MAX_REPORTS)) old report(s)"
-                  else
-                      echo "  Current report count ($REPORT_COUNT) is within limit ($MAX_REPORTS)"
-                  fi
-                  
-                  # Configure git
-                  cd "$CHECKOUT_DIR"
-                  
-                  # Create or update the report directory
-                  echo "Copying report to $REPORT_DIRECTORY..."
-                  
-                  # Remove old report directory if it exists
-                  if [ -d "$REPORT_DIRECTORY" ]; then
-                      rm -rf "$REPORT_DIRECTORY"
-                  fi
-                  
-                  # Create parent directory structure if report_name contains slashes
-                  PARENT_DIR=$(dirname "$REPORT_DIRECTORY")
-                  if [ "$PARENT_DIR" != "." ]; then
-                      mkdir -p "$PARENT_DIR"
-                  fi
-                  
-                  # Copy report contents directly to REPORT_DIRECTORY path
-                  cp -r "$REPORT_PATH" "$REPORT_DIRECTORY"
-                  
-                  # Generate reports index
-                  echo "📑 Generating reports index..."
-                  invenio-testrig reports-index "$(pwd)" "$(pwd)/index.html"
-                  echo "✅ Reports index generated"
-                  
-                  # Generate last-updated.txt with current timestamp
-                  echo "$(date +%s)" > "last-updated.txt"
-                  echo "📝 Created last-updated.txt with timestamp: $(date +%s)"
-                  
-                  # Add, commit, and push
-                  git add "$REPORT_DIRECTORY"
-                  git add "index.html"
-                  git add "last-updated.txt"
-                  
-                  COMMIT_MSG="Update report: $REPORT_DIRECTORY"
-                  git commit --amend -m "$COMMIT_MSG" --allow-empty
-                  
-                  echo "Pushing to $REPORT_REPOSITORY/$REPORT_BRANCH..."
-                  if git push --force-with-lease origin "$REPORT_BRANCH"; then
-                      echo "✅ Successfully pushed report to $REPORT_REPOSITORY/$REPORT_BRANCH/$REPORT_DIRECTORY"
-                      SUCCESS=true
-                      PUSHED=true
-                      # Create unique commit-id by combining git commit hash, job ID, timestamp, and random number
-                      UNIQUE_ID="$(git rev-parse --short HEAD)-${GITHUB_JOB:-unknown}-$(date +%s)-$RANDOM"
-                      echo "commit-id=$UNIQUE_ID" >> $GITHUB_OUTPUT
-                      echo "::endgroup::"
-                  else
-                      echo "⚠️  Push failed, possibly due to concurrent update"
-                      RETRY_COUNT=$((RETRY_COUNT + 1))
-                      echo "::endgroup::"
-                  fi
-              done
-                            
-              if [ "$SUCCESS" = "false" ]; then
-                  # Only raise error for forced or completed reports
-                  if [ "$COMPLETED" = "true" ] || [ "$FORCE_REPORT" = "true" ]; then
-                      echo "::error::❌ Failed to push report after $EFFECTIVE_MAX_RETRIES attempts"
-                      exit 1
-                  else
-                      echo "::warning::⚠️  Failed to push report after $EFFECTIVE_MAX_RETRIES attempts (non-critical)"
-                  fi
-              fi
+        if [ "$COMPLETED" == "true" ]; then
+            echo "Generating completed report..."
+            invenio-testrig report $WORKDIR $REPORT_PATH --completed
+        else
+            echo "Generating initial report..."
+            invenio-testrig report $WORKDIR $REPORT_PATH
+        fi
 
-              # Export whether we actually pushed
-              echo "pushed=$PUSHED" >> $GITHUB_OUTPUT
+        # Copy artifacts to report directory if they exist
+        if [ -d "$WORKDIR/artifacts" ]; then
+            cp -r $WORKDIR/artifacts $REPORT_PATH/
+        fi
 
-        - name: Clean up report repository checkout
-          if: always()
-          shell: bash
-          run: |
-              CHECKOUT_DIR="${GITHUB_WORKSPACE}/report-repo-checkout"
-              if [ -d "$CHECKOUT_DIR" ]; then
-                  rm -rf "$CHECKOUT_DIR"
-              fi
+        # Copy top_commits to report directory if they exist
+        if [ -d "$WORKDIR/cloned_repos/top_commits" ]; then
+            cp -r $WORKDIR/cloned_repos/top_commits $REPORT_PATH/
+        fi
+
+        echo "::endgroup::"
+        echo "::notice::✅ Report generated"
+
+    - name: Push report to repository
+      id: push-report
+      shell: bash
+      env:
+        REPORT_PATH: ${{ runner.temp }}/generated-report
+        REPORT_REPOSITORY: ${{ inputs.report-repository }}
+        REPORT_BRANCH: ${{ inputs.report-branch }}
+        REPORT_DIRECTORY: ${{ inputs.report-directory }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        MAX_RETRIES: ${{ inputs.max-retries }}
+        MAX_REPORTS: ${{ inputs.max-reports }}
+        COMPLETED: ${{ inputs.completed }}
+        FORCE_REPORT: ${{ inputs.force-report }}
+      run: |
+        set -e
+
+        CHECKOUT_DIR="${GITHUB_WORKSPACE}/report-repo-checkout"
+        RETRY_COUNT=0
+        SUCCESS=false
+        PUSHED=false
+
+        # For partial reports (not forced, not completed), limit retries to 1
+        if [ "$COMPLETED" != "true" ] && [ "$FORCE_REPORT" != "true" ]; then
+            EFFECTIVE_MAX_RETRIES=1
+        else
+            EFFECTIVE_MAX_RETRIES=$MAX_RETRIES
+        fi
+
+        while [ $RETRY_COUNT -lt $EFFECTIVE_MAX_RETRIES ] && [ "$SUCCESS" = "false" ]; do
+            echo "::group::📤 Attempt $((RETRY_COUNT + 1))/$EFFECTIVE_MAX_RETRIES: Pushing report to $REPORT_REPOSITORY/$REPORT_BRANCH"
+
+            # Wait before retry (skip on first attempt)
+            if [ $RETRY_COUNT -gt 0 ]; then
+                RANDOM_INTERVAL=$((RANDOM % 10))
+                echo "Waiting 5 seconds plus random interval of $RANDOM_INTERVAL seconds before retry..."
+                sleep $((5 + RANDOM_INTERVAL))
+            fi
+
+            # Ensure we're in a valid directory before operations
+            cd "${GITHUB_WORKSPACE}"
+
+            # Clean up any previous checkout
+            if [ -d "$CHECKOUT_DIR" ]; then
+                rm -rf "$CHECKOUT_DIR"
+            fi
+
+            # Ensure parent directory exists
+            PARENT_CHECKOUT_DIR=$(dirname "$CHECKOUT_DIR")
+            if [ ! -d "$PARENT_CHECKOUT_DIR" ]; then
+                echo "Creating parent directory: $PARENT_CHECKOUT_DIR"
+                mkdir -p "$PARENT_CHECKOUT_DIR"
+            fi
+
+            # Clone the repository (or create orphan branch if it doesn't exist)
+            echo "Cloning repository $REPORT_REPOSITORY..."
+            if git clone --depth 1 --branch "$REPORT_BRANCH" \
+                "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPORT_REPOSITORY}.git" \
+                "$CHECKOUT_DIR"; then
+                echo "✅ Branch $REPORT_BRANCH exists, cloned successfully"
+            else
+                echo "⚠️  Failed to clone repository"
+                RETRY_COUNT=$((RETRY_COUNT + 1))
+                echo "::endgroup::"
+                continue
+            fi
+
+            # Check if report was recently updated (only if not generating completed report and not forcing)
+            if [ "$COMPLETED" != "true" ] && [ "$FORCE_REPORT" != "true" ]; then
+                LAST_UPDATED_FILE="$CHECKOUT_DIR/last-updated.txt"
+                if [ -f "$LAST_UPDATED_FILE" ]; then
+                    LAST_TIMESTAMP=$(cat "$LAST_UPDATED_FILE")
+                    CURRENT_TIMESTAMP=$(date +%s)
+                    TIME_DIFF=$((CURRENT_TIMESTAMP - LAST_TIMESTAMP))
+
+                    echo "⏱️  Last update: $LAST_TIMESTAMP"
+                    echo "⏱️  Current time: $CURRENT_TIMESTAMP"
+                    echo "⏱️  Time difference: ${TIME_DIFF} seconds"
+
+                    if [ $TIME_DIFF -lt 15 ]; then
+                        echo "⏭️  Skipping report - last update was ${TIME_DIFF} seconds ago (< 15 seconds)"
+                        echo "::notice::⏭️  Report skipped - last update was ${TIME_DIFF} seconds ago"
+                        SUCCESS=true
+                        echo "::endgroup::"
+                        break
+                    else
+                        echo "✅ Proceeding - last update was ${TIME_DIFF} seconds ago (>= 15 seconds)"
+                    fi
+                else
+                    echo "ℹ️  No previous timestamp found, proceeding with update"
+                fi
+            else
+                if [ "$COMPLETED" = "true" ]; then
+                    echo "ℹ️  Generating completed report, skipping timestamp check"
+                elif [ "$FORCE_REPORT" = "true" ]; then
+                    echo "ℹ️  Force report enabled, skipping timestamp check"
+                fi
+            fi
+
+            # Compress artifacts for older reports (beyond MAX_REPORTS newest)
+            cd "$CHECKOUT_DIR"
+            echo "Compressing artifacts for older reports (keeping $MAX_REPORTS newest uncompressed)..."
+            REPORT_COUNT=$(find . -maxdepth 1 -type d ! -name '.' ! -name '.git' | wc -l)
+            if [ $REPORT_COUNT -gt $MAX_REPORTS ]; then
+                # List directories by modification time, skip the newest MAX_REPORTS, archive the rest
+                find . -maxdepth 1 -type d ! -name '.' ! -name '.git' -printf '%T@ %p\n' | \
+                    sort -rn | \
+                    tail -n +$((MAX_REPORTS + 1)) | \
+                    cut -d' ' -f2- | \
+                    while read -r dir; do
+                        if [ ! -f $dir/report.zip ] ; then
+                            if invenio-testrig archive-report "$dir"; then
+                                git add "$dir"
+                            else
+                                echo "  ⚠️  Failed to archive $dir"
+                            fi
+                        fi
+                    done
+                echo "✅ Processed $((REPORT_COUNT - MAX_REPORTS)) old report(s)"
+            else
+                echo "  Current report count ($REPORT_COUNT) is within limit ($MAX_REPORTS)"
+            fi
+
+            # Configure git
+            cd "$CHECKOUT_DIR"
+
+            # Create or update the report directory
+            echo "Copying report to $REPORT_DIRECTORY..."
+
+            # Remove old report directory if it exists
+            if [ -d "$REPORT_DIRECTORY" ]; then
+                rm -rf "$REPORT_DIRECTORY"
+            fi
+
+            # Create parent directory structure if report_name contains slashes
+            PARENT_DIR=$(dirname "$REPORT_DIRECTORY")
+            if [ "$PARENT_DIR" != "." ]; then
+                mkdir -p "$PARENT_DIR"
+            fi
+
+            # Copy report contents directly to REPORT_DIRECTORY path
+            cp -r "$REPORT_PATH" "$REPORT_DIRECTORY"
+
+            # Generate reports index
+            echo "📑 Generating reports index..."
+            invenio-testrig reports-index "$(pwd)" "$(pwd)/index.html"
+            echo "✅ Reports index generated"
+
+            # Generate last-updated.txt with current timestamp
+            echo "$(date +%s)" > "last-updated.txt"
+            echo "📝 Created last-updated.txt with timestamp: $(date +%s)"
+
+            # Add, commit, and push
+            git add "$REPORT_DIRECTORY"
+            git add "index.html"
+            git add "last-updated.txt"
+
+            COMMIT_MSG="Update report: $REPORT_DIRECTORY"
+            git commit --amend -m "$COMMIT_MSG" --allow-empty
+
+            echo "Pushing to $REPORT_REPOSITORY/$REPORT_BRANCH..."
+            if git push --force-with-lease origin "$REPORT_BRANCH"; then
+                echo "✅ Successfully pushed report to $REPORT_REPOSITORY/$REPORT_BRANCH/$REPORT_DIRECTORY"
+                SUCCESS=true
+                PUSHED=true
+                # Create unique commit-id by combining git commit hash, job ID, timestamp, and random number
+                UNIQUE_ID="$(git rev-parse --short HEAD)-${GITHUB_JOB:-unknown}-$(date +%s)-$RANDOM"
+                echo "commit-id=$UNIQUE_ID" >> $GITHUB_OUTPUT
+                echo "::endgroup::"
+            else
+                echo "⚠️  Push failed, possibly due to concurrent update"
+                RETRY_COUNT=$((RETRY_COUNT + 1))
+                echo "::endgroup::"
+            fi
+        done
+
+        if [ "$SUCCESS" = "false" ]; then
+            # Only raise error for forced or completed reports
+            if [ "$COMPLETED" = "true" ] || [ "$FORCE_REPORT" = "true" ]; then
+                echo "::error::❌ Failed to push report after $EFFECTIVE_MAX_RETRIES attempts"
+                exit 1
+            else
+                echo "::warning::⚠️  Failed to push report after $EFFECTIVE_MAX_RETRIES attempts (non-critical)"
+            fi
+        fi
+
+        # Export whether we actually pushed
+        echo "pushed=$PUSHED" >> $GITHUB_OUTPUT
+
+    - name: Clean up report repository checkout
+      if: always()
+      shell: bash
+      run: |
+        CHECKOUT_DIR="${GITHUB_WORKSPACE}/report-repo-checkout"
+        if [ -d "$CHECKOUT_DIR" ]; then
+            rm -rf "$CHECKOUT_DIR"
+        fi
