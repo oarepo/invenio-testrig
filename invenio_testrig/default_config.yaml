@@ -49,6 +49,10 @@ github:
     test:
       - ./run-tests.sh
 
+    # Packages that have slow tests and should be run first and in parallel with the rest.
+    slow_packages:
+      - "invenio-rdm-records"
+
     # extras to install for the packages matching this github configuration. Optional.
     # Note: this is a union of all invenio packages but fortunately it doesn't need
     # to be exact - if the extra doesn't exist for a package, pip will just ignore it

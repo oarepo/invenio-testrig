@@ -35,19 +35,29 @@ from invenio_testrig.types import Progress
 @with_verbose
 @with_debug
 def matrix_cmd(config: Config, github_output_file: Path, progress: Progress):
-    """Generate GitHub Actions test matrix for tested packages.
+    """Generate GitHub Actions test matrices for tested packages.
 
-    Reads the tested packages from config and writes a JSON matrix to the
-    GitHub Actions output file for workflow matrix strategy.
+    Reads the tested packages from config and writes two JSON matrices to the
+    GitHub Actions output file for workflow matrix strategy:
+    - matrix_tested_packages: packages with fast tests (slow=False)
+    - matrix_slow_tested_packages: packages with slow tests (slow=True)
 
     Example: invenio-testrig matrix config.json $GITHUB_OUTPUT
     """
     tested_packages = config.tested_packages
-    matrix = [package for package in tested_packages.keys()]
+
+    # Split packages into fast and slow
+    fast_packages = [
+        package for package, info in tested_packages.items() if not info.slow
+    ]
+    slow_packages = [package for package, info in tested_packages.items() if info.slow]
+
     with open(github_output_file, "a") as f:
         f.write("\n")
-        f.write(f"matrix_tested_packages={json.dumps(matrix)}\n")
+        f.write(f"matrix_tested_packages={json.dumps(fast_packages)}\n")
+        f.write(f"matrix_slow_tested_packages={json.dumps(slow_packages)}\n")
+
     progress.success(
-        f"Generated test matrix for {len(tested_packages)} packages and "
-        f"written to {github_output_file}"
+        f"Generated test matrices: {len(fast_packages)} fast packages, "
+        f"{len(slow_packages)} slow packages, written to {github_output_file}"
     )

@@ -12,7 +12,12 @@ by creating/updating a test repository, dispatching a workflow run with optional
 and opening the workflow page in a browser.
 """
 
+import base64
+import difflib
+import hashlib
 import json
+import lzma
+import re
 import shutil
 import subprocess
 import time
@@ -21,6 +26,7 @@ from importlib.resources import files
 from pathlib import Path
 
 import click
+import yaml
 
 from invenio_testrig.cli.base import with_progress
 from invenio_testrig.types import Progress
@@ -67,6 +73,36 @@ from invenio_testrig.utils import call_executable_quietly
     default="stop-on-success",
     help="Test selection for patched packages",
 )
+@click.option(
+    "--overwrite-testrig-file",
+    is_flag=True,
+    help="Force overwrite testrig.yml with latest version, even if customized",
+)
+@click.option(
+    "--testrig-repository",
+    help="Repository containing invenio-testrig (owner/repo)",
+)
+@click.option(
+    "--testrig-branch",
+    help="Branch of invenio-testrig to use",
+)
+@click.option(
+    "--repository",
+    help="Override seed repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)",
+)
+@click.option(
+    "--e2e",
+    help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
+)
+@click.option(
+    "--ignore-uv-lock",
+    is_flag=True,
+    help="Ignore uv.lock files and use latest compatible versions for tests",
+)
+@click.option(
+    "--config-file",
+    help="Path to the configuration file or URL (local files will be converted to data URLs)",
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -76,6 +112,13 @@ def github_cmd(
     patch_mode: str,
     test_scope: str,
     test_mode: str,
+    overwrite_testrig_file: bool,
+    testrig_repository: str | None,
+    testrig_branch: str | None,
+    repository: str | None,
+    e2e: str | None,
+    ignore_uv_lock: bool,
+    config_file: str | None,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -88,13 +131,12 @@ def github_cmd(
 
     invenio-testrig github
 
-    invenio-testrig github --target myorg/my-testrig
-
     invenio-testrig github inveniosoftware/invenio-records-resources#123
 
     invenio-testrig github org/package#456 org/another#789
 
     invenio-testrig github --patch-mode upstream --test-scope all org/package#123
+
 
     This function:
     1. Creates a repository if it doesn't exist (with testrig client files and gh-pages branch)
@@ -102,12 +144,34 @@ def github_cmd(
     3. Opens a browser window with the workflow run
     """
 
+    # Set defaults for testrig repository and branch
+    if testrig_repository is None:
+        testrig_repository = "oarepo/invenio-testrig"
+    if testrig_branch is None:
+        testrig_branch = "master"
+
     username = _get_current_github_username()
     target_repo = _determine_target_repository(target, username, progress)
     repo_exists = _check_repository_exists(target_repo, progress)
 
     if not repo_exists:
-        _create_repository(target_repo, username, progress)
+        _create_repository(
+            target_repo,
+            username,
+            progress,
+            overwrite_testrig_file,
+            testrig_repository,
+            testrig_branch,
+        )
+    else:
+        # Repository exists - check if workflow needs updating
+        _update_existing_repository_workflow(
+            target_repo,
+            progress,
+            overwrite_testrig_file,
+            testrig_repository,
+            testrig_branch,
+        )
 
     workflow_url = _dispatch_workflow(
         target_repo,
@@ -118,6 +182,12 @@ def github_cmd(
         patch_mode,
         test_scope,
         test_mode,
+        testrig_repository,
+        testrig_branch,
+        repository,
+        e2e,
+        ignore_uv_lock,
+        config_file,
         progress,
     )
 
@@ -131,6 +201,210 @@ def github_cmd(
 
 
 # region Repository Setup
+
+
+def _get_latest_testrig_version() -> tuple[int, int, int]:
+    """Find the latest testrig workflow version.
+
+    Searches for testrig-X.Y.Z.yml files and returns the highest version.
+
+    :return: Tuple of (major, minor, patch) version numbers
+    """
+    testrig_client_path = files("invenio_testrig.testrig_client")
+    workflows_path = testrig_client_path / ".github" / "workflows"
+
+    versions = []
+    for item in workflows_path.iterdir():
+        if item.name.startswith("testrig-") and item.name.endswith(".yml"):
+            # Extract version from filename: testrig-X.Y.Z.yml
+            version_str = item.name[8:-4]  # Remove "testrig-" and ".yml"
+            try:
+                parts = version_str.split(".")
+                if len(parts) == 3:
+                    version = tuple(int(p) for p in parts)
+                    versions.append(version)
+            except ValueError:
+                continue
+
+    if not versions:
+        raise RuntimeError("No versioned testrig workflow files found")
+
+    return max(versions)
+
+
+def _get_testrig_version_md5s(
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> dict[tuple[int, int, int], str]:
+    """Get MD5 hashes for all versioned testrig workflow files.
+
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
+    :return: Dictionary mapping version tuples to MD5 hashes
+    """
+    testrig_client_path = files("invenio_testrig.testrig_client")
+    workflows_path = testrig_client_path / ".github" / "workflows"
+
+    version_md5s = {}
+    for item in workflows_path.iterdir():
+        if item.name.startswith("testrig-") and item.name.endswith(".yml"):
+            version_str = item.name[8:-4]
+            try:
+                parts = version_str.split(".")
+                if len(parts) == 3:
+                    version = tuple(int(p) for p in parts)
+                    content = item.read_text()
+                    # Interpolate placeholders before computing MD5
+                    content = content.replace(
+                        '"${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"',
+                        f'"{testrig_repository}/.github/workflows/verify-patches.yml@{testrig_branch}"',
+                    )
+                    md5 = hashlib.md5(content.encode("utf-8")).hexdigest()
+                    version_md5s[version] = md5
+            except ValueError:
+                continue
+
+    return version_md5s
+
+
+def _get_file_md5(
+    file_path: Path,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> str:
+    """Calculate MD5 hash of a file after interpolating placeholders.
+
+    :param file_path: Path to the file
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
+    :return: MD5 hash as hex string
+    """
+    content = file_path.read_text()
+    # Interpolate placeholders before computing MD5
+    content = content.replace(
+        '"${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"',
+        f'"{testrig_repository}/.github/workflows/verify-patches.yml@{testrig_branch}"',
+    )
+    return hashlib.md5(content.encode("utf-8")).hexdigest()
+
+
+def _update_workflow_file(
+    temp_dir: Path,
+    progress: Progress,
+    force_overwrite: bool = False,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> None:
+    """Update or create testrig.yml workflow file with version management.
+
+    For new repositories: Copy the latest version as testrig.yml
+    For existing repositories: Check MD5 and update if it matches a known version,
+                              otherwise show diff and warning
+
+    :param temp_dir: Temporary directory with cloned repository
+    :param progress: Progress reporter for status updates
+    :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
+    """
+    workflows_dir = temp_dir / ".github" / "workflows"
+    target_file = workflows_dir / "testrig.yml"
+
+    # Get latest version
+    latest_version = _get_latest_testrig_version()
+    version_str = f"{latest_version[0]}.{latest_version[1]}.{latest_version[2]}"
+
+    # Get path to latest versioned file
+    testrig_client_path = files("invenio_testrig.testrig_client")
+    source_file = (
+        testrig_client_path / ".github" / "workflows" / f"testrig-{version_str}.yml"
+    )
+    latest_content = source_file.read_text()
+
+    # Interpolate testrig-repository and testrig-branch placeholders
+    latest_content = latest_content.replace(
+        '"${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"',
+        f'"{testrig_repository}/.github/workflows/verify-patches.yml@{testrig_branch}"',
+    )
+
+    # Check if target file exists
+    if not target_file.exists():
+        # New repository - just copy the latest version
+        workflows_dir.mkdir(parents=True, exist_ok=True)
+        target_file.write_text(latest_content)
+        progress.info(f"Created testrig.yml (version {version_str})")
+        return
+
+    # Existing repository - check if we should update
+    current_md5 = _get_file_md5(target_file, testrig_repository, testrig_branch)
+    version_md5s = _get_testrig_version_md5s(testrig_repository, testrig_branch)
+
+    # Check if force overwrite is requested
+    if force_overwrite:
+        target_file.write_text(latest_content)
+        progress.success(f"Forced overwrite of testrig.yml to version {version_str}")
+        return
+
+    # Check if current file matches any known version
+    matching_version = None
+    for version, md5 in version_md5s.items():
+        if md5 == current_md5:
+            matching_version = version
+            break
+
+    if matching_version:
+        # File matches a known version
+        if matching_version == latest_version:
+            progress.info(f"testrig.yml is already at latest version {version_str}")
+        else:
+            # Update to latest version
+            old_version_str = (
+                f"{matching_version[0]}.{matching_version[1]}.{matching_version[2]}"
+            )
+            target_file.write_text(latest_content)
+            progress.success(
+                f"Updated testrig.yml from {old_version_str} to {version_str}"
+            )
+    else:
+        # File doesn't match any known version - user has customized it
+        progress.warning(
+            "testrig.yml has been customized (doesn't match any known version)"
+        )
+        progress.warning("Please review the diff below and update manually if needed:")
+        progress.warning(
+            "Alternatively, use --overwrite-testrig-file to force update to the latest version, removing any customizations you may have added."
+        )
+        progress.text("")
+
+        # Show diff
+        current_content = target_file.read_text()
+        current_lines = current_content.splitlines(keepends=True)
+        latest_lines = latest_content.splitlines(keepends=True)
+
+        diff = difflib.unified_diff(
+            current_lines,
+            latest_lines,
+            fromfile="testrig.yml (current/customized)",
+            tofile=f"testrig.yml (latest version {version_str})",
+            lineterm="",
+        )
+
+        for line in diff:
+            line = line.rstrip()
+            if line.startswith("+"):
+                progress.text(line, fg="green")
+            elif line.startswith("-"):
+                progress.text(line, fg="red")
+            elif line.startswith("@@"):
+                progress.text(line, fg="cyan")
+            else:
+                progress.text(line, dim=True)
+
+        progress.text("")
+        progress.warning("testrig.yml was NOT updated automatically")
+        progress.info(
+            f"To update manually, replace .github/workflows/testrig.yml with version {version_str}"
+        )
 
 
 def _get_current_github_username() -> str:
@@ -187,12 +461,22 @@ def _check_repository_exists(target_repo: str, progress: Progress) -> bool:
         return False
 
 
-def _create_repository(target_repo: str, username: str, progress: Progress) -> None:
+def _create_repository(
+    target_repo: str,
+    username: str,
+    progress: Progress,
+    force_overwrite: bool = False,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> None:
     """Create a new empty repository with testrig client files and gh-pages branch.
 
     :param target_repo: Repository name in format 'org/repo'
     :param username: GitHub username of the current user
     :param progress: Progress reporter for status updates
+    :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
 
     :raises SystemExit: If repository creation fails
     """
@@ -222,12 +506,19 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
             # Clone the repository
             call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
 
-            # Copy all files from testrig_client to the repository
+            # Copy all files from testrig_client to the repository (except versioned workflows)
             testrig_client_path = files("invenio_testrig.testrig_client")
 
             def copy_resources(source_path, dest_path: Path):
                 """Recursively copy all files from importlib.resources to destination."""
                 if source_path.is_file():
+                    # Skip versioned testrig workflow files (testrig-X.Y.Z.yml)
+                    if source_path.name.startswith(
+                        "testrig-"
+                    ) and source_path.name.endswith(".yml"):
+                        if re.match(r"testrig-\d+\.\d+\.\d+\.yml", source_path.name):
+                            return
+
                     # It's a file, copy it
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
                     dest_path.write_text(source_path.read_text())
@@ -241,10 +532,15 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
                             ) or item_name.endswith(".pyc"):
                                 continue
                             copy_resources(item, dest_path / item_name)
-                    except (NotADirectoryError, AttributeError):
+                    except NotADirectoryError, AttributeError:
                         pass
 
             copy_resources(testrig_client_path, temp_dir)
+
+            # Handle testrig.yml workflow file with version management
+            _update_workflow_file(
+                temp_dir, progress, force_overwrite, testrig_repository, testrig_branch
+            )
 
             # Commit and push
             call_executable_quietly(["git", "add", "."], cwd=temp_dir)
@@ -278,10 +574,96 @@ def _create_repository(target_repo: str, username: str, progress: Progress) -> N
         raise SystemExit(1)
 
 
+def _update_existing_repository_workflow(
+    target_repo: str,
+    progress: Progress,
+    force_overwrite: bool = False,
+    testrig_repository: str = "oarepo/invenio-testrig",
+    testrig_branch: str = "master",
+) -> None:
+    """Update workflow file in existing repository if needed.
+
+    :param target_repo: Repository name in format 'org/repo'
+    :param progress: Progress reporter for status updates
+    :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
+    :param testrig_repository: Repository containing invenio-testrig
+    :param testrig_branch: Branch of invenio-testrig to use
+    """
+    progress.start("Checking workflow file version", icon="🔍")
+
+    temp_dir = Path.cwd() / ".tmp_invenio_testrig_client_update"
+    if temp_dir.exists():
+        shutil.rmtree(temp_dir)
+
+    try:
+        # Clone the repository
+        call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
+
+        # Update workflow file
+        _update_workflow_file(
+            temp_dir, progress, force_overwrite, testrig_repository, testrig_branch
+        )
+
+        # Check if there are changes to commit
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=temp_dir,
+            capture_output=True,
+            text=True,
+        )
+
+        if result.stdout.strip():
+            # There are changes, commit and push
+            call_executable_quietly(
+                ["git", "add", ".github/workflows/testrig.yml"], cwd=temp_dir
+            )
+            call_executable_quietly(
+                ["git", "commit", "-m", "Update testrig.yml workflow"], cwd=temp_dir
+            )
+            call_executable_quietly(["git", "push", "origin", "HEAD"], cwd=temp_dir)
+            progress.success("Workflow file updated in repository")
+
+    except subprocess.CalledProcessError:
+        progress.warning("Could not update workflow file in existing repository")
+    finally:
+        if temp_dir.exists():
+            shutil.rmtree(temp_dir)
+
+
 # endregion
 
 
 # region Workflow Management
+
+
+def _convert_config_to_data_url(config_path: str) -> str:
+    """Convert config file to data URL, handling local files and URLs.
+
+    Args:
+        config_path: Path to local config file or URL
+
+    Returns:
+        URL (unchanged if already URL) or data URL with xz-compressed content
+    """
+    # If it's already a URL (http/https or data URL), return as-is
+    if config_path.startswith(("http://", "https://", "data:")):
+        return config_path
+
+    # Local file - read, parse YAML, and convert to xz-compressed data URL
+    with open(config_path, "r") as f:
+        config_data = yaml.safe_load(f)
+
+    # Dump YAML without comments to minimize size
+    yaml_str = yaml.safe_dump(config_data, default_flow_style=False)
+
+    # Compress with xz
+    compressed = lzma.compress(yaml_str.encode("utf-8"))
+
+    # Encode as base64
+    encoded = base64.b64encode(compressed).decode("ascii")
+
+    # Create data URL
+    return f"data:application/x-xz;base64,{encoded}"
 
 
 def _dispatch_workflow(
@@ -293,6 +675,12 @@ def _dispatch_workflow(
     patch_mode: str,
     test_scope: str,
     test_mode: str,
+    testrig_repository: str | None,
+    testrig_branch: str | None,
+    repository: str | None,
+    e2e: str | None,
+    ignore_uv_lock: bool,
+    config_file: str | None,
     progress: Progress,
 ) -> str | None:
     """Dispatch workflow or return workflow page URL.
@@ -305,22 +693,28 @@ def _dispatch_workflow(
     :param patch_mode: Test upstream or pinned versions
     :param test_scope: Test scope ('affected' or 'all')
     :param test_mode: Test selection for patched packages
+    :param testrig_repository: Repository containing invenio-testrig (owner/repo)
+    :param testrig_branch: Branch of invenio-testrig to use
+    :param repository: Override repository.git configuration
+    :param e2e: Override repository.e2e configuration
+    :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
+    :param config_file: Path to configuration file or URL
     :param progress: Progress reporter for status updates
 
     :return: Workflow URL if available, None otherwise
     """
     workflow_url = None
 
-    if not patches:
-        progress.info(
-            "No patches provided. You can start the workflow manually from the Actions tab."
-        )
-        return f"https://github.com/{target_repo}/actions/workflows/testrig.yml"
+    # Dispatch workflow even without patches (use empty string)
+    patches_str = " ".join(patches) if patches else ""
 
-    progress.start("Dispatching workflow with patches", icon="🚀")
+    if patches:
+        progress.start("Dispatching workflow with patches", icon="🚀")
+    else:
+        progress.start("Dispatching workflow", icon="🚀")
+
     try:
         # Build workflow dispatch command
-        patches_str = " ".join(patches)
         workflow_cmd = [
             "gh",
             "workflow",
@@ -328,8 +722,6 @@ def _dispatch_workflow(
             "testrig.yml",
             "--repo",
             target_repo,
-            "-f",
-            f"patches={patches_str}",
             "-f",
             f"python-version={python_version}",
             "-f",
@@ -342,9 +734,38 @@ def _dispatch_workflow(
             f"test-mode={test_mode}",
         ]
 
+        # Add patches if provided
+        if patches_str:
+            workflow_cmd.extend(["-f", f"patches={patches_str}"])
+
         # Add name if provided
         if name:
             workflow_cmd.extend(["-f", f"name={name}"])
+
+        # Add testrig-repository if provided
+        if testrig_repository:
+            workflow_cmd.extend(["-f", f"testrig-repository={testrig_repository}"])
+
+        # Add testrig-branch if provided
+        if testrig_branch:
+            workflow_cmd.extend(["-f", f"testrig-branch={testrig_branch}"])
+
+        # Add repository if provided
+        if repository:
+            workflow_cmd.extend(["-f", f"repository={repository}"])
+
+        # Add e2e if provided
+        if e2e:
+            workflow_cmd.extend(["-f", f"e2e={e2e}"])
+
+        # Add ignore-uv-lock if provided
+        if ignore_uv_lock:
+            workflow_cmd.extend(["-f", f"ignore-uv-lock={str(ignore_uv_lock).lower()}"])
+
+        # Add config-file if provided (convert local files to data URLs)
+        if config_file:
+            config_url = _convert_config_to_data_url(config_file)
+            workflow_cmd.extend(["-f", f"config-file={config_url}"])
 
         # Dispatch the workflow
         call_executable_quietly(workflow_cmd)
