@@ -80,7 +80,7 @@ env:
 
 jobs:
   verify-patches:
-    uses: oarepo/invenio-testrig/.github/workflows/verify-patches.yml@master
+    uses: ${{ inputs.testrig-repository || 'oarepo/invenio-testrig' }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch || 'master' }}
     with:
       name: ${{ inputs.name || 'Invenio Testrig' }}
       python-version: ${{ inputs.python-version }}
