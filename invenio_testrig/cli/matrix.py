@@ -48,9 +48,14 @@ def matrix_cmd(config: Config, github_output_file: Path, progress: Progress):
 
     # Split packages into fast and slow
     fast_packages = [
-        package for package, info in tested_packages.items() if not info.slow
+        package for package, info in tested_packages.items() if not info.slow_split
     ]
-    slow_packages = [package for package, info in tested_packages.items() if info.slow]
+    slow_packages = [
+        f"{package}#{idx}"
+        for package, info in tested_packages.items()
+        for idx in range(len(info.slow_split or []) + 1)
+        if info.slow_split
+    ]
 
     with open(github_output_file, "a") as f:
         f.write("\n")

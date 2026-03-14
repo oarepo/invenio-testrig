@@ -19,6 +19,7 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
+from typing import Literal, overload
 
 from invenio_testrig.types import Progress
 from invenio_testrig.utils import call_executable_quietly
@@ -481,14 +482,37 @@ class PythonAPI:
 
         return dependencies
 
+    @overload
     def run_in_venv(
         self,
         project_path: Path,
         command: list[str],
         capture_to_file: Path | None = None,
         tee_output: bool = True,
+        check_output: Literal[False] = False,
         timeout: float | None = None,
-    ) -> None:
+    ) -> None: ...
+
+    @overload
+    def run_in_venv(
+        self,
+        project_path: Path,
+        command: list[str],
+        capture_to_file: Path | None = None,
+        tee_output: bool = True,
+        check_output: Literal[True] = True,
+        timeout: float | None = None,
+    ) -> str: ...
+
+    def run_in_venv(
+        self,
+        project_path: Path,
+        command: list[str],
+        capture_to_file: Path | None = None,
+        tee_output: bool = True,
+        check_output: bool = False,
+        timeout: float | None = None,
+    ) -> None | str:
         """Run a command inside the virtual environment.
 
         :param project_path: Path to the project with virtual environment
@@ -500,6 +524,15 @@ class PythonAPI:
         :raises subprocess.CalledProcessError: If the command fails
         :raises subprocess.TimeoutExpired: If the command exceeds the timeout
         """
+        if check_output:
+            print(f"Checking output of command {command} in directory {project_path}")
+            return subprocess.check_output(
+                command,
+                cwd=project_path,
+                env=self.prepare_venv_environment(project_path),
+                text=True,
+            )
+
         if capture_to_file is None:
             print(f"Running command {command} in directory {project_path}")
             subprocess.run(

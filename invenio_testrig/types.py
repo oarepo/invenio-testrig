@@ -34,7 +34,7 @@ class TestedPackageInfo:
     patches: list[GitReference] = field(default_factory=list)
     unpatched_reference: GitReference | None = None
     patched_reference: GitReference | None = None
-    slow: bool = False
+    slow_split: list[str] | None = None
 
 
 @dataclass

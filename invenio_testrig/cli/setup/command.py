@@ -94,6 +94,12 @@ from invenio_testrig.types import Progress
     is_flag=True,
     help="Ignore uv.lock file during dependency collection",
 )
+@click.option(
+    "--no-slow-test-splitting",
+    "no_slow_test_splitting",
+    is_flag=True,
+    help="Disable splitting of slow tests into multiple parts",
+)
 @click.argument("patches", nargs=-1)
 def setup_cmd(
     config_yaml_path_or_url: str | None,
@@ -111,6 +117,7 @@ def setup_cmd(
     patch_mode: Literal["upstream", "pinned"] | None,
     patches: tuple[str, ...],
     ignore_uv_lock: bool,
+    no_slow_test_splitting: bool,
     progress: Progress,
 ):
     """1/ Complete local setup: init, collect, filter, select-patches, and clone.
@@ -129,6 +136,29 @@ def setup_cmd(
 
     if verbose:
         set_verbose()
+
+    # Print command-line options summary for debugging
+    progress.text("::group::🔍 Setup Command Options Summary")
+    progress.text(f"  config_yaml_path_or_url: {config_yaml_path_or_url}")
+    progress.text(f"  workdir: {workdir}")
+    progress.text(f"  python_version: {python_version}")
+    progress.text(f"  uv_executable: {uv_executable}")
+    progress.text(f"  disable_codestyle_checks: {disable_codestyle_checks}")
+    progress.text(f"  test_scope: {test_scope}")
+    progress.text(f"  test_mode: {test_mode}")
+    progress.text(f"  repository_git: {repository_git}")
+    progress.text(f"  repository_e2e: {repository_e2e}")
+    progress.text(f"  name: {name}")
+    progress.text(f"  debug: {debug}")
+    progress.text(f"  verbose: {verbose}")
+    progress.text(f"  patch_mode: {patch_mode}")
+    progress.text(f"  patches: {patches}")
+    progress.text(f"  ignore_uv_lock: {ignore_uv_lock}")
+    progress.text(f"  no_slow_test_splitting: {no_slow_test_splitting}")
+    progress.text(
+        f"  enable_slow_test_splitting (computed): {not no_slow_test_splitting}"
+    )
+    progress.text("::endgroup::")
 
     # Step 1: Initialize
     progress.start("Step 1/5: Initializing configuration", icon="🔧")
@@ -174,7 +204,9 @@ def setup_cmd(
     # Step 3: Filter packages
     progress.start("Step 3/5: Filtering packages", icon="🔍")
     with step_error_handler(debug, progress, "Error filtering packages"):
-        filter_packages(config, progress)
+        filter_packages(
+            config, progress, enable_slow_test_splitting=not no_slow_test_splitting
+        )
     config.save(workdir / "config.json")
 
     # Step 4: Select patches

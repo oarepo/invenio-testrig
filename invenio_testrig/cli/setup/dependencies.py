@@ -134,6 +134,7 @@ def _find_git_repository_config(config: Config, package_name: str) -> Github | N
 def filter_packages(
     config: Config,
     progress: Progress,
+    enable_slow_test_splitting: bool = True,
 ) -> None:
     """Filter dependencies based on GitHub include/exclude patterns.
 
@@ -149,11 +150,16 @@ def filter_packages(
 
     :param config: Config object
     :param progress: Progress reporter for status updates
+    :param enable_slow_test_splitting: Whether to enable slow test splitting for packages
 
     :raises ValueError: If no packages exist in config
     """
     git_cache = GitCache(config.workdir_path("git_cache"))
     git_api = GitApi(git_cache)
+
+    progress.text("::group::🔍 Filter Packages Options")
+    progress.text(f"  enable_slow_test_splitting: {enable_slow_test_splitting}")
+    progress.text("::endgroup::")
 
     run_hook(
         config,
@@ -210,8 +216,18 @@ def filter_packages(
             test=github_entry.test,
             extras=github_entry.extras or [],
             freeze=github_entry.freeze or [],
-            slow=package_name in (github_entry.slow_packages or []),
+            slow_split=(
+                (github_entry.slow_packages or {}).get(package_name, None)
+                if enable_slow_test_splitting
+                else None
+            ),
         )
+        if (github_entry.slow_packages or {}).get(package_name, None):
+            progress.text(
+                f"  Package {package_name}: slow_packages config exists, "
+                f"enable_slow_test_splitting={enable_slow_test_splitting}, "
+                f"final slow_split={tested_packages[package_name].slow_split}"
+            )
 
     for patch in config.patches:
         if patch.package in tested_packages:
@@ -227,7 +243,11 @@ def filter_packages(
             test=github_entry.test,
             extras=github_entry.extras or [],
             freeze=github_entry.freeze or [],
-            slow=package_name in (github_entry.slow_packages or []),
+            slow_split=(
+                (github_entry.slow_packages or {}).get(package_name, None)
+                if enable_slow_test_splitting
+                else None
+            ),
         )
 
     # Add tested packages to the config
