@@ -417,6 +417,9 @@ def _update_workflow_file(
         progress.info(
             f"To update manually, replace .github/workflows/testrig.yml with version {version_str}"
         )
+        progress.info(
+            "Alternatively, use --overwrite-testrig-file to force update to the latest version, removing any customizations you may have added."
+        )
 
 
 def _get_current_github_username() -> str:
