@@ -211,10 +211,11 @@ def cmd_repo_test(
         #
         server_log_fh = open(server_log_file, "w")
         runner_handle = subprocess.Popen(
-            ["invenio-cli", "run"],
+            [".venv/bin/invenio-cli", "run"],
             cwd=test_repository_path,
             env={
                 **os.environ,
+                "VIRTUAL_ENV": str(test_repository_path / ".venv"),
                 "INVENIO_RATELIMIT_ENABLED": "False",
                 "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
             },
