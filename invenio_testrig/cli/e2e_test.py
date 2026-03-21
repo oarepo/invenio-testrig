@@ -146,7 +146,7 @@ def cmd_repo_test(
 
         python_api.run_in_venv(
             test_repository_path,
-            ["invenio-cli", "services", "status"],
+            ["docker", "ps"],
         )
 
         python_api.run_in_venv(
