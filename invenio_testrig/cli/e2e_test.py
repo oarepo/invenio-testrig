@@ -238,6 +238,12 @@ def cmd_repo_test(
             ui_spec.unlink()
 
         subprocess.run(
+            ["npx", "playwright", "install"],
+            cwd=test_repository_path / "e2e",
+            check=True,
+        )
+
+        subprocess.run(
             ["npx", "playwright", "test"],
             cwd=test_repository_path / "e2e",
             check=True,
