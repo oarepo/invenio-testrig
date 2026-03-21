@@ -136,9 +136,17 @@ def cmd_repo_test(
             ["invenio-cli", "install"],
         )
 
+        print(".invenio:")
+        print((test_repository_path / ".invenio").read_text())
+
         python_api.run_in_venv(
             test_repository_path,
             ["invenio-cli", "services", "setup"],
+        )
+
+        python_api.run_in_venv(
+            test_repository_path,
+            ["invenio-cli", "services", "status"],
         )
 
         python_api.run_in_venv(
