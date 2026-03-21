@@ -22,6 +22,7 @@ from invenio_testrig.cli.base import (
 )
 from invenio_testrig.cli.report.data import (
     load_repository_artifact,
+    load_repository_e2e_artifact,
     load_test_artifacts,
 )
 from invenio_testrig.cli.report.report_utils import (
@@ -140,6 +141,7 @@ def generate_report(
     completed: bool,
     test_results: list[ReportPackageData],
     repository_result: ReportPackageData | None,
+    repository_e2e_result: ReportPackageData | None,
     report_output_path: Path,
     progress: Progress,
 ) -> None:
@@ -164,6 +166,7 @@ def generate_report(
         "has_errors": has_errors,
         "packages": test_results,
         "repository": repository_result,
+        "repository_e2e": repository_e2e_result,
         **counts,
     }
 
@@ -251,6 +254,9 @@ def report_cmd(
     repository_result_data = load_repository_artifact(
         config, artefacts_path, progress=progress
     )
+    repository_e2e_result_data = load_repository_e2e_artifact(
+        config, artefacts_path, progress=progress
+    )
 
     # Debug: Check loaded test results
     progress.info(f"Loaded {len(test_result_data)} test result entries")
@@ -266,6 +272,7 @@ def report_cmd(
         completed,
         test_result_data,
         repository_result_data,
+        repository_e2e_result_data,
         report_output_path=report_output_path,
         progress=progress,
     )

@@ -54,7 +54,12 @@ github:
     # one with alphabetically ordered tests up to (but not including) tests/resources,
     # and one with tests/resources and beyond.
     slow_packages:
-      invenio-rdm-records: ["tests/resources/test_iiif_image_api.py", "tests/resources/test_resources_review.py", "tests/services/test_rdm_service.py"]
+      invenio-rdm-records:
+        [
+          "tests/resources/test_iiif_image_api.py",
+          "tests/resources/test_resources_review.py",
+          "tests/services/test_rdm_service.py",
+        ]
 
     # extras to install for the packages matching this github configuration. Optional.
     # Note: this is a union of all invenio packages but fortunately it doesn't need

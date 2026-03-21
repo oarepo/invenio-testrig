@@ -13,6 +13,7 @@ test, report, github, matrix, and cache management.
 
 import click
 
+import invenio_testrig.cli.e2e_test  # noqa
 from invenio_testrig.cli.github import github_cmd  # noqa
 from invenio_testrig.cli.matrix import matrix_cmd  # noqa
 from invenio_testrig.cli.merge import cmd_merge_test_artifacts  # noqa
