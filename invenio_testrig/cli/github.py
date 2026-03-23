@@ -519,7 +519,17 @@ def _create_repository(
 
         try:
             # Clone the repository
-            call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
+            call_executable_quietly(
+                [
+                    "gh",
+                    "repo",
+                    "clone",
+                    target_repo,
+                    str(temp_dir),
+                    "--",
+                    "--recurse-submodules",
+                ]
+            )
 
             # Copy all files from testrig_client to the repository (except versioned workflows)
             testrig_client_path = files("invenio_testrig.testrig_client")
@@ -612,7 +622,17 @@ def _update_existing_repository_workflow(
 
     try:
         # Clone the repository
-        call_executable_quietly(["gh", "repo", "clone", target_repo, str(temp_dir)])
+        call_executable_quietly(
+            [
+                "gh",
+                "repo",
+                "clone",
+                target_repo,
+                str(temp_dir),
+                "--",
+                "--recurse-submodules",
+            ]
+        )
 
         # Update workflow file
         _update_workflow_file(
