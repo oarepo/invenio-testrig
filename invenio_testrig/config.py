@@ -226,6 +226,12 @@ class Config(ExtensibleMixin):
                     f"Expected config file to contain a JSON object, got {type(raw_data)}"
                 )
 
+    @classmethod
+    def load_from_dict(cls: type[Self], data: dict) -> Self:
+        schema = ConfigSchema()
+        ret = cast(Self, schema.load(data, unknown=ma.INCLUDE))
+        return ret
+
     def save(self, file: str | Path | None = None) -> None:
         """Save configuration to a JSON file.
 

@@ -409,6 +409,8 @@ class GitCache:
                 "clone",
                 f"{org}/{repo}",
                 str(repo_cache_path),
+                "--",
+                "--recurse-submodules",
             ]
         )
         call_executable_quietly(
