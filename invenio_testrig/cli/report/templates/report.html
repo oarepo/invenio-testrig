@@ -294,8 +294,11 @@
                         <thead>
                             <tr>
                                 <th style="width: 20%;">Repository</th>
-                                <th style="width: 40%;">Test Result</th>
-                                <th style="width: 40%;">Artifacts</th>
+                                <th style="width: 30%;">Test Result</th>
+                                {% if repository_e2e %}
+                                <th style="width: 20%;">E2E Result</th>
+                                {% endif %}
+                                <th style="width: 30%;">Artifacts</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -323,6 +326,33 @@
                                     </div>
                                     {% endif %}
                                 </td>
+                                {% if repository_e2e %}
+                                <td>
+                                    {% set e2e_status = repository_e2e.patched.status if repository_e2e.patched.status not in ("skipped", "pending") else repository_e2e.original.status %}
+                                    {% set e2e_variant = "patched" if repository_e2e.patched.status not in ("skipped", "pending") else "original" %}
+                                    <div>
+                                        {% if e2e_status == "success" %}
+                                            <span class="result-icon">✅</span><strong>Pass</strong>
+                                        {% elif e2e_status == "failed" %}
+                                            <span class="result-icon">❌</span><strong>Fail</strong>
+                                        {% elif e2e_status == "skipped" %}
+                                            <span class="result-icon">⏭️</span><strong>Not tested</strong>
+                                        {% elif e2e_status == "pending" %}
+                                            <span class="result-icon">🔄</span><strong>Pending</strong>
+                                        {% else %}
+                                            <strong>{{ e2e_status }}</strong>
+                                        {% endif %}
+                                    </div>
+                                    {% if e2e_status not in ("skipped", "pending") %}
+                                    <ul class="link-list" style="margin-top: 0.4rem;">
+                                        <li><a href="{{ repository_e2e.artefact_dir }}/{{ e2e_variant }}_playwright-report/index.html" target="_blank">📋 playwright report</a></li>
+                                        <li><a href="{{ repository_e2e.artefact_dir }}/{{ e2e_variant }}_status.json" target="_blank">status</a></li>
+                                        <li><a href="{{ repository_e2e.artefact_dir }}/{{ e2e_variant }}_server_log.log" target="_blank">server log</a></li>
+                                        <li><a href="{{ repository_e2e.artefact_dir }}/{{ e2e_variant }}_log.log" target="_blank">e2e log</a></li>
+                                    </ul>
+                                    {% endif %}
+                                </td>
+                                {% endif %}
                                 <td>
                                     {% if repository.patched.status != "skipped" and repository.patched.status != "pending" %}
                                     <ul class="link-list">

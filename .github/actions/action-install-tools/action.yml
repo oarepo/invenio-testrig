@@ -1,28 +1,27 @@
-name: 'Install Python and UV'
-description: 'Setup Python and install UV package manager'
+name: "Install Python and UV"
+description: "Setup Python and install UV package manager"
 inputs:
   python-version:
-    description: 'Python version to install'
+    description: "Python version to install"
     required: true
   tools-python-version:
-    description: 'Python version to use for the tools virtualenv.'
+    description: "Python version to use for the tools virtualenv."
     required: false
     default: "3.14"
   testrig-directory:
-    description: 'Directory where invenio-testrig is located'
+    description: "Directory where invenio-testrig is located"
     required: true
   hook-libraries:
     description: |
-      Space-separated list of libraries to install to the invenio-testrig environment. 
-      They can contain entrypoints for hooks, which will be used during testing. 
-      Format: "library1[extra1,extra2] library2[extra3]". 
+      Space-separated list of libraries to install to the invenio-testrig environment.
+      They can contain entrypoints for hooks, which will be used during testing.
+      Format: "library1[extra1,extra2] library2[extra3]".
       File paths and github URLs are also supported.
     required: false
-    default: ''
+    default: ""
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-
     - name: Set up OS requirements
       shell: bash
       run: |
@@ -89,6 +88,16 @@ runs:
 
         echo "::endgroup::"
         echo "✓ Tools virtualenv created"
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: 22
+
+    - name: Set up pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: latest
 
     - name: Prepare git
       shell: bash

@@ -201,6 +201,7 @@ jobs:
       matrix_slow_tested_packages: ${{ steps.prepare.outputs.matrix_slow_tested_packages }}
       report_name: ${{ steps.prepare-and-push-report.outputs.report-name }}
       report_url: ${{ steps.prepare-and-push-report.outputs.report-url }}
+      has_e2e: ${{ steps.check-e2e.outputs.has_e2e }}
     steps:
       # clone original repository if called from workflow_call
       - name: Clone original repository
@@ -311,6 +312,20 @@ jobs:
           report-branch: ${{ env.REPORT_BRANCH }}
           github-token: ${{ env.REPORT_TOKEN }}
           fallback-name: ${{ github.ref_name }}
+
+      - name: Check if e2e tests are present
+        if: ${{ !inputs.skip-report }}
+        id: check-e2e
+        shell: bash
+        run: |
+          # in the config.json in workdir, there needs to be a key repository.e2e and not null
+          echo "e2e settings:"
+          jq '.seed_repository.e2e' ${{ env.WORKDIR }}/config.json
+          if jq -e '.seed_repository.e2e != null' ${{ env.WORKDIR }}/config.json > /dev/null; then
+            echo "has_e2e=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_e2e=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Add report URL to workflow summary
         if: ${{ !inputs.skip-report && steps.prepare-and-push-report.outputs.report-url }}
@@ -494,12 +509,72 @@ jobs:
           path: ${{ env.WORKDIR }}/artifacts
           retention-days: 1
 
+  test_e2e:
+    needs:
+      - prepare
+    runs-on: ubuntu-latest
+    if: ${{ needs.prepare.outputs.has_e2e == 'true' }}
+    steps:
+      - name: Checkout the testrig repository to .pipeline
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.TESTRIG_REPOSITORY }}
+          ref: ${{ env.TESTRIG_BRANCH }}
+          path: .pipeline
+
+      - name: Load workdir artifact
+        uses: ./.pipeline/.github/actions/download-artifact-tar
+        with:
+          name: workdir
+          path: ${{ env.WORKDIR }}
+
+      - name: Prepare python and tools
+        uses: ./.pipeline/.github/actions/action-install-tools
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          testrig-directory: ${{ github.workspace }}/.pipeline
+          hook-libraries: ${{ env.HOOK_LIBRARIES }}
+
+      - name: Run repository e2e tests with patches
+        shell: bash
+        id: run-repo-test
+        run: |
+          echo "::group::🧪 Running repository tests with patches"
+          invenio-testrig repo e2e \
+              $WORKDIR \
+              --apply-patches \
+              || true
+          echo "::endgroup::"
+
+          STATUS_FILE=$WORKDIR/artifacts/e2e/patched_status.json
+
+          if [ -f "$STATUS_FILE" ]; then
+              echo "test_repo_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
+              status=$(cat $STATUS_FILE | jq -r '.status')
+
+              if [ "$status" == "failed" ]; then
+                  exit 1
+              fi
+          else
+              echo "::warning::Status file not found at $STATUS_FILE"
+              exit 1
+          fi
+
+      - name: Store repository test results as artifact
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: test-results-e2e
+          path: ${{ env.WORKDIR }}/artifacts
+          retention-days: 1
+
   report:
     needs:
       - prepare
       - test
       - test_slow
       - test_repository
+      - test_e2e
     if: always() && !inputs.skip-report
     runs-on: ubuntu-latest
     steps:

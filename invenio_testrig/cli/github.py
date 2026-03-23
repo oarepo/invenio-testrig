@@ -89,10 +89,12 @@ from invenio_testrig.utils import call_executable_quietly
 @click.option(
     "--repository",
     help="Override seed repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)",
+    default="oarepo/inveniordm-reference-repo@master",
 )
 @click.option(
     "--e2e",
     help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
+    default="oarepo/invenio-e2e@main",
 )
 @click.option(
     "--ignore-uv-lock",
@@ -155,6 +157,9 @@ def github_cmd(
         testrig_repository = "oarepo/invenio-testrig"
     if testrig_branch is None:
         testrig_branch = "master"
+
+    if not e2e or e2e.lower() == "none":
+        e2e = None
 
     username = _get_current_github_username()
     target_repo = _determine_target_repository(target, username, progress)
@@ -411,6 +416,9 @@ def _update_workflow_file(
         progress.warning("testrig.yml was NOT updated automatically")
         progress.info(
             f"To update manually, replace .github/workflows/testrig.yml with version {version_str}"
+        )
+        progress.info(
+            "Alternatively, use --overwrite-testrig-file to force update to the latest version, removing any customizations you may have added."
         )
 
 
