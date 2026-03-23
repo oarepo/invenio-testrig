@@ -20,6 +20,15 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Show inputs
+      shell: bash
+      run: |
+        echo "workdir=${{ inputs.workdir }}"
+        echo "package=${{ inputs.package }}"
+        echo "part=${{ inputs.part }}"
+        echo "test-mode=${{ inputs.test-mode }}"
+        echo "test-scope=${{ inputs.test-scope }}"
+
     - name: Run tests for the patched version of the package
       shell: bash
       id: run-patched
@@ -40,6 +49,9 @@ runs:
 
         echo "test_patch_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
         status=$(cat $STATUS_FILE | jq -r '.status')
+
+        echo "Status file: $STATUS_FILE"
+        cat $STATUS_FILE
 
         if [ "$status" == "failed" ]; then
             exit 1
