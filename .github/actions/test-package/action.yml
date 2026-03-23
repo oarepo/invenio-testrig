@@ -70,6 +70,25 @@ runs:
         WORKDIR: ${{ inputs.workdir }}
         PACKAGE: ${{ inputs.package }}
       run: |
+        should_run_unpatched=false
+        if [ "${{ inputs.test-scope }}" == "run-all" ]; then
+            echo "Will run unpatched tests because test-scope is 'run-all'"
+            should_run_unpatched=true
+        fi
+        if [ ${{inputs.test-mode}} == 'stop-on-success' ] && [ "${{ steps.run-patched.outputs.test_patch_status }}" == "failed" ]; then
+            echo "Will run unpatched tests because test-mode is 'stop-on-success' and the patched tests failed"
+            should_run_unpatched=true
+        fi
+        if [ "${{ steps.run-patched.outputs.test_patch_status }}" == 'skipped' ] && [ "${{ inputs.test-scope }}" == 'all' ]; then
+            echo "Will run unpatched tests because the patched tests were skipped and test-scope is 'all'"
+            should_run_unpatched=true
+        fi
+
+        if [ ! "$should_run_unpatched" == "true" ]; then
+            echo "Skipping unpatched tests"
+            exit 0
+        fi
+
         echo "::group::🧪 Running tests for the unpatched version of package $PACKAGE"
         invenio-testrig test \
             $WORKDIR \
