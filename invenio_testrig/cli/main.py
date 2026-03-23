@@ -14,6 +14,7 @@ test, report, github, matrix, and cache management.
 import click
 
 import invenio_testrig.cli.e2e_test  # noqa
+from invenio_testrig.cli.compare import compare_cmd  # noqa
 from invenio_testrig.cli.github import github_cmd  # noqa
 from invenio_testrig.cli.matrix import matrix_cmd  # noqa
 from invenio_testrig.cli.merge import cmd_merge_test_artifacts  # noqa
@@ -47,6 +48,7 @@ cli.add_command(report_cmd)
 cli.add_command(reports_index_cmd)
 cli.add_command(archive_report_cmd)
 cli.add_command(matrix_cmd)
+cli.add_command(compare_cmd)
 
 if __name__ == "__main__":
     cli()
