@@ -71,6 +71,7 @@ def cmd_repo_test(
     # Create a minimal TestedPackageInfo for the repository
     repo_info = TestedPackageInfo(
         reference=config.seed_repository.git,
+        install=config.seed_repository.install or [],
         test=config.seed_repository.test or [],
         extras=[],
         freeze=[],
@@ -124,12 +125,13 @@ def cmd_repo_test(
         ["pnpm", "install"],
         cwd=test_repository_path / "e2e",
         check=True,
+        env=os.environ | config.env,
     )
     runner_handle = None
     server_log_fh = None
     try:
         # Save the actual uv pip freeze into the artifacts
-        python_api = PythonAPI()
+        python_api = PythonAPI(config.env)
 
         python_api.run_in_venv(
             test_repository_path,
@@ -215,6 +217,7 @@ def cmd_repo_test(
             cwd=test_repository_path,
             env={
                 **os.environ,
+                **config.env,
                 "VIRTUAL_ENV": str(test_repository_path / ".venv"),
                 "INVENIO_RATELIMIT_ENABLED": "False",
                 "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
@@ -230,6 +233,7 @@ def cmd_repo_test(
             ["npm", "run", "collect-translations", "invenio-app-rdm"],
             cwd=test_repository_path / "e2e",
             check=True,
+            env=os.environ | config.env,
         )
 
         # for now, remove the ui tests, only run api tests
@@ -241,6 +245,7 @@ def cmd_repo_test(
             ["npx", "playwright", "install"],
             cwd=test_repository_path / "e2e",
             check=True,
+            env=os.environ | config.env,
         )
 
         subprocess.run(
@@ -249,6 +254,7 @@ def cmd_repo_test(
             check=True,
             env={
                 **os.environ,
+                **config.env,
                 "INVENIO_USER_EMAIL": os.environ.get(
                     "INVENIO_USER_EMAIL", "user@demo.org"
                 ),
@@ -360,7 +366,7 @@ def install_repository(
     :param ignore_uv_lock: Whether to ignore the UV lock file.
     """
     shutil.copytree(clone_path / "repo", tested_repo_path)
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.install_project(tested_repo_path, ignore_uv_lock=ignore_uv_lock)
 
 
@@ -381,7 +387,7 @@ def apply_package_patches(
 
     :return: List of patched package information
     """
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.install_patched_dependencies(
         project_path=tested_repo_path,
         packages_root=packages_path,
@@ -414,7 +420,7 @@ def run_repository_tests(
     test_command = config.seed_repository.test
     assert test_command is not None
 
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.run_in_venv(
         project_path=tested_repo_path,
         command=test_command,

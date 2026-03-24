@@ -255,7 +255,7 @@ def _install_package_for_testing(
 
     :raises ValueError: If the package is not found in tested_packages
     """
-    python_api = PythonAPI("uv", config.python_version)
+    python_api = PythonAPI(config.env, "uv", config.python_version)
 
     package_name = package_name.lower()
 
@@ -367,7 +367,9 @@ def _run_tests(
         return status
 
     api = PythonAPI(
-        uv_executable=config.uv_executable, python_version=config.python_version
+        config.env,
+        uv_executable=config.uv_executable,
+        python_version=config.python_version,
     )
 
     progress.start(
@@ -514,12 +516,6 @@ def _disable_codestyle_checks(package_path: Path) -> None:
 
     fix_file(package_path / "setup.cfg")
     fix_file(package_path / "pyproject.toml")
-
-
-# endregion
-
-
-# region Output Processing
 
 
 # endregion

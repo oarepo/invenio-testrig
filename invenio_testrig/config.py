@@ -44,6 +44,9 @@ class Repository(ExtensibleMixin):
     e2e: GitReference | None
     """Git reference to the E2E package that will be used for testing."""
 
+    install: list[str] | None
+    """Installation command to run instead of `pip install` for the initial installation of the repository."""
+
     test: list[str] | None
     """Test command to run on the installed repository."""
 
@@ -58,25 +61,41 @@ class Github(ExtensibleMixin):
     org: str
     """Organization name on GitHub to match against when resolving repositories."""
 
-    test: list[str]
-    """The test command to run to tested packages that match include directive."""
+    install: list[str]
+    """Installation command to run instead of `pip install` for the initial installation of the repository.
 
-    include: list[str] | None = field(default_factory=list)
+    It is a single command, arguments should be passed as a list of strings.
+    """
+
+    test: list[str]
+    """The test command to run to tested packages that match include directive.
+
+    It is a single command, arguments should be passed as a list of strings.
+    """
+
+    include: list[str] = field(default_factory=list)
     """List of package regexes to include in the testing process. If empty, all packages are included."""
 
-    exclude: list[str] | None = field(default_factory=list)
+    exclude: list[str] = field(default_factory=list)
     """List of package regexes to exclude from the testing process. If empty, no packages are excluded."""
 
-    extras: list[str] | None = field(default_factory=list)
+    package_map: dict[str, str] = field(default_factory=dict)
+    """Map of package names to github repositories.
+
+    If package is not in the package map, it is supposed that the repository name of the package
+    is the same as the package name.
+    """
+
+    extras: list[str] = field(default_factory=list)
     """List of extras to install for tested packages that match include directive."""
 
-    freeze: list[str] | None = field(default_factory=list)
+    freeze: list[str] = field(default_factory=list)
     """List of version constraints to apply when resolving dependencies for tested packages that match include directive.
 
     If specified, these packages will be reinstalled with the specified version constraints before running the tests.
     """
 
-    slow_packages: dict[str, list[str]] | None = field(default_factory=dict)
+    slow_packages: dict[str, list[str]] = field(default_factory=dict)
     """List of packages that are slow to test.
 
     Testrig will try to run these packages first and in parallel with the rest of the packages,
@@ -93,7 +112,9 @@ class Github(ExtensibleMixin):
         self.exclude = _normalize_list(self.exclude)
         self.freeze = _normalize_list(self.freeze)
         self.test = list(self.test)
+        self.install = list(self.install or [])
         self.extras = list(self.extras or [])
+        self.package_map = self.package_map or {}
 
 
 @dataclass(init=False)
@@ -157,6 +178,9 @@ class Config(ExtensibleMixin):
       (i.e. packages that have patches or depend on packages with patches).
     * ``all``: Test all packages regardless of whether they are affected by the patches.
     """
+
+    env: dict[str, str] = field(default_factory=dict)
+    """Environment variables to set for installation/test execution."""
 
     test_timeout: int = 90
     """Timeout for each test execution in minutes. 0 means no timeout."""

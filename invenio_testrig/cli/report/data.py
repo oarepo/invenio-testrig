@@ -122,6 +122,7 @@ def load_repository_e2e_artifact(
     # Create a minimal TestedPackageInfo for the e2e run (referencing the repo being tested)
     repo_info = TestedPackageInfo(
         reference=config.seed_repository.git,
+        install=config.seed_repository.install or [],
         test=config.seed_repository.test or [],
         extras=[],
         freeze=[],

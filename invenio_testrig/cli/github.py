@@ -89,12 +89,10 @@ from invenio_testrig.utils import call_executable_quietly
 @click.option(
     "--repository",
     help="Override seed repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)",
-    default="oarepo/inveniordm-reference-repo@master",
 )
 @click.option(
     "--e2e",
     help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
-    default="oarepo/invenio-e2e@main",
 )
 @click.option(
     "--ignore-uv-lock",
@@ -157,6 +155,12 @@ def github_cmd(
         testrig_repository = "oarepo/invenio-testrig"
     if testrig_branch is None:
         testrig_branch = "master"
+
+    if not config_file:
+        if repository is None:
+            repository = "oarepo/oarepo-reference-repo@main"
+        if e2e is None:
+            e2e = "oarepo/invenio-e2e@main"
 
     if not e2e or e2e.lower() == "none":
         e2e = None
@@ -446,16 +450,9 @@ def _determine_target_repository(target: str | None, username: str, progress: Pr
         return target
 
     # Put the testrig into the user's namespace by default
-    try:
-        target_repo = f"{username}/invenio-testrig-client"
-        progress.info(f"Will use default target: {target_repo}")
-        return target_repo
-    except subprocess.CalledProcessError:
-        progress.error(
-            "Failed to get GitHub username. Are you logged in to gh? "
-            "Run 'gh auth login' first."
-        )
-        raise SystemExit(1)
+    target_repo = f"{username}/invenio-testrig-client"
+    progress.info(f"Will use default target: {target_repo}")
+    return target_repo
 
 
 def _check_repository_exists(target_repo: str, progress: Progress) -> bool:

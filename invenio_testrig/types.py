@@ -28,6 +28,7 @@ class TestedPackageInfo:
     """
 
     reference: GitReference
+    install: list[str]
     test: list[str]
     extras: list[str]
     freeze: list[str]

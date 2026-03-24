@@ -64,13 +64,19 @@ class PythonAPI:
     """
 
     def __init__(
-        self, uv_executable: str = "uv", python_version: str = "python3"
+        self,
+        extra_env: dict[str, str],
+        uv_executable: str = "uv",
+        python_version: str = "python3.14",
     ) -> None:
         """Initialize the PythonAPI with uv executable and Python version.
 
         :param uv_executable: Path to the uv executable (default: "uv")
         :param python_version: Python version to use (default: "python3")
         """
+        if extra_env is None:
+            raise ValueError("extra_env must be provided")
+        self.extra_env = extra_env
         self.uv_executable = uv_executable
         self.python_version = python_version
 
@@ -227,7 +233,7 @@ class PythonAPI:
                 self.python_version,
             ],
             cwd=project_path,
-            env=clean_env,
+            env=clean_env | self.extra_env,
         )
 
         # Install the project with extras
@@ -240,7 +246,9 @@ class PythonAPI:
         )
 
     def get_dependencies(
-        self, project_path: Path, ignore_uv_lock: bool = False
+        self,
+        project_path: Path,
+        ignore_uv_lock: bool = False,
     ) -> dict[str, str]:
         """
         Get dependencies from uv.lock file or installed packages.
@@ -319,6 +327,7 @@ class PythonAPI:
             p for p in path_parts if "/.venv/" not in p and "/venv/" not in p
         ]
         env["PATH"] = os.pathsep.join([str(bin_dir)] + filtered_paths)
+        env.update(self.extra_env)
 
         return env
 
@@ -524,12 +533,13 @@ class PythonAPI:
         :raises subprocess.CalledProcessError: If the command fails
         :raises subprocess.TimeoutExpired: If the command exceeds the timeout
         """
+        environment = self.prepare_venv_environment(project_path)
         if check_output:
             print(f"Checking output of command {command} in directory {project_path}")
             return subprocess.check_output(
                 command,
                 cwd=project_path,
-                env=self.prepare_venv_environment(project_path),
+                env=environment,
                 text=True,
             )
 
@@ -538,7 +548,7 @@ class PythonAPI:
             subprocess.run(
                 command,
                 cwd=project_path,
-                env=self.prepare_venv_environment(project_path),
+                env=environment,
                 check=True,
                 timeout=timeout,
             )
@@ -554,7 +564,7 @@ class PythonAPI:
             subprocess.run(
                 ["bash", "-c", bash_command],
                 cwd=project_path,
-                env=self.prepare_venv_environment(project_path),
+                env=environment,
                 check=True,
                 timeout=timeout,
             )
@@ -563,7 +573,7 @@ class PythonAPI:
                 subprocess.run(
                     command,
                     cwd=project_path,
-                    env=self.prepare_venv_environment(project_path),
+                    env=environment,
                     stdout=f,
                     stderr=subprocess.STDOUT,
                     check=True,

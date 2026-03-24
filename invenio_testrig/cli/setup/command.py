@@ -179,7 +179,9 @@ def setup_cmd(
     config.debug = debug
 
     # Override seed_repository configurations if provided
-    api = GitApi(GitCache(workdir / "git_cache"))
+    api = GitApi(
+        GitCache(workdir / "git_cache", extra_env=config.env), extra_env=config.env
+    )
     if name:
         config.name = name
     if patch_mode:

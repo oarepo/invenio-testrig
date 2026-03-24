@@ -15,8 +15,11 @@ repository metadata, branch information, and pull request details.
 import json
 import logging
 import multiprocessing
+import os
 import shutil
 import subprocess
+from functools import cached_property
+from multiprocessing.sharedctypes import Value
 from pathlib import Path
 from typing import Any
 
@@ -47,11 +50,14 @@ class GitCache:
     - Getting names of branches and tags sorted by most recently updated
     """
 
-    def __init__(self, cache_dir: Path):
+    def __init__(self, cache_dir: Path, extra_env: dict[str, str]):
         """Initialize the GitCache with a cache directory.
 
         :param cache_dir: Path to the directory where cached repository data will be stored
         """
+        if extra_env is None:
+            raise ValueError("extra_env must be provided")
+        self._extra_env = extra_env
         self._cache_dir = cache_dir.resolve()
         self._pr_cache: dict[tuple[str, str, int], PullRequestInfo] = {}
 
@@ -117,6 +123,7 @@ class GitCache:
             ["git", "rev-list", f"{base_commit}..{branch_commit}"],
             cwd=cache_path,
             always_quiet=True,  # Don't print errors if this fails
+            env=self.prepared_env,
         )
         commits = output.strip().split("\n") if output.strip() else []
         return PullRequestInfo(
@@ -174,6 +181,7 @@ class GitCache:
                 output, _ = call_executable_quietly(
                     ["git", "rev-parse", pattern],
                     cwd=cache_path,
+                    env=self.prepared_env,
                 )
                 return output.strip()
             except subprocess.CalledProcessError:
@@ -192,6 +200,7 @@ class GitCache:
             remotes_output, _ = call_executable_quietly(
                 ["git", "remote"],
                 cwd=cache_path,
+                env=self.prepared_env,
             )
             return remotes_output.strip().split("\n") if remotes_output.strip() else []
         except subprocess.CalledProcessError:
@@ -238,6 +247,7 @@ class GitCache:
                     "refs/remotes/",
                 ],
                 cwd=cache_path,
+                env=self.prepared_env,
             )
 
             remotes = self._get_remote_names(cache_path)
@@ -290,6 +300,7 @@ class GitCache:
         output, _ = call_executable_quietly(
             ["git", "symbolic-ref", "refs/remotes/origin/HEAD"],
             cwd=cache_path,
+            env=self.prepared_env,
         )
         return output.strip().split("/")[-1]
 
@@ -312,6 +323,7 @@ class GitCache:
                 "refs/remotes/origin/",
             ],
             cwd=cache_path,
+            env=self.prepared_env,
         )
         branches = output.strip().split("\n")
         return [
@@ -338,7 +350,8 @@ class GitCache:
         # Prepare arguments for the worker pool
         # Pass cache_dir path instead of GitCache instance to avoid pickling issues
         clone_args = [
-            (self._cache_dir, org, repo, progress) for org, repo in repositories
+            (self._cache_dir, org, repo, progress, self.prepared_env)
+            for org, repo in repositories
         ]
 
         # Use multiprocessing to clone repositories in parallel
@@ -371,7 +384,8 @@ class GitCache:
                 f"{org}/{repo}",
                 "--json",
                 "commits,headRepository,headRefName,headRepositoryOwner",
-            ]
+            ],
+            env=self.prepared_env,
         )
         pr_info: Any = json.loads(output)
         head_org = pr_info["headRepositoryOwner"]["login"]
@@ -411,7 +425,8 @@ class GitCache:
                 str(repo_cache_path),
                 "--",
                 "--recurse-submodules",
-            ]
+            ],
+            env=self.prepared_env,
         )
         call_executable_quietly(
             [
@@ -420,6 +435,7 @@ class GitCache:
                 "--all",
             ],
             cwd=repo_cache_path,
+            env=self.prepared_env,
         )
 
         return repo_cache_path
@@ -451,6 +467,7 @@ class GitCache:
                 ],
                 cwd=cache_path,
                 always_quiet=True,  # Don't print errors if this fails
+                env=self.prepared_env,
             )
             tags_on_commit = output.strip().split("\n")
             tags_on_commit = [tag for tag in tags_on_commit if tag.startswith("v")]
@@ -477,6 +494,7 @@ class GitCache:
                 ],
                 cwd=cache_path,
                 always_quiet=True,  # Don't print errors if this fails
+                env=self.prepared_env,
             )
             ret = output.strip().split("\n")
             ret = [tag for tag in ret if tag.startswith("v")]  # filter out empty lines
@@ -517,14 +535,22 @@ class GitCache:
                 ],
                 cwd=cache_path,
                 always_quiet=True,  # Don't print errors if this fails
+                env=self.prepared_env,
             )
             return output.strip().split("\n") if output.strip() else []
         except subprocess.CalledProcessError:
             return []
 
+    @cached_property
+    def prepared_env(self) -> dict[str, str]:
+        """Prepare the environment variables for Git commands."""
+        env = os.environ.copy()
+        env.update(self._extra_env)
+        return env
+
 
 def _clone_repo_worker(
-    cache_dir: Path, org: str, repo: str, progress: Progress
+    cache_dir: Path, org: str, repo: str, progress: Progress, extra_env
 ) -> None:
     """Worker function for parallel repository cloning.
 
@@ -537,5 +563,5 @@ def _clone_repo_worker(
     :param progress: Progress reporter
     """
     progress.info(f"Caching repository {org}/{repo}...", icon="📦")
-    cache = GitCache(cache_dir)
+    cache = GitCache(cache_dir, extra_env)
     cache._clone_repo(org, repo)
