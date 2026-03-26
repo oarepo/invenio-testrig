@@ -21,7 +21,7 @@ import subprocess
 from pathlib import Path
 from typing import Literal, overload
 
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 from invenio_testrig.utils import call_executable_quietly
 
 log = logging.getLogger(__name__)

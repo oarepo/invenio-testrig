@@ -17,7 +17,7 @@ import click
 
 from invenio_testrig.cli.base import with_progress
 from invenio_testrig.cli.report.report_utils import get_jinja_template
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 def generate_reports_index(

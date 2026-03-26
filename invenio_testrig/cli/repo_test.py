@@ -27,10 +27,12 @@ from invenio_testrig.cli.base import (
 from invenio_testrig.cli.utils import process_warnings
 from invenio_testrig.config import (
     Config,
-    save_execution_status,
+    Github,
+    TestedPackageInfo,
 )
+from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
-from invenio_testrig.types import ExecutionStatus, Progress, TestedPackageInfo
+from invenio_testrig.report import ExecutionStatus, save_execution_status
 
 # region CLI Command
 
@@ -68,11 +70,13 @@ def cmd_repo_test(
     # Create a minimal TestedPackageInfo for the repository
     repo_info = TestedPackageInfo(
         reference=config.seed_repository.git,
-        install=config.seed_repository.install or [],
-        test=config.seed_repository.test or [],
-        extras=[],
-        freeze=[],
-        patches=[],
+        github_entry=Github(
+            org="",
+            install=config.seed_repository.install or [],
+            test=config.seed_repository.test or [],
+            extras=[],
+            freeze=[],
+        ),
     )
 
     if not config.seed_repository.test:

@@ -29,7 +29,7 @@ import click
 import yaml
 
 from invenio_testrig.cli.base import with_progress
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 from invenio_testrig.utils import call_executable_quietly
 
 # region CLI Command
@@ -158,7 +158,7 @@ def github_cmd(
 
     if not config_file:
         if repository is None:
-            repository = "oarepo/oarepo-reference-repo@main"
+            repository = "oarepo/inveniordm-reference-repo@master"
         if e2e is None:
             e2e = "oarepo/invenio-e2e@main"
 

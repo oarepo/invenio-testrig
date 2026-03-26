@@ -14,7 +14,7 @@ from pathlib import Path
 import click
 
 from invenio_testrig.cli.base import with_progress
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 @click.command("archive-report", hidden=True)

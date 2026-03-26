@@ -16,7 +16,7 @@ from invenio_testrig.errors import PatchApplicationError
 from invenio_testrig.github import GitApi, GitCache
 from invenio_testrig.hooks import run_hook
 from invenio_testrig.patchers import patchers_by_mode
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 def _save_commits(commits: list[tuple[str, str]], output_json_path: Path) -> None:

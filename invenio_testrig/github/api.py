@@ -28,7 +28,7 @@ from typing import Any, cast
 
 from invenio_testrig.errors import PatchApplicationError
 from invenio_testrig.github.cache import GitCache
-from invenio_testrig.github.types import (
+from invenio_testrig.types import (
     GitReference,
     GitReferenceSchema,
     Patch,
@@ -180,6 +180,18 @@ class GitApi:
         :return: List of branch names sorted by most recent update
         """
         return self._cache.get_branches(org, repo)
+
+    def get_tag_for_version(self, org: str, repo: str, version: str) -> str | None:
+        """
+        Get the tag for the given version (with or without 'v' prefix).
+
+        :param org: GitHub organization or user name
+        :param repo: Repository name
+        :param version: Version string (e.g., "1.0.0", "v1.0.0")
+
+        :return: Tag name if found, None otherwise
+        """
+        return self._cache.get_tag_for_version(org, repo, version)
 
     def _fill_pr_info(self, git_ref: GitReference) -> None:
         """Ensure git_ref.pr_info is populated from a PR number or a base-branch comparison."""
@@ -698,9 +710,7 @@ class GitApi:
                 "GitReference must have a commit to find commits from version."
             )
         return self._cache.get_commits_from_version(
-            ref.org,
-            ref.repo,
-            ref.commit,
+            ref.org, ref.repo, ref.commit, ref.branch
         )
 
     def get_last_commits(

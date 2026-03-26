@@ -9,18 +9,8 @@
 
 from invenio_testrig.github.api import GitApi
 from invenio_testrig.github.cache import GitCache
-from invenio_testrig.github.types import (
-    GitReference,
-    GitReferenceSchema,
-    PullRequestInfo,
-    VersionConstraint,
-)
 
 __all__ = [
-    "GitReference",
-    "GitReferenceSchema",
-    "PullRequestInfo",
-    "VersionConstraint",
     "GitApi",
     "GitCache",
 ]

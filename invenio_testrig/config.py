@@ -21,9 +21,9 @@ from typing import Literal, Self, cast
 import marshmallow as ma
 from marshmallow_dataclass import class_schema
 
-from invenio_testrig.github.types import GitReference, Patch
-from invenio_testrig.types import ExecutionStatus, TestedPackageInfo
 from invenio_testrig.utils import ExtensibleMixin
+
+from .types import GitReference, Patch
 
 
 def _normalize_list(lst: list | None) -> list[str]:
@@ -61,14 +61,14 @@ class Github(ExtensibleMixin):
     org: str
     """Organization name on GitHub to match against when resolving repositories."""
 
-    install: list[str]
-    """Installation command to run instead of `pip install` for the initial installation of the repository.
+    test: list[str]
+    """The test command to run to tested packages that match include directive.
 
     It is a single command, arguments should be passed as a list of strings.
     """
 
-    test: list[str]
-    """The test command to run to tested packages that match include directive.
+    install: list[str] = field(default_factory=list)
+    """Installation command to run instead of `pip install` for the initial installation of the repository.
 
     It is a single command, arguments should be passed as a list of strings.
     """
@@ -102,6 +102,12 @@ class Github(ExtensibleMixin):
     so that we can get results faster.
     """
 
+    default_branch: str | None = None
+    """Default branch to use for the repositories inside the organization. If not set,
+    defaults to the default branch of the repository.
+
+    For upstream mode, this is the branch that will be used as the base branch for testing."""
+
     def __post_init__(self):
         """Normalize package lists to lowercase for case-insensitive matching.
 
@@ -115,6 +121,25 @@ class Github(ExtensibleMixin):
         self.install = list(self.install or [])
         self.extras = list(self.extras or [])
         self.package_map = self.package_map or {}
+
+
+@dataclass
+class TestedPackageInfo:
+    """Information about a package that is being tested, derived from the github configuration.
+
+    This one is generated automatically based on the github configuration
+    and the dependencies, so it is not extensible.
+    """
+
+    reference: GitReference
+    github_entry: Github
+    patches: list[Patch] = field(default_factory=list)
+    unpatched_reference: GitReference | None = None
+    patched_reference: GitReference | None = None
+
+    @property
+    def package(self) -> str:
+        return self.reference.package
 
 
 @dataclass(init=False)
@@ -184,6 +209,9 @@ class Config(ExtensibleMixin):
 
     test_timeout: int = 90
     """Timeout for each test execution in minutes. 0 means no timeout."""
+
+    slow_test_splitting: bool = True
+    """Whether to split slow tests into multiple parts."""
 
     @property
     def workdir(self) -> Path:
@@ -275,41 +303,3 @@ class Config(ExtensibleMixin):
 
 
 ConfigSchema = class_schema(Config)
-
-
-ExecutionStatusSchema = class_schema(ExecutionStatus)
-
-
-def load_execution_status(file: str | Path) -> ExecutionStatus:
-    """Load execution status from JSON file.
-
-    :param file: Path to the JSON execution status file
-
-    :return: Loaded ExecutionStatus instance
-
-    :raises ValueError: If the file doesn't contain a valid JSON object
-    :raises FileNotFoundError: If the file doesn't exist
-    """
-    path = Path(file)
-    with open(path, "r") as stream:
-        raw_data = json.load(stream)
-        schema = ExecutionStatusSchema()
-        if isinstance(raw_data, dict):
-            return cast(ExecutionStatus, schema.load(raw_data))
-        else:
-            raise ValueError(
-                f"Expected execution status file to contain a JSON object, got {type(raw_data)}"
-            )
-
-
-def save_execution_status(file: str | Path, status: ExecutionStatus) -> None:
-    """Save execution status to JSON file.
-
-    :param file: Path where the execution status should be saved
-    :param status: ExecutionStatus instance to save
-    """
-    path = Path(file)
-    formatted_status = json.dumps(
-        ExecutionStatusSchema().dump(status), indent=2, sort_keys=True
-    )
-    path.write_text(formatted_status)

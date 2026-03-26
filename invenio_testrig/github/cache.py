@@ -16,17 +16,17 @@ import json
 import logging
 import multiprocessing
 import os
+import re
 import shutil
 import subprocess
 from functools import cached_property
-from multiprocessing.sharedctypes import Value
 from pathlib import Path
 from typing import Any
 
 import semver
 
-from invenio_testrig.github.types import PullRequestInfo
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
+from invenio_testrig.types import PullRequestInfo
 from invenio_testrig.utils import call_executable_quietly
 
 log = logging.getLogger(__name__)
@@ -564,6 +564,61 @@ class GitCache:
             return output.strip().split("\n") if output.strip() else []
         except subprocess.CalledProcessError:
             return []
+
+    def get_tag_for_version(self, org: str, repo: str, version: str) -> str | None:
+        """Get the tag for the given version (with or without 'v' prefix)."""
+        if version.startswith("v"):
+            version = version[1:]
+        # Example versions:
+        # v1.0.0
+        # v1.0.0dev3
+        # v1.0.0.dev3
+        # v1.0.0a1+local234
+        # v1.0.0.a1+local234
+        # We check both dot before pre-release and without the dot
+        variants = []
+        version_parts = version.split(".")
+        numeric_parts = []
+        additional_parts = []
+        for p_idx, p in enumerate(version_parts):
+            try:
+                int(p)
+                numeric_parts.append(p)
+            except ValueError:
+                # it might start with digits like 1dev56, check that case
+                match = re.match(r"(\d*)(.*)", p)
+                if match and match.group(1):
+                    numeric_parts.append(match.group(1))
+                    additional_parts.append(match.group(2))
+                    additional_parts.extend(version_parts[p_idx + 1 :])
+                else:
+                    additional_parts = version_parts[p_idx:]
+                break
+
+        variants.append(".".join(numeric_parts) + ".".join(additional_parts))
+        variants.append("".join(numeric_parts + additional_parts))
+
+        cache_path = self._clone_repo(org, repo)
+
+        # try both variants
+        for v in variants:
+            try:
+                output, _ = call_executable_quietly(
+                    [
+                        "git",
+                        "tag",
+                        "--list",
+                        f"v{v}",
+                    ],
+                    cwd=cache_path,
+                    always_quiet=True,
+                    env=self.prepared_env,
+                )
+                if output.strip():
+                    return output.strip()
+            except subprocess.CalledProcessError:
+                continue
+        return None
 
     @cached_property
     def prepared_env(self) -> dict[str, str]:

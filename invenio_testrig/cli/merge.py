@@ -17,8 +17,9 @@ from pathlib import Path
 import click
 
 from invenio_testrig.cli.base import with_config, with_progress
-from invenio_testrig.config import Config, ExecutionStatusSchema, save_execution_status
-from invenio_testrig.types import Progress
+from invenio_testrig.config import Config, TestedPackageInfo
+from invenio_testrig.progress import Progress
+from invenio_testrig.report import ExecutionStatusSchema, save_execution_status
 
 
 @click.command("merge-test-artifacts", hidden=True)
@@ -34,11 +35,16 @@ def cmd_merge_test_artifacts(config: Config, progress: Progress):
     assert config.config_path is not None
     workdir_path = config.config_path.parent
 
+    def make_slow_split(info: TestedPackageInfo) -> list[str]:
+        if config.slow_test_splitting:
+            return info.github_entry.slow_packages.get(info.package, [])
+        return []
+
     # Find packages that need merging
     packages_to_merge = [
         pkg_name
         for pkg_name, pkg_info in config.tested_packages.items()
-        if pkg_info.slow_split is not None
+        if make_slow_split(pkg_info)
     ]
 
     if not packages_to_merge:
@@ -56,7 +62,7 @@ def cmd_merge_test_artifacts(config: Config, progress: Progress):
         progress.start(f"Merging artifacts for package '{package_name}'", icon="🔀")
 
         # Determine number of parts
-        slow_split = config.tested_packages[package_name].slow_split
+        slow_split = make_slow_split(config.tested_packages[package_name])
         assert slow_split is not None
         num_parts = len(slow_split) + 1
 

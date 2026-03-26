@@ -27,12 +27,10 @@ from invenio_testrig.cli.base import (
     with_verbose,
 )
 from invenio_testrig.cli.utils import process_warnings
-from invenio_testrig.config import (
-    Config,
-    save_execution_status,
-)
+from invenio_testrig.config import Config, TestedPackageInfo
+from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
-from invenio_testrig.types import ExecutionStatus, Progress, TestedPackageInfo
+from invenio_testrig.report import ExecutionStatus, save_execution_status
 
 # region CLI Command
 
@@ -277,8 +275,8 @@ def _install_package_for_testing(
         package_name=package_name,
         target_dir=working_dir,
         install_patched_dependencies=apply_patches,
-        extras=package_config.extras,
-        freeze=package_config.freeze,
+        extras=package_config.github_entry.extras,
+        freeze=package_config.github_entry.freeze,
         progress=progress,
     )
 
@@ -374,9 +372,14 @@ def _run_tests(
 
     progress.start(
         f"Running tests for package '{package_name}' with command: "
-        f"{package_config.test}",
+        f"{package_config.github_entry.test}",
         icon="🚀",
     )
+
+    def make_slow_split(info: TestedPackageInfo) -> list[str]:
+        if config.slow_test_splitting:
+            return info.github_entry.slow_packages.get(info.package, [])
+        return []
 
     filtered_tests = []
     if part_number is not None:
@@ -384,7 +387,7 @@ def _run_tests(
         tests = api.run_in_venv(
             working_dir, ["pytest", "--co", "-q"], check_output=True
         )
-        split_points = config.tested_packages[package_name].slow_split
+        split_points = make_slow_split(config.tested_packages[package_name])
         assert split_points is not None
         split_start = split_points[part_number - 1] if part_number > 0 else None
         split_end = (
@@ -422,12 +425,14 @@ def _run_tests(
             )
 
     try:
-        test_command = package_config.test
+        test_command = package_config.github_entry.test
         if filtered_tests:
             # Write filtered tests to a file and use @ syntax to avoid long command lines
             selected_tests_file = log_dir / "selected_tests.txt"
             selected_tests_file.write_text("\n".join(filtered_tests))
-            test_command = package_config.test + [f"@{selected_tests_file}"]
+            test_command = package_config.github_entry.test + [
+                f"@{selected_tests_file}"
+            ]
             progress.info(
                 f"Running {len(filtered_tests)} filtered tests from {selected_tests_file}"
             )
@@ -488,7 +493,9 @@ def _run_tests(
                 status="failed", package=package_config, dependencies=library_patches
             ),
         )
-        raise subprocess.CalledProcessError(returncode=-1, cmd=package_config.test)
+        raise subprocess.CalledProcessError(
+            returncode=-1, cmd=package_config.github_entry.test
+        )
 
 
 def _disable_codestyle_checks(package_path: Path) -> None:

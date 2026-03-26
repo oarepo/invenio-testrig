@@ -17,10 +17,10 @@ from pathlib import Path
 
 import black
 
-from invenio_testrig.config import Config
+from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.github.api import GitApi, GitCache
-from invenio_testrig.github.types import GitReference
-from invenio_testrig.types import Progress, TestedPackageInfo
+from invenio_testrig.progress import Progress
+from invenio_testrig.types import GitReference, Patch
 
 # Constants
 MAX_COMMITS_TO_DISPLAY = 50
@@ -275,7 +275,7 @@ class Patcher:
         target_dir: Path,
         patch_mode: str,
         reference: GitReference,
-        applied_patches: list[GitReference],
+        applied_patches: list[Patch],
     ) -> None:
         """Add patch info file to the target directory.
 
@@ -302,7 +302,7 @@ class Patcher:
         self,
         patch_mode: str,
         reference: GitReference,
-        applied_patches: list[GitReference],
+        applied_patches: list[Patch],
     ) -> str:
         """Generate the Python code content for patch_info.py.
 

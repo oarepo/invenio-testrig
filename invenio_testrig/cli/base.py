@@ -44,7 +44,7 @@ from typing import Any, Callable, Generator
 import click
 
 from invenio_testrig.config import Config
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 @contextlib.contextmanager
