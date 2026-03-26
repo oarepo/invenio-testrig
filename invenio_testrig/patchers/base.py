@@ -45,7 +45,10 @@ class Patcher:
         :param progress: Progress reporter for outputting status messages
         """
         self.config = config
-        self.git_api = GitApi(GitCache(config.workdir_path("git_cache")))
+        self.git_api = GitApi(
+            GitCache(config.workdir_path("git_cache"), extra_env=config.env),
+            extra_env=config.env,
+        )
         self.unpatched_dir = unpatched_dir
         self.patched_dir = patched_dir
         self.progress = progress

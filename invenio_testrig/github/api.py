@@ -34,7 +34,7 @@ from invenio_testrig.github.types import (
     Patch,
     PullRequestInfo,
 )
-from invenio_testrig.utils import call_executable_quietly, render_version
+from invenio_testrig.utils import call_executable_quietly
 
 log = logging.getLogger(__name__)
 
@@ -222,9 +222,7 @@ class GitApi:
                 git_ref.branch or self.get_default_branch(git_ref.org, git_ref.repo),
             )
 
-        git_ref.actual_version, git_ref.git_actual_version_tag = (
-            self.get_last_version_before_commit(git_ref)
-        )
+        git_ref.actual_version = self.get_last_version_before_commit(git_ref)
         git_ref.commits_from_version = self.get_commits_from_version(git_ref)
 
         return git_ref

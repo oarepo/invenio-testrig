@@ -18,7 +18,6 @@ from invenio_testrig.github import GitApi, GitCache, GitReference
 from invenio_testrig.hooks import run_hook
 from invenio_testrig.python_api import PythonAPI
 from invenio_testrig.types import Progress, TestedPackageInfo
-from invenio_testrig.utils import render_version
 
 # region Dependency Collection
 
@@ -100,7 +99,7 @@ def _resolve_package_reference(
     else:
         reference = GitReference(
             org=github_entry.org or "",
-            repo=package_name,
+            repo=github_entry.package_map.get(package_name, package_name),
             package=package_name,
             branch=f"v{version}",
         )

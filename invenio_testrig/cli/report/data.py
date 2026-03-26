@@ -185,6 +185,7 @@ def load_repository_artifact(
     repo_info = TestedPackageInfo(
         reference=config.seed_repository.git,
         test=config.seed_repository.test or [],
+        install=config.seed_repository.install or [],
         extras=[],
         freeze=[],
         patches=[],

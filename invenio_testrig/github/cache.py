@@ -147,21 +147,45 @@ class GitCache:
         cache_path = self._clone_repo(org, repo)
         ref = branch or "HEAD"
 
-        # Try direct git rev-parse strategies first (fast path)
-        commit = self._try_rev_parse_strategies(cache_path, ref)
-        if commit:
-            return commit
+        for candidate_ref in self._get_ref_resolution_candidates(ref):
+            # Try direct git rev-parse strategies first (fast path)
+            commit = self._try_rev_parse_strategies(cache_path, candidate_ref)
+            if commit:
+                return commit
 
-        # Fall back to parsing for-each-ref output (slower path)
-        commit = self._try_for_each_ref_strategy(cache_path, ref)
-        if commit:
-            return commit
+            # Fall back to parsing for-each-ref output (slower path)
+            commit = self._try_for_each_ref_strategy(cache_path, candidate_ref)
+            if commit:
+                return commit
 
         # Special error message for HEAD resolution failure
         if branch is None:
             raise ValueError(f"Could not resolve default branch for {org}/{repo}")
 
         raise ValueError(f"Could not resolve ref '{ref}' for {org}/{repo}")
+
+    def _get_ref_resolution_candidates(self, ref: str) -> list[str]:
+        """Build a list of equivalent ref names to try during resolution.
+
+        Supports repositories that use prerelease tags with or without a dot before
+        the prerelease marker, e.g. ``v6.0.0.dev9``/``v6.0.0dev9``,
+        ``v6.0.0a1``/``v6.0.0.a1`` and ``v6.0.0b1``/``v6.0.0.b1``.
+        """
+        candidates = [ref]
+        if not ref.startswith("v"):
+            return candidates
+
+        prerelease_markers = ("dev", "a", "b", "rc")
+
+        for marker in prerelease_markers:
+            dotted = f".{marker}"
+            if dotted in ref:
+                candidates.append(ref.replace(dotted, marker))
+            elif marker in ref:
+                candidates.append(ref.replace(marker, dotted))
+
+        # Preserve order while removing duplicates
+        return list(dict.fromkeys(candidates))
 
     def _try_rev_parse_strategies(self, cache_path: Path, ref: str) -> str | None:
         """Try to resolve reference using git rev-parse with multiple patterns.
