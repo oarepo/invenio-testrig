@@ -237,9 +237,9 @@ def cmd_repo_test(
         )
 
         # for now, remove the ui tests, only run api tests
-        ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
-        if ui_spec.exists():
-            ui_spec.unlink()
+        # ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
+        # if ui_spec.exists():
+        #     ui_spec.unlink()
 
         subprocess.run(
             ["npx", "playwright", "install"],
