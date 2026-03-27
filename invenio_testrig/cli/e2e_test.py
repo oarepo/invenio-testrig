@@ -249,7 +249,7 @@ def cmd_repo_test(
         )
 
         subprocess.run(
-            ["npx", "playwright", "test"],
+            ["npx", "playwright", "test", "--max-failures", "10"],
             cwd=test_repository_path / "e2e",
             check=True,
             env={
