@@ -500,6 +500,7 @@ class PythonAPI:
         tee_output: bool = True,
         check_output: Literal[False] = False,
         timeout: float | None = None,
+        cwd: Path | None = None,
     ) -> None: ...
 
     @overload
@@ -511,6 +512,7 @@ class PythonAPI:
         tee_output: bool = True,
         check_output: Literal[True] = True,
         timeout: float | None = None,
+        cwd: Path | None = None,
     ) -> str: ...
 
     def run_in_venv(
@@ -521,6 +523,7 @@ class PythonAPI:
         tee_output: bool = True,
         check_output: bool = False,
         timeout: float | None = None,
+        cwd: Path | None = None,
     ) -> None | str:
         """Run a command inside the virtual environment.
 
@@ -534,20 +537,21 @@ class PythonAPI:
         :raises subprocess.TimeoutExpired: If the command exceeds the timeout
         """
         environment = self.prepare_venv_environment(project_path)
+        cwd = cwd or project_path
         if check_output:
-            print(f"Checking output of command {command} in directory {project_path}")
+            print(f"Checking output of command {command} in directory {cwd}")
             return subprocess.check_output(
                 command,
-                cwd=project_path,
+                cwd=cwd,
                 env=environment,
                 text=True,
             )
 
         if capture_to_file is None:
-            print(f"Running command {command} in directory {project_path}")
+            print(f"Running command {command} in directory {cwd}")
             subprocess.run(
                 command,
-                cwd=project_path,
+                cwd=cwd,
                 env=environment,
                 check=True,
                 timeout=timeout,
@@ -560,10 +564,10 @@ class PythonAPI:
 
             # Use bash with tee to capture output to file and print to stdout/stderr
             bash_command = f"set -o pipefail; {escaped_command} 2>&1 | tee {shlex.quote(str(capture_to_file))}"
-            print(f"Running bash command: {bash_command} in directory {project_path}")
+            print(f"Running bash command: {bash_command} in directory {cwd}")
             subprocess.run(
                 ["bash", "-c", bash_command],
-                cwd=project_path,
+                cwd=cwd,
                 env=environment,
                 check=True,
                 timeout=timeout,
@@ -572,7 +576,7 @@ class PythonAPI:
             with open(capture_to_file, "w") as f:
                 subprocess.run(
                     command,
-                    cwd=project_path,
+                    cwd=cwd,
                     env=environment,
                     stdout=f,
                     stderr=subprocess.STDOUT,

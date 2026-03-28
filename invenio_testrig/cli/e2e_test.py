@@ -229,12 +229,19 @@ def cmd_repo_test(
         # we need to wait cca 1 minute for the output to be ready
         time.sleep(60)
 
-        subprocess.run(
-            ["npm", "run", "collect-translations", "invenio-app-rdm"],
-            cwd=test_repository_path / "e2e",
-            check=True,
-            env=os.environ | config.env,
-        )
+        for locale in ["en", "de", "cs"]:
+            python_api.run_in_venv(
+                test_repository_path,
+                [
+                    "pnpm",
+                    "run",
+                    "build-translations",
+                    "--",
+                    "-l",
+                    locale,
+                ],
+                cwd=test_repository_path / "e2e",
+            )
 
         # for now, remove the ui tests, only run api tests
         # ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
