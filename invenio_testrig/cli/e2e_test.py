@@ -276,7 +276,7 @@ def cmd_repo_test(
                 "@api",
             ]
             if smoketest_ui:
-                playwright_grep.extend("@smoke")
+                playwright_grep.append("@smoke")
             playwright_opts.extend(["--grep", "|".join(playwright_grep)])
 
         progress.info(f"Running Playwright tests with {' '.join(playwright_opts)}")
