@@ -95,6 +95,12 @@ from invenio_testrig.utils import call_executable_quietly
     help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
 )
 @click.option(
+    "--e2e-ui",
+    is_flag=True,
+    default=False,
+    help="Run thorough UI tests in addition to API tests. If not set, only smoketests are run.",
+)
+@click.option(
     "--ignore-uv-lock",
     is_flag=True,
     help="Ignore uv.lock files and use latest compatible versions for tests",
@@ -122,6 +128,7 @@ def github_cmd(
     testrig_branch: str | None,
     repository: str | None,
     e2e: str | None,
+    e2e_ui: bool,
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
@@ -201,6 +208,7 @@ def github_cmd(
         testrig_branch,
         repository,
         e2e,
+        e2e_ui,
         ignore_uv_lock,
         config_file,
         slow_test_splitting,
@@ -711,6 +719,7 @@ def _dispatch_workflow(
     testrig_branch: str | None,
     repository: str | None,
     e2e: str | None,
+    e2e_ui: bool,
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
@@ -730,6 +739,7 @@ def _dispatch_workflow(
     :param testrig_branch: Branch of invenio-testrig to use
     :param repository: Override repository.git configuration
     :param e2e: Override repository.e2e configuration
+    :param e2e_ui: Run thorough UI tests in addition to API tests
     :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
     :param config_file: Path to configuration file or URL
     :param slow_test_splitting: Enable splitting of slow tests into multiple parts
@@ -791,6 +801,9 @@ def _dispatch_workflow(
         # Add e2e if provided
         if e2e:
             workflow_cmd.extend(["-f", f"e2e={e2e}"])
+
+        if e2e_ui:
+            workflow_cmd.extend(["-f", f"e2e-ui={str(e2e_ui).lower()}"])
 
         # Add ignore-uv-lock if provided
         if ignore_uv_lock:

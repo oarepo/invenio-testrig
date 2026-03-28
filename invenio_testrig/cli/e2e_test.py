@@ -41,12 +41,19 @@ from .repo_test import cmd_repo
 @cmd_repo.command("e2e")
 @click.option("--ignore-uv-lock", is_flag=True, default=False)
 @click.option("--apply-patches", is_flag=True, default=False)
+@click.option("--thorough-ui", is_flag=True, default=False)
+@click.option("--smoketest-ui", is_flag=True, default=False)
 @with_progress
 @with_config
 @with_verbose
 @with_debug
 def cmd_repo_test(
-    config: Config, progress: Progress, ignore_uv_lock: bool, apply_patches: bool
+    config: Config,
+    progress: Progress,
+    ignore_uv_lock: bool,
+    apply_patches: bool,
+    thorough_ui: bool,
+    smoketest_ui: bool,
 ):
     """Run tests for the given repository."""
     # Setup log and status files using "repo" as the package name
@@ -255,8 +262,19 @@ def cmd_repo_test(
             env=os.environ | config.env,
         )
 
+        playwright_opts = ["--max-failures", "10", "--retries", "1"]
+
+        if not thorough_ui:
+            # always run API tests
+            playwright_grep = [
+                "@api",
+            ]
+            if smoketest_ui:
+                playwright_grep.extend("@smoke")
+            playwright_opts.extend(["--grep", "|".join(playwright_grep)])
+
         subprocess.run(
-            ["npx", "playwright", "test", "--max-failures", "10"],
+            ["npx", "playwright", "test", *playwright_opts],
             cwd=test_repository_path / "e2e",
             check=True,
             env={
