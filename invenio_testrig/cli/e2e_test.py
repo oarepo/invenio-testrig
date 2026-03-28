@@ -56,6 +56,12 @@ def cmd_repo_test(
     smoketest_ui: bool,
 ):
     """Run tests for the given repository."""
+    progress.info("Will run E2E tests for the repository")
+    progress.info(f"Apply patches: {apply_patches}")
+    progress.info(f"Thorough UI: {thorough_ui}")
+    progress.info(f"Smoketest UI: {smoketest_ui}")
+    progress.info(f"Ignore UV lock: {ignore_uv_lock}")
+
     # Setup log and status files using "repo" as the package name
     log_dir = config.workdir_path("artifacts") / "e2e"
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -272,6 +278,8 @@ def cmd_repo_test(
             if smoketest_ui:
                 playwright_grep.extend("@smoke")
             playwright_opts.extend(["--grep", "|".join(playwright_grep)])
+
+        progress.info(f"Running Playwright tests with {' '.join(playwright_opts)}")
 
         subprocess.run(
             ["npx", "playwright", "test", *playwright_opts],
