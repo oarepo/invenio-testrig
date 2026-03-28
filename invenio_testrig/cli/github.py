@@ -532,7 +532,8 @@ def _create_repository(
                     target_repo,
                     str(temp_dir),
                     "--",
-                    "--recurse-submodules",
+                    "--single-branch",
+                    "--depth=1",
                 ]
             )
 
@@ -635,7 +636,8 @@ def _update_existing_repository_workflow(
                 target_repo,
                 str(temp_dir),
                 "--",
-                "--recurse-submodules",
+                "--single-branch",
+                "--depth=1",
             ]
         )
 
