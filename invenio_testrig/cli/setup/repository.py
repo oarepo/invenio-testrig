@@ -16,7 +16,7 @@ from invenio_testrig.errors import PatchApplicationError
 from invenio_testrig.github import GitApi, GitCache
 from invenio_testrig.hooks import run_hook
 from invenio_testrig.patchers import patchers_by_mode
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 def _save_commits(commits: list[tuple[str, str]], output_json_path: Path) -> None:
@@ -69,7 +69,10 @@ def clone_repositories(
     if clone_path.exists():
         raise ValueError(f"Output directory {clone_path} already exists")
 
-    git_api = GitApi(GitCache(config.workdir_path("git_cache")))
+    git_api = GitApi(
+        GitCache(config.workdir_path("git_cache"), extra_env=config.env),
+        extra_env=config.env,
+    )
 
     # Read the config JSON
     run_hook(
@@ -132,16 +135,19 @@ def clone_repositories(
                 icon="📦",
             )
             try:
-                (unpatched_reference, unpatched_commits), (
-                    patched_reference,
-                    patched_commits,
+                (
+                    (unpatched_reference, unpatched_commits),
+                    (
+                        patched_reference,
+                        patched_commits,
+                    ),
                 ) = patcher.clone_and_patch_package(tested_package_name)
-                tested_packages[tested_package_name].unpatched_reference = (
-                    unpatched_reference
-                )
-                tested_packages[tested_package_name].patched_reference = (
-                    patched_reference
-                )
+                tested_packages[
+                    tested_package_name
+                ].unpatched_reference = unpatched_reference
+                tested_packages[
+                    tested_package_name
+                ].patched_reference = patched_reference
 
                 # Save commit logs to JSON files
                 _save_commits(

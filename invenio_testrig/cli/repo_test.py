@@ -27,10 +27,12 @@ from invenio_testrig.cli.base import (
 from invenio_testrig.cli.utils import process_warnings
 from invenio_testrig.config import (
     Config,
-    save_execution_status,
+    Github,
+    TestedPackageInfo,
 )
+from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
-from invenio_testrig.types import ExecutionStatus, Progress, TestedPackageInfo
+from invenio_testrig.report import ExecutionStatus, save_execution_status
 
 # region CLI Command
 
@@ -68,10 +70,13 @@ def cmd_repo_test(
     # Create a minimal TestedPackageInfo for the repository
     repo_info = TestedPackageInfo(
         reference=config.seed_repository.git,
-        test=config.seed_repository.test or [],
-        extras=[],
-        freeze=[],
-        patches=[],
+        github_entry=Github(
+            org="",
+            install=config.seed_repository.install or [],
+            test=config.seed_repository.test or [],
+            extras=[],
+            freeze=[],
+        ),
     )
 
     if not config.seed_repository.test:
@@ -108,7 +113,7 @@ def cmd_repo_test(
         run_repository_tests(config, test_repository_path, log_file)
 
         # Save the actual uv pip freeze into the artifacts
-        python_api = PythonAPI()
+        python_api = PythonAPI(config.env)
         python_api.run_in_venv(
             test_repository_path,
             ["uv", "pip", "freeze"],
@@ -180,7 +185,7 @@ def install_repository(
     :param ignore_uv_lock: Whether to ignore the UV lock file.
     """
     shutil.copytree(clone_path / "repo", tested_repo_path)
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.install_project(tested_repo_path, ignore_uv_lock=ignore_uv_lock)
 
 
@@ -201,7 +206,7 @@ def apply_package_patches(
 
     :return: List of patched package information
     """
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.install_patched_dependencies(
         project_path=tested_repo_path,
         packages_root=packages_path,
@@ -234,7 +239,7 @@ def run_repository_tests(
     test_command = config.seed_repository.test
     assert test_command is not None
 
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.run_in_venv(
         project_path=tested_repo_path,
         command=test_command,

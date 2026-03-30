@@ -21,7 +21,7 @@ from invenio_testrig.cli.setup.dependencies import (
 )
 from invenio_testrig.cli.setup.repository import clone_repositories
 from invenio_testrig.github import GitApi, GitCache
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 @click.command("setup")
@@ -177,9 +177,12 @@ def setup_cmd(
     config.test_mode = test_mode
     config.verbose = verbose
     config.debug = debug
+    config.slow_test_splitting = not no_slow_test_splitting
 
     # Override seed_repository configurations if provided
-    api = GitApi(GitCache(workdir / "git_cache"))
+    api = GitApi(
+        GitCache(workdir / "git_cache", extra_env=config.env), extra_env=config.env
+    )
     if name:
         config.name = name
     if patch_mode:

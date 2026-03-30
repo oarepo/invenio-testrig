@@ -29,7 +29,7 @@ import click
 import yaml
 
 from invenio_testrig.cli.base import with_progress
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 from invenio_testrig.utils import call_executable_quietly
 
 # region CLI Command
@@ -89,12 +89,16 @@ from invenio_testrig.utils import call_executable_quietly
 @click.option(
     "--repository",
     help="Override seed repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)",
-    default="oarepo/inveniordm-reference-repo@master",
 )
 @click.option(
     "--e2e",
     help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
-    default="oarepo/invenio-e2e@main",
+)
+@click.option(
+    "--e2e-ui",
+    is_flag=True,
+    default=False,
+    help="Run thorough UI tests in addition to API tests. If not set, only smoketests are run.",
 )
 @click.option(
     "--ignore-uv-lock",
@@ -124,6 +128,7 @@ def github_cmd(
     testrig_branch: str | None,
     repository: str | None,
     e2e: str | None,
+    e2e_ui: bool,
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
@@ -157,6 +162,12 @@ def github_cmd(
         testrig_repository = "oarepo/invenio-testrig"
     if testrig_branch is None:
         testrig_branch = "master"
+
+    if not config_file:
+        if repository is None:
+            repository = "oarepo/inveniordm-reference-repo@master"
+        if e2e is None:
+            e2e = "oarepo/invenio-e2e@main"
 
     if not e2e or e2e.lower() == "none":
         e2e = None
@@ -197,6 +208,7 @@ def github_cmd(
         testrig_branch,
         repository,
         e2e,
+        e2e_ui,
         ignore_uv_lock,
         config_file,
         slow_test_splitting,
@@ -446,16 +458,9 @@ def _determine_target_repository(target: str | None, username: str, progress: Pr
         return target
 
     # Put the testrig into the user's namespace by default
-    try:
-        target_repo = f"{username}/invenio-testrig-client"
-        progress.info(f"Will use default target: {target_repo}")
-        return target_repo
-    except subprocess.CalledProcessError:
-        progress.error(
-            "Failed to get GitHub username. Are you logged in to gh? "
-            "Run 'gh auth login' first."
-        )
-        raise SystemExit(1)
+    target_repo = f"{username}/invenio-testrig-client"
+    progress.info(f"Will use default target: {target_repo}")
+    return target_repo
 
 
 def _check_repository_exists(target_repo: str, progress: Progress) -> bool:
@@ -527,7 +532,8 @@ def _create_repository(
                     target_repo,
                     str(temp_dir),
                     "--",
-                    "--recurse-submodules",
+                    "--single-branch",
+                    "--depth=1",
                 ]
             )
 
@@ -630,7 +636,8 @@ def _update_existing_repository_workflow(
                 target_repo,
                 str(temp_dir),
                 "--",
-                "--recurse-submodules",
+                "--single-branch",
+                "--depth=1",
             ]
         )
 
@@ -714,6 +721,7 @@ def _dispatch_workflow(
     testrig_branch: str | None,
     repository: str | None,
     e2e: str | None,
+    e2e_ui: bool,
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
@@ -733,6 +741,7 @@ def _dispatch_workflow(
     :param testrig_branch: Branch of invenio-testrig to use
     :param repository: Override repository.git configuration
     :param e2e: Override repository.e2e configuration
+    :param e2e_ui: Run thorough UI tests in addition to API tests
     :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
     :param config_file: Path to configuration file or URL
     :param slow_test_splitting: Enable splitting of slow tests into multiple parts
@@ -794,6 +803,9 @@ def _dispatch_workflow(
         # Add e2e if provided
         if e2e:
             workflow_cmd.extend(["-f", f"e2e={e2e}"])
+
+        if e2e_ui:
+            workflow_cmd.extend(["-f", f"e2e-ui={str(e2e_ui).lower()}"])
 
         # Add ignore-uv-lock if provided
         if ignore_uv_lock:

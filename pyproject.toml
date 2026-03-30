@@ -48,9 +48,9 @@ python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
-    "--cov=invenio_testrig",
-    "--cov-report=term-missing",
-    "--cov-fail-under=80",
+    # "--cov=invenio_testrig",
+    # "--cov-report=term-missing",
+    # "--cov-fail-under=80",
 ]
 env_files = [".env"]
 

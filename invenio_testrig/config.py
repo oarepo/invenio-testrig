@@ -21,9 +21,9 @@ from typing import Literal, Self, cast
 import marshmallow as ma
 from marshmallow_dataclass import class_schema
 
-from invenio_testrig.github.types import GitReference, Patch
-from invenio_testrig.types import ExecutionStatus, TestedPackageInfo
 from invenio_testrig.utils import ExtensibleMixin
+
+from .types import GitReference, Patch
 
 
 def _normalize_list(lst: list | None) -> list[str]:
@@ -44,6 +44,9 @@ class Repository(ExtensibleMixin):
     e2e: GitReference | None
     """Git reference to the E2E package that will be used for testing."""
 
+    install: list[str] | None
+    """Installation command to run instead of `pip install` for the initial installation of the repository."""
+
     test: list[str] | None
     """Test command to run on the installed repository."""
 
@@ -59,29 +62,51 @@ class Github(ExtensibleMixin):
     """Organization name on GitHub to match against when resolving repositories."""
 
     test: list[str]
-    """The test command to run to tested packages that match include directive."""
+    """The test command to run to tested packages that match include directive.
 
-    include: list[str] | None = field(default_factory=list)
+    It is a single command, arguments should be passed as a list of strings.
+    """
+
+    install: list[str] = field(default_factory=list)
+    """Installation command to run instead of `pip install` for the initial installation of the repository.
+
+    It is a single command, arguments should be passed as a list of strings.
+    """
+
+    include: list[str] = field(default_factory=list)
     """List of package regexes to include in the testing process. If empty, all packages are included."""
 
-    exclude: list[str] | None = field(default_factory=list)
+    exclude: list[str] = field(default_factory=list)
     """List of package regexes to exclude from the testing process. If empty, no packages are excluded."""
 
-    extras: list[str] | None = field(default_factory=list)
+    package_map: dict[str, str] = field(default_factory=dict)
+    """Map of package names to github repositories.
+
+    If package is not in the package map, it is supposed that the repository name of the package
+    is the same as the package name.
+    """
+
+    extras: list[str] = field(default_factory=list)
     """List of extras to install for tested packages that match include directive."""
 
-    freeze: list[str] | None = field(default_factory=list)
+    freeze: list[str] = field(default_factory=list)
     """List of version constraints to apply when resolving dependencies for tested packages that match include directive.
 
     If specified, these packages will be reinstalled with the specified version constraints before running the tests.
     """
 
-    slow_packages: dict[str, list[str]] | None = field(default_factory=dict)
+    slow_packages: dict[str, list[str]] = field(default_factory=dict)
     """List of packages that are slow to test.
 
     Testrig will try to run these packages first and in parallel with the rest of the packages,
     so that we can get results faster.
     """
+
+    default_branch: str | None = None
+    """Default branch to use for the repositories inside the organization. If not set,
+    defaults to the default branch of the repository.
+
+    For upstream mode, this is the branch that will be used as the base branch for testing."""
 
     def __post_init__(self):
         """Normalize package lists to lowercase for case-insensitive matching.
@@ -93,7 +118,28 @@ class Github(ExtensibleMixin):
         self.exclude = _normalize_list(self.exclude)
         self.freeze = _normalize_list(self.freeze)
         self.test = list(self.test)
+        self.install = list(self.install or [])
         self.extras = list(self.extras or [])
+        self.package_map = self.package_map or {}
+
+
+@dataclass
+class TestedPackageInfo:
+    """Information about a package that is being tested, derived from the github configuration.
+
+    This one is generated automatically based on the github configuration
+    and the dependencies, so it is not extensible.
+    """
+
+    reference: GitReference
+    github_entry: Github
+    patches: list[Patch] = field(default_factory=list)
+    unpatched_reference: GitReference | None = None
+    patched_reference: GitReference | None = None
+
+    @property
+    def package(self) -> str:
+        return self.reference.package
 
 
 @dataclass(init=False)
@@ -158,8 +204,14 @@ class Config(ExtensibleMixin):
     * ``all``: Test all packages regardless of whether they are affected by the patches.
     """
 
+    env: dict[str, str] = field(default_factory=dict)
+    """Environment variables to set for installation/test execution."""
+
     test_timeout: int = 90
     """Timeout for each test execution in minutes. 0 means no timeout."""
+
+    slow_test_splitting: bool = True
+    """Whether to split slow tests into multiple parts."""
 
     @property
     def workdir(self) -> Path:
@@ -251,41 +303,3 @@ class Config(ExtensibleMixin):
 
 
 ConfigSchema = class_schema(Config)
-
-
-ExecutionStatusSchema = class_schema(ExecutionStatus)
-
-
-def load_execution_status(file: str | Path) -> ExecutionStatus:
-    """Load execution status from JSON file.
-
-    :param file: Path to the JSON execution status file
-
-    :return: Loaded ExecutionStatus instance
-
-    :raises ValueError: If the file doesn't contain a valid JSON object
-    :raises FileNotFoundError: If the file doesn't exist
-    """
-    path = Path(file)
-    with open(path, "r") as stream:
-        raw_data = json.load(stream)
-        schema = ExecutionStatusSchema()
-        if isinstance(raw_data, dict):
-            return cast(ExecutionStatus, schema.load(raw_data))
-        else:
-            raise ValueError(
-                f"Expected execution status file to contain a JSON object, got {type(raw_data)}"
-            )
-
-
-def save_execution_status(file: str | Path, status: ExecutionStatus) -> None:
-    """Save execution status to JSON file.
-
-    :param file: Path where the execution status should be saved
-    :param status: ExecutionStatus instance to save
-    """
-    path = Path(file)
-    formatted_status = json.dumps(
-        ExecutionStatusSchema().dump(status), indent=2, sort_keys=True
-    )
-    path.write_text(formatted_status)

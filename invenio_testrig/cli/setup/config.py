@@ -16,9 +16,10 @@ import marshmallow as ma
 import yaml
 
 from invenio_testrig.config import Config, ConfigSchema
-from invenio_testrig.github import GitApi, GitCache, GitReferenceSchema
+from invenio_testrig.github import GitApi, GitCache
 from invenio_testrig.hooks import run_hook
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
+from invenio_testrig.types import GitReferenceSchema
 
 
 def _load_yaml_config_data(config_yaml_path_or_url: str | None) -> dict:
@@ -119,8 +120,12 @@ def initialize_config(
     """
     # Read the yaml config file
     schema = GitReferenceSchema()
-    git_api = GitApi(GitCache(workdir / "git_cache"))
     config_data = _load_yaml_config_data(config_yaml_path_or_url)
+    extra_env = config_data.get("env", {})
+    git_api = GitApi(
+        GitCache(workdir / "git_cache", extra_env=extra_env),
+        extra_env=extra_env,
+    )
 
     # resolve all references before loading
     config_data["patches"] = [

@@ -11,9 +11,9 @@ This module provides patchers that use the upstream default branch for
 unpatched versions and apply patches on top, with either overwrite or rebase modes.
 """
 
-from invenio_testrig.github.types import GitReference
+from invenio_testrig.config import TestedPackageInfo
 from invenio_testrig.patchers.base import Patcher
-from invenio_testrig.types import TestedPackageInfo
+from invenio_testrig.types import GitReference
 
 
 class UpstreamRebasePatcher(Patcher):
@@ -38,4 +38,5 @@ class UpstreamRebasePatcher(Patcher):
             org=package_info.reference.org,
             repo=package_info.reference.repo,
             package=package_name,
+            branch=package_info.github_entry.default_branch,
         )

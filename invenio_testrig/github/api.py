@@ -18,15 +18,17 @@ testing multiple packages with multiple references several times.
 """
 
 import logging
+import os
 import re
 import shutil
 import subprocess
+from functools import cached_property
 from pathlib import Path
 from typing import Any, cast
 
 from invenio_testrig.errors import PatchApplicationError
 from invenio_testrig.github.cache import GitCache
-from invenio_testrig.github.types import (
+from invenio_testrig.types import (
     GitReference,
     GitReferenceSchema,
     Patch,
@@ -44,11 +46,14 @@ class GitApi:
     applying patches, and managing branches, tags, and pull requests.
     """
 
-    def __init__(self, cache: GitCache):
+    def __init__(self, cache: GitCache, extra_env: dict[str, str]):
         """Initialize GitApi with a cache instance.
 
         :param cache: GitCache instance for caching repository data
         """
+        if extra_env is None:
+            raise ValueError("extra_env must be provided")
+        self._extra_env = extra_env
         self._cache = cache
 
     def parse_reference(
@@ -176,6 +181,18 @@ class GitApi:
         """
         return self._cache.get_branches(org, repo)
 
+    def get_tag_for_version(self, org: str, repo: str, version: str) -> str | None:
+        """
+        Get the tag for the given version (with or without 'v' prefix).
+
+        :param org: GitHub organization or user name
+        :param repo: Repository name
+        :param version: Version string (e.g., "1.0.0", "v1.0.0")
+
+        :return: Tag name if found, None otherwise
+        """
+        return self._cache.get_tag_for_version(org, repo, version)
+
     def _fill_pr_info(self, git_ref: GitReference) -> None:
         """Ensure git_ref.pr_info is populated from a PR number or a base-branch comparison."""
         if git_ref.pr is not None and git_ref.pr_info is None:
@@ -252,6 +269,7 @@ class GitApi:
             call_executable_quietly(
                 ["git", "checkout", checkout_target],
                 cwd=output_directory,
+                env=self.prepared_env,
             )
 
     def apply_pr_commits(self, directory: Path, reference: GitReference) -> None:
@@ -329,6 +347,7 @@ class GitApi:
             call_executable_quietly(
                 ["git", "remote", "add", remote_name, remote_url],
                 cwd=directory,
+                env=self.prepared_env,
             )
         except subprocess.CalledProcessError:
             # Remote might already exist, which is fine
@@ -356,6 +375,7 @@ class GitApi:
             call_executable_quietly(
                 ["git", "fetch", remote_name],
                 cwd=directory,
+                env=self.prepared_env,
             )
         except subprocess.CalledProcessError as e:
             error_msg = f"Failed to fetch from {remote_url}"
@@ -394,6 +414,7 @@ class GitApi:
                         commit_sha,
                     ],
                     cwd=directory,
+                    env=self.prepared_env,
                 )
             except subprocess.CalledProcessError as e:
                 error_msg = f"Failed to cherry-pick commit {commit_sha}"
@@ -413,6 +434,7 @@ class GitApi:
             call_executable_quietly(
                 ["git", "remote", "remove", remote_name],
                 cwd=directory,
+                env=self.prepared_env,
             )
         except subprocess.CalledProcessError:
             # If cleanup fails, it's not critical
@@ -474,6 +496,7 @@ class GitApi:
                 capture_output=True,
                 text=True,
                 check=True,
+                env=self.prepared_env,
             )
             return result.stdout.strip().split("\n") if result.stdout.strip() else []
         except subprocess.CalledProcessError as e:
@@ -502,6 +525,7 @@ class GitApi:
             call_executable_quietly(
                 ["git", "remote", "add", remote_name, remote_url],
                 cwd=directory,
+                env=self.prepared_env,
             )
         except subprocess.CalledProcessError:
             # Remote might already exist, which is fine
@@ -540,6 +564,7 @@ class GitApi:
             call_executable_quietly(
                 ["git", "fetch", remote_name, branch_to_fetch],
                 cwd=directory,
+                env=self.prepared_env,
             )
             return branch_to_fetch
         except subprocess.CalledProcessError:
@@ -553,6 +578,7 @@ class GitApi:
                 call_executable_quietly(
                     ["git", "fetch", remote_name, default_branch],
                     cwd=directory,
+                    env=self.prepared_env,
                 )
                 log.info(f"Successfully fetched default branch: {default_branch}")
                 return default_branch
@@ -593,6 +619,7 @@ class GitApi:
                 capture_output=True,
                 text=True,
                 check=True,
+                env=self.prepared_env,
             )
             return result.stdout.strip().split("\n") if result.stdout.strip() else []
         except subprocess.CalledProcessError as e:
@@ -683,10 +710,7 @@ class GitApi:
                 "GitReference must have a commit to find commits from version."
             )
         return self._cache.get_commits_from_version(
-            ref.org,
-            ref.repo,
-            ref.commit,
-            f"v{ref.actual_version}" if ref.actual_version else None,
+            ref.org, ref.repo, ref.commit, ref.branch
         )
 
     def get_last_commits(
@@ -711,6 +735,7 @@ class GitApi:
                 capture_output=True,
                 text=True,
                 check=True,
+                env=self.prepared_env,
             )
             if not result.stdout:
                 return []
@@ -723,3 +748,10 @@ class GitApi:
             return commits
         except subprocess.CalledProcessError:
             return []
+
+    @cached_property
+    def prepared_env(self) -> dict[str, str]:
+        """Prepare the environment variables for Git commands."""
+        env = os.environ.copy()
+        env.update(self._extra_env)
+        return env

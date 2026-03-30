@@ -11,22 +11,12 @@ Provides the matrix command that generates a JSON matrix of tested packages
 for GitHub Actions workflow matrix strategy, enabling parallel test execution.
 """
 
-import json
-from pathlib import Path
-
 import click
 import httpx
 from rich.console import Console
 from rich.table import Table
 
-from invenio_testrig.cli.base import (
-    with_config,
-    with_debug,
-    with_progress,
-    with_verbose,
-)
 from invenio_testrig.config import Config
-from invenio_testrig.types import Progress
 
 
 class ReportHelper:

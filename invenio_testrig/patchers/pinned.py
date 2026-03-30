@@ -11,9 +11,9 @@ This module provides patchers that use exact pinned commits for both
 unpatched and patched versions, with either overwrite or rebase modes.
 """
 
-from invenio_testrig.github.types import GitReference
+from invenio_testrig.config import TestedPackageInfo
 from invenio_testrig.patchers.base import Patcher
-from invenio_testrig.types import TestedPackageInfo
+from invenio_testrig.types import GitReference
 
 
 class PinnedRebasePatcher(Patcher):

@@ -12,12 +12,13 @@ import re
 import tempfile
 from pathlib import Path
 
-from invenio_testrig.config import Config, Github
+from invenio_testrig.config import Config, Github, TestedPackageInfo
 from invenio_testrig.errors import PatchApplicationError
-from invenio_testrig.github import GitApi, GitCache, GitReference
+from invenio_testrig.github import GitApi, GitCache
 from invenio_testrig.hooks import run_hook
+from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
-from invenio_testrig.types import Progress, TestedPackageInfo
+from invenio_testrig.types import GitReference
 
 # region Dependency Collection
 
@@ -42,7 +43,10 @@ def collect_dependencies(
     :param progress: Progress reporter for status updates
     """
     git_ref = config.seed_repository.git
-    git_api = GitApi(GitCache(config.workdir_path("git_cache")))
+    git_api = GitApi(
+        GitCache(config.workdir_path("git_cache"), extra_env=config.env),
+        extra_env=config.env,
+    )
 
     # Clone the repository to a temporary directory
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -60,7 +64,7 @@ def collect_dependencies(
             "Collecting dependencies (might take a while as the repository might be installed)...",
             icon="📦",
         )
-        python_api = PythonAPI(uv_executable, python_version)
+        python_api = PythonAPI(config.env, uv_executable, python_version)
         dependencies = python_api.get_dependencies(
             repo_path, ignore_uv_lock=ignore_uv_lock
         )
@@ -94,11 +98,14 @@ def _resolve_package_reference(
     if version.startswith("https://"):
         reference = git_api.parse_reference(version)
     else:
+        org = github_entry.org or ""
+        repo = github_entry.package_map.get(package_name, package_name)
+        tag = git_api.get_tag_for_version(org, repo, version)
         reference = GitReference(
-            org=github_entry.org or "",
-            repo=package_name,
+            org=org,
+            repo=repo,
             package=package_name,
-            branch=f"v{version}",
+            branch=tag,
         )
     return git_api.resolve_reference(reference)
 
@@ -116,14 +123,14 @@ def _find_git_repository_config(config: Config, package_name: str) -> Github | N
 
         # Check if package matches any include pattern
         if not any(
-            re.match(pattern, package_name, re.IGNORECASE)
+            re.match(f"^{pattern}$", package_name, re.IGNORECASE)
             for pattern in github_entry.include or []
         ):
             continue
 
         # Check if package matches any exclude pattern
         if any(
-            re.match(pattern, package_name, re.IGNORECASE)
+            re.match(f"^{pattern}$", package_name, re.IGNORECASE)
             for pattern in exclude_patterns
         ):
             continue
@@ -154,8 +161,8 @@ def filter_packages(
 
     :raises ValueError: If no packages exist in config
     """
-    git_cache = GitCache(config.workdir_path("git_cache"))
-    git_api = GitApi(git_cache)
+    git_cache = GitCache(config.workdir_path("git_cache"), extra_env=config.env)
+    git_api = GitApi(git_cache, extra_env=config.env)
 
     progress.text("::group::🔍 Filter Packages Options")
     progress.text(f"  enable_slow_test_splitting: {enable_slow_test_splitting}")
@@ -187,7 +194,7 @@ def filter_packages(
         [
             (
                 github_entry.org,
-                package_name,
+                github_entry.package_map.get(package_name, package_name),
             )
             for package_name, github_entry in github_entries.items()
         ],
@@ -213,21 +220,8 @@ def filter_packages(
         # Package matches this github config
         tested_packages[package_name] = TestedPackageInfo(
             reference=reference,
-            test=github_entry.test,
-            extras=github_entry.extras or [],
-            freeze=github_entry.freeze or [],
-            slow_split=(
-                (github_entry.slow_packages or {}).get(package_name, None)
-                if enable_slow_test_splitting
-                else None
-            ),
+            github_entry=github_entry,
         )
-        if (github_entry.slow_packages or {}).get(package_name, None):
-            progress.text(
-                f"  Package {package_name}: slow_packages config exists, "
-                f"enable_slow_test_splitting={enable_slow_test_splitting}, "
-                f"final slow_split={tested_packages[package_name].slow_split}"
-            )
 
     for patch in config.patches:
         if patch.package in tested_packages:
@@ -240,14 +234,7 @@ def filter_packages(
             )
         tested_packages[package_name] = TestedPackageInfo(
             reference=patch,
-            test=github_entry.test,
-            extras=github_entry.extras or [],
-            freeze=github_entry.freeze or [],
-            slow_split=(
-                (github_entry.slow_packages or {}).get(package_name, None)
-                if enable_slow_test_splitting
-                else None
-            ),
+            github_entry=github_entry,
         )
 
     # Add tested packages to the config

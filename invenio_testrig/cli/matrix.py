@@ -22,8 +22,8 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.config import Config
-from invenio_testrig.types import Progress
+from invenio_testrig.config import Config, TestedPackageInfo
+from invenio_testrig.progress import Progress
 
 
 @click.command("matrix", hidden=True)
@@ -34,7 +34,11 @@ from invenio_testrig.types import Progress
 )
 @with_verbose
 @with_debug
-def matrix_cmd(config: Config, github_output_file: Path, progress: Progress):
+def matrix_cmd(
+    config: Config,
+    github_output_file: Path,
+    progress: Progress,
+):
     """Generate GitHub Actions test matrices for tested packages.
 
     Reads the tested packages from config and writes two JSON matrices to the
@@ -46,15 +50,20 @@ def matrix_cmd(config: Config, github_output_file: Path, progress: Progress):
     """
     tested_packages = config.tested_packages
 
+    def slow_split(info: TestedPackageInfo) -> list[str]:
+        if config.slow_test_splitting:
+            return info.github_entry.slow_packages.get(info.package, [])
+        return []
+
     # Split packages into fast and slow
     fast_packages = [
-        package for package, info in tested_packages.items() if not info.slow_split
+        package for package, info in tested_packages.items() if not slow_split(info)
     ]
     slow_packages = [
         f"{package}#{idx}"
         for package, info in tested_packages.items()
-        for idx in range(len(info.slow_split or []) + 1)
-        if info.slow_split
+        for idx in range(len(slow_split(info)) + 1)
+        if slow_split(info)
     ]
 
     with open(github_output_file, "a") as f:

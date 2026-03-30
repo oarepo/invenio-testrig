@@ -12,7 +12,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from invenio_testrig.config import Config
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
 
 
 def collect_warnings(

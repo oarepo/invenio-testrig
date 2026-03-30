@@ -28,12 +28,10 @@ from invenio_testrig.cli.base import (
     with_verbose,
 )
 from invenio_testrig.cli.utils import process_warnings
-from invenio_testrig.config import (
-    Config,
-    save_execution_status,
-)
+from invenio_testrig.config import Config, Github, TestedPackageInfo
+from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
-from invenio_testrig.types import ExecutionStatus, Progress, TestedPackageInfo
+from invenio_testrig.report import ExecutionStatus, save_execution_status
 
 from .repo_test import cmd_repo
 
@@ -43,14 +41,27 @@ from .repo_test import cmd_repo
 @cmd_repo.command("e2e")
 @click.option("--ignore-uv-lock", is_flag=True, default=False)
 @click.option("--apply-patches", is_flag=True, default=False)
+@click.option("--thorough-ui", is_flag=True, default=False)
+@click.option("--smoketest-ui", is_flag=True, default=False)
 @with_progress
 @with_config
 @with_verbose
 @with_debug
 def cmd_repo_test(
-    config: Config, progress: Progress, ignore_uv_lock: bool, apply_patches: bool
+    config: Config,
+    progress: Progress,
+    ignore_uv_lock: bool,
+    apply_patches: bool,
+    thorough_ui: bool,
+    smoketest_ui: bool,
 ):
     """Run tests for the given repository."""
+    progress.info("Will run E2E tests for the repository")
+    progress.info(f"Apply patches: {apply_patches}")
+    progress.info(f"Thorough UI: {thorough_ui}")
+    progress.info(f"Smoketest UI: {smoketest_ui}")
+    progress.info(f"Ignore UV lock: {ignore_uv_lock}")
+
     # Setup log and status files using "repo" as the package name
     log_dir = config.workdir_path("artifacts") / "e2e"
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -71,10 +82,13 @@ def cmd_repo_test(
     # Create a minimal TestedPackageInfo for the repository
     repo_info = TestedPackageInfo(
         reference=config.seed_repository.git,
-        test=config.seed_repository.test or [],
-        extras=[],
-        freeze=[],
-        patches=[],
+        github_entry=Github(
+            org="",
+            install=config.seed_repository.install or [],
+            test=config.seed_repository.test or [],
+            extras=[],
+            freeze=[],
+        ),
     )
 
     if not config.seed_repository.e2e:
@@ -124,12 +138,13 @@ def cmd_repo_test(
         ["pnpm", "install"],
         cwd=test_repository_path / "e2e",
         check=True,
+        env=os.environ | config.env,
     )
     runner_handle = None
     server_log_fh = None
     try:
         # Save the actual uv pip freeze into the artifacts
-        python_api = PythonAPI()
+        python_api = PythonAPI(config.env)
 
         python_api.run_in_venv(
             test_repository_path,
@@ -215,6 +230,7 @@ def cmd_repo_test(
             cwd=test_repository_path,
             env={
                 **os.environ,
+                **config.env,
                 "VIRTUAL_ENV": str(test_repository_path / ".venv"),
                 "INVENIO_RATELIMIT_ENABLED": "False",
                 "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
@@ -226,29 +242,52 @@ def cmd_repo_test(
         # we need to wait cca 1 minute for the output to be ready
         time.sleep(60)
 
-        subprocess.run(
-            ["npm", "run", "collect-translations", "invenio-app-rdm"],
-            cwd=test_repository_path / "e2e",
-            check=True,
-        )
+        for locale in ["en", "de", "cs"]:
+            python_api.run_in_venv(
+                test_repository_path,
+                [
+                    "pnpm",
+                    "run",
+                    "build-translations",
+                    "--",
+                    "-l",
+                    locale,
+                ],
+                cwd=test_repository_path / "e2e",
+            )
 
         # for now, remove the ui tests, only run api tests
-        ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
-        if ui_spec.exists():
-            ui_spec.unlink()
+        # ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
+        # if ui_spec.exists():
+        #     ui_spec.unlink()
 
         subprocess.run(
             ["npx", "playwright", "install"],
             cwd=test_repository_path / "e2e",
             check=True,
+            env=os.environ | config.env,
         )
 
+        playwright_opts = ["--max-failures", "10", "--retries", "1"]
+
+        if not thorough_ui:
+            # always run API tests
+            playwright_grep = [
+                "@api",
+            ]
+            if smoketest_ui:
+                playwright_grep.append("@smoke")
+            playwright_opts.extend(["--grep", "|".join(playwright_grep)])
+
+        progress.info(f"Running Playwright tests with {' '.join(playwright_opts)}")
+
         subprocess.run(
-            ["npx", "playwright", "test"],
+            ["npx", "playwright", "test", *playwright_opts],
             cwd=test_repository_path / "e2e",
             check=True,
             env={
                 **os.environ,
+                **config.env,
                 "INVENIO_USER_EMAIL": os.environ.get(
                     "INVENIO_USER_EMAIL", "user@demo.org"
                 ),
@@ -360,7 +399,7 @@ def install_repository(
     :param ignore_uv_lock: Whether to ignore the UV lock file.
     """
     shutil.copytree(clone_path / "repo", tested_repo_path)
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.install_project(tested_repo_path, ignore_uv_lock=ignore_uv_lock)
 
 
@@ -381,7 +420,7 @@ def apply_package_patches(
 
     :return: List of patched package information
     """
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.install_patched_dependencies(
         project_path=tested_repo_path,
         packages_root=packages_path,
@@ -414,7 +453,7 @@ def run_repository_tests(
     test_command = config.seed_repository.test
     assert test_command is not None
 
-    python_api = PythonAPI()
+    python_api = PythonAPI(config.env)
     python_api.run_in_venv(
         project_path=tested_repo_path,
         command=test_command,

@@ -15,15 +15,18 @@ repository metadata, branch information, and pull request details.
 import json
 import logging
 import multiprocessing
+import os
+import re
 import shutil
 import subprocess
+from functools import cached_property
 from pathlib import Path
 from typing import Any
 
 import semver
 
-from invenio_testrig.github.types import PullRequestInfo
-from invenio_testrig.types import Progress
+from invenio_testrig.progress import Progress
+from invenio_testrig.types import PullRequestInfo
 from invenio_testrig.utils import call_executable_quietly
 
 log = logging.getLogger(__name__)
@@ -47,11 +50,14 @@ class GitCache:
     - Getting names of branches and tags sorted by most recently updated
     """
 
-    def __init__(self, cache_dir: Path):
+    def __init__(self, cache_dir: Path, extra_env: dict[str, str]):
         """Initialize the GitCache with a cache directory.
 
         :param cache_dir: Path to the directory where cached repository data will be stored
         """
+        if extra_env is None:
+            raise ValueError("extra_env must be provided")
+        self._extra_env = extra_env
         self._cache_dir = cache_dir.resolve()
         self._pr_cache: dict[tuple[str, str, int], PullRequestInfo] = {}
 
@@ -117,6 +123,7 @@ class GitCache:
             ["git", "rev-list", f"{base_commit}..{branch_commit}"],
             cwd=cache_path,
             always_quiet=True,  # Don't print errors if this fails
+            env=self.prepared_env,
         )
         commits = output.strip().split("\n") if output.strip() else []
         return PullRequestInfo(
@@ -140,21 +147,45 @@ class GitCache:
         cache_path = self._clone_repo(org, repo)
         ref = branch or "HEAD"
 
-        # Try direct git rev-parse strategies first (fast path)
-        commit = self._try_rev_parse_strategies(cache_path, ref)
-        if commit:
-            return commit
+        for candidate_ref in self._get_ref_resolution_candidates(ref):
+            # Try direct git rev-parse strategies first (fast path)
+            commit = self._try_rev_parse_strategies(cache_path, candidate_ref)
+            if commit:
+                return commit
 
-        # Fall back to parsing for-each-ref output (slower path)
-        commit = self._try_for_each_ref_strategy(cache_path, ref)
-        if commit:
-            return commit
+            # Fall back to parsing for-each-ref output (slower path)
+            commit = self._try_for_each_ref_strategy(cache_path, candidate_ref)
+            if commit:
+                return commit
 
         # Special error message for HEAD resolution failure
         if branch is None:
             raise ValueError(f"Could not resolve default branch for {org}/{repo}")
 
         raise ValueError(f"Could not resolve ref '{ref}' for {org}/{repo}")
+
+    def _get_ref_resolution_candidates(self, ref: str) -> list[str]:
+        """Build a list of equivalent ref names to try during resolution.
+
+        Supports repositories that use prerelease tags with or without a dot before
+        the prerelease marker, e.g. ``v6.0.0.dev9``/``v6.0.0dev9``,
+        ``v6.0.0a1``/``v6.0.0.a1`` and ``v6.0.0b1``/``v6.0.0.b1``.
+        """
+        candidates = [ref]
+        if not ref.startswith("v"):
+            return candidates
+
+        prerelease_markers = ("dev", "a", "b", "rc")
+
+        for marker in prerelease_markers:
+            dotted = f".{marker}"
+            if dotted in ref:
+                candidates.append(ref.replace(dotted, marker))
+            elif marker in ref:
+                candidates.append(ref.replace(marker, dotted))
+
+        # Preserve order while removing duplicates
+        return list(dict.fromkeys(candidates))
 
     def _try_rev_parse_strategies(self, cache_path: Path, ref: str) -> str | None:
         """Try to resolve reference using git rev-parse with multiple patterns.
@@ -174,6 +205,7 @@ class GitCache:
                 output, _ = call_executable_quietly(
                     ["git", "rev-parse", pattern],
                     cwd=cache_path,
+                    env=self.prepared_env,
                 )
                 return output.strip()
             except subprocess.CalledProcessError:
@@ -192,6 +224,7 @@ class GitCache:
             remotes_output, _ = call_executable_quietly(
                 ["git", "remote"],
                 cwd=cache_path,
+                env=self.prepared_env,
             )
             return remotes_output.strip().split("\n") if remotes_output.strip() else []
         except subprocess.CalledProcessError:
@@ -238,6 +271,7 @@ class GitCache:
                     "refs/remotes/",
                 ],
                 cwd=cache_path,
+                env=self.prepared_env,
             )
 
             remotes = self._get_remote_names(cache_path)
@@ -290,6 +324,7 @@ class GitCache:
         output, _ = call_executable_quietly(
             ["git", "symbolic-ref", "refs/remotes/origin/HEAD"],
             cwd=cache_path,
+            env=self.prepared_env,
         )
         return output.strip().split("/")[-1]
 
@@ -312,6 +347,7 @@ class GitCache:
                 "refs/remotes/origin/",
             ],
             cwd=cache_path,
+            env=self.prepared_env,
         )
         branches = output.strip().split("\n")
         return [
@@ -338,7 +374,8 @@ class GitCache:
         # Prepare arguments for the worker pool
         # Pass cache_dir path instead of GitCache instance to avoid pickling issues
         clone_args = [
-            (self._cache_dir, org, repo, progress) for org, repo in repositories
+            (self._cache_dir, org, repo, progress, self.prepared_env)
+            for org, repo in repositories
         ]
 
         # Use multiprocessing to clone repositories in parallel
@@ -371,7 +408,8 @@ class GitCache:
                 f"{org}/{repo}",
                 "--json",
                 "commits,headRepository,headRefName,headRepositoryOwner",
-            ]
+            ],
+            env=self.prepared_env,
         )
         pr_info: Any = json.loads(output)
         head_org = pr_info["headRepositoryOwner"]["login"]
@@ -411,7 +449,8 @@ class GitCache:
                 str(repo_cache_path),
                 "--",
                 "--recurse-submodules",
-            ]
+            ],
+            env=self.prepared_env,
         )
         call_executable_quietly(
             [
@@ -420,6 +459,7 @@ class GitCache:
                 "--all",
             ],
             cwd=repo_cache_path,
+            env=self.prepared_env,
         )
 
         return repo_cache_path
@@ -451,6 +491,7 @@ class GitCache:
                 ],
                 cwd=cache_path,
                 always_quiet=True,  # Don't print errors if this fails
+                env=self.prepared_env,
             )
             tags_on_commit = output.strip().split("\n")
             tags_on_commit = [tag for tag in tags_on_commit if tag.startswith("v")]
@@ -477,6 +518,7 @@ class GitCache:
                 ],
                 cwd=cache_path,
                 always_quiet=True,  # Don't print errors if this fails
+                env=self.prepared_env,
             )
             ret = output.strip().split("\n")
             ret = [tag for tag in ret if tag.startswith("v")]  # filter out empty lines
@@ -517,14 +559,77 @@ class GitCache:
                 ],
                 cwd=cache_path,
                 always_quiet=True,  # Don't print errors if this fails
+                env=self.prepared_env,
             )
             return output.strip().split("\n") if output.strip() else []
         except subprocess.CalledProcessError:
             return []
 
+    def get_tag_for_version(self, org: str, repo: str, version: str) -> str | None:
+        """Get the tag for the given version (with or without 'v' prefix)."""
+        if version.startswith("v"):
+            version = version[1:]
+        # Example versions:
+        # v1.0.0
+        # v1.0.0dev3
+        # v1.0.0.dev3
+        # v1.0.0a1+local234
+        # v1.0.0.a1+local234
+        # We check both dot before pre-release and without the dot
+        variants = []
+        version_parts = version.split(".")
+        numeric_parts = []
+        additional_parts = []
+        for p_idx, p in enumerate(version_parts):
+            try:
+                int(p)
+                numeric_parts.append(p)
+            except ValueError:
+                # it might start with digits like 1dev56, check that case
+                match = re.match(r"(\d*)(.*)", p)
+                if match and match.group(1):
+                    numeric_parts.append(match.group(1))
+                    additional_parts.append(match.group(2))
+                    additional_parts.extend(version_parts[p_idx + 1 :])
+                else:
+                    additional_parts = version_parts[p_idx:]
+                break
+
+        variants.append(".".join(numeric_parts) + ".".join(additional_parts))
+        variants.append("".join(numeric_parts + additional_parts))
+
+        cache_path = self._clone_repo(org, repo)
+
+        # try both variants
+        for v in variants:
+            try:
+                output, _ = call_executable_quietly(
+                    [
+                        "git",
+                        "tag",
+                        "--list",
+                        f"v{v}",
+                    ],
+                    cwd=cache_path,
+                    always_quiet=True,
+                    env=self.prepared_env,
+                )
+                if output.strip():
+                    return output.strip()
+            except subprocess.CalledProcessError:
+                continue
+        return None
+
+    @cached_property
+    def prepared_env(self) -> dict[str, str]:
+        """Prepare the environment variables for Git commands."""
+        env = os.environ.copy()
+        env.update(self._extra_env)
+        return env
+
 
 def _clone_repo_worker(
-    cache_dir: Path, org: str, repo: str, progress: Progress
+    cache_dir: Path, org: str, repo: str, progress: Progress, extra_env
 ) -> None:
     """Worker function for parallel repository cloning.
 
@@ -537,5 +642,5 @@ def _clone_repo_worker(
     :param progress: Progress reporter
     """
     progress.info(f"Caching repository {org}/{repo}...", icon="📦")
-    cache = GitCache(cache_dir)
+    cache = GitCache(cache_dir, extra_env)
     cache._clone_repo(org, repo)

@@ -19,7 +19,7 @@ from urllib.parse import parse_qs, urlparse
 from lark import Lark, Token, Transformer
 from lark import exceptions as lark_exceptions
 
-from invenio_testrig.github.types import GitReference, VersionConstraint
+from invenio_testrig.types import GitReference, VersionConstraint
 
 
 def parse_string_reference(reference: str) -> GitReference:
@@ -87,35 +87,35 @@ def parse_version_constraints(constraints_str: str) -> list[VersionConstraint]:
 
 GIT_REFERENCE_GRAMMAR = r"""
     git_reference: [package_prefix] repo_ref [base_bracket]
-    
+
     package_prefix: NAME ":" WS*
-    
+
     repo_ref: NAME "/" NAME (branch_ref | pr_ref)?
-    
+
     branch_ref: "@" BRANCH_NAME
     pr_ref: "#" NUMBER
-    
+
     base_bracket: "[" NAME "]"
-    
+
     NAME: /[\w\-\.]+/
     BRANCH_NAME: /[\w\-\.\/]+/
     NUMBER: /\d+/
-    
+
     WS: /\s+/
-    
+
     %ignore WS
 """
 
 VERSION_CONSTRAINTS_GRAMMAR = r"""
     version_constraints: version_constraint (WS* "," WS* version_constraint)*
-    
+
     version_constraint: OPERATOR VERSION
-    
+
     OPERATOR: ">=" | "<=" | ">" | "<" | "==" | "!="
     VERSION: /\d+(\.\d+)*((a|alpha|b|beta|rc|c)(\.?\d+))?(\.post\d+)?(\.dev\d+)?(\+[\w\.]+)?/
-    
+
     WS: /\s+/
-    
+
     %ignore WS
 """
 

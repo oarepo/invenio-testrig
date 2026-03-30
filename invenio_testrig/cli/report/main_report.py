@@ -31,7 +31,8 @@ from invenio_testrig.cli.report.report_utils import (
     to_serializable,
 )
 from invenio_testrig.config import Config
-from invenio_testrig.types import Progress, ReportPackageData
+from invenio_testrig.progress import Progress
+from invenio_testrig.report import ReportPackageData
 
 # region Report Stats & Partitioning
 
