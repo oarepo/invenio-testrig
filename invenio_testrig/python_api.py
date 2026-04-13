@@ -268,7 +268,7 @@ class PythonAPI:
         project_path = project_path.resolve()
         lock_path = project_path / "uv.lock"
 
-        if not lock_path.exists():
+        if ignore_uv_lock or not lock_path.exists():
             self.install_project(project_path, ignore_uv_lock=ignore_uv_lock)
 
         if lock_path.exists():
