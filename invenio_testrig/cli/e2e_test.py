@@ -70,9 +70,9 @@ def cmd_repo_test(
     paths = test_artifact_paths(log_dir, variant)
     server_log_file = log_dir / f"{variant}_server_log.log"
 
-    repo_info = config.seed_repository.as_tested_package_info()
+    repo_info = config.user.seed_repository.as_tested_package_info()
 
-    if not config.seed_repository.e2e:
+    if not config.user.seed_repository.e2e:
         progress.warning("No e2e configured for the seed repository.")
         save_execution_status(
             paths.status_file,
@@ -119,7 +119,7 @@ def cmd_repo_test(
         ["pnpm", "install"],
         cwd=test_repository_path / "e2e",
         check=True,
-        env=os.environ | config.env,
+        env=os.environ | config.user.env,
     )
     runner_handle = None
     server_log_fh = None
@@ -129,11 +129,11 @@ def cmd_repo_test(
             package_info=repo_info,
             dependencies=patched_dependencies,
             timeout_cmd="npx playwright test",
-            timeout_minutes=config.test_timeout,
+            timeout_minutes=config.user.test_timeout,
             label="repository",
             progress=progress,
         ):
-            python_api = PythonAPI(config.env)
+            python_api = PythonAPI(config.user.env)
 
             python_api.run_in_venv(
                 test_repository_path,
@@ -219,7 +219,7 @@ def cmd_repo_test(
                 cwd=test_repository_path,
                 env={
                     **os.environ,
-                    **config.env,
+                    **config.user.env,
                     "VIRTUAL_ENV": str(test_repository_path / ".venv"),
                     "INVENIO_RATELIMIT_ENABLED": "False",
                     "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
@@ -254,7 +254,7 @@ def cmd_repo_test(
                 ["npx", "playwright", "install"],
                 cwd=test_repository_path / "e2e",
                 check=True,
-                env=os.environ | config.env,
+                env=os.environ | config.user.env,
             )
 
             playwright_opts = ["--max-failures", "10", "--retries", "1"]
@@ -276,7 +276,7 @@ def cmd_repo_test(
                 check=True,
                 env={
                     **os.environ,
-                    **config.env,
+                    **config.user.env,
                     "INVENIO_USER_EMAIL": os.environ.get(
                         "INVENIO_USER_EMAIL", "user@demo.org"
                     ),
@@ -285,7 +285,7 @@ def cmd_repo_test(
                     ),
                     # "CI": "1",
                 },
-                timeout=config.test_timeout * 60 if config.test_timeout else None,
+                timeout=config.user.test_timeout * 60 if config.user.test_timeout else None,
             )
 
             python_api.run_in_venv(
@@ -338,7 +338,7 @@ def install_repository(
     :param ignore_uv_lock: Whether to ignore the UV lock file.
     """
     shutil.copytree(clone_path / "repo", tested_repo_path)
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.install_project(tested_repo_path, ignore_uv_lock=ignore_uv_lock)
 
 
@@ -359,7 +359,7 @@ def apply_package_patches(
 
     :return: List of patched package information
     """
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.install_patched_dependencies(
         project_path=tested_repo_path,
         packages_root=packages_path,
@@ -370,7 +370,7 @@ def apply_package_patches(
 
     # Collect information about patched packages
     patched_packages = []
-    for package_name, package_config in config.tested_packages.items():
+    for package_name, package_config in config.runtime.tested_packages.items():
         if package_config.patches:
             patched_packages.append(package_config)
 
@@ -389,16 +389,16 @@ def run_repository_tests(
     :raises subprocess.CalledProcessError: If the tests fail
     :raises subprocess.TimeoutExpired: If the tests exceed the timeout
     """
-    test_command = config.seed_repository.test
+    test_command = config.user.seed_repository.test
     assert test_command is not None
 
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.run_in_venv(
         project_path=tested_repo_path,
         command=test_command,
         capture_to_file=log_file,
         tee_output=True,
-        timeout=config.test_timeout * 60 if config.test_timeout else None,
+        timeout=config.user.test_timeout * 60 if config.user.test_timeout else None,
     )
 
 

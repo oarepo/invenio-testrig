@@ -56,9 +56,9 @@ def cmd_repo_test(
     variant = "patched" if apply_patches else "original"
     paths = test_artifact_paths(log_dir, variant)
 
-    repo_info = config.seed_repository.as_tested_package_info()
+    repo_info = config.user.seed_repository.as_tested_package_info()
 
-    if not config.seed_repository.test:
+    if not config.user.seed_repository.test:
         progress.warning("No tests configured for the seed repository.")
         save_execution_status(
             paths.status_file,
@@ -92,15 +92,15 @@ def cmd_repo_test(
         paths=paths,
         package_info=repo_info,
         dependencies=patched_dependencies,
-        timeout_cmd=config.seed_repository.test,
-        timeout_minutes=config.test_timeout,
+        timeout_cmd=config.user.seed_repository.test,
+        timeout_minutes=config.user.test_timeout,
         label="repository",
         progress=progress,
     ):
         run_repository_tests(config, test_repository_path, paths.log_file)
 
         # Save the actual uv pip freeze into the artifacts
-        python_api = PythonAPI(config.env)
+        python_api = PythonAPI(config.user.env)
         python_api.run_in_venv(
             test_repository_path,
             ["uv", "pip", "freeze"],
@@ -121,7 +121,7 @@ def install_repository(
     :param ignore_uv_lock: Whether to ignore the UV lock file.
     """
     shutil.copytree(clone_path / "repo", tested_repo_path)
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.install_project(tested_repo_path, ignore_uv_lock=ignore_uv_lock)
 
 
@@ -142,7 +142,7 @@ def apply_package_patches(
 
     :return: List of patched package information
     """
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.install_patched_dependencies(
         project_path=tested_repo_path,
         packages_root=packages_path,
@@ -153,7 +153,7 @@ def apply_package_patches(
 
     # Collect information about patched packages
     patched_packages = []
-    for package_name, package_config in config.tested_packages.items():
+    for package_name, package_config in config.runtime.tested_packages.items():
         if package_config.patches:
             patched_packages.append(package_config)
 
@@ -172,14 +172,14 @@ def run_repository_tests(
     :raises subprocess.CalledProcessError: If the tests fail
     :raises subprocess.TimeoutExpired: If the tests exceed the timeout
     """
-    test_command = config.seed_repository.test
+    test_command = config.user.seed_repository.test
     assert test_command is not None
 
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.run_in_venv(
         project_path=tested_repo_path,
         command=test_command,
         capture_to_file=log_file,
         tee_output=True,
-        timeout=config.test_timeout * 60 if config.test_timeout else None,
+        timeout=config.user.test_timeout * 60 if config.user.test_timeout else None,
     )

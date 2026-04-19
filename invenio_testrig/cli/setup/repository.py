@@ -70,8 +70,8 @@ def clone_repositories(
         raise ValueError(f"Output directory {clone_path} already exists")
 
     git_api = GitApi(
-        GitCache(config.workdir_path("git_cache"), extra_env=config.env),
-        extra_env=config.env,
+        GitCache(config.workdir_path("git_cache"), extra_env=config.user.env),
+        extra_env=config.user.env,
     )
 
     # Read the config JSON
@@ -85,7 +85,7 @@ def clone_repositories(
     clone_path.mkdir(parents=True, exist_ok=False)
 
     # Clone seed_repository.git
-    repo_git = config.seed_repository.git
+    repo_git = config.user.seed_repository.git
     repo_dir = clone_path / "repo"
     progress.start(f"Cloning {repo_git.org}/{repo_git.repo} to {repo_dir}", icon="🔄")
     git_api.clone_git_reference(repo_git, repo_dir)
@@ -98,8 +98,8 @@ def clone_repositories(
     )
 
     # Clone seed_repository.e2e if it exists
-    if config.seed_repository.e2e:
-        e2e_ref = config.seed_repository.e2e
+    if config.user.seed_repository.e2e:
+        e2e_ref = config.user.seed_repository.e2e
         e2e_dir = clone_path / "invenio-e2e"
         progress.start(f"Cloning {e2e_ref.org}/{e2e_ref.repo} to {e2e_dir}", icon="🔄")
         git_api.clone_git_reference(e2e_ref, e2e_dir)
@@ -112,8 +112,8 @@ def clone_repositories(
         )
 
     # Clone dependencies using appropriate patcher mode
-    tested_packages = config.tested_packages
-    mode = config.patch_mode
+    tested_packages = config.runtime.tested_packages
+    mode = config.user.patch_mode
     patcher_cls = patchers_by_mode.get(mode)
 
     if patcher_cls is None:
@@ -179,6 +179,6 @@ def clone_repositories(
         "after_cloning_packages",
         clone_path=clone_path,
     )
-    config.save()  # Save the config with updated tested_packages info
+    config.save_runtime()  # Save updated tested_packages (unpatched/patched references)
 
     progress.success(f"Successfully cloned repositories to {clone_path}")

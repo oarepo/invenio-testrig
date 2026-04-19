@@ -170,39 +170,40 @@ def setup_cmd(
         repository_e2e,
         progress,
     )
-    config.python_version = python_version
-    config.uv_executable = uv_executable
-    config.disable_codestyle_checks = disable_codestyle_checks
-    config.test_scope = test_scope
-    config.test_mode = test_mode
-    config.verbose = verbose
-    config.debug = debug
-    config.slow_test_splitting = not no_slow_test_splitting
+    config.user.python_version = python_version
+    config.user.uv_executable = uv_executable
+    config.user.disable_codestyle_checks = disable_codestyle_checks
+    config.user.test_scope = test_scope
+    config.user.test_mode = test_mode
+    config.user.verbose = verbose
+    config.user.debug = debug
+    config.user.slow_test_splitting = not no_slow_test_splitting
 
     # Override seed_repository configurations if provided
     api = GitApi(
-        GitCache(workdir / "git_cache", extra_env=config.env), extra_env=config.env
+        GitCache(workdir / "git_cache", extra_env=config.user.env), extra_env=config.user.env
     )
     if name:
-        config.name = name
+        config.user.name = name
     if patch_mode:
-        config.patch_mode = patch_mode
+        config.user.patch_mode = patch_mode
     if patches:
-        config.patches = [api.parse_patch(patch) for patch in patches]
+        config.user.patches = [api.parse_patch(patch) for patch in patches]
 
-    config.save(workdir / "config.json")
+    # Write user config once; write runtime state (started_at) alongside it.
+    config.save()
 
     # Step 2: Collect dependencies
     progress.start("Step 2/5: Collecting dependencies", icon="📦")
     with step_error_handler(debug, progress, "Error collecting dependencies"):
         collect_dependencies(
             config,
-            config.uv_executable,
-            config.python_version,
+            config.user.uv_executable,
+            config.user.python_version,
             ignore_uv_lock,
             progress,
         )
-    config.save(workdir / "config.json")
+    config.save_runtime()
 
     # Step 3: Filter packages
     progress.start("Step 3/5: Filtering packages", icon="🔍")
@@ -210,13 +211,13 @@ def setup_cmd(
         filter_packages(
             config, progress, enable_slow_test_splitting=not no_slow_test_splitting
         )
-    config.save(workdir / "config.json")
+    config.save_runtime()
 
     # Step 4: Select patches
     progress.start("Step 4/5: Selecting patches", icon="🏷️")
     with step_error_handler(debug, progress, "Error selecting patches"):
         select_patches(config, progress)
-    config.save(workdir / "config.json")
+    config.save_runtime()
 
     # Step 5: Clone repositories
     progress.start("Step 5/5: Cloning repositories", icon="📥")
@@ -227,6 +228,6 @@ def setup_cmd(
         except ValueError as e:
             progress.error(str(e))
             raise click.Abort()
-    config.save(workdir / "config.json")
+    # clone_repositories calls config.save_runtime() internally for updated references
 
     progress.success("Setup complete! Ready for testing.", icon="🎉")

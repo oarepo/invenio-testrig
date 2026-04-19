@@ -46,8 +46,8 @@ class Patcher:
         """
         self.config = config
         self.git_api = GitApi(
-            GitCache(config.workdir_path("git_cache"), extra_env=config.env),
-            extra_env=config.env,
+            GitCache(config.workdir_path("git_cache"), extra_env=config.user.env),
+            extra_env=config.user.env,
         )
         self.unpatched_dir = unpatched_dir
         self.patched_dir = patched_dir
@@ -94,7 +94,7 @@ class Patcher:
             self._apply_patches(patched_reference_path, name, info, patched_reference)
             self._add_patch_info(
                 patched_reference_path,
-                patch_mode=self.config.patch_mode,
+                patch_mode=self.config.user.patch_mode,
                 reference=patched_reference,
                 applied_patches=info.patches or [],
             )
@@ -248,7 +248,7 @@ class Patcher:
 
         :raises ValueError: If the package is not found in configuration
         """
-        tested_packages = self.config.tested_packages
+        tested_packages = self.config.runtime.tested_packages
 
         for name, info in tested_packages.items():
             if name == package:

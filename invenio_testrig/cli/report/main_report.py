@@ -8,7 +8,6 @@
 """Report CLI command and report generation logic."""
 
 import json
-import shutil
 from pathlib import Path
 from typing import Any
 
@@ -30,7 +29,7 @@ from invenio_testrig.cli.report.report_utils import (
     get_jinja_template,
     to_serializable,
 )
-from invenio_testrig.config import Config
+from invenio_testrig.config import Config, RuntimeStateSchema, UserConfigSchema
 from invenio_testrig.progress import Progress
 from invenio_testrig.report import ReportPackageData
 
@@ -222,7 +221,7 @@ def report_cmd(
     artefacts_path = config.workdir_path("artifacts")
 
     progress.start(
-        f"Generating test report based on artefacts in {artefacts_path} and configuration in {config.config_path}",
+        f"Generating test report based on artefacts in {artefacts_path} and configuration in {config.workdir}",
         icon="📊",
     )
 
@@ -245,11 +244,11 @@ def report_cmd(
                 progress.info(f"  - File: {item.name}")
 
     # Debug: Check tested packages in config
-    progress.info(f"Config contains {len(config.tested_packages)} tested packages")
-    for pkg_name in list(config.tested_packages.keys())[:5]:  # Show first 5
+    progress.info(f"Config contains {len(config.runtime.tested_packages)} tested packages")
+    for pkg_name in list(config.runtime.tested_packages.keys())[:5]:  # Show first 5
         progress.info(f"  - {pkg_name}")
-    if len(config.tested_packages) > 5:
-        progress.info(f"  ... and {len(config.tested_packages) - 5} more")
+    if len(config.runtime.tested_packages) > 5:
+        progress.info(f"  ... and {len(config.runtime.tested_packages) - 5} more")
 
     test_result_data = load_test_artifacts(config, artefacts_path, progress=progress)
     repository_result_data = load_repository_artifact(
@@ -284,11 +283,17 @@ def report_cmd(
     artifacts_path = config.workdir_path("artifacts")
     create_warnings_report(config, artifacts_path, report_output_path, progress)
 
-    # copy the config.json into the report directory to be preserved
-    # in machine-readable format alongside the report
-    if config.config_path is not None:
-        # never is in reality, but the type checker doesn't know that
-        shutil.copy(config.config_path, report_output_path / "config.json")
+    # Write a combined config.json into the report directory.  The report's
+    # config.json merges UserConfig + RuntimeState into one flat dict so that
+    # the ``compare`` command (which fetches it from a URL) can still access
+    # tested_packages without needing a second HTTP request for runtime_config.json.
+    combined = {
+        **UserConfigSchema().dump(config.user),
+        **RuntimeStateSchema().dump(config.runtime),
+    }
+    (report_output_path / "config.json").write_text(
+        json.dumps(combined, indent=2, sort_keys=True)
+    )
 
 
 # endregion

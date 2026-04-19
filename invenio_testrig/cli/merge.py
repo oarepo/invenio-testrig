@@ -33,18 +33,17 @@ def cmd_merge_test_artifacts(config: Config, progress: Progress):
     parts for parallel execution. It combines logs and determines the overall
     status based on all parts.
     """
-    assert config.config_path is not None
-    workdir_path = config.config_path.parent
+    workdir_path = config.workdir
 
     def make_slow_split(info: TestedPackageInfo) -> list[str]:
-        if config.slow_test_splitting:
+        if config.user.slow_test_splitting:
             return info.github_entry.slow_packages.get(info.package, [])
         return []
 
     # Find packages that need merging
     packages_to_merge = [
         pkg_name
-        for pkg_name, pkg_info in config.tested_packages.items()
+        for pkg_name, pkg_info in config.runtime.tested_packages.items()
         if make_slow_split(pkg_info)
     ]
 
@@ -63,7 +62,7 @@ def cmd_merge_test_artifacts(config: Config, progress: Progress):
         progress.start(f"Merging artifacts for package '{package_name}'", icon="🔀")
 
         # Determine number of parts
-        slow_split = make_slow_split(config.tested_packages[package_name])
+        slow_split = make_slow_split(config.runtime.tested_packages[package_name])
         assert slow_split is not None
         num_parts = len(slow_split) + 1
 

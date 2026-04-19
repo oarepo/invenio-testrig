@@ -36,7 +36,7 @@ def collect_warnings(
         return {}
 
     # Iterate through each tested package
-    for package_name, package_info in config.tested_packages.items():
+    for package_name, package_info in config.runtime.tested_packages.items():
         package_dir = artifacts_path / package_name
         if not package_dir.exists():
             continue

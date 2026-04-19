@@ -41,7 +41,7 @@ def load_test_artifacts(
             patched=ExecutionStatus(status="pending", package=package_info),
             original=ExecutionStatus(status="pending", package=package_info),
         )
-        for package_name, package_info in config.tested_packages.items()
+        for package_name, package_info in config.runtime.tested_packages.items()
     }
 
     if not artefacts_path.exists():
@@ -114,12 +114,12 @@ def load_repository_e2e_artifact(
     :return: :class:`~invenio_testrig.types.ReportPackageData` with repository
         e2e test execution status, or None if no e2e tests configured
     """
-    if not config.seed_repository.e2e:
+    if not config.user.seed_repository.e2e:
         return None
 
     e2e_dir = artefacts_path / "e2e"
 
-    repo_info = config.seed_repository.as_tested_package_info()
+    repo_info = config.user.seed_repository.as_tested_package_info()
 
     e2e_data = ReportPackageData(
         info=repo_info,
@@ -168,12 +168,12 @@ def load_repository_artifact(
     :return: :class:`~invenio_testrig.types.ReportPackageData` with repository
         test execution status, or None if no repository tests configured
     """
-    if not config.seed_repository.git:
+    if not config.user.seed_repository.git:
         return None
 
     repo_dir = artefacts_path / "repo"
 
-    repo_info = config.seed_repository.as_tested_package_info()
+    repo_info = config.user.seed_repository.as_tested_package_info()
 
     repo_data = ReportPackageData(
         info=repo_info,

@@ -111,11 +111,11 @@ def _run_test_all_packages(config: Config, apply_patches: bool, progress: Progre
     has_failures = False
 
     console = Console()
-    total_packages = len(config.tested_packages)
+    total_packages = len(config.runtime.tested_packages)
 
     progress.start(f"Testing {total_packages} packages", icon="🚀")
 
-    for idx, package_name in enumerate(config.tested_packages.keys(), 1):
+    for idx, package_name in enumerate(config.runtime.tested_packages.keys(), 1):
         progress.start(
             f"[{idx}/{total_packages}] Testing package '{package_name}'", icon="📦"
         )
@@ -170,7 +170,7 @@ def _run_test_package(
     log_dir = config.workdir_path("artifacts") / package_name
     package_name = package_name.lower()
 
-    if package_name not in config.tested_packages:
+    if package_name not in config.runtime.tested_packages:
         progress.error(f"Package '{package_name}' not found in tested_packages")
         raise click.Abort()
 
@@ -201,7 +201,7 @@ def _run_test_package(
     )
 
     # Disable codestyle checks if requested
-    if config.disable_codestyle_checks:
+    if config.user.disable_codestyle_checks:
         progress.info(
             "Disabling codestyle checks (black, isort, pydocstyle)",
             icon="🔧",
@@ -253,14 +253,14 @@ def _install_package_for_testing(
 
     :raises ValueError: If the package is not found in tested_packages
     """
-    python_api = PythonAPI(config.env, "uv", config.python_version)
+    python_api = PythonAPI(config.user.env, "uv", config.user.python_version)
 
     package_name = package_name.lower()
 
-    if package_name not in config.tested_packages:
+    if package_name not in config.runtime.tested_packages:
         raise ValueError(f"Package '{package_name}' not found in tested_packages")
 
-    package_config = config.tested_packages[package_name]
+    package_config = config.runtime.tested_packages[package_name]
 
     working_dir = _testing_directory(config, package_name, apply_patches)
     if working_dir.exists():
@@ -285,13 +285,13 @@ def _install_package_for_testing(
     )
 
     library_patches = [
-        config.tested_packages[x] for x in dependencies if x in config.tested_packages
+        config.runtime.tested_packages[x] for x in dependencies if x in config.runtime.tested_packages
     ]
 
-    patched = bool(config.tested_packages[package_name].patches) or any(
-        bool(config.tested_packages[x].patches)
+    patched = bool(config.runtime.tested_packages[package_name].patches) or any(
+        bool(config.runtime.tested_packages[x].patches)
         for x in dependencies
-        if x in config.tested_packages
+        if x in config.runtime.tested_packages
     )
 
     # save the actual uv pip freeze into the logs if logging
@@ -359,9 +359,9 @@ def _run_tests(
         return status
 
     api = PythonAPI(
-        config.env,
-        uv_executable=config.uv_executable,
-        python_version=config.python_version,
+        config.user.env,
+        uv_executable=config.user.uv_executable,
+        python_version=config.user.python_version,
     )
 
     progress.start(
@@ -371,7 +371,7 @@ def _run_tests(
     )
 
     def make_slow_split(info: TestedPackageInfo) -> list[str]:
-        if config.slow_test_splitting:
+        if config.user.slow_test_splitting:
             return info.github_entry.slow_packages.get(info.package, [])
         return []
 
@@ -381,7 +381,7 @@ def _run_tests(
         tests = api.run_in_venv(
             working_dir, ["pytest", "--co", "-q"], check_output=True
         )
-        split_points = make_slow_split(config.tested_packages[package_name])
+        split_points = make_slow_split(config.runtime.tested_packages[package_name])
         assert split_points is not None
         split_start = split_points[part_number - 1] if part_number > 0 else None
         split_end = (
@@ -423,7 +423,7 @@ def _run_tests(
         package_info=package_config,
         dependencies=library_patches,
         timeout_cmd=package_config.github_entry.test,
-        timeout_minutes=config.test_timeout,
+        timeout_minutes=config.user.test_timeout,
         label=f"package '{package_name}'",
         progress=progress,
     ):
@@ -444,7 +444,7 @@ def _run_tests(
             working_dir,
             test_command,
             paths.log_file,
-            timeout=config.test_timeout * 60,
+            timeout=config.user.test_timeout * 60,
         )
         progress.success(f"Tests completed successfully for package '{package_name}'")
 
@@ -574,7 +574,7 @@ def _print_patch_summary(
     progress.text("📋 Test Configuration Summary", fg="blue", bold=True)
     progress.text("=" * 80, fg="blue")
 
-    progress.text(f"Patch mode: {config.patch_mode}", fg="cyan")
+    progress.text(f"Patch mode: {config.user.patch_mode}", fg="cyan")
     _print_package_patches(package_name, package_config, progress)
     if library_patches:
         _print_library_dependencies(library_patches, progress)
