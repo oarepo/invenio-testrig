@@ -27,7 +27,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings, test_artifact_paths
+from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
 from invenio_testrig.config import Config, Github, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
@@ -134,219 +134,178 @@ def cmd_repo_test(
     runner_handle = None
     server_log_fh = None
     try:
-        # Save the actual uv pip freeze into the artifacts
-        python_api = PythonAPI(config.env)
+        with test_run_context(
+            paths=paths,
+            package_info=repo_info,
+            dependencies=patched_dependencies,
+            timeout_cmd="npx playwright test",
+            timeout_minutes=config.test_timeout,
+            label="repository",
+            progress=progress,
+        ):
+            python_api = PythonAPI(config.env)
 
-        python_api.run_in_venv(
-            test_repository_path,
-            ["invenio-cli", "install"],
-        )
+            python_api.run_in_venv(
+                test_repository_path,
+                ["invenio-cli", "install"],
+            )
 
-        print(".invenio:")
-        print((test_repository_path / ".invenio").read_text())
+            print(".invenio:")
+            print((test_repository_path / ".invenio").read_text())
 
-        python_api.run_in_venv(
-            test_repository_path,
-            ["invenio-cli", "services", "setup"],
-        )
+            python_api.run_in_venv(
+                test_repository_path,
+                ["invenio-cli", "services", "setup"],
+            )
 
-        python_api.run_in_venv(
-            test_repository_path,
-            ["docker", "ps"],
-        )
+            python_api.run_in_venv(
+                test_repository_path,
+                ["docker", "ps"],
+            )
 
-        python_api.run_in_venv(
-            test_repository_path,
-            [
-                "invenio",
-                "roles",
-                "create",
-                "admin",
-            ],
-        )
-        python_api.run_in_venv(
-            test_repository_path,
-            [
-                "invenio",
-                "access",
-                "allow",
-                "administration-access",
-                "role",
-                "admin",
-            ],
-        )
-        python_api.run_in_venv(
-            test_repository_path,
-            [
-                "invenio",
-                "users",
-                "create",
-                "admin@demo.org",
-                "--password",
-                "123456",
-                "--active",
-                "--confirm",
-            ],
-        )
-        python_api.run_in_venv(
-            test_repository_path,
-            [
-                "invenio",
-                "roles",
-                "add",
-                "admin@demo.org",
-                "admin",
-            ],
-        )
-        python_api.run_in_venv(
-            test_repository_path,
-            [
-                "invenio",
-                "access",
-                "allow",
-                "superuser-access",
-                "user",
-                "admin@demo.org",
-            ],
-        )
-
-        # create an s3 bucket for the test data
-        create_s3_location()
-
-        # run the invenio-cli run in a background process
-        #
-        server_log_fh = open(server_log_file, "w")
-        runner_handle = subprocess.Popen(
-            [".venv/bin/invenio-cli", "run"],
-            cwd=test_repository_path,
-            env={
-                **os.environ,
-                **config.env,
-                "VIRTUAL_ENV": str(test_repository_path / ".venv"),
-                "INVENIO_RATELIMIT_ENABLED": "False",
-                "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
-            },
-            stdout=server_log_fh,
-            stderr=server_log_fh,
-        )
-        #
-        # we need to wait cca 1 minute for the output to be ready
-        time.sleep(60)
-
-        for locale in ["en", "de", "cs"]:
             python_api.run_in_venv(
                 test_repository_path,
                 [
-                    "pnpm",
-                    "run",
-                    "build-translations",
-                    "--",
-                    "-l",
-                    locale,
+                    "invenio",
+                    "roles",
+                    "create",
+                    "admin",
                 ],
-                cwd=test_repository_path / "e2e",
+            )
+            python_api.run_in_venv(
+                test_repository_path,
+                [
+                    "invenio",
+                    "access",
+                    "allow",
+                    "administration-access",
+                    "role",
+                    "admin",
+                ],
+            )
+            python_api.run_in_venv(
+                test_repository_path,
+                [
+                    "invenio",
+                    "users",
+                    "create",
+                    "admin@demo.org",
+                    "--password",
+                    "123456",
+                    "--active",
+                    "--confirm",
+                ],
+            )
+            python_api.run_in_venv(
+                test_repository_path,
+                [
+                    "invenio",
+                    "roles",
+                    "add",
+                    "admin@demo.org",
+                    "admin",
+                ],
+            )
+            python_api.run_in_venv(
+                test_repository_path,
+                [
+                    "invenio",
+                    "access",
+                    "allow",
+                    "superuser-access",
+                    "user",
+                    "admin@demo.org",
+                ],
             )
 
-        # for now, remove the ui tests, only run api tests
-        # ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
-        # if ui_spec.exists():
-        #     ui_spec.unlink()
+            # create an s3 bucket for the test data
+            create_s3_location()
 
-        subprocess.run(
-            ["npx", "playwright", "install"],
-            cwd=test_repository_path / "e2e",
-            check=True,
-            env=os.environ | config.env,
-        )
+            # run the invenio-cli run in a background process
+            #
+            server_log_fh = open(server_log_file, "w")
+            runner_handle = subprocess.Popen(
+                [".venv/bin/invenio-cli", "run"],
+                cwd=test_repository_path,
+                env={
+                    **os.environ,
+                    **config.env,
+                    "VIRTUAL_ENV": str(test_repository_path / ".venv"),
+                    "INVENIO_RATELIMIT_ENABLED": "False",
+                    "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
+                },
+                stdout=server_log_fh,
+                stderr=server_log_fh,
+            )
+            #
+            # we need to wait cca 1 minute for the output to be ready
+            time.sleep(60)
 
-        playwright_opts = ["--max-failures", "10", "--retries", "1"]
+            for locale in ["en", "de", "cs"]:
+                python_api.run_in_venv(
+                    test_repository_path,
+                    [
+                        "pnpm",
+                        "run",
+                        "build-translations",
+                        "--",
+                        "-l",
+                        locale,
+                    ],
+                    cwd=test_repository_path / "e2e",
+                )
 
-        if not thorough_ui:
-            # always run API tests
-            playwright_grep = [
-                "@api",
-            ]
-            if smoketest_ui:
-                playwright_grep.append("@smoke")
-            playwright_opts.extend(["--grep", "|".join(playwright_grep)])
+            # for now, remove the ui tests, only run api tests
+            # ui_spec = test_repository_path / "e2e" / "tests" / "invenio.spec.ts"
+            # if ui_spec.exists():
+            #     ui_spec.unlink()
 
-        progress.info(f"Running Playwright tests with {' '.join(playwright_opts)}")
+            subprocess.run(
+                ["npx", "playwright", "install"],
+                cwd=test_repository_path / "e2e",
+                check=True,
+                env=os.environ | config.env,
+            )
 
-        subprocess.run(
-            ["npx", "playwright", "test", *playwright_opts],
-            cwd=test_repository_path / "e2e",
-            check=True,
-            env={
-                **os.environ,
-                **config.env,
-                "INVENIO_USER_EMAIL": os.environ.get(
-                    "INVENIO_USER_EMAIL", "user@demo.org"
-                ),
-                "INVENIO_USER_PASSWORD": os.environ.get(
-                    "INVENIO_USER_PASSWORD", "123456"
-                ),
-                # "CI": "1",
-            },
-            timeout=config.test_timeout * 60 if config.test_timeout else None,
-        )
+            playwright_opts = ["--max-failures", "10", "--retries", "1"]
 
-        python_api.run_in_venv(
-            test_repository_path,
-            ["uv", "pip", "freeze"],
-            capture_to_file=paths.freeze_file,
-            tee_output=False,  # don't print the freeze output to the console
-        )
+            if not thorough_ui:
+                # always run API tests
+                playwright_grep = [
+                    "@api",
+                ]
+                if smoketest_ui:
+                    playwright_grep.append("@smoke")
+                playwright_opts.extend(["--grep", "|".join(playwright_grep)])
 
-        # Process warnings from log file
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
+            progress.info(f"Running Playwright tests with {' '.join(playwright_opts)}")
 
-        status = "success"
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status=status,
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
+            subprocess.run(
+                ["npx", "playwright", "test", *playwright_opts],
+                cwd=test_repository_path / "e2e",
+                check=True,
+                env={
+                    **os.environ,
+                    **config.env,
+                    "INVENIO_USER_EMAIL": os.environ.get(
+                        "INVENIO_USER_EMAIL", "user@demo.org"
+                    ),
+                    "INVENIO_USER_PASSWORD": os.environ.get(
+                        "INVENIO_USER_PASSWORD", "123456"
+                    ),
+                    # "CI": "1",
+                },
+                timeout=config.test_timeout * 60 if config.test_timeout else None,
+            )
+
+            python_api.run_in_venv(
+                test_repository_path,
+                ["uv", "pip", "freeze"],
+                capture_to_file=paths.freeze_file,
+                tee_output=False,  # don't print the freeze output to the console
+            )
+
         progress.success("Repository tests completed successfully")
-
-    except subprocess.CalledProcessError as e:
-        progress.error(f"Tests failed for repository with exit code {e.returncode}")
-        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
-
-        # Process warnings from log file even on failure
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status="failed",
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        raise
-
-    except subprocess.TimeoutExpired:
-        timeout_minutes = config.test_timeout
-        progress.error(
-            f"Tests timed out for repository after {timeout_minutes} minutes"
-        )
-        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
-
-        # Process warnings from log file even on timeout
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status="failed",
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        raise subprocess.CalledProcessError(returncode=-1, cmd="npx playwright test")
 
     finally:
         if runner_handle is not None:

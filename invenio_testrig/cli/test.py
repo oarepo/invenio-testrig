@@ -26,7 +26,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings, test_artifact_paths
+from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
 from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
@@ -418,7 +418,15 @@ def _run_tests(
                 f"Wrong part number for package '{package_name}', no tests found between '{split_start}' and '{split_end}'"
             )
 
-    try:
+    with test_run_context(
+        paths=paths,
+        package_info=package_config,
+        dependencies=library_patches,
+        timeout_cmd=package_config.github_entry.test,
+        timeout_minutes=config.test_timeout,
+        label=f"package '{package_name}'",
+        progress=progress,
+    ):
         test_command = package_config.github_entry.test
         if filtered_tests:
             # Write filtered tests to a file and use @ syntax to avoid long command lines
@@ -440,54 +448,7 @@ def _run_tests(
         )
         progress.success(f"Tests completed successfully for package '{package_name}'")
 
-        # Process warnings from log file
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        status = "success"
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status=status, package=package_config, dependencies=library_patches
-            ),
-        )
-        return status
-
-    except subprocess.CalledProcessError as e:
-        progress.error(
-            f"Tests failed for package '{package_name}' with exit code {e.returncode}"
-        )
-        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
-
-        # Process warnings from log file even on failure
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status="failed", package=package_config, dependencies=library_patches
-            ),
-        )
-        raise
-
-    except subprocess.TimeoutExpired:
-        timeout_minutes = config.test_timeout
-        progress.error(
-            f"Tests timed out for package '{package_name}' after {timeout_minutes} minutes"
-        )
-        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
-
-        # Process warnings from log file even on timeout
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status="failed", package=package_config, dependencies=library_patches
-            ),
-        )
-        raise subprocess.CalledProcessError(
-            returncode=-1, cmd=package_config.github_entry.test
-        )
+    return "success"
 
 
 def _disable_codestyle_checks(package_path: Path) -> None:

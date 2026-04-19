@@ -24,7 +24,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings, test_artifact_paths
+from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
 from invenio_testrig.config import (
     Config,
     Github,
@@ -102,7 +102,15 @@ def cmd_repo_test(
             progress,
         )
 
-    try:
+    with test_run_context(
+        paths=paths,
+        package_info=repo_info,
+        dependencies=patched_dependencies,
+        timeout_cmd=config.seed_repository.test,
+        timeout_minutes=config.test_timeout,
+        label="repository",
+        progress=progress,
+    ):
         run_repository_tests(config, test_repository_path, paths.log_file)
 
         # Save the actual uv pip freeze into the artifacts
@@ -114,58 +122,7 @@ def cmd_repo_test(
             tee_output=False,  # don't print the freeze output to the console
         )
 
-        # Process warnings from log file
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        status = "success"
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status=status,
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        progress.success("Repository tests completed successfully")
-
-    except subprocess.CalledProcessError as e:
-        progress.error(f"Tests failed for repository with exit code {e.returncode}")
-        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
-
-        # Process warnings from log file even on failure
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status="failed",
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        raise
-
-    except subprocess.TimeoutExpired:
-        timeout_minutes = config.test_timeout
-        progress.error(
-            f"Tests timed out for repository after {timeout_minutes} minutes"
-        )
-        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
-
-        # Process warnings from log file even on timeout
-        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
-
-        save_execution_status(
-            paths.status_file,
-            ExecutionStatus(
-                status="failed",
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        raise subprocess.CalledProcessError(
-            returncode=-1, cmd=config.seed_repository.test
-        )
+    progress.success("Repository tests completed successfully")
 
 
 def install_repository(
