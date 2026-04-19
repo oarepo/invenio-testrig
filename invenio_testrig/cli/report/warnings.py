@@ -45,7 +45,7 @@ def collect_warnings(
         # - If package has patches, load warnings from patched tests only
         # - If package has no patches, load warnings from original tests
         for log_type in ["patched", "original"]:
-            warnings_file = package_dir / f"warnings_{log_type}.json"
+            warnings_file = package_dir / f"{log_type}_warnings.json"
             if warnings_file.exists():
                 break
 

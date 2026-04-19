@@ -24,7 +24,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings
+from invenio_testrig.cli.utils import process_warnings, test_artifact_paths
 from invenio_testrig.config import (
     Config,
     Github,
@@ -57,15 +57,8 @@ def cmd_repo_test(
     log_dir = config.workdir_path("artifacts") / "repo"
     log_dir.mkdir(parents=True, exist_ok=True)
 
-    log_file = log_dir / f"{'patched' if apply_patches else 'original'}_log.log"
-    status_file = log_dir / f"{'patched' if apply_patches else 'original'}_status.json"
-    freeze_file = log_dir / f"{'patched' if apply_patches else 'original'}_freeze.txt"
-    warnings_file = (
-        log_dir / f"warnings_{'patched' if apply_patches else 'original'}.json"
-    )
-    simplified_log_file = (
-        log_dir / f"{'patched' if apply_patches else 'original'}_simplified_log.log"
-    )
+    variant = "patched" if apply_patches else "original"
+    paths = test_artifact_paths(log_dir, variant)
 
     # Create a minimal TestedPackageInfo for the repository
     repo_info = TestedPackageInfo(
@@ -82,7 +75,7 @@ def cmd_repo_test(
     if not config.seed_repository.test:
         click.secho("No tests configured for the seed repository.", fg="yellow")
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="skipped",
                 package=repo_info,
@@ -110,23 +103,23 @@ def cmd_repo_test(
         )
 
     try:
-        run_repository_tests(config, test_repository_path, log_file)
+        run_repository_tests(config, test_repository_path, paths.log_file)
 
         # Save the actual uv pip freeze into the artifacts
         python_api = PythonAPI(config.env)
         python_api.run_in_venv(
             test_repository_path,
             ["uv", "pip", "freeze"],
-            capture_to_file=freeze_file,
+            capture_to_file=paths.freeze_file,
             tee_output=False,  # don't print the freeze output to the console
         )
 
         # Process warnings from log file
-        process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
 
         status = "success"
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status=status,
                 package=repo_info,
@@ -137,13 +130,13 @@ def cmd_repo_test(
 
     except subprocess.CalledProcessError as e:
         progress.error(f"Tests failed for repository with exit code {e.returncode}")
-        progress.info(f"Check the output log at: {log_file}", icon="💡")
+        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
 
         # Process warnings from log file even on failure
-        process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
 
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="failed",
                 package=repo_info,
@@ -157,13 +150,13 @@ def cmd_repo_test(
         progress.error(
             f"Tests timed out for repository after {timeout_minutes} minutes"
         )
-        progress.info(f"Check the output log at: {log_file}", icon="💡")
+        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
 
         # Process warnings from log file even on timeout
-        process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
 
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="failed",
                 package=repo_info,

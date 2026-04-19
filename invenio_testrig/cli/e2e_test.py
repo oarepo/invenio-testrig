@@ -27,7 +27,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings
+from invenio_testrig.cli.utils import process_warnings, test_artifact_paths
 from invenio_testrig.config import Config, Github, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
@@ -62,22 +62,13 @@ def cmd_repo_test(
     progress.info(f"Smoketest UI: {smoketest_ui}")
     progress.info(f"Ignore UV lock: {ignore_uv_lock}")
 
-    # Setup log and status files using "repo" as the package name
+    # Setup log and status files using "e2e" as the package name
     log_dir = config.workdir_path("artifacts") / "e2e"
     log_dir.mkdir(parents=True, exist_ok=True)
 
-    log_file = log_dir / f"{'patched' if apply_patches else 'original'}_log.log"
-    status_file = log_dir / f"{'patched' if apply_patches else 'original'}_status.json"
-    freeze_file = log_dir / f"{'patched' if apply_patches else 'original'}_freeze.txt"
-    warnings_file = (
-        log_dir / f"warnings_{'patched' if apply_patches else 'original'}.json"
-    )
-    simplified_log_file = (
-        log_dir / f"{'patched' if apply_patches else 'original'}_simplified_log.log"
-    )
-    server_log_file = (
-        log_dir / f"{'patched' if apply_patches else 'original'}_server_log.log"
-    )
+    variant = "patched" if apply_patches else "original"
+    paths = test_artifact_paths(log_dir, variant)
+    server_log_file = log_dir / f"{variant}_server_log.log"
 
     # Create a minimal TestedPackageInfo for the repository
     repo_info = TestedPackageInfo(
@@ -94,7 +85,7 @@ def cmd_repo_test(
     if not config.seed_repository.e2e:
         click.secho("No e2e configured for the seed repository.", fg="yellow")
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="skipped",
                 package=repo_info,
@@ -302,16 +293,16 @@ def cmd_repo_test(
         python_api.run_in_venv(
             test_repository_path,
             ["uv", "pip", "freeze"],
-            capture_to_file=freeze_file,
+            capture_to_file=paths.freeze_file,
             tee_output=False,  # don't print the freeze output to the console
         )
 
         # Process warnings from log file
-        process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
 
         status = "success"
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status=status,
                 package=repo_info,
@@ -322,13 +313,13 @@ def cmd_repo_test(
 
     except subprocess.CalledProcessError as e:
         progress.error(f"Tests failed for repository with exit code {e.returncode}")
-        progress.info(f"Check the output log at: {log_file}", icon="💡")
+        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
 
         # Process warnings from log file even on failure
-        process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
 
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="failed",
                 package=repo_info,
@@ -342,13 +333,13 @@ def cmd_repo_test(
         progress.error(
             f"Tests timed out for repository after {timeout_minutes} minutes"
         )
-        progress.info(f"Check the output log at: {log_file}", icon="💡")
+        progress.info(f"Check the output log at: {paths.log_file}", icon="💡")
 
         # Process warnings from log file even on timeout
-        process_warnings(log_file, warnings_file, simplified_log_file)
+        process_warnings(paths.log_file, paths.warnings_file, paths.simplified_log_file)
 
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="failed",
                 package=repo_info,
@@ -382,7 +373,6 @@ def cmd_repo_test(
         # Playwright always writes a report, even on failure.
         playwright_report_src = test_repository_path / "e2e" / "playwright-report"
         if playwright_report_src.exists():
-            variant = "patched" if apply_patches else "original"
             playwright_report_dst = log_dir / f"{variant}_playwright-report"
             if playwright_report_dst.exists():
                 shutil.rmtree(playwright_report_dst)
