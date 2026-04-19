@@ -59,7 +59,7 @@ def cmd_repo_test(
     repo_info = config.seed_repository.as_tested_package_info()
 
     if not config.seed_repository.test:
-        click.secho("No tests configured for the seed repository.", fg="yellow")
+        progress.warning("No tests configured for the seed repository.")
         save_execution_status(
             paths.status_file,
             ExecutionStatus(

@@ -676,7 +676,7 @@ class PythonAPI:
                 cwd=target_dir,
                 env=self.prepare_venv_environment(target_dir),
             )
-            log.info("Freeze output: stdout=%s stderr=%s", stdout, stderr)
+            log.debug("Freeze output: stdout=%s stderr=%s", stdout, stderr)
             progress.success(f"Freeze list applied for package '{package_name}'")
 
         return dependencies

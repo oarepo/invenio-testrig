@@ -73,7 +73,7 @@ def cmd_repo_test(
     repo_info = config.seed_repository.as_tested_package_info()
 
     if not config.seed_repository.e2e:
-        click.secho("No e2e configured for the seed repository.", fg="yellow")
+        progress.warning("No e2e configured for the seed repository.")
         save_execution_status(
             paths.status_file,
             ExecutionStatus(
@@ -140,8 +140,8 @@ def cmd_repo_test(
                 ["invenio-cli", "install"],
             )
 
-            print(".invenio:")
-            print((test_repository_path / ".invenio").read_text())
+            progress.info(".invenio:")
+            progress.info((test_repository_path / ".invenio").read_text())
 
             python_api.run_in_venv(
                 test_repository_path,
@@ -209,7 +209,7 @@ def cmd_repo_test(
             )
 
             # create an s3 bucket for the test data
-            create_s3_location()
+            create_s3_location(progress)
 
             # run the invenio-cli run in a background process
             #
@@ -402,7 +402,7 @@ def run_repository_tests(
     )
 
 
-def create_s3_location():
+def create_s3_location(progress: Progress):
     import boto3
     from botocore.client import Config
 
@@ -417,4 +417,4 @@ def create_s3_location():
     )
 
     s3.create_bucket(Bucket="default")
-    print("Bucket 'default' created.")
+    progress.info("Bucket 'default' created.")
