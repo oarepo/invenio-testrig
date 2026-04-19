@@ -256,6 +256,7 @@ def _install_package_for_testing(
     python_api = PythonAPI(config.user.env, "uv", config.user.python_version)
 
     package_name = package_name.lower()
+    variant = "patched" if apply_patches else "original"
 
     if package_name not in config.runtime.tested_packages:
         raise ValueError(f"Package '{package_name}' not found in tested_packages")
@@ -296,7 +297,7 @@ def _install_package_for_testing(
 
     # save the actual uv pip freeze into the logs if logging
     log_dir = config.workdir_path("artifacts") / package_name
-    paths = test_artifact_paths(log_dir, "patched" if apply_patches else "original")
+    paths = test_artifact_paths(log_dir, variant)
     python_api.run_in_venv(
         working_dir,
         ["uv", "pip", "freeze"],
@@ -493,11 +494,8 @@ def _testing_directory(config: Config, package_name: str, apply_patches: bool) -
 
     :return: Path to the testing directory
     """
-    return (
-        config.workdir_path("tests")
-        / package_name
-        / ("patched" if apply_patches else "original")
-    )
+    variant = "patched" if apply_patches else "original"
+    return config.workdir_path("tests") / package_name / variant
 
 
 def _print_package_patches(
