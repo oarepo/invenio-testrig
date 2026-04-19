@@ -417,18 +417,23 @@ class PythonAPI:
         if (path / "setup.cfg").exists():
             cfg = configparser.ConfigParser()
             cfg.read(path / "setup.cfg")
+
+            def _strip_comment(dep: str) -> str:
+                """Strip inline ``#`` comments from a dep specifier."""
+                return dep.split("#", 1)[0].strip()
+
             raw_deps = [
-                d.strip()
+                _strip_comment(d)
                 for d in cfg.get(
                     "options", "install_requires", fallback=""
                 ).splitlines()
-                if d.strip()
+                if _strip_comment(d)
             ]
             optional_deps: dict[str, list[str]] = {}
             if cfg.has_section("options.extras_require"):
                 for extra, raw in cfg["options.extras_require"].items():
                     optional_deps[extra] = [
-                        d.strip() for d in raw.splitlines() if d.strip()
+                        _strip_comment(d) for d in raw.splitlines() if _strip_comment(d)
                     ]
             return _LocalProjectInfo(
                 name=canonicalize_name(cfg["metadata"]["name"]),
