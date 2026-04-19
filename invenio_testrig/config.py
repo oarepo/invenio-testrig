@@ -50,6 +50,23 @@ class Repository(ExtensibleMixin):
     test: list[str] | None
     """Test command to run on the installed repository."""
 
+    def as_tested_package_info(self) -> "TestedPackageInfo":
+        """Create a TestedPackageInfo that represents this seed repository.
+
+        Several subsystems (test runners, report generators) need to record the
+        seed repository as if it were a tested package so they can write status
+        files and render it uniformly alongside regular packages. This factory
+        centralises that construction so the field mapping is defined once.
+        """
+        return TestedPackageInfo(
+            reference=self.git,
+            github_entry=Github(
+                org=self.git.org,
+                install=self.install or [],
+                test=self.test or [],
+            ),
+        )
+
 
 @dataclass(init=False)
 class Github(ExtensibleMixin):

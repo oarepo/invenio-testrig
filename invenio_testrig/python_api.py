@@ -42,8 +42,8 @@ class _LocalProjectInfo:
     anything or querying PyPI.
     """
 
-    name: str                            # PEP 503 normalized
-    raw_deps: list[str]                  # base dependency specifier strings
+    name: str  # PEP 503 normalized
+    raw_deps: list[str]  # base dependency specifier strings
     optional_deps: dict[str, list[str]]  # extra name -> list of dep specifiers
 
 
@@ -225,42 +225,6 @@ class PythonAPI:
 
         return sync_extras
 
-    def _install_with_venv_pip(
-        self, project_path: Path, extras: list[str] | None
-    ) -> None:
-        """Install using uv venv + uv pip install for legacy projects.
-
-        This strategy is used for older projects without proper pyproject.toml.
-        No extras filtering is needed as uv pip ignores non-existent extras.
-
-        :param project_path: Path to the project directory
-        :param extras: Optional list of extras to install
-        """
-        # Create venv with a clean environment to avoid conflicts
-        clean_env = os.environ.copy()
-        clean_env.pop("VIRTUAL_ENV", None)
-        clean_env.pop("PYTHONHOME", None)
-
-        call_executable_quietly(
-            [
-                self.uv_executable,
-                "venv",
-                "--python",
-                self.python_version,
-            ],
-            cwd=project_path,
-            env=clean_env | self.extra_env,
-        )
-
-        # Install the project with extras
-        extras_specification = f"[{','.join(extras)}]" if extras else ""
-        pip_install_spec = f".{extras_specification}"
-        call_executable_quietly(
-            [self.uv_executable, "pip", "install", "-e", pip_install_spec],
-            cwd=project_path,
-            env=self.prepare_venv_environment(project_path),
-        )
-
     def get_dependencies(
         self,
         project_path: Path,
@@ -435,7 +399,9 @@ class PythonAPI:
                     raw_deps=list(data["project"].get("dependencies", [])),
                     optional_deps={
                         extra: list(deps)
-                        for extra, deps in data["project"].get("optional-dependencies", {}).items()
+                        for extra, deps in data["project"]
+                        .get("optional-dependencies", {})
+                        .items()
                     },
                 )
 
@@ -444,13 +410,17 @@ class PythonAPI:
             cfg.read(path / "setup.cfg")
             raw_deps = [
                 d.strip()
-                for d in cfg.get("options", "install_requires", fallback="").splitlines()
+                for d in cfg.get(
+                    "options", "install_requires", fallback=""
+                ).splitlines()
                 if d.strip()
             ]
             optional_deps: dict[str, list[str]] = {}
             if cfg.has_section("options.extras_require"):
                 for extra, raw in cfg["options.extras_require"].items():
-                    optional_deps[extra] = [d.strip() for d in raw.splitlines() if d.strip()]
+                    optional_deps[extra] = [
+                        d.strip() for d in raw.splitlines() if d.strip()
+                    ]
             return _LocalProjectInfo(
                 name=canonicalize_name(cfg["metadata"]["name"]),
                 raw_deps=raw_deps,
@@ -537,8 +507,11 @@ class PythonAPI:
 
         try:
             main_info = self._read_local_project_info(project_path)
-        except (FileNotFoundError, KeyError):
-            log.warning("Could not read metadata for %s; skipping local resolution", project_path)
+        except FileNotFoundError, KeyError:
+            log.warning(
+                "Could not read metadata for %s; skipping local resolution",
+                project_path,
+            )
             return [], set()
 
         seed_extras = set(extras) if extras else set()
@@ -557,24 +530,25 @@ class PythonAPI:
 
         return order, patched_names_all & {canonicalize_name(p.name) for p in order}
 
-    def _install_with_local_preinstall(
+    def _install_with_venv_pip(
         self,
         project_path: Path,
-        local_paths: list[Path],
         extras: list[str] | None,
+        local_paths: list[Path] | None = None,
     ) -> None:
-        """Install a package after seeding its venv with pre-resolved local dependencies.
+        """Install a package by creating a venv and running ``uv pip install -e .``.
 
-        Solves the problem where ``uv pip install -e .`` fails because a dependency
-        is pinned to a version that does not exist on PyPI (e.g. a patched or
-        pre-release build only available locally). By installing the local packages
-        first with ``--no-deps``, their versions are already present in the venv when
-        uv resolves the main package, so PyPI constraints are satisfied without
-        blocking the rest of the dependency fetch.
+        Used for projects without a ``uv.lock`` or a valid ``[project]`` table.
+        When ``local_paths`` is provided, those packages are pre-installed with
+        ``--no-deps`` before the main install so that locally available versions
+        satisfy version constraints that PyPI cannot fulfil (e.g. patched or
+        pre-release builds). When ``local_paths`` is empty or ``None`` the
+        behaviour is identical to a plain ``uv venv`` + ``uv pip install``.
 
         :param project_path: The package to install in editable mode.
-        :param local_paths: Local dependency paths to pre-install (in topological order).
         :param extras: Extras to activate when installing the main package.
+        :param local_paths: Local dependency paths to pre-install in topological
+                            order, or ``None`` to skip pre-installation.
         """
         clean_env = os.environ.copy()
         clean_env.pop("VIRTUAL_ENV", None)
@@ -675,7 +649,7 @@ class PythonAPI:
                 f"Pre-installing {len(local_dep_paths)} local dep(s) for "
                 f"'{package_name}': {[p.name for p in local_dep_paths]}"
             )
-            self._install_with_local_preinstall(target_dir, local_dep_paths, extras)
+            self._install_with_venv_pip(target_dir, extras, local_dep_paths)
 
         # install patched dependencies if any
         dependencies = self.install_patched_dependencies(

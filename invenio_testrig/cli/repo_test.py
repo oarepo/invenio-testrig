@@ -25,11 +25,7 @@ from invenio_testrig.cli.base import (
     with_verbose,
 )
 from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
-from invenio_testrig.config import (
-    Config,
-    Github,
-    TestedPackageInfo,
-)
+from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
 from invenio_testrig.report import ExecutionStatus, save_execution_status
@@ -60,17 +56,7 @@ def cmd_repo_test(
     variant = "patched" if apply_patches else "original"
     paths = test_artifact_paths(log_dir, variant)
 
-    # Create a minimal TestedPackageInfo for the repository
-    repo_info = TestedPackageInfo(
-        reference=config.seed_repository.git,
-        github_entry=Github(
-            org="",
-            install=config.seed_repository.install or [],
-            test=config.seed_repository.test or [],
-            extras=[],
-            freeze=[],
-        ),
-    )
+    repo_info = config.seed_repository.as_tested_package_info()
 
     if not config.seed_repository.test:
         click.secho("No tests configured for the seed repository.", fg="yellow")

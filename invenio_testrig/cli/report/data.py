@@ -9,7 +9,7 @@
 
 from pathlib import Path
 
-from invenio_testrig.config import Config, Github, TestedPackageInfo
+from invenio_testrig.config import Config
 from invenio_testrig.progress import Progress
 from invenio_testrig.report import (
     ExecutionStatus,
@@ -119,22 +119,7 @@ def load_repository_e2e_artifact(
 
     e2e_dir = artefacts_path / "e2e"
 
-    # Create a minimal TestedPackageInfo for the e2e run (referencing the repo being tested)
-    repo_info = TestedPackageInfo(
-        reference=config.seed_repository.git,
-        github_entry=Github(
-            org=config.seed_repository.git.org,
-            install=config.seed_repository.install or [],
-            test=config.seed_repository.test or [],
-            include=[],
-            exclude=[],
-            package_map={},
-            extras=[],
-            freeze=[],
-            slow_packages={},
-        ),
-        patches=[],
-    )
+    repo_info = config.seed_repository.as_tested_package_info()
 
     e2e_data = ReportPackageData(
         info=repo_info,
@@ -188,22 +173,7 @@ def load_repository_artifact(
 
     repo_dir = artefacts_path / "repo"
 
-    # Create a minimal TestedPackageInfo for the repository
-    repo_info = TestedPackageInfo(
-        reference=config.seed_repository.git,
-        github_entry=Github(
-            org=config.seed_repository.git.org,
-            install=config.seed_repository.install or [],
-            test=config.seed_repository.test or [],
-            include=[],
-            exclude=[],
-            package_map={},
-            extras=[],
-            freeze=[],
-            slow_packages={},
-        ),
-        patches=[],
-    )
+    repo_info = config.seed_repository.as_tested_package_info()
 
     repo_data = ReportPackageData(
         info=repo_info,
