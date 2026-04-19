@@ -14,7 +14,7 @@ and subprocess execution helpers.
 
 import logging
 import subprocess
-from dataclasses import dataclass, field, fields
+from dataclasses import MISSING, dataclass, field, fields
 from typing import Any
 
 log = logging.getLogger(__name__)
@@ -27,16 +27,37 @@ class ExtensibleMixin:
     _extra: dict[str, Any] = field(default_factory=dict)
 
     def __init__(self, **kwargs: Any):
-        super().__init__()  # call dataclass __init__ to initialize fields with defaults
+        super().__init__()  # call object.__init__()
 
         _extra = kwargs.pop("_extra", {})
         known_fields = {f.name for f in fields(self) if f.init}
+
+        # Initialize every field: use passed value if present, otherwise fall back to
+        # the field's default or default_factory.  This mirrors what the dataclass-
+        # generated __init__ would do, and is needed because @dataclass(init=False)
+        # suppresses that generated __init__.
+        for f in fields(self):
+            if not f.init or f.name == "_extra":
+                continue
+            if f.name in kwargs:
+                setattr(self, f.name, kwargs[f.name])
+            elif f.default is not MISSING:
+                setattr(self, f.name, f.default)
+            elif f.default_factory is not MISSING:
+                setattr(self, f.name, f.default_factory())
+            # else: required field without a default -- leave unset so Python
+            # surfaces the AttributeError naturally.
+
+        # Collect unknown keyword arguments as extra data
         for k, v in kwargs.items():
-            if k in known_fields:
-                setattr(self, k, v)
-            else:
+            if k not in known_fields:
                 _extra[k] = v
         self._extra = _extra
+
+        # Call __post_init__ if defined -- the dataclass-generated __init__
+        # would normally do this, but we have disabled it with init=False.
+        if hasattr(type(self), "__post_init__"):
+            self.__post_init__()
 
 
 def extra_data(instance: Any) -> dict[str, Any]:
