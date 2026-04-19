@@ -13,13 +13,19 @@ It handles various project configurations including modern pyproject.toml
 and legacy setup.py based projects.
 """
 
+import configparser
 import json
 import logging
 import os
 import shutil
 import subprocess
+import tomllib
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal, overload
+
+from packaging.requirements import Requirement
+from packaging.utils import canonicalize_name
 
 from invenio_testrig.progress import Progress
 from invenio_testrig.utils import call_executable_quietly
@@ -27,13 +33,25 @@ from invenio_testrig.utils import call_executable_quietly
 log = logging.getLogger(__name__)
 
 
+@dataclass
+class _LocalProjectInfo:
+    """Parsed dependency metadata for a locally available package.
+
+    Holds just enough information to walk the dependency graph and determine
+    which other local packages a given package needs — without installing
+    anything or querying PyPI.
+    """
+
+    name: str                            # PEP 503 normalized
+    raw_deps: list[str]                  # base dependency specifier strings
+    optional_deps: dict[str, list[str]]  # extra name -> list of dep specifiers
+
+
 def _parse_lock_file_dependencies(lock_path: Path) -> "dict[str, str] | None":
     """Parse a uv.lock TOML file and return a package→version mapping.
 
     Returns None if the file cannot be parsed so callers can fall back to pip list.
     """
-    import tomllib
-
     try:
         with open(lock_path, "rb") as f:
             lock_data = tomllib.load(f)
@@ -142,8 +160,6 @@ class PythonAPI:
 
         :return: True if installation was successful, False to fall back to other strategy
         """
-        import tomllib
-
         pyproject_path = project_path / "pyproject.toml"
         if not pyproject_path.exists():
             return False
@@ -400,6 +416,192 @@ class PythonAPI:
             env=self.prepare_venv_environment(project_path),
         )
 
+    def _read_local_project_info(self, path: Path) -> _LocalProjectInfo:
+        """Read a local package's name and declared dependencies without installing it.
+
+        Needed so the dependency walker can traverse the local package graph
+        purely from metadata, before any venv exists. Supports both modern
+        pyproject.toml (with a [project] table) and legacy setup.cfg layouts,
+        matching the range of packages found in InvenioRDM repositories.
+
+        :raises FileNotFoundError: If neither pyproject.toml nor setup.cfg is present.
+        """
+        if (path / "pyproject.toml").exists():
+            with open(path / "pyproject.toml", "rb") as f:
+                data = tomllib.load(f)
+            if "project" in data:
+                return _LocalProjectInfo(
+                    name=canonicalize_name(data["project"]["name"]),
+                    raw_deps=list(data["project"].get("dependencies", [])),
+                    optional_deps={
+                        extra: list(deps)
+                        for extra, deps in data["project"].get("optional-dependencies", {}).items()
+                    },
+                )
+
+        if (path / "setup.cfg").exists():
+            cfg = configparser.ConfigParser()
+            cfg.read(path / "setup.cfg")
+            raw_deps = [
+                d.strip()
+                for d in cfg.get("options", "install_requires", fallback="").splitlines()
+                if d.strip()
+            ]
+            optional_deps: dict[str, list[str]] = {}
+            if cfg.has_section("options.extras_require"):
+                for extra, raw in cfg["options.extras_require"].items():
+                    optional_deps[extra] = [d.strip() for d in raw.splitlines() if d.strip()]
+            return _LocalProjectInfo(
+                name=canonicalize_name(cfg["metadata"]["name"]),
+                raw_deps=raw_deps,
+                optional_deps=optional_deps,
+            )
+
+        raise FileNotFoundError(f"No pyproject.toml or setup.cfg found in {path}")
+
+    def _resolve_local_paths(
+        self,
+        project_path: Path,
+        packages_root: Path,
+        patched_packages_root: Path,
+        install_patched: bool,
+        extras: list[str] | None,
+    ) -> tuple[list[Path], set[str]]:
+        """Identify which locally available packages must be pre-installed for a given package.
+
+        When a package under test depends on another package whose required version
+        does not exist on PyPI (e.g. a pre-release or an internally patched build),
+        ``uv pip install -e .`` fails because PyPI cannot satisfy the constraint.
+        Pre-installing only the relevant local packages with ``--no-deps`` plants
+        the correct versions into the venv before PyPI resolution runs, making the
+        constraint satisfiable without preventing uv from fetching other deps normally.
+
+        Only packages reachable through the declared dependency tree of
+        ``project_path`` are included, so unrelated packages that happen to live in
+        the local repository cannot contaminate the test environment.
+
+        :param project_path: The package being installed (its own deps seed the walk).
+        :param packages_root: Directory of unpatched local package clones.
+        :param patched_packages_root: Directory of patched local package clones (takes priority).
+        :param install_patched: Whether to include patched packages in the candidate set.
+        :param extras: Extras requested for the main package; used to follow optional deps.
+
+        :return: A tuple of ``(ordered_paths, patched_names)`` where ``ordered_paths``
+                 lists local dependency directories in topological order (dependencies
+                 before dependents, main package excluded) and ``patched_names`` is the
+                 set of package names sourced from ``patched_packages_root``.
+        """
+        _local_map: dict[str, Path] = {}
+        patched_names_all: set[str] = set()
+
+        for entry in packages_root.iterdir() if packages_root.exists() else []:
+            if entry.is_dir():
+                _local_map[canonicalize_name(entry.name)] = entry
+
+        if install_patched and patched_packages_root.exists():
+            for entry in patched_packages_root.iterdir():
+                if entry.is_dir():
+                    key = canonicalize_name(entry.name)
+                    _local_map[key] = entry
+                    patched_names_all.add(key)
+
+        extras_map: dict[str, set[str]] = {}
+        order: list[Path] = []
+
+        def _visit(path: Path, with_extras: set[str]) -> None:
+            try:
+                info = self._read_local_project_info(path)
+            except (FileNotFoundError, KeyError) as e:
+                log.warning("Could not read metadata for %s: %s", path, e)
+                return
+
+            already = extras_map.get(info.name, set())
+            new_extras = with_extras - already
+            first_visit = info.name not in extras_map
+            extras_map[info.name] = already | with_extras
+
+            if first_visit:
+                for spec in info.raw_deps:
+                    req = Requirement(spec)
+                    dep_name = canonicalize_name(req.name)
+                    if dep_name in _local_map:
+                        _visit(_local_map[dep_name], set(req.extras))
+                order.append(path)
+
+            for extra in new_extras:
+                for spec in info.optional_deps.get(extra, []):
+                    req = Requirement(spec)
+                    dep_name = canonicalize_name(req.name)
+                    if dep_name in _local_map:
+                        _visit(_local_map[dep_name], set(req.extras))
+
+        try:
+            main_info = self._read_local_project_info(project_path)
+        except (FileNotFoundError, KeyError):
+            log.warning("Could not read metadata for %s; skipping local resolution", project_path)
+            return [], set()
+
+        seed_extras = set(extras) if extras else set()
+        for spec in main_info.raw_deps:
+            req = Requirement(spec)
+            dep_name = canonicalize_name(req.name)
+            if dep_name in _local_map:
+                _visit(_local_map[dep_name], set(req.extras))
+
+        for extra in seed_extras:
+            for spec in main_info.optional_deps.get(extra, []):
+                req = Requirement(spec)
+                dep_name = canonicalize_name(req.name)
+                if dep_name in _local_map:
+                    _visit(_local_map[dep_name], set(req.extras))
+
+        return order, patched_names_all & {canonicalize_name(p.name) for p in order}
+
+    def _install_with_local_preinstall(
+        self,
+        project_path: Path,
+        local_paths: list[Path],
+        extras: list[str] | None,
+    ) -> None:
+        """Install a package after seeding its venv with pre-resolved local dependencies.
+
+        Solves the problem where ``uv pip install -e .`` fails because a dependency
+        is pinned to a version that does not exist on PyPI (e.g. a patched or
+        pre-release build only available locally). By installing the local packages
+        first with ``--no-deps``, their versions are already present in the venv when
+        uv resolves the main package, so PyPI constraints are satisfied without
+        blocking the rest of the dependency fetch.
+
+        :param project_path: The package to install in editable mode.
+        :param local_paths: Local dependency paths to pre-install (in topological order).
+        :param extras: Extras to activate when installing the main package.
+        """
+        clean_env = os.environ.copy()
+        clean_env.pop("VIRTUAL_ENV", None)
+        clean_env.pop("PYTHONHOME", None)
+
+        call_executable_quietly(
+            [
+                self.uv_executable,
+                "venv",
+                "--python",
+                self.python_version,
+            ],
+            cwd=project_path,
+            env=clean_env | self.extra_env,
+        )
+
+        if local_paths:
+            self.install_external_libraries(project_path, *local_paths)
+
+        extras_specification = f"[{','.join(extras)}]" if extras else ""
+        pip_install_spec = f".{extras_specification}"
+        call_executable_quietly(
+            [self.uv_executable, "pip", "install", "-e", pip_install_spec],
+            cwd=project_path,
+            env=self.prepare_venv_environment(project_path),
+        )
+
     def install_with_patches(
         self,
         repositories_root: Path,
@@ -458,8 +660,22 @@ class PythonAPI:
         shutil.copytree(source_path, target_dir)
 
         progress.info(f"Installing package '{package_name}' in {target_dir}")
-        # install the package in the target directory
-        self.install_project(target_dir, extras=extras)
+
+        if (target_dir / "uv.lock").exists():
+            self.install_project(target_dir, extras=extras)
+        else:
+            local_dep_paths, patched_from_walk = self._resolve_local_paths(
+                project_path=target_dir,
+                packages_root=repositories_root / "packages",
+                patched_packages_root=repositories_root / "patched",
+                install_patched=install_patched_dependencies,
+                extras=extras,
+            )
+            progress.info(
+                f"Pre-installing {len(local_dep_paths)} local dep(s) for "
+                f"'{package_name}': {[p.name for p in local_dep_paths]}"
+            )
+            self._install_with_local_preinstall(target_dir, local_dep_paths, extras)
 
         # install patched dependencies if any
         dependencies = self.install_patched_dependencies(
