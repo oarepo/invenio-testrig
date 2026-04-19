@@ -279,6 +279,15 @@ class PythonAPI:
 
         return dependencies
 
+    @staticmethod
+    def _venv_path(project_path: Path) -> Path:
+        """Return the canonical venv path for a project directory.
+
+        Centralises the ``.venv`` name assumption so it only needs to change
+        in one place if the venv location ever differs.
+        """
+        return project_path / ".venv"
+
     def prepare_venv_environment(self, project_path: Path) -> dict[str, str]:
         """Prepare environment variables for commands executed inside the venv.
 
@@ -288,7 +297,7 @@ class PythonAPI:
 
         :return: Dictionary of environment variables configured for the virtual environment
         """
-        venv_path = project_path / ".venv"
+        venv_path = self._venv_path(project_path)
         env = os.environ.copy()
 
         # Clear any existing virtualenv variables to avoid conflicts
@@ -560,6 +569,7 @@ class PythonAPI:
                 "venv",
                 "--python",
                 self.python_version,
+                str(self._venv_path(project_path)),
             ],
             cwd=project_path,
             env=clean_env | self.extra_env,

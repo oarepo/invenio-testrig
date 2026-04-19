@@ -213,14 +213,15 @@ def cmd_repo_test(
 
             # run the invenio-cli run in a background process
             #
+            _venv = PythonAPI._venv_path(test_repository_path)
             server_log_fh = open(server_log_file, "w")
             runner_handle = subprocess.Popen(
-                [".venv/bin/invenio-cli", "run"],
+                [str(_venv / "bin" / "invenio-cli"), "run"],
                 cwd=test_repository_path,
                 env={
                     **os.environ,
                     **config.user.env,
-                    "VIRTUAL_ENV": str(test_repository_path / ".venv"),
+                    "VIRTUAL_ENV": str(_venv),
                     "INVENIO_RATELIMIT_ENABLED": "False",
                     "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
                 },
