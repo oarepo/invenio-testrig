@@ -17,6 +17,7 @@ from pathlib import Path
 import click
 
 from invenio_testrig.cli.base import with_config, with_progress
+from invenio_testrig.cli.utils import test_artifact_paths
 from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.report import ExecutionStatusSchema, save_execution_status
@@ -32,18 +33,17 @@ def cmd_merge_test_artifacts(config: Config, progress: Progress):
     parts for parallel execution. It combines logs and determines the overall
     status based on all parts.
     """
-    assert config.config_path is not None
-    workdir_path = config.config_path.parent
+    workdir_path = config.workdir
 
     def make_slow_split(info: TestedPackageInfo) -> list[str]:
-        if config.slow_test_splitting:
+        if config.user.slow_test_splitting:
             return info.github_entry.slow_packages.get(info.package, [])
         return []
 
     # Find packages that need merging
     packages_to_merge = [
         pkg_name
-        for pkg_name, pkg_info in config.tested_packages.items()
+        for pkg_name, pkg_info in config.runtime.tested_packages.items()
         if make_slow_split(pkg_info)
     ]
 
@@ -62,7 +62,7 @@ def cmd_merge_test_artifacts(config: Config, progress: Progress):
         progress.start(f"Merging artifacts for package '{package_name}'", icon="🔀")
 
         # Determine number of parts
-        slow_split = make_slow_split(config.tested_packages[package_name])
+        slow_split = make_slow_split(config.runtime.tested_packages[package_name])
         assert slow_split is not None
         num_parts = len(slow_split) + 1
 
@@ -107,10 +107,7 @@ def _merge_test_type(
     :param test_type: Type of test ('patched' or 'original')
     :param progress: Progress reporter
     """
-    log_file = merged_dir / f"{test_type}_log.log"
-    status_file = merged_dir / f"{test_type}_status.json"
-    warnings_file = merged_dir / f"warnings_{test_type}.json"
-    simplified_log_file = merged_dir / f"{test_type}_simplified_log.log"
+    paths = test_artifact_paths(merged_dir, test_type)
 
     # Merge logs
     merged_logs = []
@@ -120,27 +117,24 @@ def _merge_test_type(
     overall_status = "success"
 
     for part_num, part_dir in sorted(part_dirs):
-        part_log = part_dir / f"{test_type}_log.log"
-        part_simplified_log = part_dir / f"{test_type}_simplified_log.log"
-        part_warnings = part_dir / f"warnings_{test_type}.json"
-        part_status = part_dir / f"{test_type}_status.json"
+        part_paths = test_artifact_paths(part_dir, test_type)
 
         # Collect logs
-        if part_log.exists():
+        if part_paths.log_file.exists():
             merged_logs.append(f"=== Part {part_num} ===\n")
-            merged_logs.append(part_log.read_text())
+            merged_logs.append(part_paths.log_file.read_text())
             merged_logs.append("\n")
 
         # Collect simplified logs
-        if part_simplified_log.exists():
+        if part_paths.simplified_log_file.exists():
             merged_simplified_logs.append(f"=== Part {part_num} ===\n")
-            merged_simplified_logs.append(part_simplified_log.read_text())
+            merged_simplified_logs.append(part_paths.simplified_log_file.read_text())
             merged_simplified_logs.append("\n")
 
         # Collect warnings
-        if part_warnings.exists():
+        if part_paths.warnings_file.exists():
             try:
-                part_warnings_data = json.loads(part_warnings.read_text())
+                part_warnings_data = json.loads(part_paths.warnings_file.read_text())
                 merged_warnings.extend(part_warnings_data)
             except json.JSONDecodeError, TypeError:
                 progress.warning(
@@ -148,9 +142,9 @@ def _merge_test_type(
                 )
 
         # Collect status
-        if part_status.exists():
+        if part_paths.status_file.exists():
             try:
-                part_status_data = json.loads(part_status.read_text())
+                part_status_data = json.loads(part_paths.status_file.read_text())
                 status_obj = ExecutionStatusSchema().load(part_status_data)
 
                 # Use first part's status as template
@@ -171,19 +165,19 @@ def _merge_test_type(
 
     # Write merged logs
     if merged_logs:
-        log_file.write_text("".join(merged_logs))
+        paths.log_file.write_text("".join(merged_logs))
 
     if merged_simplified_logs:
-        simplified_log_file.write_text("".join(merged_simplified_logs))
+        paths.simplified_log_file.write_text("".join(merged_simplified_logs))
 
     # Write merged warnings
     if merged_warnings:
-        warnings_file.write_text(json.dumps(merged_warnings, indent=2))
+        paths.warnings_file.write_text(json.dumps(merged_warnings, indent=2))
 
     # Write merged status
     if merged_status:
         merged_status.status = overall_status
-        save_execution_status(status_file, merged_status)
+        save_execution_status(paths.status_file, merged_status)
     else:
         progress.warning(
             f"No status files found for {test_type} tests of '{package_name}'"

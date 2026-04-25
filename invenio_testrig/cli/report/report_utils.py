@@ -60,12 +60,12 @@ def get_jinja_template(template_name: str):
 def build_base_jinja_context(config: Config) -> dict[str, Any]:
     """Build common Jinja2 context fields shared across all report templates."""
     return {
-        "config_name": config.name,
-        "patch_mode": PATCH_MODE_LABELS.get(config.patch_mode, config.patch_mode),
-        "test_mode": TEST_MODE_LABELS.get(config.test_mode, config.test_mode),
-        "test_scope": TEST_SCOPE_LABELS.get(config.test_scope, config.test_scope),
-        "started_at": format_started_at(config.started_at),
-        "python_version": config.python_version,
+        "config_name": config.user.name,
+        "patch_mode": PATCH_MODE_LABELS.get(config.user.patch_mode, config.user.patch_mode),
+        "test_mode": TEST_MODE_LABELS.get(config.user.test_mode, config.user.test_mode),
+        "test_scope": TEST_SCOPE_LABELS.get(config.user.test_scope, config.user.test_scope),
+        "started_at": format_started_at(config.runtime.started_at),
+        "python_version": config.user.python_version,
         "last_updated": datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC"),
     }
 

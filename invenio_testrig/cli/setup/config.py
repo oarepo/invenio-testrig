@@ -15,7 +15,7 @@ from typing import cast
 import marshmallow as ma
 import yaml
 
-from invenio_testrig.config import Config, ConfigSchema
+from invenio_testrig.config import Config, RuntimeState, UserConfig, UserConfigSchema
 from invenio_testrig.github import GitApi, GitCache
 from invenio_testrig.hooks import run_hook
 from invenio_testrig.progress import Progress
@@ -148,9 +148,12 @@ def initialize_config(
         )
     config_data["hooks"] = config_data.get("hooks", {}) or {}
 
-    config = cast(Config, ConfigSchema().load(config_data, unknown=ma.INCLUDE))
-
-    config.started_at = datetime.now(UTC).isoformat()
+    user = cast(
+        UserConfig,
+        UserConfigSchema().load(config_data, unknown=ma.INCLUDE),
+    )
+    runtime = RuntimeState(started_at=datetime.now(UTC).isoformat())
+    config = Config(user=user, runtime=runtime, workdir=workdir)
 
     # Run after-config-preprocessing hook if it exists
     run_hook(

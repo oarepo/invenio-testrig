@@ -62,7 +62,7 @@
                     <ul class="link-list">
                         <li><a href="{{ pkg.artefact_dir }}/original_status.json" target="_blank">status</a> | <a href="{{ pkg.artefact_dir }}/original_freeze.txt" target="_blank">freeze</a></li>
                         <li><a href="{{ pkg.artefact_dir }}/original_log.log" target="_blank">log</a> | <a href="{{ pkg.artefact_dir }}/original_simplified_log.log" target="_blank">simplified</a></li>
-                        <li><a href="{{ pkg.artefact_dir }}/warnings_original.json" target="_blank">warnings</a></li>
+                        <li><a href="{{ pkg.artefact_dir }}/original_warnings.json" target="_blank">warnings</a></li>
                         {% set unpatched_commits = "top_commits/" + pkg.info.reference.package + "_unpatched.json" %}
                         <li><a href="{{ unpatched_commits }}" target="_blank">commits</a></li>
                     </ul>
@@ -85,7 +85,7 @@
                     <ul class="link-list">
                         <li><a href="{{ pkg.artefact_dir }}/patched_status.json" target="_blank">status</a> | <a href="{{ pkg.artefact_dir }}/patched_freeze.txt" target="_blank">freeze</a></li>
                         <li><a href="{{ pkg.artefact_dir }}/patched_log.log" target="_blank">log</a> | <a href="{{ pkg.artefact_dir }}/patched_simplified_log.log" target="_blank">simplified</a></li>
-                        <li><a href="{{ pkg.artefact_dir }}/warnings_patched.json" target="_blank">warnings</a></li>
+                        <li><a href="{{ pkg.artefact_dir }}/patched_warnings.json" target="_blank">warnings</a></li>
                         {% if patched_sources %}
                         {% set patched_commits = "top_commits/" + pkg.info.reference.package + "_patched.json" %}
                         <li><a href="{{ patched_commits }}" target="_blank">commits</a></li>

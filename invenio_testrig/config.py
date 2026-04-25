@@ -7,10 +7,20 @@
 # details.
 """Configuration schema definitions and management.
 
-This module defines the complete configuration schema for invenio-testrig,
-including repository settings, GitHub organization patterns, patch configurations,
-and execution status tracking. It also provides functions for loading and saving
-configuration files.
+This module defines the configuration schema for invenio-testrig split into
+two distinct layers:
+
+* :class:`UserConfig` — everything the user authors: repository settings,
+  GitHub organization patterns, patch configurations, and execution options.
+  Serialized to ``workdir/config.json``.
+
+* :class:`RuntimeState` — data accumulated by the setup sub-steps:
+  resolved dependency versions and tested-package metadata.
+  Serialized to ``workdir/runtime_config.json``.
+
+* :class:`Config` — a thin aggregate that holds both and exposes all fields
+  as properties so every existing ``config.X`` call site continues to work
+  without change.
 """
 
 import json
@@ -49,6 +59,23 @@ class Repository(ExtensibleMixin):
 
     test: list[str] | None
     """Test command to run on the installed repository."""
+
+    def as_tested_package_info(self) -> "TestedPackageInfo":
+        """Create a TestedPackageInfo that represents this seed repository.
+
+        Several subsystems (test runners, report generators) need to record the
+        seed repository as if it were a tested package so they can write status
+        files and render it uniformly alongside regular packages. This factory
+        centralises that construction so the field mapping is defined once.
+        """
+        return TestedPackageInfo(
+            reference=self.git,
+            github_entry=Github(
+                org=self.git.org,
+                install=self.install or [],
+                test=self.test or [],
+            ),
+        )
 
 
 @dataclass(init=False)
@@ -142,164 +169,283 @@ class TestedPackageInfo:
         return self.reference.package
 
 
-@dataclass(init=False)
-class Config(ExtensibleMixin):
-    """Main configuration structure for invenio-testrig.
+# ---------------------------------------------------------------------------
+# User-authored configuration layer
+# ---------------------------------------------------------------------------
 
-    This is kept extensible to allow custom fields for hooks.
+
+@dataclass(init=False)
+class UserConfig(ExtensibleMixin):
+    """Everything the user authors — present in YAML and stable after setup begins.
+
+    This class captures the full user intent: which repositories to test,
+    which patches to apply, and how to run the tests.  It is written to
+    ``workdir/config.json`` exactly once (after CLI overrides are applied) and
+    never modified again during a run.
     """
 
     github: list[Github]
+    """GitHub organization configurations defining which packages to test."""
+
     seed_repository: Repository
-    name: str | None = None
-    """Optional name for this test configuration run."""
-    started_at: str | None = None
-    """ISO datetime when the configuration was initialized."""
+    """The InvenioRDM repository whose dependency graph is being tested."""
+
     patches: list[Patch] = field(default_factory=list)
+    """Patches (PRs or branches) to apply during testing."""
+
     patch_mode: Literal["upstream", "pinned"] = "upstream"
+    """Patching strategy: ``upstream`` (latest versions) or ``pinned`` (lock-file versions)."""
 
-    # runtime information - these are populated during execution and not
-    # expected to be set by users, but kept here for simplicity and extensibility
-    packages: dict[str, str] = field(
-        default_factory=dict
-    )  # package name to version mapping for dependencies
-    tested_packages: dict[str, TestedPackageInfo] = field(
-        default_factory=dict
-    )  # package name to tested package info mapping
+    name: str | None = None
+    """Optional human-readable name for this test configuration run."""
 
-    # Execution options - again,  not setup in the config file but can be set programmatically or via hooks
+    env: dict[str, str] = field(default_factory=dict)
+    """Environment variables injected into every installation and test subprocess."""
+
     python_version: str = "python3"
-    """Python version to use for testing."""
+    """Python interpreter to use when creating virtual environments."""
 
     uv_executable: str = "uv"
-    """Path to uv executable."""
+    """Path or name of the ``uv`` executable."""
 
     disable_codestyle_checks: bool = False
-    """Whether to disable codestyle checks (--black, --isort, --pydocstyle) in test configuration."""
-
-    debug: bool = False
-    """Whether to enable debug mode with full traceback on errors."""
+    """Remove ``--black``/``--isort``/``--pydocstyle`` flags from test configs."""
 
     verbose: bool = False
-    """Whether to enable verbose output with additional logging information."""
+    """Enable verbose logging output."""
+
+    debug: bool = False
+    """Re-raise exceptions with full tracebacks instead of user-friendly messages."""
 
     test_mode: Literal["stop-on-success", "run-all"] = "stop-on-success"
-    """This setting controls when package testing (patched and unpatched version) should stop.
+    """Controls when package testing (patched and unpatched) stops.
 
-    The options are:
-
-    * ``stop-on-success``: Test the patched version first. If it fails, also test
-      the unpatched version. If it succeeds, skip testing the unpatched version.
-    * ``run-all``: Run tests for both the patched and unpatched version
-      regardless of the test results.
+    * ``stop-on-success``: skip the unpatched run if the patched version passes.
+    * ``run-all``: always run both variants.
     """
 
     test_scope: Literal["affected", "all"] = "affected"
-    """This setting controls which packages should be tested.
+    """Controls which packages are tested.
 
-    The options are:
-
-    * ``affected``: Only test packages affected by the patches
-      (i.e. packages that have patches or depend on packages with patches).
-    * ``all``: Test all packages regardless of whether they are affected by the patches.
+    * ``affected``: only packages touched by patches or their dependents.
+    * ``all``: every package in the dependency graph.
     """
 
-    env: dict[str, str] = field(default_factory=dict)
-    """Environment variables to set for installation/test execution."""
-
     test_timeout: int = 90
-    """Timeout for each test execution in minutes. 0 means no timeout."""
+    """Per-package test timeout in minutes. 0 means no timeout."""
 
     slow_test_splitting: bool = True
-    """Whether to split slow tests into multiple parts."""
+    """Split slow-test packages across multiple parallel matrix jobs."""
+
+
+UserConfigSchema = class_schema(UserConfig)
+
+
+# ---------------------------------------------------------------------------
+# Runtime state layer
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class RuntimeState:
+    """Data accumulated by the setup sub-steps — never user-authored.
+
+    Written to ``workdir/runtime_config.json`` and updated after each setup
+    phase (collect → filter → select-patches → clone).
+    """
+
+    started_at: str | None = None
+    """ISO-format UTC timestamp set when the setup run begins."""
+
+    packages: dict[str, str] = field(default_factory=dict)
+    """All dependencies of the seed repository mapped to their resolved versions.
+
+    Populated by the ``collect`` step.
+    """
+
+    tested_packages: dict[str, TestedPackageInfo] = field(default_factory=dict)
+    """Subset of ``packages`` that match the GitHub include/exclude filters.
+
+    Populated by the ``filter`` step and enriched by ``select-patches`` and ``clone``.
+    """
+
+
+RuntimeStateSchema = class_schema(RuntimeState)
+
+
+# ---------------------------------------------------------------------------
+# Aggregate Config class
+# ---------------------------------------------------------------------------
+
+
+class Config:
+    """Aggregate that combines :class:`UserConfig` and :class:`RuntimeState`.
+
+    User configuration is accessed via ``config.user``;
+    runtime state is accessed via ``config.runtime``.
+
+    I/O is split into :meth:`save_user` (writes ``config.json``) and
+    :meth:`save_runtime` (writes ``runtime_config.json``).  :meth:`save`
+    writes both for convenience.
+    """
+
+    def __init__(
+        self,
+        user: UserConfig,
+        runtime: RuntimeState | None = None,
+        workdir: Path | None = None,
+    ) -> None:
+        self.user = user
+        self.runtime = runtime if runtime is not None else RuntimeState()
+        self._workdir = workdir
+
+    # ------------------------------------------------------------------
+    # Path resolution
+    # ------------------------------------------------------------------
 
     @property
     def workdir(self) -> Path:
-        """Get the working directory path.
+        """Absolute path to the working directory.
 
-        :return: Path to the working directory (parent of config file)
-
-        :raises ValueError: If config_path is not set
+        :raises ValueError: If the workdir has not been set.
         """
-        # workdir is always the parent directory of the config file
-        config_path = self.config_path
-        if config_path is None:
-            raise ValueError("Config path is not set. Cannot determine workdir.")
-        return config_path.parent.resolve()
+        if self._workdir is None:
+            raise ValueError("workdir is not set on this Config instance.")
+        return self._workdir.resolve()
+
+    @property
+    def config_path(self) -> Path | None:
+        """Path to ``config.json`` inside the working directory, or ``None``."""
+        if self._workdir is None:
+            return None
+        return self._workdir / "config.json"
+
+    @config_path.setter
+    def config_path(self, value: Path) -> None:
+        """Backwards-compat setter: derive workdir from a config.json path."""
+        self._workdir = Path(value).parent
 
     def workdir_path(self, subdir: str | None = None) -> Path:
-        """Get the Path object for the working directory or a subdirectory within it.
+        """Return the workdir or a named subdirectory within it.
 
-        :param subdir: Optional subdirectory name within the working directory
-
-        :return: Path to the working directory or specified subdirectory
+        :param subdir: Optional subdirectory name.
         """
         if subdir:
             return self.workdir / subdir
         return self.workdir
 
-    @property
-    def config_path(self) -> Path | None:
-        """Path to the config JSON file, if loaded from a file."""
-        return getattr(self, "_config_path", None)
-
-    @config_path.setter
-    def config_path(self, value: Path) -> None:
-        """Set the path to the config JSON file.
-
-        :param value: Path to the configuration file
-        """
-        self._config_path = value
+    # ------------------------------------------------------------------
+    # I/O
+    # ------------------------------------------------------------------
 
     @classmethod
-    def load(cls: type[Self], file: str | Path) -> Self:
-        """Load configuration from a JSON file.
+    def load(cls: type[Self], workdir: Path) -> Self:
+        """Load configuration from a working directory.
 
-        :param file: Path to the JSON configuration file
-        :type file: str or Path
+        Reads ``workdir/config.json`` (UserConfig) and, if present,
+        ``workdir/runtime_config.json`` (RuntimeState).
 
-        :return: Loaded :class:`Config` instance with :attr:`config_path` set
+        :param workdir: Path to the working directory produced by ``setup``.
 
-        :raises ValueError: If the file doesn't contain a valid JSON object
-        :raises FileNotFoundError: If the file doesn't exist
+        :return: Fully populated :class:`Config` instance.
+
+        :raises FileNotFoundError: If ``config.json`` does not exist.
+        :raises ValueError: If ``config.json`` is not a JSON object.
         """
-        path = Path(file)
+        workdir = Path(workdir)
+        user_path = workdir / "config.json"
 
-        with open(path, "r") as stream:
-            raw_data = json.load(stream)
-            schema = ConfigSchema()
+        with open(user_path) as fh:
+            raw = json.load(fh)
 
-            if isinstance(raw_data, dict):
-                ret = cast(Self, schema.load(raw_data, unknown=ma.INCLUDE))
-                ret.config_path = path
-                return ret
-            else:
-                raise ValueError(
-                    f"Expected config file to contain a JSON object, got {type(raw_data)}"
-                )
+        if not isinstance(raw, dict):
+            raise ValueError(
+                f"Expected config.json to contain a JSON object, got {type(raw)}"
+            )
+
+        # Backwards compat: old config.json files contain runtime fields too.
+        # Peel them off so they don't confuse UserConfigSchema.
+        runtime_keys = {"started_at", "packages", "tested_packages"}
+        runtime_data = {k: v for k, v in raw.items() if k in runtime_keys}
+        user_data = {k: v for k, v in raw.items() if k not in runtime_keys}
+
+        user = cast(UserConfig, UserConfigSchema().load(user_data, unknown=ma.INCLUDE))
+
+        runtime_path = workdir / "runtime_config.json"
+        if runtime_path.exists():
+            with open(runtime_path) as fh:
+                runtime = cast(RuntimeState, RuntimeStateSchema().load(json.load(fh)))
+        elif runtime_data:
+            # Old-style single-file workdir: runtime fields were in config.json.
+            runtime = cast(RuntimeState, RuntimeStateSchema().load(runtime_data))
+        else:
+            runtime = RuntimeState()
+
+        return cls(user=user, runtime=runtime, workdir=workdir)
 
     @classmethod
     def load_from_dict(cls: type[Self], data: dict) -> Self:
-        schema = ConfigSchema()
-        ret = cast(Self, schema.load(data, unknown=ma.INCLUDE))
-        return ret
+        """Create a Config from a flat dictionary (e.g., fetched from a report).
+
+        Handles both the old combined format (all fields in one dict) and the
+        new split format (user fields only).
+
+        :param data: Raw dictionary containing config fields.
+
+        :return: :class:`Config` instance with no workdir set.
+        """
+        runtime_keys = {"started_at", "packages", "tested_packages"}
+        runtime_data = {k: v for k, v in data.items() if k in runtime_keys}
+        user_data = {k: v for k, v in data.items() if k not in runtime_keys}
+
+        user = cast(UserConfig, UserConfigSchema().load(user_data, unknown=ma.INCLUDE))
+        runtime = cast(RuntimeState, RuntimeStateSchema().load(runtime_data))
+        return cls(user=user, runtime=runtime)
+
+    def save_user(self) -> None:
+        """Write :class:`UserConfig` to ``workdir/config.json``.
+
+        Call this once after all CLI overrides have been applied.  The file
+        should not need to change again during a run.
+
+        :raises AssertionError: If workdir is not set.
+        """
+        assert self._workdir is not None, "workdir must be set before saving"
+        path = self._workdir / "config.json"
+        path.write_text(
+            json.dumps(UserConfigSchema().dump(self.user), indent=2, sort_keys=True)
+        )
+
+    def save_runtime(self) -> None:
+        """Write :class:`RuntimeState` to ``workdir/runtime_config.json``.
+
+        Call this after each setup sub-step that populates runtime state
+        (collect, filter, select-patches, clone).
+
+        :raises AssertionError: If workdir is not set.
+        """
+        assert self._workdir is not None, "workdir must be set before saving"
+        path = self._workdir / "runtime_config.json"
+        path.write_text(
+            json.dumps(RuntimeStateSchema().dump(self.runtime), indent=2, sort_keys=True)
+        )
 
     def save(self, file: str | Path | None = None) -> None:
-        """Save configuration to a JSON file.
+        """Write both :class:`UserConfig` and :class:`RuntimeState` to disk.
 
-        :param file: Optional path to save the configuration to. If None, uses config_path
+        Accepts an optional *file* argument for backwards compatibility with
+        callers that previously passed ``workdir / "config.json"`` explicitly.
+        When given, the workdir is derived from the file's parent directory.
 
-        :raises ValueError: If no file path is specified and config_path is not set
+        :param file: Optional path ending in ``config.json``.  If omitted,
+            uses the workdir already set on this instance.
         """
-        if file:
-            self.config_path = Path(file)
-        elif not self.config_path:
-            raise ValueError("No file path specified for saving configuration.")
-        formatted_config = json.dumps(
-            ConfigSchema().dump(self), indent=2, sort_keys=True
-        )
-        assert self.config_path is not None  # guaranteed by the check above
-        self.config_path.write_text(formatted_config)
+        if file is not None:
+            self._workdir = Path(file).parent
+        self.save_user()
+        self.save_runtime()
 
 
-ConfigSchema = class_schema(Config)
+# Deprecated alias — kept for any external hook libraries that import it.
+# New code should use UserConfigSchema or RuntimeStateSchema directly.
+ConfigSchema = UserConfigSchema

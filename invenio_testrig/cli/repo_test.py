@@ -24,12 +24,8 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings
-from invenio_testrig.config import (
-    Config,
-    Github,
-    TestedPackageInfo,
-)
+from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
+from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
 from invenio_testrig.report import ExecutionStatus, save_execution_status
@@ -57,32 +53,15 @@ def cmd_repo_test(
     log_dir = config.workdir_path("artifacts") / "repo"
     log_dir.mkdir(parents=True, exist_ok=True)
 
-    log_file = log_dir / f"{'patched' if apply_patches else 'original'}_log.log"
-    status_file = log_dir / f"{'patched' if apply_patches else 'original'}_status.json"
-    freeze_file = log_dir / f"{'patched' if apply_patches else 'original'}_freeze.txt"
-    warnings_file = (
-        log_dir / f"warnings_{'patched' if apply_patches else 'original'}.json"
-    )
-    simplified_log_file = (
-        log_dir / f"{'patched' if apply_patches else 'original'}_simplified_log.log"
-    )
+    variant = "patched" if apply_patches else "original"
+    paths = test_artifact_paths(log_dir, variant)
 
-    # Create a minimal TestedPackageInfo for the repository
-    repo_info = TestedPackageInfo(
-        reference=config.seed_repository.git,
-        github_entry=Github(
-            org="",
-            install=config.seed_repository.install or [],
-            test=config.seed_repository.test or [],
-            extras=[],
-            freeze=[],
-        ),
-    )
+    repo_info = config.user.seed_repository.as_tested_package_info()
 
-    if not config.seed_repository.test:
-        click.secho("No tests configured for the seed repository.", fg="yellow")
+    if not config.user.seed_repository.test:
+        progress.warning("No tests configured for the seed repository.")
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status="skipped",
                 package=repo_info,
@@ -109,70 +88,27 @@ def cmd_repo_test(
             progress,
         )
 
-    try:
-        run_repository_tests(config, test_repository_path, log_file)
+    with test_run_context(
+        paths=paths,
+        package_info=repo_info,
+        dependencies=patched_dependencies,
+        timeout_cmd=config.user.seed_repository.test,
+        timeout_minutes=config.user.test_timeout,
+        label="repository",
+        progress=progress,
+    ):
+        run_repository_tests(config, test_repository_path, paths.log_file)
 
         # Save the actual uv pip freeze into the artifacts
-        python_api = PythonAPI(config.env)
+        python_api = PythonAPI(config.user.env)
         python_api.run_in_venv(
             test_repository_path,
             ["uv", "pip", "freeze"],
-            capture_to_file=freeze_file,
+            capture_to_file=paths.freeze_file,
             tee_output=False,  # don't print the freeze output to the console
         )
 
-        # Process warnings from log file
-        process_warnings(log_file, warnings_file, simplified_log_file)
-
-        status = "success"
-        save_execution_status(
-            status_file,
-            ExecutionStatus(
-                status=status,
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        progress.success("Repository tests completed successfully")
-
-    except subprocess.CalledProcessError as e:
-        progress.error(f"Tests failed for repository with exit code {e.returncode}")
-        progress.info(f"Check the output log at: {log_file}", icon="💡")
-
-        # Process warnings from log file even on failure
-        process_warnings(log_file, warnings_file, simplified_log_file)
-
-        save_execution_status(
-            status_file,
-            ExecutionStatus(
-                status="failed",
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        raise
-
-    except subprocess.TimeoutExpired:
-        timeout_minutes = config.test_timeout
-        progress.error(
-            f"Tests timed out for repository after {timeout_minutes} minutes"
-        )
-        progress.info(f"Check the output log at: {log_file}", icon="💡")
-
-        # Process warnings from log file even on timeout
-        process_warnings(log_file, warnings_file, simplified_log_file)
-
-        save_execution_status(
-            status_file,
-            ExecutionStatus(
-                status="failed",
-                package=repo_info,
-                dependencies=patched_dependencies,
-            ),
-        )
-        raise subprocess.CalledProcessError(
-            returncode=-1, cmd=config.seed_repository.test
-        )
+    progress.success("Repository tests completed successfully")
 
 
 def install_repository(
@@ -185,7 +121,7 @@ def install_repository(
     :param ignore_uv_lock: Whether to ignore the UV lock file.
     """
     shutil.copytree(clone_path / "repo", tested_repo_path)
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.install_project(tested_repo_path, ignore_uv_lock=ignore_uv_lock)
 
 
@@ -206,7 +142,7 @@ def apply_package_patches(
 
     :return: List of patched package information
     """
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.install_patched_dependencies(
         project_path=tested_repo_path,
         packages_root=packages_path,
@@ -217,7 +153,7 @@ def apply_package_patches(
 
     # Collect information about patched packages
     patched_packages = []
-    for package_name, package_config in config.tested_packages.items():
+    for package_name, package_config in config.runtime.tested_packages.items():
         if package_config.patches:
             patched_packages.append(package_config)
 
@@ -236,14 +172,14 @@ def run_repository_tests(
     :raises subprocess.CalledProcessError: If the tests fail
     :raises subprocess.TimeoutExpired: If the tests exceed the timeout
     """
-    test_command = config.seed_repository.test
+    test_command = config.user.seed_repository.test
     assert test_command is not None
 
-    python_api = PythonAPI(config.env)
+    python_api = PythonAPI(config.user.env)
     python_api.run_in_venv(
         project_path=tested_repo_path,
         command=test_command,
         capture_to_file=log_file,
         tee_output=True,
-        timeout=config.test_timeout * 60 if config.test_timeout else None,
+        timeout=config.user.test_timeout * 60 if config.user.test_timeout else None,
     )

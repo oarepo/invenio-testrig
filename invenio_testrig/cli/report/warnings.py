@@ -36,7 +36,7 @@ def collect_warnings(
         return {}
 
     # Iterate through each tested package
-    for package_name, package_info in config.tested_packages.items():
+    for package_name, package_info in config.runtime.tested_packages.items():
         package_dir = artifacts_path / package_name
         if not package_dir.exists():
             continue
@@ -45,7 +45,7 @@ def collect_warnings(
         # - If package has patches, load warnings from patched tests only
         # - If package has no patches, load warnings from original tests
         for log_type in ["patched", "original"]:
-            warnings_file = package_dir / f"warnings_{log_type}.json"
+            warnings_file = package_dir / f"{log_type}_warnings.json"
             if warnings_file.exists():
                 break
 

@@ -84,7 +84,7 @@ def with_debug(func: Callable[..., Any]) -> Callable[..., Any]:
 
     @functools.wraps(func)
     def wrapper(*args: Any, config: Config, progress: Progress, **kwargs: Any) -> Any:
-        with step_error_handler(config.debug, progress):
+        with step_error_handler(config.user.debug, progress):
             return func(*args, config=config, progress=progress, **kwargs)
 
     return wrapper
@@ -108,7 +108,7 @@ def with_verbose(func: Callable[..., Any]) -> Callable[..., Any]:
 
     @functools.wraps(func)
     def wrapper(*args: Any, config: Config, **kwargs: Any) -> Any:
-        if config.verbose:
+        if config.user.verbose:
             set_verbose()
         return func(*args, config=config, **kwargs)
 
@@ -142,7 +142,7 @@ def with_config(func: Callable[..., Any]) -> Callable[..., Any]:
 
         return func(
             *args,
-            config=Config.load(workdir / "config.json"),
+            config=Config.load(workdir),
             progress=progress,
             **kwargs,
         )

@@ -42,10 +42,10 @@ def collect_dependencies(
     :param ignore_uv_lock: Whether to ignore uv.lock file
     :param progress: Progress reporter for status updates
     """
-    git_ref = config.seed_repository.git
+    git_ref = config.user.seed_repository.git
     git_api = GitApi(
-        GitCache(config.workdir_path("git_cache"), extra_env=config.env),
-        extra_env=config.env,
+        GitCache(config.workdir_path("git_cache"), extra_env=config.user.env),
+        extra_env=config.user.env,
     )
 
     # Clone the repository to a temporary directory
@@ -64,13 +64,13 @@ def collect_dependencies(
             "Collecting dependencies (might take a while as the repository might be installed)...",
             icon="📦",
         )
-        python_api = PythonAPI(config.env, uv_executable, python_version)
+        python_api = PythonAPI(config.user.env, uv_executable, python_version)
         dependencies = python_api.get_dependencies(
             repo_path, ignore_uv_lock=ignore_uv_lock
         )
 
     # Add dependencies to the config
-    config.packages = dependencies
+    config.runtime.packages = dependencies
 
     run_hook(
         config,
@@ -78,7 +78,7 @@ def collect_dependencies(
     )
 
     progress.success(
-        f"Collected {len(dependencies)} dependencies and updated {config.config_path}"
+        f"Collected {len(dependencies)} dependencies and updated {config.workdir}"
     )
 
 
@@ -118,7 +118,7 @@ def _find_git_repository_config(config: Config, package_name: str) -> Github | N
 
     :return: Matching Github configuration entry or None if no match found
     """
-    for github_entry in config.github or []:
+    for github_entry in config.user.github or []:
         exclude_patterns = github_entry.exclude or []
 
         # Check if package matches any include pattern
@@ -161,8 +161,8 @@ def filter_packages(
 
     :raises ValueError: If no packages exist in config
     """
-    git_cache = GitCache(config.workdir_path("git_cache"), extra_env=config.env)
-    git_api = GitApi(git_cache, extra_env=config.env)
+    git_cache = GitCache(config.workdir_path("git_cache"), extra_env=config.user.env)
+    git_api = GitApi(git_cache, extra_env=config.user.env)
 
     progress.text("::group::🔍 Filter Packages Options")
     progress.text(f"  enable_slow_test_splitting: {enable_slow_test_splitting}")
@@ -174,10 +174,10 @@ def filter_packages(
     )
 
     # Check if packages exists
-    if not config.packages:
+    if not config.runtime.packages:
         raise ValueError("No packages in config")
 
-    packages_map = config.packages
+    packages_map = config.runtime.packages
 
     # Filter dependencies based on github patterns
     tested_packages: dict[str, TestedPackageInfo] = {}
@@ -223,7 +223,7 @@ def filter_packages(
             github_entry=github_entry,
         )
 
-    for patch in config.patches:
+    for patch in config.user.patches:
         if patch.package in tested_packages:
             continue
         github_entry = _find_git_repository_config(config, patch.package)
@@ -238,7 +238,7 @@ def filter_packages(
         )
 
     # Add tested packages to the config
-    config.tested_packages = tested_packages
+    config.runtime.tested_packages = tested_packages
 
     run_hook(
         config,
@@ -247,7 +247,7 @@ def filter_packages(
 
     progress.success(
         f"Filtered {len(tested_packages)} packages from {len(packages_map)} "
-        f"total dependencies and updated {config.config_path}"
+        f"total dependencies and updated {config.workdir}"
     )
 
 
@@ -277,16 +277,16 @@ def select_patches(
     )
 
     # Check if patches exists
-    if not config.patches:
+    if not config.user.patches:
         progress.warning("No patches in config, will skip patch selection")
         return
 
     applied_patches_count = 0
     applied_packages_count = 0
-    for tested_package_name, tested_package_info in config.tested_packages.items():
+    for tested_package_name, tested_package_info in config.runtime.tested_packages.items():
         matching_patches = [
             patch
-            for patch in config.patches
+            for patch in config.user.patches
             if patch.applies_to(tested_package_info.reference)
         ]
 

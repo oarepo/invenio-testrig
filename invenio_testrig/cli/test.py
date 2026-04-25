@@ -26,7 +26,7 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import process_warnings
+from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
 from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
@@ -111,11 +111,11 @@ def _run_test_all_packages(config: Config, apply_patches: bool, progress: Progre
     has_failures = False
 
     console = Console()
-    total_packages = len(config.tested_packages)
+    total_packages = len(config.runtime.tested_packages)
 
     progress.start(f"Testing {total_packages} packages", icon="🚀")
 
-    for idx, package_name in enumerate(config.tested_packages.keys(), 1):
+    for idx, package_name in enumerate(config.runtime.tested_packages.keys(), 1):
         progress.start(
             f"[{idx}/{total_packages}] Testing package '{package_name}'", icon="📦"
         )
@@ -170,7 +170,7 @@ def _run_test_package(
     log_dir = config.workdir_path("artifacts") / package_name
     package_name = package_name.lower()
 
-    if package_name not in config.tested_packages:
+    if package_name not in config.runtime.tested_packages:
         progress.error(f"Package '{package_name}' not found in tested_packages")
         raise click.Abort()
 
@@ -201,7 +201,7 @@ def _run_test_package(
     )
 
     # Disable codestyle checks if requested
-    if config.disable_codestyle_checks:
+    if config.user.disable_codestyle_checks:
         progress.info(
             "Disabling codestyle checks (black, isort, pydocstyle)",
             icon="🔧",
@@ -253,14 +253,15 @@ def _install_package_for_testing(
 
     :raises ValueError: If the package is not found in tested_packages
     """
-    python_api = PythonAPI(config.env, "uv", config.python_version)
+    python_api = PythonAPI(config.user.env, "uv", config.user.python_version)
 
     package_name = package_name.lower()
+    variant = "patched" if apply_patches else "original"
 
-    if package_name not in config.tested_packages:
+    if package_name not in config.runtime.tested_packages:
         raise ValueError(f"Package '{package_name}' not found in tested_packages")
 
-    package_config = config.tested_packages[package_name]
+    package_config = config.runtime.tested_packages[package_name]
 
     working_dir = _testing_directory(config, package_name, apply_patches)
     if working_dir.exists():
@@ -285,22 +286,22 @@ def _install_package_for_testing(
     )
 
     library_patches = [
-        config.tested_packages[x] for x in dependencies if x in config.tested_packages
+        config.runtime.tested_packages[x] for x in dependencies if x in config.runtime.tested_packages
     ]
 
-    patched = bool(config.tested_packages[package_name].patches) or any(
-        bool(config.tested_packages[x].patches)
+    patched = bool(config.runtime.tested_packages[package_name].patches) or any(
+        bool(config.runtime.tested_packages[x].patches)
         for x in dependencies
-        if x in config.tested_packages
+        if x in config.runtime.tested_packages
     )
 
     # save the actual uv pip freeze into the logs if logging
     log_dir = config.workdir_path("artifacts") / package_name
-    freeze_file = log_dir / f"{'patched' if apply_patches else 'original'}_freeze.txt"
+    paths = test_artifact_paths(log_dir, variant)
     python_api.run_in_venv(
         working_dir,
         ["uv", "pip", "freeze"],
-        capture_to_file=freeze_file,
+        capture_to_file=paths.freeze_file,
         tee_output=False,  # don't print the freeze output to the console
     )
 
@@ -341,14 +342,8 @@ def _run_tests(
     :raises subprocess.CalledProcessError: If the tests fail
     """
     log_dir = config.workdir_path("artifacts") / package_name
-    log_file = log_dir / f"{'patched' if apply_patches else 'original'}_log.log"
-    status_file = log_dir / f"{'patched' if apply_patches else 'original'}_status.json"
-    warnings_file = (
-        log_dir / f"warnings_{'patched' if apply_patches else 'original'}.json"
-    )
-    simplified_log_file = (
-        log_dir / f"{'patched' if apply_patches else 'original'}_simplified_log.log"
-    )
+    variant = "patched" if apply_patches else "original"
+    paths = test_artifact_paths(log_dir, variant)
 
     if apply_patches and not patched:
         # skip the test execution if patches were requested but not applied
@@ -357,7 +352,7 @@ def _run_tests(
         )
         status = "skipped"
         save_execution_status(
-            status_file,
+            paths.status_file,
             ExecutionStatus(
                 status=status, package=package_config, dependencies=library_patches
             ),
@@ -365,9 +360,9 @@ def _run_tests(
         return status
 
     api = PythonAPI(
-        config.env,
-        uv_executable=config.uv_executable,
-        python_version=config.python_version,
+        config.user.env,
+        uv_executable=config.user.uv_executable,
+        python_version=config.user.python_version,
     )
 
     progress.start(
@@ -377,7 +372,7 @@ def _run_tests(
     )
 
     def make_slow_split(info: TestedPackageInfo) -> list[str]:
-        if config.slow_test_splitting:
+        if config.user.slow_test_splitting:
             return info.github_entry.slow_packages.get(info.package, [])
         return []
 
@@ -387,7 +382,7 @@ def _run_tests(
         tests = api.run_in_venv(
             working_dir, ["pytest", "--co", "-q"], check_output=True
         )
-        split_points = make_slow_split(config.tested_packages[package_name])
+        split_points = make_slow_split(config.runtime.tested_packages[package_name])
         assert split_points is not None
         split_start = split_points[part_number - 1] if part_number > 0 else None
         split_end = (
@@ -424,7 +419,15 @@ def _run_tests(
                 f"Wrong part number for package '{package_name}', no tests found between '{split_start}' and '{split_end}'"
             )
 
-    try:
+    with test_run_context(
+        paths=paths,
+        package_info=package_config,
+        dependencies=library_patches,
+        timeout_cmd=package_config.github_entry.test,
+        timeout_minutes=config.user.test_timeout,
+        label=f"package '{package_name}'",
+        progress=progress,
+    ):
         test_command = package_config.github_entry.test
         if filtered_tests:
             # Write filtered tests to a file and use @ syntax to avoid long command lines
@@ -441,61 +444,12 @@ def _run_tests(
         api.run_in_venv(
             working_dir,
             test_command,
-            log_file,
-            timeout=config.test_timeout * 60,
+            paths.log_file,
+            timeout=config.user.test_timeout * 60,
         )
         progress.success(f"Tests completed successfully for package '{package_name}'")
 
-        # Process warnings from log file
-        process_warnings(log_file, warnings_file, simplified_log_file)
-
-        status = "success"
-        save_execution_status(
-            status_file,
-            ExecutionStatus(
-                status=status, package=package_config, dependencies=library_patches
-            ),
-        )
-        return status
-
-    except subprocess.CalledProcessError as e:
-        progress.error(
-            f"Tests failed for package '{package_name}' with exit code {e.returncode}"
-        )
-        if log_file:
-            progress.info(f"Check the output log at: {log_file}", icon="💡")
-
-        # Process warnings from log file even on failure
-        process_warnings(log_file, warnings_file, simplified_log_file)
-
-        save_execution_status(
-            status_file,
-            ExecutionStatus(
-                status="failed", package=package_config, dependencies=library_patches
-            ),
-        )
-        raise
-
-    except subprocess.TimeoutExpired:
-        timeout_minutes = config.test_timeout
-        progress.error(
-            f"Tests timed out for package '{package_name}' after {timeout_minutes} minutes"
-        )
-        if log_file:
-            progress.info(f"Check the output log at: {log_file}", icon="💡")
-
-        # Process warnings from log file even on timeout
-        process_warnings(log_file, warnings_file, simplified_log_file)
-
-        save_execution_status(
-            status_file,
-            ExecutionStatus(
-                status="failed", package=package_config, dependencies=library_patches
-            ),
-        )
-        raise subprocess.CalledProcessError(
-            returncode=-1, cmd=package_config.github_entry.test
-        )
+    return "success"
 
 
 def _disable_codestyle_checks(package_path: Path) -> None:
@@ -540,11 +494,8 @@ def _testing_directory(config: Config, package_name: str, apply_patches: bool) -
 
     :return: Path to the testing directory
     """
-    return (
-        config.workdir_path("tests")
-        / package_name
-        / ("patched" if apply_patches else "original")
-    )
+    variant = "patched" if apply_patches else "original"
+    return config.workdir_path("tests") / package_name / variant
 
 
 def _print_package_patches(
@@ -621,7 +572,7 @@ def _print_patch_summary(
     progress.text("📋 Test Configuration Summary", fg="blue", bold=True)
     progress.text("=" * 80, fg="blue")
 
-    progress.text(f"Patch mode: {config.patch_mode}", fg="cyan")
+    progress.text(f"Patch mode: {config.user.patch_mode}", fg="cyan")
     _print_package_patches(package_name, package_config, progress)
     if library_patches:
         _print_library_dependencies(library_patches, progress)

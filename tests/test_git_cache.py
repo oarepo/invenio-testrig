@@ -16,7 +16,7 @@ from typing import Generator
 import pytest
 
 from invenio_testrig.github.cache import GitCache
-from invenio_testrig.types import SilentProgress
+from invenio_testrig.progress import SilentProgress
 
 
 @pytest.fixture(scope="module")

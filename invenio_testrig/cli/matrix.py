@@ -48,10 +48,10 @@ def matrix_cmd(
 
     Example: invenio-testrig matrix config.json $GITHUB_OUTPUT
     """
-    tested_packages = config.tested_packages
+    tested_packages = config.runtime.tested_packages
 
     def slow_split(info: TestedPackageInfo) -> list[str]:
-        if config.slow_test_splitting:
+        if config.user.slow_test_splitting:
             return info.github_entry.slow_packages.get(info.package, [])
         return []
 

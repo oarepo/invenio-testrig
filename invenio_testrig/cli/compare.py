@@ -70,14 +70,14 @@ def compare_cmd(first_report_url: str, second_report_url: str):
     first_config = Config.load_from_dict(first_report.fetch_json_config())
     second_config = Config.load_from_dict(second_report.fetch_json_config())
 
-    first_packages = set(first_config.tested_packages.keys())
-    second_packages = set(second_config.tested_packages.keys())
+    first_packages = set(first_config.runtime.tested_packages.keys())
+    second_packages = set(second_config.runtime.tested_packages.keys())
 
     # Compare packages that are in both reports and get differences
     differences = []  # pkg_name, first_version, second_version, first_commit, second_commit
     for pkg in first_packages | second_packages:
-        first_package = first_config.tested_packages.get(pkg)
-        second_package = second_config.tested_packages.get(pkg)
+        first_package = first_config.runtime.tested_packages.get(pkg)
+        second_package = second_config.runtime.tested_packages.get(pkg)
 
         if (
             first_package is None
