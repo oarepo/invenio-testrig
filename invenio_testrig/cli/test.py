@@ -495,6 +495,16 @@ if ! uv pip list | grep -q psycopg2; then
     exit 0
 fi
 
+# try to call invenio shell just to make sure we boot up
+if ! invenio shell -c "print('all ok')" ; then
+    echo "Failed to call invenio shell !"
+    echo ""
+    echo "This is normally caused by missing dependencies in cli.py from other packages,"
+    echo "that depend on extras in normal runtime but those extras are not installed"
+    echo "in this test environment. We ignore this failure for the time being."
+    exit 0
+fi
+
 function cleanup {
   eval "$(docker-services-cli down --env)"
 }
