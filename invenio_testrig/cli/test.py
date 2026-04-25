@@ -487,6 +487,14 @@ if ! command -v docker-services-cli &> /dev/null; then
     exit 0
 fi
 
+# some packages (invenio-s3) reference invenio-app and invenio-accounts in tests,
+# but they do not have a postgres dependency. This will fail in the invenio-accounts
+# as it needs psycopg2 inside the cli commands.
+if ! uv pip list | grep -q psycopg2; then
+    echo "No 'psycopg2' package found in virtualenv, skipping alembic migrations test"
+    exit 0
+fi
+
 function cleanup {
   eval "$(docker-services-cli down --env)"
 }
