@@ -768,7 +768,7 @@ class PythonAPI:
             escaped_command = " ".join(shlex.quote(arg) for arg in command)
 
             # Use bash with tee to capture output to file and print to stdout/stderr
-            bash_command = f"set -o pipefail; {escaped_command} 2>&1 | tee {shlex.quote(str(capture_to_file))}"
+            bash_command = f"set -o pipefail; {escaped_command} 2>&1 | tee -a {shlex.quote(str(capture_to_file))}"
             print(f"Running bash command: {bash_command} in directory {cwd}")
             subprocess.run(
                 ["bash", "-c", bash_command],
@@ -778,7 +778,7 @@ class PythonAPI:
                 timeout=timeout,
             )
         else:
-            with open(capture_to_file, "w") as f:
+            with open(capture_to_file, "a") as f:
                 subprocess.run(
                     command,
                     cwd=cwd,
