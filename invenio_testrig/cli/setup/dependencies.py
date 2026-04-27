@@ -232,7 +232,7 @@ def filter_packages(
                 f"Patch {patch} applies to package {patch.package} which is not included "
                 "in the tested packages and does not match any GitHub configuration entry."
             )
-        tested_packages[package_name] = TestedPackageInfo(
+        tested_packages[patch.package] = TestedPackageInfo(
             reference=patch,
             github_entry=github_entry,
         )
@@ -283,7 +283,10 @@ def select_patches(
 
     applied_patches_count = 0
     applied_packages_count = 0
-    for tested_package_name, tested_package_info in config.runtime.tested_packages.items():
+    for (
+        tested_package_name,
+        tested_package_info,
+    ) in config.runtime.tested_packages.items():
         matching_patches = [
             patch
             for patch in config.user.patches
