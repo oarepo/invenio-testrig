@@ -531,6 +531,11 @@ else:
 EOF
 
 invenio shell /tmp/compare_alembic_migrations.py
+
+# downgrade and upgrade
+invenio alembic downgrade dbdbc1b19cf2
+invenio alembic upgrade heads
+
 """
     with tempfile.NamedTemporaryFile(suffix=".sh", mode="wt") as f:
         f.write(test_shell_script)
