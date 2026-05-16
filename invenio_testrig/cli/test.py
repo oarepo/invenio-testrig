@@ -14,6 +14,7 @@ execution status for report generation.
 
 import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 import click
@@ -26,7 +27,11 @@ from invenio_testrig.cli.base import (
     with_progress,
     with_verbose,
 )
-from invenio_testrig.cli.utils import test_artifact_paths, test_run_context
+from invenio_testrig.cli.utils import (
+    TestArtifactPaths,
+    test_artifact_paths,
+    test_run_context,
+)
 from invenio_testrig.config import Config, TestedPackageInfo
 from invenio_testrig.progress import Progress
 from invenio_testrig.python_api import PythonAPI
@@ -286,7 +291,9 @@ def _install_package_for_testing(
     )
 
     library_patches = [
-        config.runtime.tested_packages[x] for x in dependencies if x in config.runtime.tested_packages
+        config.runtime.tested_packages[x]
+        for x in dependencies
+        if x in config.runtime.tested_packages
     ]
 
     patched = bool(config.runtime.tested_packages[package_name].patches) or any(
@@ -447,9 +454,98 @@ def _run_tests(
             paths.log_file,
             timeout=config.user.test_timeout * 60,
         )
+
+        test_alembic_migrations(config, working_dir, api, paths, progress)
         progress.success(f"Tests completed successfully for package '{package_name}'")
 
     return "success"
+
+
+def test_alembic_migrations(
+    config: Config,
+    working_dir: Path,
+    api: PythonAPI,
+    paths: TestArtifactPaths,
+    progress: Progress,
+) -> None:
+    # check if there is "invenio" command in the virtualenv
+
+    test_shell_script = """#!/usr/bin/env bash
+set -euo pipefail
+
+echo
+echo "Testing alembic migrations..."
+
+# check if there is an "invenio" command in path
+if ! command -v invenio &> /dev/null; then
+    echo "No 'invenio' command found in path, skipping alembic migrations test"
+    exit 0
+fi
+
+if ! command -v docker-services-cli &> /dev/null; then
+    echo "No 'docker-services-cli' command found in path, skipping alembic migrations test"
+    exit 0
+fi
+
+# some packages (invenio-s3) reference invenio-app and invenio-accounts in tests,
+# but they do not have a postgres dependency. This will fail in the invenio-accounts
+# as it needs psycopg2 inside the cli commands.
+if ! uv pip list | grep -q psycopg2; then
+    echo "No 'psycopg2' package found in virtualenv, skipping alembic migrations test"
+    exit 0
+fi
+
+# try to call invenio shell just to make sure we boot up
+if ! invenio shell -c "print('all ok')" ; then
+    echo "Failed to call invenio shell !"
+    echo ""
+    echo "This is normally caused by missing dependencies in cli.py from other packages,"
+    echo "that depend on extras in normal runtime but those extras are not installed"
+    echo "in this test environment. We ignore this failure for the time being."
+    exit 0
+fi
+
+function cleanup {
+  eval "$(docker-services-cli down --env)"
+}
+trap cleanup EXIT
+eval "$(docker-services-cli up --db postgresql --env)"
+export INVENIO_SQLALCHEMY_DATABASE_URI=$SQLALCHEMY_DATABASE_URI
+invenio db destroy --yes-i-know
+invenio db init
+invenio alembic upgrade heads
+
+cat <<EOF >/tmp/compare_alembic_migrations.py
+import pprint
+import sys
+from flask import current_app
+
+ext = current_app.extensions['invenio-db']
+difference = ext.alembic.compare_metadata()
+if len(difference) > 0:
+    print('Difference found in alembic migrations and sqlalchemy state:')
+    pprint.pprint(difference)
+    sys.exit(1)
+else:
+    print('No difference found in alembic migrations and sqlalchemy state')
+EOF
+
+invenio shell /tmp/compare_alembic_migrations.py
+
+# downgrade and upgrade
+invenio alembic downgrade dbdbc1b19cf2
+invenio alembic upgrade heads
+
+"""
+    with tempfile.NamedTemporaryFile(suffix=".sh", mode="wt") as f:
+        f.write(test_shell_script)
+        f.flush()
+        api.run_in_venv(
+            working_dir,
+            ["bash", str(f.name)],
+            paths.log_file,
+            timeout=config.user.test_timeout * 60,
+        )
 
 
 def _disable_codestyle_checks(package_path: Path) -> None:
