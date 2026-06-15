@@ -216,7 +216,7 @@ def cmd_repo_test(
             _venv = PythonAPI._venv_path(test_repository_path)
             server_log_fh = open(server_log_file, "w")
             runner_handle = subprocess.Popen(
-                [str(_venv / "bin" / "invenio-cli"), "run"],
+                [str(_venv / "bin" / "invenio-cli"), "run", "all", "--no-debug"],
                 cwd=test_repository_path,
                 env={
                     **os.environ,
