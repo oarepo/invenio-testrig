@@ -225,6 +225,8 @@ def cmd_repo_test(
                     "INVENIO_RATELIMIT_ENABLED": "False",
                     "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
                     "FLASK_DEBUG": "False",
+                    "SITE_UI_URL": "https://127.0.0.1:5000",
+                    "SITE_API_URL": "https://127.0.0.1:5000/api",
                 },
                 stdout=server_log_fh,
                 stderr=server_log_fh,
