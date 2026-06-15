@@ -224,6 +224,7 @@ def cmd_repo_test(
                     "VIRTUAL_ENV": str(_venv),
                     "INVENIO_RATELIMIT_ENABLED": "False",
                     "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
+                    "FLASK_DEBUG": "False",
                 },
                 stdout=server_log_fh,
                 stderr=server_log_fh,
@@ -286,7 +287,9 @@ def cmd_repo_test(
                     ),
                     # "CI": "1",
                 },
-                timeout=config.user.test_timeout * 60 if config.user.test_timeout else None,
+                timeout=config.user.test_timeout * 60
+                if config.user.test_timeout
+                else None,
             )
 
             python_api.run_in_venv(
