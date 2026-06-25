@@ -40,6 +40,7 @@ github:
       - "invenio-.*"
       - "pytest-invenio"
       - "citeproc-py-styles"
+      - "marshmallow-utils"
 
     # Packages to exclude from testing, even if they match the include patterns.
     exclude:
