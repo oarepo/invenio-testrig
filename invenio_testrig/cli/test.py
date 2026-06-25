@@ -290,6 +290,23 @@ def _install_package_for_testing(
         f"Successfully installed package '{package_name}' in {working_dir}"
     )
 
+    if apply_patches:
+        progress.info("Installing deepfriedmarshmallow for patched environment", icon="🍳")
+        python_api.run_in_venv(
+            working_dir,
+            ["uv", "pip", "install", "git+https://github.com/mesemus/DeepFriedMarshmallow@nested-attribute"],
+        )
+        site_packages = python_api.run_in_venv(
+            working_dir,
+            ["python", "-c", "import site; print(site.getsitepackages()[0])"],
+            check_output=True,
+        ).strip()
+        pth_file = Path(site_packages) / "fried.pth"
+        pth_file.write_text(
+            "import deepfriedmarshmallow; deepfriedmarshmallow.deep_fry_marshmallow();\n"
+        )
+        progress.success(f"Created {pth_file}")
+
     library_patches = [
         config.runtime.tested_packages[x]
         for x in dependencies
