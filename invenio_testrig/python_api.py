@@ -128,7 +128,7 @@ class PythonAPI:
             lock_path.unlink()
 
         # Try installation strategies in order of preference
-        if lock_path.exists():
+        if lock_path.exists() and "invenio-rdm-records" not in str(project_path):
             self._install_with_locked_sync(project_path)
         elif not self._try_install_with_sync(project_path, extras):
             self._install_with_venv_pip(project_path, extras)
