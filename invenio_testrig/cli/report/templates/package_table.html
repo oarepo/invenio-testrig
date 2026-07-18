@@ -23,11 +23,12 @@
                         {% else %}
                             <a href="{{ pkg.info.reference.github_url }}" target="_blank">{{ pkg.info.reference.package }}</a>
                         {% endif %}
-                        {% if pkg.info.reference.actual_version %}
+                        {% set display_ref = pkg.info.unpatched_reference if pkg.info.unpatched_reference else pkg.info.reference %}
+                        {% if display_ref.actual_version %}
                             <br><small style="color: #6c757d;">
-                                v{{ pkg.info.reference.actual_version }}
-                                {% if pkg.info.reference.commits_from_version and pkg.info.reference.commits_from_version|length > 0 %}
-                                    (+{{ pkg.info.reference.commits_from_version|length }} commit{% if pkg.info.reference.commits_from_version|length > 1 %}s{% endif %})
+                                v{{ display_ref.actual_version }}
+                                {% if display_ref.commits_from_version and display_ref.commits_from_version|length > 0 %}
+                                    (+{{ display_ref.commits_from_version|length }} commit{% if display_ref.commits_from_version|length > 1 %}s{% endif %})
                                 {% endif %}
                             </small>
                         {% endif %}

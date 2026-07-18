@@ -271,6 +271,15 @@ jobs:
           invenio-testrig matrix $WORKDIR $GITHUB_OUTPUT
           echo "::endgroup::"
 
+      - name: Upload config.json as separate artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: config
+          path: |
+            ${{ env.WORKDIR }}/config.json
+            ${{ env.WORKDIR }}/runtime_config.json
+          retention-days: 90
+
       - name: Prepare and push initial report
         if: ${{ !inputs.skip-report }}
         id: prepare-and-push-report
