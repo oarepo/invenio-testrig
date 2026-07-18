@@ -102,6 +102,11 @@ on:
         required: false
         type: boolean
         default: true
+      use-editable-installation:
+        description: "Install packages in editable mode (-e flag)"
+        required: false
+        type: boolean
+        default: true
 
 env:
   PYTHONUNBUFFERED: 1
@@ -144,6 +149,9 @@ env:
 
   # E2E UI tests flag
   THOROUGH_E2E_UI: ${{ inputs.e2e-ui || false }}
+
+  # Use editable installation flag
+  USE_EDITABLE_INSTALLATION: ${{ inputs.use-editable-installation != false }}
 
 permissions:
   contents: write # Required for pushing reports to the repository
@@ -354,6 +362,7 @@ jobs:
           package: ${{ matrix.package }}
           test-mode: ${{ env.TEST_MODE }}
           test-scope: ${{ env.TEST_SCOPE }}
+          use-editable-installation: ${{ env.USE_EDITABLE_INSTALLATION }}
 
   test_slow:
     needs:
@@ -406,6 +415,7 @@ jobs:
           part: ${{ steps.split-slow-package-name.outputs.package_part }}
           test-mode: ${{ env.TEST_MODE }}
           test-scope: ${{ env.TEST_SCOPE }}
+          use-editable-installation: ${{ env.USE_EDITABLE_INSTALLATION }}
 
   test_repository:
     needs:
