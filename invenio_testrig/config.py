@@ -257,6 +257,9 @@ class RuntimeState:
     started_at: str | None = None
     """ISO-format UTC timestamp set when the setup run begins."""
 
+    use_editable_installation: bool = True
+    """Whether to install packages in editable mode (default: True)."""
+
     packages: dict[str, str] = field(default_factory=dict)
     """All dependencies of the seed repository mapped to their resolved versions.
 
