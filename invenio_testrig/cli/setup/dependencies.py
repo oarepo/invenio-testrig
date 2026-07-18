@@ -72,6 +72,12 @@ def collect_dependencies(
     # Add dependencies to the config
     config.runtime.packages = dependencies
 
+    # Debug: Dump dependencies to stdout for inspection
+    import json
+    progress.text("::group::📋 Collected Dependencies")
+    progress.text(json.dumps(dependencies, indent=2, sort_keys=True))
+    progress.text("::endgroup::")
+
     run_hook(
         config,
         "after_dependencies_collected",
@@ -239,6 +245,21 @@ def filter_packages(
 
     # Add tested packages to the config
     config.runtime.tested_packages = tested_packages
+
+    # Debug: Dump filtered packages with their references to stdout for inspection
+    import json
+    from invenio_testrig.cli.report.report_utils import to_serializable
+    filtered_packages_dump = {
+        pkg_name: {
+            "reference": to_serializable(pkg_info.reference),
+            "github_org": pkg_info.github_entry.org,
+            "patches": [str(p) for p in pkg_info.patches],
+        }
+        for pkg_name, pkg_info in tested_packages.items()
+    }
+    progress.text("::group::🔍 Filtered Packages with References")
+    progress.text(json.dumps(filtered_packages_dump, indent=2, sort_keys=True))
+    progress.text("::endgroup::")
 
     run_hook(
         config,
