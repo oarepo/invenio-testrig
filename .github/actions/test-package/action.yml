@@ -50,9 +50,6 @@ runs:
         echo "test_patch_status=$(cat $STATUS_FILE | jq -r '.status')" >> $GITHUB_OUTPUT
         status=$(cat $STATUS_FILE | jq -r '.status')
 
-        echo "Status file: $STATUS_FILE"
-        cat $STATUS_FILE
-
         if [ "$status" == "failed" ]; then
             exit 1
         fi
