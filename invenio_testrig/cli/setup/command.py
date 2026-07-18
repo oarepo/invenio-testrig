@@ -95,7 +95,7 @@ from invenio_testrig.progress import Progress
     help="Ignore uv.lock file during dependency collection",
 )
 @click.option(
-    "--no-slow-test-splitting","invenio-requests>=15.0.0,<16.0.0",
+    "--no-slow-test-splitting",
     "no_slow_test_splitting",
     is_flag=True,
     help="Disable splitting of slow tests into multiple parts",
