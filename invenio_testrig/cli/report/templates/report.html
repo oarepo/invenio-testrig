@@ -271,6 +271,14 @@
                                     <a href="{{pkg.info.github_url}}" target="_blank" class="text-decoration-none">
                                         {{ pkg.info.reference.package }}
                                     </a>
+                                    {% if pkg.info.reference.actual_version %}
+                                        <br><small style="color: #6c757d;">
+                                            v{{ pkg.info.reference.actual_version }}
+                                            {% if pkg.info.reference.commits_from_version and pkg.info.reference.commits_from_version|length > 0 %}
+                                                (+{{ pkg.info.reference.commits_from_version|length }} commit{% if pkg.info.reference.commits_from_version|length > 1 %}s{% endif %})
+                                            {% endif %}
+                                        </small>
+                                    {% endif %}
                                 </td>
                                 <td>
                                     <a href="{{ patch.github_url }}" target="_blank" class="text-decoration-none">
@@ -310,6 +318,14 @@
                                     <span class="package-name">
                                         <a href="{{ repository.info.reference.github_url }}" target="_blank">{{ repository.info.reference.package }}</a>
                                     </span>
+                                    {% if repository.info.reference.actual_version %}
+                                        <br><small style="color: #6c757d;">
+                                            v{{ repository.info.reference.actual_version }}
+                                            {% if repository.info.reference.commits_from_version and repository.info.reference.commits_from_version|length > 0 %}
+                                                (+{{ repository.info.reference.commits_from_version|length }} commit{% if repository.info.reference.commits_from_version|length > 1 %}s{% endif %})
+                                            {% endif %}
+                                        </small>
+                                    {% endif %}
                                 </td>
                                 <td>
                                     <div>
