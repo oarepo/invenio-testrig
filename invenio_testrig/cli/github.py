@@ -114,6 +114,12 @@ from invenio_testrig.utils import call_executable_quietly
     default=True,
     help="Enable or disable splitting of slow tests into multiple parts",
 )
+@click.option(
+    "--editable/--installed",
+    "use_editable_installation",
+    default=True,
+    help="Install packages in editable mode (--editable) or as built packages (--installed)",
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -132,6 +138,7 @@ def github_cmd(
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
+    use_editable_installation: bool,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -212,6 +219,7 @@ def github_cmd(
         ignore_uv_lock,
         config_file,
         slow_test_splitting,
+        use_editable_installation,
         progress,
     )
 
@@ -725,6 +733,7 @@ def _dispatch_workflow(
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
+    use_editable_installation: bool,
     progress: Progress,
 ) -> str | None:
     """Dispatch workflow or return workflow page URL.
@@ -745,6 +754,7 @@ def _dispatch_workflow(
     :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
     :param config_file: Path to configuration file or URL
     :param slow_test_splitting: Enable splitting of slow tests into multiple parts
+    :param use_editable_installation: Install packages in editable mode (-e flag)
     :param progress: Progress reporter for status updates
 
     :return: Workflow URL if available, None otherwise
@@ -814,6 +824,11 @@ def _dispatch_workflow(
         # Add slow-test-splitting
         workflow_cmd.extend(
             ["-f", f"slow-test-splitting={str(slow_test_splitting).lower()}"]
+        )
+
+        # Add use-editable-installation
+        workflow_cmd.extend(
+            ["-f", f"use-editable-installation={str(use_editable_installation).lower()}"]
         )
 
         # Add config-file if provided (convert local files to data URLs)

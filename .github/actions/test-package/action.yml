@@ -16,6 +16,10 @@ inputs:
   test-scope:
     description: "Test scope (affected, all)"
     required: true
+  use-editable-installation:
+    description: "Install packages in editable mode (-e flag)"
+    required: false
+    default: 'true'
 
 runs:
   using: "composite"
@@ -28,6 +32,7 @@ runs:
         echo "part=${{ inputs.part }}"
         echo "test-mode=${{ inputs.test-mode }}"
         echo "test-scope=${{ inputs.test-scope }}"
+        echo "use-editable-installation=${{ inputs.use-editable-installation }}"
 
     - name: Run tests for the patched version of the package
       shell: bash
@@ -41,6 +46,7 @@ runs:
             $WORKDIR \
             $PACKAGE \
             --apply-patches \
+            ${{ inputs.use-editable-installation == 'true' && '--editable' || '--installed' }} \
             ${{ inputs.part && format('--part {0}', inputs.part) || '' }} \
             || true
         echo "::endgroup::"
@@ -88,6 +94,7 @@ runs:
         invenio-testrig test \
             $WORKDIR \
             $PACKAGE \
+            ${{ inputs.use-editable-installation == 'true' && '--editable' || '--installed' }} \
             ${{ inputs.part && format('--part {0}', inputs.part) || '' }} \
             || true
         echo "::endgroup::"
