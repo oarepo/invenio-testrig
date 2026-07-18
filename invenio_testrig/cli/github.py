@@ -24,6 +24,7 @@ import time
 import webbrowser
 from importlib.resources import files
 from pathlib import Path
+from pydoc import cli
 
 import click
 import yaml
@@ -114,6 +115,11 @@ from invenio_testrig.utils import call_executable_quietly
     default=True,
     help="Enable or disable splitting of slow tests into multiple parts",
 )
+@click.option(
+    "--ignore-versions",
+    is_flag=True,
+    help="Ignore version constraints in setup.cfg and use latest compatible versions for tests",
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -133,6 +139,7 @@ def github_cmd(
     config_file: str | None,
     slow_test_splitting: bool,
     patches: tuple[str, ...],
+    ignore_versions: bool,
     progress: Progress,
 ):
     """Setup remote testing inside GitHub repository with optional patches.
@@ -212,6 +219,7 @@ def github_cmd(
         ignore_uv_lock,
         config_file,
         slow_test_splitting,
+        ignore_versions,
         progress,
     )
 
@@ -725,6 +733,7 @@ def _dispatch_workflow(
     ignore_uv_lock: bool,
     config_file: str | None,
     slow_test_splitting: bool,
+    ignore_versions: bool,
     progress: Progress,
 ) -> str | None:
     """Dispatch workflow or return workflow page URL.
@@ -745,6 +754,7 @@ def _dispatch_workflow(
     :param ignore_uv_lock: Ignore uv.lock files and use latest compatible versions
     :param config_file: Path to configuration file or URL
     :param slow_test_splitting: Enable splitting of slow tests into multiple parts
+    :param ignore_versions: Ignore version constraints in setup.cfg and use latest compatible versions
     :param progress: Progress reporter for status updates
 
     :return: Workflow URL if available, None otherwise
@@ -810,6 +820,12 @@ def _dispatch_workflow(
         # Add ignore-uv-lock if provided
         if ignore_uv_lock:
             workflow_cmd.extend(["-f", f"ignore-uv-lock={str(ignore_uv_lock).lower()}"])
+
+        # Add ignore-versions if provided
+        if ignore_versions:
+            workflow_cmd.extend(
+                ["-f", f"ignore-versions={str(ignore_uv_lock).lower()}"]
+            )
 
         # Add slow-test-splitting
         workflow_cmd.extend(

@@ -102,6 +102,14 @@ on:
         required: false
         type: boolean
         default: true
+      ignore-versions:
+        # if this is set, all versions of dependencies in the form >=a,<b inside dependencies will be replaced
+        # with >=a (i.e. the lower bound). This is useful for veryfying patches in the middle of a major bump
+        # release train.
+        description: "Ignore versions of dependencies when verifying patches"
+        required: false
+        type: boolean
+        default: false
 
 env:
   PYTHONUNBUFFERED: 1
@@ -111,6 +119,7 @@ env:
   TEST_MODE: ${{ inputs.test-mode || 'stop-on-success' }}
   IGNORE_UV_LOCK: ${{ inputs.ignore-uv-lock || false }}
   SLOW_TEST_SPLITTING: ${{ inputs.slow-test-splitting != false }}
+  IGNORE_VERSIONS: ${{ inputs.ignore-versions || false }}
 
   # if the workflow is called from another workflow, we use the defaults
   TESTRIG_REPOSITORY: ${{ inputs.testrig-repository || github.repository }}
@@ -246,6 +255,10 @@ jobs:
               for patch in $PATCHES; do
                   patch_args+=("$patch")
               done
+          fi
+
+          if [ "$IGNORE_VERSIONS" = "true" ]; then
+              setup_args+=("--ignore-versions")
           fi
 
           echo "::group::🔍 Debug: Setup Command Arguments"

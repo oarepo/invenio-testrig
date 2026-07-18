@@ -1,0 +1,114 @@
+name: Run on testrig
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Test name"
+        required: false
+        type: string
+      python-version:
+        description: "Python version to use"
+        required: false
+        type: string
+        default: "3.14.2"
+      disable-codestyle-checks:
+        description: "Disable codestyle checks (black/isort) during tests"
+        required: false
+        type: boolean
+        default: false
+      patches:
+        description: "Space-separated list of patches"
+        required: false
+        type: string
+      patch-mode:
+        description: "Test upstream or pinned versions"
+        required: false
+        type: choice
+        options:
+          - upstream
+          - pinned
+      test-scope:
+        description: "Test scope: 'affected' (only packages affected by patches), 'all'"
+        required: false
+        type: choice
+        default: "affected"
+        options:
+          - affected
+          - all
+      test-mode:
+        description: "Test selection for patched packages: 'stop-on-success', 'run-all'"
+        required: false
+        type: choice
+        default: "stop-on-success"
+        options:
+          - stop-on-success
+          - run-all
+      testrig-repository:
+        description: "Repository containing invenio-testrig (owner/repo)"
+        required: false
+        type: string
+      testrig-branch:
+        description: "Branch of invenio-testrig to use"
+        required: false
+        type: string
+      config-file:
+        description: "Path to the configuration file to use (relative to workspace root)"
+        required: false
+        type: string
+      repository:
+        description: "Override repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)"
+        required: false
+        type: string
+      e2e:
+        description: "Override repository.e2e configuration (e.g., 'org/repo@branch' or GitHub URL)"
+        required: false
+        type: string
+      e2e-ui:
+        description: "Run thorough E2E UI tests. Default is smoketests only."
+        required: false
+        type: boolean
+        default: false
+      ignore-uv-lock:
+        description: "Ignore uv.lock files and use latest compatible versions"
+        required: false
+        type: boolean
+        default: false
+      slow-test-splitting:
+        description: "Enable splitting of slow tests into multiple parts"
+        required: false
+        type: boolean
+        default: true
+      ignore-versions:
+        description: "Ignore version constraints in setup.cfg and use latest compatible versions"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write # Required for pushing reports to the repository
+  id-token: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
+  pages: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  verify-patches:
+    uses: "${{ inputs.testrig-repository }}/.github/workflows/verify-patches.yml@${{ inputs.testrig-branch }}"
+    with:
+      name: ${{ inputs.name || 'Invenio Testrig' }}
+      python-version: ${{ inputs.python-version }}
+      disable-codestyle-checks: ${{ inputs.disable-codestyle-checks }}
+      patches: ${{ inputs.patches }}
+      patch-mode: ${{ inputs.patch-mode }}
+      test-scope: ${{ inputs.test-scope }}
+      test-mode: ${{ inputs.test-mode }}
+      testrig-repository: ${{ inputs.testrig-repository }}
+      testrig-branch: ${{ inputs.testrig-branch }}
+      config-file: ${{ inputs.config-file }}
+      repository: ${{ inputs.repository }}
+      e2e: ${{ inputs.e2e }}
+      e2e-ui: ${{ inputs.e2e-ui }}
+      ignore-uv-lock: ${{ inputs.ignore-uv-lock }}
+      slow-test-splitting: ${{ inputs.slow-test-splitting }}

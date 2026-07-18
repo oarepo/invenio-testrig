@@ -39,6 +39,7 @@ def _save_commits(commits: list[tuple[str, str]], output_json_path: Path) -> Non
 def clone_repositories(
     config: Config,
     clone_path: Path,
+    ignore_versions: bool,
     progress: Progress,
 ) -> None:
     """Clone packages from configuration.

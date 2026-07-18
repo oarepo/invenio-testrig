@@ -269,6 +269,9 @@ class RuntimeState:
     Populated by the ``filter`` step and enriched by ``select-patches`` and ``clone``.
     """
 
+    ignore_versions: bool = False
+    """Whether to ignore version constraints and always use the latest version."""
+
 
 RuntimeStateSchema = class_schema(RuntimeState)
 
@@ -427,7 +430,9 @@ class Config:
         assert self._workdir is not None, "workdir must be set before saving"
         path = self._workdir / "runtime_config.json"
         path.write_text(
-            json.dumps(RuntimeStateSchema().dump(self.runtime), indent=2, sort_keys=True)
+            json.dumps(
+                RuntimeStateSchema().dump(self.runtime), indent=2, sort_keys=True
+            )
         )
 
     def save(self, file: str | Path | None = None) -> None:

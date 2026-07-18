@@ -284,6 +284,7 @@ def _install_package_for_testing(
         extras=package_config.github_entry.extras,
         freeze=package_config.github_entry.freeze,
         progress=progress,
+        ignore_versions=config.runtime.ignore_versions,
     )
 
     progress.success(

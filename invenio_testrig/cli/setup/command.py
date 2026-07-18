@@ -100,6 +100,12 @@ from invenio_testrig.progress import Progress
     is_flag=True,
     help="Disable splitting of slow tests into multiple parts",
 )
+@click.option(
+    "--ignore-versions",
+    "ignore_versions",
+    is_flag=True,
+    help="Ignore versions of dependencies when verifying patches",
+)
 @click.argument("patches", nargs=-1)
 def setup_cmd(
     config_yaml_path_or_url: str | None,
@@ -118,6 +124,7 @@ def setup_cmd(
     patches: tuple[str, ...],
     ignore_uv_lock: bool,
     no_slow_test_splitting: bool,
+    ignore_versions: bool,
     progress: Progress,
 ):
     """1/ Complete local setup: init, collect, filter, select-patches, and clone.
@@ -181,7 +188,8 @@ def setup_cmd(
 
     # Override seed_repository configurations if provided
     api = GitApi(
-        GitCache(workdir / "git_cache", extra_env=config.user.env), extra_env=config.user.env
+        GitCache(workdir / "git_cache", extra_env=config.user.env),
+        extra_env=config.user.env,
     )
     if name:
         config.user.name = name

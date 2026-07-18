@@ -17,6 +17,7 @@ import configparser
 import json
 import logging
 import os
+import re
 import shutil
 import subprocess
 import tomllib
@@ -601,6 +602,7 @@ class PythonAPI:
         *,
         extras: list[str] | None = None,
         freeze: list[str] | None = None,
+        ignore_versions: bool = False,
     ) -> list[str]:
         """Install a package with patches applied.
 
@@ -611,6 +613,7 @@ class PythonAPI:
         :param progress: Progress reporter for status messages
         :param extras: Optional list of extras to install with the package
         :param freeze: Optional list of dependencies to freeze after installation (e.g. ["package==1.2.3"])
+        :param ignore_versions: Whether to ignore version constraints and always use the latest version
 
         :return: List of installed, patched dependency names
 
@@ -664,6 +667,10 @@ class PythonAPI:
                 f"Pre-installing {len(local_dep_paths)} local dep(s) for "
                 f"'{package_name}': {[p.name for p in local_dep_paths]}"
             )
+            if ignore_versions:
+                self._ignore_versions_in_setup_files(
+                    target_dir, [canonicalize_name(p.name) for p in local_dep_paths]
+                )
             self._install_with_venv_pip(target_dir, extras, local_dep_paths)
 
         # install patched dependencies if any
@@ -695,6 +702,30 @@ class PythonAPI:
             progress.success(f"Freeze list applied for package '{package_name}'")
 
         return dependencies
+
+    def _ignore_versions_in_setup_files(
+        self, target_dir: Path, patched_from_walk: list[str]
+    ) -> None:
+        setup_cfg_file = target_dir / "setup.cfg"
+        if not setup_cfg_file.exists():
+            return
+        setup_cfg_content = setup_cfg_file.read_text()
+        updated_content = setup_cfg_content
+        for package_name in patched_from_walk:
+            # look for pattern "    invenio-drafts-resources>=9.0.0,<10.0.0"
+            search_pattern = rf"^    (({package_name}(|\s*\[.*\]))\s*>=[^,]*,<[^,]*)"
+            match = re.match(search_pattern, updated_content)
+            if match:
+                print(
+                    f"Found version constraint in {match.group(1)}, ignoring the constraint"
+                )
+                updated_content = re.sub(
+                    search_pattern,
+                    r"    \2",
+                    updated_content,
+                )
+        if updated_content != setup_cfg_content:
+            setup_cfg_file.write_text(updated_content)
 
     @overload
     def run_in_venv(
