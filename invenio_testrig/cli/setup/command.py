@@ -100,6 +100,12 @@ from invenio_testrig.progress import Progress
     is_flag=True,
     help="Disable splitting of slow tests into multiple parts",
 )
+@click.option(
+    "--editable/--installed",
+    "use_editable_installation",
+    default=True,
+    help="Install packages in editable mode (--editable) or as built packages (--installed)",
+)
 @click.argument("patches", nargs=-1)
 def setup_cmd(
     config_yaml_path_or_url: str | None,
@@ -118,6 +124,7 @@ def setup_cmd(
     patches: tuple[str, ...],
     ignore_uv_lock: bool,
     no_slow_test_splitting: bool,
+    use_editable_installation: bool,
     progress: Progress,
 ):
     """1/ Complete local setup: init, collect, filter, select-patches, and clone.
@@ -158,6 +165,7 @@ def setup_cmd(
     progress.text(
         f"  enable_slow_test_splitting (computed): {not no_slow_test_splitting}"
     )
+    progress.text(f"  use_editable_installation: {use_editable_installation}")
     progress.text("::endgroup::")
 
     # Step 1: Initialize
@@ -178,6 +186,7 @@ def setup_cmd(
     config.user.verbose = verbose
     config.user.debug = debug
     config.user.slow_test_splitting = not no_slow_test_splitting
+    config.runtime.use_editable_installation = use_editable_installation
 
     # Override seed_repository configurations if provided
     api = GitApi(

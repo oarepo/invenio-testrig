@@ -206,6 +206,7 @@ jobs:
           echo "IGNORE_UV_LOCK=$IGNORE_UV_LOCK"
           echo "TEST_SCOPE=$TEST_SCOPE"
           echo "TEST_MODE=$TEST_MODE"
+          echo "USE_EDITABLE_INSTALLATION=$USE_EDITABLE_INSTALLATION"
           echo "::endgroup::"
 
           echo "::group::⚙️ Setting up testrig (init, collect, filter, select-patches, clone)"
@@ -219,6 +220,9 @@ jobs:
           fi
           if [ "$SLOW_TEST_SPLITTING" == "false" ]; then
               setup_args+=("--no-slow-test-splitting")
+          fi
+          if [ "$USE_EDITABLE_INSTALLATION" == "false" ]; then
+              setup_args+=("--installed")
           fi
           setup_args+=("--python" "$PYTHON_VERSION")
           setup_args+=("--test-scope" "$TEST_SCOPE")
@@ -362,7 +366,6 @@ jobs:
           package: ${{ matrix.package }}
           test-mode: ${{ env.TEST_MODE }}
           test-scope: ${{ env.TEST_SCOPE }}
-          use-editable-installation: ${{ env.USE_EDITABLE_INSTALLATION }}
 
   test_slow:
     needs:
@@ -415,7 +418,6 @@ jobs:
           part: ${{ steps.split-slow-package-name.outputs.package_part }}
           test-mode: ${{ env.TEST_MODE }}
           test-scope: ${{ env.TEST_SCOPE }}
-          use-editable-installation: ${{ env.USE_EDITABLE_INSTALLATION }}
 
   test_repository:
     needs:

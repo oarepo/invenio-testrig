@@ -141,6 +141,11 @@ class PythonAPI:
         :param project_path: Path to the project directory
         :param use_editable_installation: Whether to use editable installation (default: True)
         """
+        if use_editable_installation:
+            log.info("Using editable installation (uv sync)")
+        else:
+            log.info("Installing built package (uv sync --no-editable)")
+        
         cmd = [
             self.uv_executable,
             "sync",
@@ -183,6 +188,11 @@ class PythonAPI:
             sync_extras = self._filter_available_extras(
                 extras, pyproject_data.get("project", {})
             )
+
+            if use_editable_installation:
+                log.info("Using editable installation (uv sync)")
+            else:
+                log.info("Installing built package (uv sync --no-editable)")
 
             cmd = [
                 self.uv_executable,
@@ -601,6 +611,11 @@ class PythonAPI:
 
         extras_specification = f"[{','.join(extras)}]" if extras else ""
         pip_install_spec = f".{extras_specification}"
+
+        if use_editable_installation:
+            log.info("Using editable installation (uv pip install -e)")
+        else:
+            log.info("Installing built package (uv pip install)")
 
         cmd = [self.uv_executable, "pip", "install"]
         if use_editable_installation:

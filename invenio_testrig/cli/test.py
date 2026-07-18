@@ -62,7 +62,6 @@ from invenio_testrig.report import ExecutionStatus, save_execution_status
     type=str,
     help="Test a specific part of the package (for slow tests)",
 )
-@click.option("--editable/--installed", "use_editable_installation", is_flag=True, default=True)
 @with_verbose
 @with_debug
 def cmd_test(
@@ -71,7 +70,6 @@ def cmd_test(
     apply_patches: bool,
     all_packages: bool,
     part: str | None,
-    use_editable_installation: bool,
     progress: Progress,
 ):
     """2/ Test the package locally - be sure to call setup first."""
@@ -82,6 +80,9 @@ def cmd_test(
         part_number = int(part)
     else:
         part_number = None
+
+    # Get use_editable_installation from RuntimeState
+    use_editable_installation = config.runtime.use_editable_installation
 
     # Validation: both --all and package_name cannot be used together
     if all_packages and package_name:
