@@ -31,6 +31,11 @@ TEST_SCOPE_LABELS: dict[str, str] = {
     "all": "All packages",
 }
 
+INSTALLATION_MODE_LABELS: dict[bool, str] = {
+    True: "Editable installation (development mode)",
+    False: "Built package installation (production mode)",
+}
+
 # endregion
 
 
@@ -64,6 +69,10 @@ def build_base_jinja_context(config: Config) -> dict[str, Any]:
         "patch_mode": PATCH_MODE_LABELS.get(config.user.patch_mode, config.user.patch_mode),
         "test_mode": TEST_MODE_LABELS.get(config.user.test_mode, config.user.test_mode),
         "test_scope": TEST_SCOPE_LABELS.get(config.user.test_scope, config.user.test_scope),
+        "installation_mode": INSTALLATION_MODE_LABELS.get(
+            config.runtime.use_editable_installation,
+            "Editable installation" if config.runtime.use_editable_installation else "Built package installation"
+        ),
         "started_at": format_started_at(config.runtime.started_at),
         "python_version": config.user.python_version,
         "last_updated": datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC"),
