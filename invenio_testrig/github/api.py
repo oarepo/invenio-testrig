@@ -709,8 +709,16 @@ class GitApi:
             raise ValueError(
                 "GitReference must have a commit to find commits from version."
             )
+        
+        # Get the tag name for the actual version if it exists
+        version_tag = None
+        if ref.actual_version:
+            version_tag = self.get_tag_for_version(
+                ref.org, ref.repo, ref.actual_version
+            )
+        
         return self._cache.get_commits_from_version(
-            ref.org, ref.repo, ref.commit, ref.branch
+            ref.org, ref.repo, ref.commit, version_tag
         )
 
     def get_last_commits(

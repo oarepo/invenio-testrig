@@ -28,7 +28,15 @@
                             <br><small style="color: #6c757d;">
                                 v{{ display_ref.actual_version }}
                                 {% if display_ref.commits_from_version and display_ref.commits_from_version|length > 0 %}
-                                    (+{{ display_ref.commits_from_version|length }} commit{% if display_ref.commits_from_version|length > 1 %}s{% endif %})
+                                    {% if pkg.info.unpatched_reference and pkg.info.reference.commits_from_version %}
+                                        {# Calculate commits added on top of reference #}
+                                        {% set additional_commits = display_ref.commits_from_version|length - pkg.info.reference.commits_from_version|length %}
+                                        {% if additional_commits > 0 %}
+                                            (+{{ additional_commits }} commit{% if additional_commits > 1 %}s{% endif %})
+                                        {% endif %}
+                                    {% else %}
+                                        (+{{ display_ref.commits_from_version|length }} commit{% if display_ref.commits_from_version|length > 1 %}s{% endif %})
+                                    {% endif %}
                                 {% endif %}
                             </small>
                         {% endif %}
