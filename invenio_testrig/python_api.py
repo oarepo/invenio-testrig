@@ -103,6 +103,7 @@ class PythonAPI:
         project_path: Path,
         extras: list[str] | None = None,
         ignore_uv_lock: bool = False,
+        use_editable_installation: bool = True,
     ) -> None:
         """
         Create a virtual environment in the project directory and install the package.
@@ -115,6 +116,7 @@ class PythonAPI:
         :param project_path: Path to the directory containing the package to install
         :param extras: Optional list of extras to install with the package
         :param ignore_uv_lock: If True, remove uv.lock file before installation
+        :param use_editable_installation: Whether to use editable installation (default: True)
 
         :raises subprocess.CalledProcessError: If venv creation or package installation fails
         """
@@ -129,34 +131,41 @@ class PythonAPI:
 
         # Try installation strategies in order of preference
         if lock_path.exists() and "invenio-rdm-records" not in str(project_path):
-            self._install_with_locked_sync(project_path)
-        elif not self._try_install_with_sync(project_path, extras):
-            self._install_with_venv_pip(project_path, extras)
+            self._install_with_locked_sync(project_path, use_editable_installation=use_editable_installation)
+        elif not self._try_install_with_sync(project_path, extras, use_editable_installation=use_editable_installation):
+            self._install_with_venv_pip(project_path, extras, use_editable_installation=use_editable_installation)
 
-    def _install_with_locked_sync(self, project_path: Path) -> None:
+    def _install_with_locked_sync(self, project_path: Path, use_editable_installation: bool = True) -> None:
         """Install using uv sync --locked for projects with uv.lock.
 
         :param project_path: Path to the project directory
+        :param use_editable_installation: Whether to use editable installation (default: True)
         """
+        cmd = [
+            self.uv_executable,
+            "sync",
+            "--locked",
+            "--python",
+            self.python_version,
+        ]
+        
+        if not use_editable_installation:
+            cmd.append("--no-editable")
+        
         call_executable_quietly(
-            [
-                self.uv_executable,
-                "sync",
-                "--locked",
-                "--python",
-                self.python_version,
-            ],
+            cmd,
             cwd=project_path,
             env=self.prepare_venv_environment(project_path),
         )
 
     def _try_install_with_sync(
-        self, project_path: Path, extras: list[str] | None
+        self, project_path: Path, extras: list[str] | None, use_editable_installation: bool = True
     ) -> bool:
         """Try to install using uv sync if pyproject.toml has [project] table.
 
         :param project_path: Path to the project directory
         :param extras: Optional list of extras to install
+        :param use_editable_installation: Whether to use editable installation (default: True)
 
         :return: True if installation was successful, False to fall back to other strategy
         """
@@ -175,14 +184,19 @@ class PythonAPI:
                 extras, pyproject_data.get("project", {})
             )
 
+            cmd = [
+                self.uv_executable,
+                "sync",
+                "--python",
+                self.python_version,
+                *sync_extras,
+            ]
+            
+            if not use_editable_installation:
+                cmd.append("--no-editable")
+            
             call_executable_quietly(
-                [
-                    self.uv_executable,
-                    "sync",
-                    "--python",
-                    self.python_version,
-                    *sync_extras,
-                ],
+                cmd,
                 cwd=project_path,
                 env=self.prepare_venv_environment(project_path),
             )
@@ -549,8 +563,9 @@ class PythonAPI:
         project_path: Path,
         extras: list[str] | None,
         local_paths: list[Path] | None = None,
+        use_editable_installation: bool = True,
     ) -> None:
-        """Install a package by creating a venv and running ``uv pip install -e .``.
+        """Install a package by creating a venv and running ``uv pip install``.
 
         Used for projects without a ``uv.lock`` or a valid ``[project]`` table.
         When ``local_paths`` is provided, those packages are pre-installed with
@@ -559,10 +574,11 @@ class PythonAPI:
         pre-release builds). When ``local_paths`` is empty or ``None`` the
         behaviour is identical to a plain ``uv venv`` + ``uv pip install``.
 
-        :param project_path: The package to install in editable mode.
+        :param project_path: The package to install.
         :param extras: Extras to activate when installing the main package.
         :param local_paths: Local dependency paths to pre-install in topological
                             order, or ``None`` to skip pre-installation.
+        :param use_editable_installation: Whether to use editable installation (default: True)
         """
         clean_env = os.environ.copy()
         clean_env.pop("VIRTUAL_ENV", None)
@@ -585,8 +601,14 @@ class PythonAPI:
 
         extras_specification = f"[{','.join(extras)}]" if extras else ""
         pip_install_spec = f".{extras_specification}"
+
+        cmd = [self.uv_executable, "pip", "install"]
+        if use_editable_installation:
+            cmd.append("-e")
+        cmd.append(pip_install_spec)
+        
         call_executable_quietly(
-            [self.uv_executable, "pip", "install", "-e", pip_install_spec],
+            cmd,
             cwd=project_path,
             env=self.prepare_venv_environment(project_path),
         )
@@ -601,6 +623,7 @@ class PythonAPI:
         *,
         extras: list[str] | None = None,
         freeze: list[str] | None = None,
+        use_editable_installation: bool = True,
     ) -> list[str]:
         """Install a package with patches applied.
 
@@ -611,6 +634,7 @@ class PythonAPI:
         :param progress: Progress reporter for status messages
         :param extras: Optional list of extras to install with the package
         :param freeze: Optional list of dependencies to freeze after installation (e.g. ["package==1.2.3"])
+        :param use_editable_installation: Whether to use editable installation (default: True)
 
         :return: List of installed, patched dependency names
 
@@ -651,7 +675,7 @@ class PythonAPI:
         progress.info(f"Installing package '{package_name}' in {target_dir}")
 
         if (target_dir / "uv.lock").exists():
-            self.install_project(target_dir, extras=extras)
+            self.install_project(target_dir, extras=extras, use_editable_installation=use_editable_installation)
         else:
             local_dep_paths, patched_from_walk = self._resolve_local_paths(
                 project_path=target_dir,
@@ -664,7 +688,7 @@ class PythonAPI:
                 f"Pre-installing {len(local_dep_paths)} local dep(s) for "
                 f"'{package_name}': {[p.name for p in local_dep_paths]}"
             )
-            self._install_with_venv_pip(target_dir, extras, local_dep_paths)
+            self._install_with_venv_pip(target_dir, extras, local_dep_paths, use_editable_installation=use_editable_installation)
 
         # install patched dependencies if any
         dependencies = self.install_patched_dependencies(

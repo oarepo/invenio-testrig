@@ -62,6 +62,7 @@ from invenio_testrig.report import ExecutionStatus, save_execution_status
     type=str,
     help="Test a specific part of the package (for slow tests)",
 )
+@click.option("--editable/--installed", "use_editable_installation", is_flag=True, default=True)
 @with_verbose
 @with_debug
 def cmd_test(
@@ -70,6 +71,7 @@ def cmd_test(
     apply_patches: bool,
     all_packages: bool,
     part: str | None,
+    use_editable_installation: bool,
     progress: Progress,
 ):
     """2/ Test the package locally - be sure to call setup first."""
@@ -93,11 +95,11 @@ def cmd_test(
 
     # Test all packages
     if all_packages:
-        _run_test_all_packages(config, apply_patches, progress)
+        _run_test_all_packages(config, apply_patches, use_editable_installation, progress)
     else:
         # Test single package
         assert package_name is not None  # This is guaranteed by validation above
-        _run_test_package(config, package_name, apply_patches, part_number, progress)
+        _run_test_package(config, package_name, apply_patches, part_number, use_editable_installation, progress)
 
 
 # endregion
@@ -106,7 +108,7 @@ def cmd_test(
 # region Test Orchestration
 
 
-def _run_test_all_packages(config: Config, apply_patches: bool, progress: Progress):
+def _run_test_all_packages(config: Config, apply_patches: bool, use_editable_installation: bool, progress: Progress):
     """Test all packages in config.tested_packages.
 
     :param config: Configuration object containing paths and settings
@@ -126,7 +128,7 @@ def _run_test_all_packages(config: Config, apply_patches: bool, progress: Progre
         )
 
         try:
-            _run_test_package(config, package_name, apply_patches, None, progress)
+            _run_test_package(config, package_name, apply_patches, None, use_editable_installation, progress)
             results[package_name] = "✅ PASSED"
             progress.success(f"Package '{package_name}' tests passed")
         except click.Abort, subprocess.CalledProcessError, ValueError:
@@ -170,6 +172,7 @@ def _run_test_package(
     package_name: str,
     apply_patches: bool,
     part_number: int | None,
+    use_editable_installation: bool,
     progress: Progress,
 ):
     log_dir = config.workdir_path("artifacts") / package_name
@@ -190,6 +193,7 @@ def _run_test_package(
                 config,
                 package_name,
                 apply_patches,
+                use_editable_installation,
                 progress,
             )
         )
@@ -245,6 +249,7 @@ def _install_package_for_testing(
     config: Config,
     package_name: str,
     apply_patches: bool,
+    use_editable_installation: bool,
     progress: Progress,
 ) -> tuple[Path, TestedPackageInfo, list[TestedPackageInfo], bool]:
     """Install a package for testing.
@@ -283,6 +288,7 @@ def _install_package_for_testing(
         install_patched_dependencies=apply_patches,
         extras=package_config.github_entry.extras,
         freeze=package_config.github_entry.freeze,
+        use_editable_installation=use_editable_installation,
         progress=progress,
     )
 
