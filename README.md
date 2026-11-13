@@ -92,7 +92,6 @@ on:
 
 permissions:
     contents: write # Required for pushing reports to the repository
-    checks: write # Required for publishing junit test results
     id-token: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
     pages: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
 
@@ -192,7 +191,7 @@ For pytest-based test suites, the run also writes a [JUnit XML](https://github.c
 (`artifacts/<package>/<patched|original>_junit.xml`) by passing `--junit-xml` through the
 `PYTEST_ADDOPTS` environment variable. No change to the tested repository is needed, so
 any test command that ends up calling pytest (such as `./run-tests.sh`) works. The report
-is linked from the test report and published as a check run in the GitHub Actions summary.
+is linked from the generated test report.
 Note that pytest rewrites the file on each session, so a test command that invokes pytest
 multiple times only keeps the results of the last session.
 

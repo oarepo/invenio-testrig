@@ -155,7 +155,6 @@ env:
 
 permissions:
   contents: write # Required for pushing reports to the repository
-  checks: write # Required for publishing junit test results (mikepenz/action-junit-report)
   id-token: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
   pages: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
 
