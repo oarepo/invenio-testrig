@@ -41,6 +41,12 @@ DEFAULT_SEED_REPOSITORY = "oarepo/inveniordm-reference-repo@master"
 DEFAULT_E2E_REPOSITORY = "oarepo/invenio-e2e@main"
 """End-to-end test package used by the ``github`` command when no configuration file is given."""
 
+RUN_LOOKUP_ATTEMPTS = 15
+"""How often to look for the dispatched run by its name (GitHub creates it asynchronously)."""
+
+RUN_LOOKUP_DELAY = 2.0
+"""Seconds between run lookups."""
+
 
 @click.command("github")
 @with_progress
@@ -131,6 +137,16 @@ DEFAULT_E2E_REPOSITORY = "oarepo/invenio-e2e@main"
     default=True,
     help="Install packages in editable mode (--editable) or as built packages (--installed)",
 )
+@click.option(
+    "--non-interactive",
+    is_flag=True,
+    default=False,
+    help=(
+        "For automation: never open a browser, exit with an error when the workflow file "
+        "can't be updated, and print 'run-id: <id>' / 'run-url: <url>' lines for the dispatched "
+        "run. Use with a unique --name: the run is identified by its title."
+    ),
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -151,6 +167,7 @@ def github_cmd(
     config_file: str | None,
     slow_test_splitting: bool,
     use_editable_installation: bool,
+    non_interactive: bool,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -170,6 +187,8 @@ def github_cmd(
     invenio-testrig github --patch-mode upstream --test-scope all org/package#123
 
     invenio-testrig github --seed-branch develop org/package#123
+
+    invenio-testrig github --non-interactive --name my-unique-id --target org/runner
 
 
     This function:
@@ -222,9 +241,10 @@ def github_cmd(
             overwrite_testrig_file,
             testrig_repository,
             testrig_branch,
+            strict=non_interactive,
         )
 
-    workflow_url = _dispatch_workflow(
+    workflow_url, run_id = _dispatch_workflow(
         target_repo,
         list(patches),
         name,
@@ -245,7 +265,15 @@ def github_cmd(
         progress,
     )
 
-    _open_workflow_in_browser(workflow_url, progress)
+    if non_interactive:
+        # Machine-readable lines on stdout; printed only for a run identified by its name.
+        if run_id is not None:
+            click.echo(f"run-id: {run_id}")
+            click.echo(f"run-url: {workflow_url}")
+        elif name:
+            progress.warning(f"Dispatched, but no run titled {name!r} appeared yet")
+    else:
+        _open_workflow_in_browser(workflow_url, progress)
 
     progress.success("GitHub repository setup complete!")
     progress.info(f"Repository: https://github.com/{target_repo}")
@@ -361,7 +389,7 @@ def _update_workflow_file(
     force_overwrite: bool = False,
     testrig_repository: str = "oarepo/invenio-testrig",
     testrig_branch: str = "master",
-) -> None:
+) -> bool:
     """Update or create testrig.yml workflow file with version management.
 
     For new repositories: Copy the latest version as testrig.yml
@@ -373,6 +401,7 @@ def _update_workflow_file(
     :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
     :param testrig_repository: Repository containing invenio-testrig
     :param testrig_branch: Branch of invenio-testrig to use
+    :return: False when the file is customized and was left unchanged, True otherwise
     """
     workflows_dir = temp_dir / ".github" / "workflows"
     target_file = workflows_dir / "testrig.yml"
@@ -400,7 +429,7 @@ def _update_workflow_file(
         workflows_dir.mkdir(parents=True, exist_ok=True)
         target_file.write_text(latest_content)
         progress.info(f"Created testrig.yml (version {version_str})")
-        return
+        return True
 
     # Existing repository - check if we should update
     current_md5 = _get_file_md5(target_file, testrig_repository, testrig_branch)
@@ -410,7 +439,7 @@ def _update_workflow_file(
     if force_overwrite:
         target_file.write_text(latest_content)
         progress.success(f"Forced overwrite of testrig.yml to version {version_str}")
-        return
+        return True
 
     # Check if current file matches any known version
     matching_version = None
@@ -432,6 +461,7 @@ def _update_workflow_file(
             progress.success(
                 f"Updated testrig.yml from {old_version_str} to {version_str}"
             )
+        return True
     else:
         # File doesn't match any known version - user has customized it
         progress.warning(
@@ -475,6 +505,7 @@ def _update_workflow_file(
         progress.info(
             "Alternatively, use --overwrite-testrig-file to force update to the latest version, removing any customizations you may have added."
         )
+        return False
 
 
 def _get_current_github_username() -> str:
@@ -654,6 +685,7 @@ def _update_existing_repository_workflow(
     force_overwrite: bool = False,
     testrig_repository: str = "oarepo/invenio-testrig",
     testrig_branch: str = "master",
+    strict: bool = False,
 ) -> None:
     """Update workflow file in existing repository if needed.
 
@@ -662,6 +694,8 @@ def _update_existing_repository_workflow(
     :param force_overwrite: If True, always overwrite testrig.yml regardless of customizations
     :param testrig_repository: Repository containing invenio-testrig
     :param testrig_branch: Branch of invenio-testrig to use
+    :param strict: Exit with an error instead of a warning when the workflow file can't be
+                   updated (customized, or clone/push failed); used by --non-interactive
     """
     progress.start("Checking workflow file version", icon="🔍")
 
@@ -685,9 +719,15 @@ def _update_existing_repository_workflow(
         )
 
         # Update workflow file
-        _update_workflow_file(
+        up_to_date = _update_workflow_file(
             temp_dir, progress, force_overwrite, testrig_repository, testrig_branch
         )
+        if strict and not up_to_date:
+            progress.error(
+                "testrig.yml is customized and was not updated; "
+                "use --overwrite-testrig-file to replace it"
+            )
+            raise SystemExit(1)
 
         # Check if there are changes to commit
         result = subprocess.run(
@@ -708,7 +748,12 @@ def _update_existing_repository_workflow(
             call_executable_quietly(["git", "push", "origin", "HEAD"], cwd=temp_dir)
             progress.success("Workflow file updated in repository")
 
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
+        if strict:
+            progress.error(
+                f"Could not update workflow file in existing repository: {e}"
+            )
+            raise SystemExit(1)
         progress.warning("Could not update workflow file in existing repository")
     finally:
         if temp_dir.exists():
@@ -770,8 +815,8 @@ def _dispatch_workflow(
     slow_test_splitting: bool,
     use_editable_installation: bool,
     progress: Progress,
-) -> str | None:
-    """Dispatch workflow or return workflow page URL.
+) -> tuple[str | None, int | None]:
+    """Dispatch the workflow and find the run it created.
 
     :param target_repo: Repository name in format 'org/repo'
     :param patches: List of patch references to test
@@ -792,9 +837,12 @@ def _dispatch_workflow(
     :param use_editable_installation: Install packages in editable mode (-e flag)
     :param progress: Progress reporter for status updates
 
-    :return: Workflow URL if available, None otherwise
+    :return: (run URL, run id). The id is only set when the run was identified by its name
+             (its title, see ``run-name`` in the workflow); without a name, the URL is the
+             latest run's, which may belong to another dispatch.
+    :raises SystemExit: If the workflow can't be dispatched
     """
-    workflow_url = None
+    workflow_url: str | None = None
 
     # Dispatch workflow even without patches (use empty string)
     patches_str = " ".join(patches) if patches else ""
@@ -863,7 +911,10 @@ def _dispatch_workflow(
 
         # Add use-editable-installation
         workflow_cmd.extend(
-            ["-f", f"use-editable-installation={str(use_editable_installation).lower()}"]
+            [
+                "-f",
+                f"use-editable-installation={str(use_editable_installation).lower()}",
+            ]
         )
 
         # Add config-file if provided (convert local files to data URLs)
@@ -873,11 +924,24 @@ def _dispatch_workflow(
 
         # Dispatch the workflow
         call_executable_quietly(workflow_cmd)
+    except subprocess.CalledProcessError as e:
+        progress.error(f"Failed to dispatch workflow: {e}")
+        progress.info(
+            f"You can start it manually: https://github.com/{target_repo}/actions/workflows/testrig.yml"
+        )
+        raise SystemExit(1)
 
-        # Wait a moment for the workflow to be created
+    if name:
+        run = _find_run_by_name(target_repo, name)
+        if run is not None:
+            progress.success("Workflow dispatched successfully")
+            progress.info(f"Workflow URL: {run['url']}")
+            return run["url"], int(run["databaseId"])
+        return None, None
+
+    try:
+        # Without a name, fall back to the latest run (fine for interactive use only)
         time.sleep(2)
-
-        # Get the latest workflow run
         stdout, _ = call_executable_quietly(
             [
                 "gh",
@@ -898,14 +962,47 @@ def _dispatch_workflow(
             workflow_url = runs[0]["url"]
             progress.success("Workflow dispatched successfully")
             progress.info(f"Workflow URL: {workflow_url}")
-
     except subprocess.CalledProcessError:
-        progress.warning(
-            "Failed to dispatch workflow. You can start it manually from the Actions tab."
-        )
-        workflow_url = f"https://github.com/{target_repo}/actions/workflows/testrig.yml"
+        # The dispatch itself succeeded; only finding the run failed.
+        progress.warning("Workflow dispatched, but the run could not be looked up")
 
-    return workflow_url
+    return workflow_url, None
+
+
+def _find_run_by_name(target_repo: str, name: str) -> dict | None:
+    """Find the dispatched run whose title is ``name`` (the workflow's ``run-name``).
+
+    GitHub creates the run asynchronously, so poll a few times.
+
+    :return: The run (``databaseId``, ``url``, ``displayTitle``) or None if it didn't appear
+    """
+    for attempt in range(RUN_LOOKUP_ATTEMPTS):
+        if attempt:
+            time.sleep(RUN_LOOKUP_DELAY)
+        try:
+            stdout, _ = call_executable_quietly(
+                [
+                    "gh",
+                    "run",
+                    "list",
+                    "--repo",
+                    target_repo,
+                    "--workflow=testrig.yml",
+                    "--event",
+                    "workflow_dispatch",
+                    "--limit",
+                    "20",
+                    "--json",
+                    "databaseId,url,displayTitle",
+                ],
+                always_quiet=True,
+            )
+        except subprocess.CalledProcessError:
+            continue
+        for run in json.loads(stdout or "[]"):
+            if run.get("displayTitle") == name:
+                return run
+    return None
 
 
 def _open_workflow_in_browser(workflow_url: str | None, progress: Progress) -> None:
