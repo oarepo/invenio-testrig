@@ -98,17 +98,6 @@ runs:
             exit 1
         fi
 
-    - name: Publish JUnit report
-      if: always()
-      continue-on-error: true
-      uses: mikepenz/action-junit-report@v6
-      with:
-        report_paths: "${{ inputs.workdir }}/artifacts/${{ inputs.package }}/*_junit.xml"
-        check_name: "JUnit: ${{ inputs.package }}${{ inputs.part && format(' (part {0})', inputs.part) || '' }}"
-        fail_on_failure: false
-        require_tests: false
-        detailed_summary: true
-
     - name: Apply part number
       if: always() && inputs.part != ''
       shell: bash
