@@ -47,8 +47,8 @@ from invenio_testrig.utils import call_executable_quietly
 )
 @click.option(
     "--python-version",
-    default="3.14.2",
-    help="Python version to use for testing",
+    default="3.14",
+    help="Python version to use for testing (e.g. '3.14' for the latest 3.14.x)",
 )
 @click.option(
     "--disable-codestyle-checks",
