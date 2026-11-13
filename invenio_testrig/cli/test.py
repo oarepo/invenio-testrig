@@ -29,6 +29,7 @@ from invenio_testrig.cli.base import (
 )
 from invenio_testrig.cli.utils import (
     TestArtifactPaths,
+    junit_env,
     test_artifact_paths,
     test_run_context,
 )
@@ -359,6 +360,10 @@ def _run_tests(
     variant = "patched" if apply_patches else "original"
     paths = test_artifact_paths(log_dir, variant)
 
+    # remove a report left over from a previous run so that the report never
+    # links to stale results if this run does not produce one
+    paths.junit_file.unlink(missing_ok=True)
+
     if apply_patches and not patched:
         # skip the test execution if patches were requested but not applied
         progress.warning(
@@ -460,6 +465,7 @@ def _run_tests(
             test_command,
             paths.log_file,
             timeout=config.user.test_timeout * 60,
+            extra_env=junit_env(paths.junit_file, config.user.env),
         )
 
         # temporarily disabled till alembic PRs are merged

@@ -9,6 +9,7 @@
 
 from pathlib import Path
 
+from invenio_testrig.cli.utils import test_artifact_paths
 from invenio_testrig.config import Config
 from invenio_testrig.progress import Progress
 from invenio_testrig.report import (
@@ -65,6 +66,12 @@ def load_test_artifacts(
             # the directory is present, thus the package is not pending
             package_data[package_name].patched.status = "skipped"
             package_data[package_name].original.status = "skipped"
+            package_data[package_name].has_patched_junit = test_artifact_paths(
+                package_dir, "patched"
+            ).junit_file.exists()
+            package_data[package_name].has_original_junit = test_artifact_paths(
+                package_dir, "original"
+            ).junit_file.exists()
 
             # now overwrite with actual status if status files are present
             for status_file in status_files:

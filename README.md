@@ -92,6 +92,7 @@ on:
 
 permissions:
     contents: write # Required for pushing reports to the repository
+    checks: write # Required for publishing junit test results
     id-token: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
     pages: write # Required for publishing to GitHub Pages using actions/upload-pages-artifact
 
@@ -186,6 +187,14 @@ If you've specified patches (e.g., pull requests or branches), the testrig appli
 ### 5. Running Tests
 
 The testrig runs the test suite for each affected package. The test mode determines whether it runs tests for both patched and unpatched versions (for comparison) or only for patched versions.
+
+For pytest-based test suites, the run also writes a [JUnit XML](https://github.com/testmoapp/junitxml) report
+(`artifacts/<package>/<patched|original>_junit.xml`) by passing `--junit-xml` through the
+`PYTEST_ADDOPTS` environment variable. No change to the tested repository is needed, so
+any test command that ends up calling pytest (such as `./run-tests.sh`) works. The report
+is linked from the test report and published as a check run in the GitHub Actions summary.
+Note that pytest rewrites the file on each session, so a test command that invokes pytest
+multiple times only keeps the results of the last session.
 
 ### 6. End-to-End Testing *(Work in Progress)*
 

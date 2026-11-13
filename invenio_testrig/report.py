@@ -71,3 +71,8 @@ class ReportPackageData:
     artefact_dir: str  # directory name relative to the report where the artefacts for this package are stored (e.g. logs, status files, etc.)
     patched: ExecutionStatus
     original: ExecutionStatus
+    has_patched_junit: bool = False
+    """Whether a JUnit XML report is available for the patched test run."""
+
+    has_original_junit: bool = False
+    """Whether a JUnit XML report is available for the original test run."""
