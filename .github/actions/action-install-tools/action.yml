@@ -19,6 +19,20 @@ inputs:
       File paths and github URLs are also supported.
     required: false
     default: ""
+  install-invenio-cli:
+    description: |
+      Install invenio-cli (needed for end-to-end tests) into its own virtualenv and
+      expose it on PATH. Only the invenio-cli and pipenv executables are linked, so
+      neither the global python nor the tools virtualenv is affected by its dependencies.
+      Enabled by default; set to false in a job that does not need it.
+    required: false
+    default: "true"
+  invenio-cli-python-version:
+    description: |
+      Python interpreter for the invenio-cli virtualenv. Pin this to an older Python
+      (e.g. 3.12) if invenio-cli or its dependencies ever lag behind the newest one.
+    required: false
+    default: "3.14"
 runs:
   using: "composite"
   steps:
@@ -88,6 +102,38 @@ runs:
 
         echo "::endgroup::"
         echo "✓ Tools virtualenv created"
+
+    - name: Install invenio-cli
+      if: ${{ inputs.install-invenio-cli == 'true' }}
+      shell: bash
+      run: |
+        echo "::group::Installing invenio-cli"
+        TOOLS_DIR="${{ inputs.testrig-directory }}/.tools"
+        CLI_VENV="${RUNNER_TEMP}/invenio-cli-venv"
+
+        # run from a neutral directory so that the commands are not influenced
+        # by the project metadata of the checkout the step is running in
+        cd "$RUNNER_TEMP"
+
+        # invenio-cli gets a virtualenv of its own, so that neither the global python
+        # nor the tools virtualenv is affected by its (many) dependencies. It is
+        # created outside of the checkout to not be influenced by the project metadata.
+        uv venv "$CLI_VENV" --python ${{ inputs.invenio-cli-python-version }}
+        uv pip install --python "$CLI_VENV/bin/python" invenio-cli
+
+        # Only the executables needed on PATH are linked into .tools: invenio-cli
+        # itself and pipenv, which invenio-cli runs as a subprocess.
+        for exe in invenio-cli pipenv; do
+          if [ -x "$CLI_VENV/bin/$exe" ]; then
+            ln -sf "$CLI_VENV/bin/$exe" "$TOOLS_DIR/$exe"
+          else
+            echo "::warning::$exe not found in the invenio-cli virtualenv"
+          fi
+        done
+
+        invenio-cli --version
+        echo "::endgroup::"
+        echo "✓ invenio-cli installed"
 
     - name: Set up Node.js
       uses: actions/setup-node@v6
