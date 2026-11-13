@@ -75,6 +75,11 @@ If you specify a list of patches in the command, it will automatically start a w
 
 If the repository already exists, the command will simply dispatch the workflow without modifying the repository.
 
+For automation (dashboards, cron jobs), add `--non-interactive --name <unique-id>`. The run title
+is then the given name, the command prints `run-id: <id>` and `run-url: <url>` for exactly that run,
+no browser is opened, and problems with the workflow file are errors instead of warnings. A failed
+dispatch exits with an error in every mode.
+
 The seed repository (the repository whose dependency graph is tested) defaults to
 `oarepo/inveniordm-reference-repo@master`. Use `--repository org/repo[@branch]` to
 change the repository, and `--seed-branch <branch>` to override just its branch.

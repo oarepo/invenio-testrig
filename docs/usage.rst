@@ -48,6 +48,26 @@ if the maintrunk is in a good state.
 If the repository already exists, the command will simply dispatch the workflow
 without modifying the repository.
 
+Running from automation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Tools that dispatch runs (dashboards, cron jobs) should use ``--non-interactive`` with a
+unique ``--name``:
+
+.. code-block:: bash
+
+   invenio-testrig github --non-interactive --name <unique-id> --target org/runner-repo
+
+- The run's title is the given name (the workflow's ``run-name``), so the run is found by
+  its name rather than by "the latest run", and the command prints two machine-readable lines:
+  ``run-id: <id>`` and ``run-url: <url>``. If the run doesn't appear in time, no lines are printed.
+- The name is also the report's ``config_name``, so the downloaded report identifies its run.
+- No browser is opened.
+- The command exits with an error when the workflow file in the target repository can't be
+  updated (for example, because it was customized). Add ``--overwrite-testrig-file`` to always
+  replace it.
+- A failed dispatch exits with an error in every mode.
+
 Scenario 2: Testing RDM Repository
 ------------------------------------
 
