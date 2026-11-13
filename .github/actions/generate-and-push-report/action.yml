@@ -237,6 +237,14 @@ runs:
             # Copy report contents directly to REPORT_DIRECTORY path
             cp -r "$REPORT_PATH" "$REPORT_DIRECTORY"
 
+            # GitHub rejects files over 100 MB, which would make the whole push fail.
+            # Drop such files (e.g. huge junit reports or logs) from the report.
+            find "$REPORT_DIRECTORY" -type f -size +95M -print0 | \
+                while IFS= read -r -d '' big_file; do
+                    echo "::warning::⚠️  Removing $big_file ($(du -h "$big_file" | cut -f1)) from the report, it exceeds GitHub's file size limit"
+                    rm -f "$big_file"
+                done
+
             # Generate reports index
             echo "📑 Generating reports index..."
             invenio-testrig reports-index "$(pwd)" "$(pwd)/index.html"
@@ -255,7 +263,8 @@ runs:
             git commit --amend -m "$COMMIT_MSG" --allow-empty
 
             echo "Pushing to $REPORT_REPOSITORY/$REPORT_BRANCH..."
-            if git push --force-with-lease origin "$REPORT_BRANCH"; then
+            PUSH_LOG=$(mktemp)
+            if git push --force-with-lease origin "$REPORT_BRANCH" 2>&1 | tee "$PUSH_LOG"; [ "${PIPESTATUS[0]}" -eq 0 ]; then
                 echo "✅ Successfully pushed report to $REPORT_REPOSITORY/$REPORT_BRANCH/$REPORT_DIRECTORY"
                 SUCCESS=true
                 PUSHED=true
@@ -263,6 +272,11 @@ runs:
                 UNIQUE_ID="$(git rev-parse --short HEAD)-${GITHUB_JOB:-unknown}-$(date +%s)-$RANDOM"
                 echo "commit-id=$UNIQUE_ID" >> $GITHUB_OUTPUT
                 echo "::endgroup::"
+            elif grep -q "pre-receive hook declined" "$PUSH_LOG"; then
+                # The content itself was rejected (e.g. GH001 large file), retrying won't help
+                echo "::endgroup::"
+                echo "::error::❌ Push rejected by GitHub (pre-receive hook declined), not retrying"
+                break
             else
                 echo "⚠️  Push failed, possibly due to concurrent update"
                 RETRY_COUNT=$((RETRY_COUNT + 1))

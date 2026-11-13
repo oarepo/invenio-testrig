@@ -213,15 +213,15 @@ def cmd_repo_test(
 
             # run the invenio-cli run in a background process
             #
-            _venv = PythonAPI._venv_path(test_repository_path)
+            # invenio-cli may live outside the repository venv (it is installed
+            # into its own virtualenv and exposed on PATH), so resolve it via
+            # the same PATH that run_in_venv uses (repo venv bin first).
             server_log_fh = open(server_log_file, "w")
             runner_handle = subprocess.Popen(
-                [str(_venv / "bin" / "invenio-cli"), "run", "all", "--no-debug"],
+                ["invenio-cli", "run", "all", "--no-debug"],
                 cwd=test_repository_path,
                 env={
-                    **os.environ,
-                    **config.user.env,
-                    "VIRTUAL_ENV": str(_venv),
+                    **python_api.prepare_venv_environment(test_repository_path),
                     "INVENIO_RATELIMIT_ENABLED": "False",
                     "INVENIO_RECORDS_RESOURCES_FILES_ALLOWED_DOMAINS": '["inveniordm.docs.cern.ch"]',
                     "FLASK_DEBUG": "False",

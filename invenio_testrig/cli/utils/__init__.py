@@ -12,6 +12,7 @@ import subprocess
 from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
+from xml.etree import ElementTree
 
 from invenio_testrig.cli.utils.log_processing import process_warnings
 from invenio_testrig.config import TestedPackageInfo
@@ -73,6 +74,56 @@ def junit_env(
     existing = (base_env or {}).get("PYTEST_ADDOPTS", "").strip()
     addopts = f"{existing} --junit-xml={shlex.quote(str(junit_file))}".strip()
     return {"PYTEST_ADDOPTS": addopts}
+
+
+JUNIT_MAX_VALUE_LENGTH = 10_000
+"""Longest attribute value / text kept in a JUnit report, longer ones are truncated."""
+
+
+def _truncate(value: str | None, limit: int) -> str | None:
+    if value is None or len(value) <= limit:
+        return value
+    return f"{value[:limit]}... [truncated {len(value) - limit} characters]"
+
+
+def shrink_junit_file(
+    junit_file: Path, limit: int = JUNIT_MAX_VALUE_LENGTH
+) -> bool:
+    """Truncate oversized attribute values and texts in a JUnit XML report.
+
+    pytest embeds the parameters of parametrized tests in the test name. When a
+    test is parametrized with large ``bytes`` (e.g. invenio-s3 uses tens of MB
+    of ``os.urandom`` data), the report grows to hundreds of MB, which can not be
+    pushed to GitHub (100 MB file limit) and is useless anyway.
+
+    :param junit_file: The report to shrink in place. Missing files are ignored.
+    :param limit: Maximum length of any attribute value or text.
+    :return: True if the file was modified.
+    """
+    if not junit_file.exists():
+        return False
+    try:
+        tree = ElementTree.parse(junit_file)
+    except ElementTree.ParseError:
+        return False
+
+    changed = False
+    for element in tree.iter():
+        for key, value in element.attrib.items():
+            truncated = _truncate(value, limit)
+            if truncated is not value:
+                element.set(key, truncated)
+                changed = True
+        for attr in ("text", "tail"):
+            value = getattr(element, attr)
+            truncated = _truncate(value, limit)
+            if truncated is not value:
+                setattr(element, attr, truncated)
+                changed = True
+
+    if changed:
+        tree.write(junit_file, encoding="utf-8", xml_declaration=True)
+    return changed
 
 
 @contextmanager
@@ -140,6 +191,7 @@ def test_run_context(
 __all__ = [
     "process_warnings",
     "junit_env",
+    "shrink_junit_file",
     "TestArtifactPaths",
     "test_artifact_paths",
     "test_run_context",

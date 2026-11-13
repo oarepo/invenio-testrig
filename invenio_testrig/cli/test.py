@@ -30,6 +30,7 @@ from invenio_testrig.cli.base import (
 from invenio_testrig.cli.utils import (
     TestArtifactPaths,
     junit_env,
+    shrink_junit_file,
     test_artifact_paths,
     test_run_context,
 )
@@ -460,13 +461,19 @@ def _run_tests(
             )
             progress.info(selected_tests_file.read_text())
 
-        api.run_in_venv(
-            working_dir,
-            test_command,
-            paths.log_file,
-            timeout=config.user.test_timeout * 60,
-            extra_env=junit_env(paths.junit_file, config.user.env),
-        )
+        try:
+            api.run_in_venv(
+                working_dir,
+                test_command,
+                paths.log_file,
+                timeout=config.user.test_timeout * 60,
+                extra_env=junit_env(paths.junit_file, config.user.env),
+            )
+        finally:
+            if shrink_junit_file(paths.junit_file):
+                progress.warning(
+                    f"Truncated oversized values in junit report {paths.junit_file}"
+                )
 
         # temporarily disabled till alembic PRs are merged
         # test_alembic_migrations(config, working_dir, api, paths, progress)
