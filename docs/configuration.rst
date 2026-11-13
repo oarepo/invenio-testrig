@@ -50,7 +50,7 @@ dependencies and optionally run end-to-end tests.
      - yes
      - Git reference to the seed repository in the format ``org/repo@branch``.
        Used to extract dependencies (packages to test) and to run e2e tests.
-       Default: ``zenodo/zenodo-rdm@master``
+       Default: ``oarepo/inveniordm-reference-repo@master``
    * - ``e2e``
      - no
      - Git reference to a repository containing an e2e test library /
@@ -62,7 +62,7 @@ Example:
 .. code-block:: yaml
 
    seed_repository:
-     git: zenodo/zenodo-rdm@master
+     git: oarepo/inveniordm-reference-repo@master
      e2e: oarepo/invenio-e2e@log-xhr
 
 github
@@ -181,7 +181,7 @@ The following is the built-in ``default_config.yaml``:
          - setuptools<82.0.0
 
    seed_repository:
-     git: zenodo/zenodo-rdm@master
+     git: oarepo/inveniordm-reference-repo@master
      e2e:
 
    test_timeout: 90

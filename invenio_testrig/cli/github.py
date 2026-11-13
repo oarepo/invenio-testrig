@@ -29,10 +29,17 @@ import click
 import yaml
 
 from invenio_testrig.cli.base import with_progress
+from invenio_testrig.github.ref_parser import parse_string_reference
 from invenio_testrig.progress import Progress
 from invenio_testrig.utils import call_executable_quietly
 
 # region CLI Command
+
+DEFAULT_SEED_REPOSITORY = "oarepo/inveniordm-reference-repo@master"
+"""Seed repository used by the ``github`` command when no configuration file is given."""
+
+DEFAULT_E2E_REPOSITORY = "oarepo/invenio-e2e@main"
+"""End-to-end test package used by the ``github`` command when no configuration file is given."""
 
 
 @click.command("github")
@@ -91,6 +98,10 @@ from invenio_testrig.utils import call_executable_quietly
     help="Override seed repository.git configuration (e.g., 'org/repo@branch' or GitHub URL)",
 )
 @click.option(
+    "--seed-branch",
+    help="Override the branch of the seed repository (e.g., 'master')",
+)
+@click.option(
     "--e2e",
     help="Override e2e test package for seed repository e2e tests (e.g., 'org/repo@branch' or GitHub URL)",
 )
@@ -133,6 +144,7 @@ def github_cmd(
     testrig_repository: str | None,
     testrig_branch: str | None,
     repository: str | None,
+    seed_branch: str | None,
     e2e: str | None,
     e2e_ui: bool,
     ignore_uv_lock: bool,
@@ -157,6 +169,8 @@ def github_cmd(
 
     invenio-testrig github --patch-mode upstream --test-scope all org/package#123
 
+    invenio-testrig github --seed-branch develop org/package#123
+
 
     This function:
     1. Creates a repository if it doesn't exist (with testrig client files and gh-pages branch)
@@ -172,9 +186,17 @@ def github_cmd(
 
     if not config_file:
         if repository is None:
-            repository = "oarepo/inveniordm-reference-repo@master"
+            repository = DEFAULT_SEED_REPOSITORY
         if e2e is None:
-            e2e = "oarepo/invenio-e2e@main"
+            e2e = DEFAULT_E2E_REPOSITORY
+
+    if seed_branch:
+        if repository is None:
+            raise click.UsageError(
+                "--seed-branch needs a seed repository: pass --repository org/repo "
+                "or drop --config-file so that the default seed repository is used."
+            )
+        repository = _seed_repository_with_branch(repository, seed_branch)
 
     if not e2e or e2e.lower() == "none":
         e2e = None
@@ -230,6 +252,19 @@ def github_cmd(
 
 
 # endregion
+
+
+def _seed_repository_with_branch(repository: str, seed_branch: str) -> str:
+    """Return the seed repository reference using the given branch.
+
+    :param repository: Seed repository reference in any of the supported formats
+                       (``org/repo``, ``org/repo@branch``, GitHub URLs, ...).
+    :param seed_branch: Branch to use instead of the one contained in the reference.
+    :return: Reference in the ``org/repo@branch`` format.
+    """
+    reference = parse_string_reference(repository)
+    reference.branch = seed_branch
+    return str(reference)
 
 
 # region Repository Setup
