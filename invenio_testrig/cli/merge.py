@@ -13,6 +13,7 @@ split into multiple parts for parallel execution.
 
 import json
 from pathlib import Path
+from xml.etree import ElementTree
 
 import click
 
@@ -115,6 +116,7 @@ def _merge_test_type(
     merged_warnings = []
     merged_status = None
     overall_status = "success"
+    junit_files: list[Path] = []
 
     for part_num, part_dir in sorted(part_dirs):
         part_paths = test_artifact_paths(part_dir, test_type)
@@ -130,6 +132,10 @@ def _merge_test_type(
             merged_simplified_logs.append(f"=== Part {part_num} ===\n")
             merged_simplified_logs.append(part_paths.simplified_log_file.read_text())
             merged_simplified_logs.append("\n")
+
+        # Collect junit reports
+        if part_paths.junit_file.exists():
+            junit_files.append(part_paths.junit_file)
 
         # Collect warnings
         if part_paths.warnings_file.exists():
@@ -174,6 +180,8 @@ def _merge_test_type(
     if merged_warnings:
         paths.warnings_file.write_text(json.dumps(merged_warnings, indent=2))
 
+    _merge_junit_files(junit_files, paths.junit_file, package_name, progress)
+
     # Write merged status
     if merged_status:
         merged_status.status = overall_status
@@ -182,3 +190,53 @@ def _merge_test_type(
         progress.warning(
             f"No status files found for {test_type} tests of '{package_name}'"
         )
+
+
+def _merge_junit_files(
+    junit_files: list[Path],
+    merged_file: Path,
+    package_name: str,
+    progress: Progress,
+) -> None:
+    """Merge the JUnit XML reports of the test parts into a single report.
+
+    Each part runs the test suite separately, so every part produces its own
+    ``<testsuites>`` document. The suites are concatenated, keeping the per-test
+    details intact.
+
+    :param junit_files: JUnit XML files of the individual parts, in part order.
+    :param merged_file: File the merged report is written to.
+    :param package_name: Name of the package, used in progress messages.
+    :param progress: Progress reporter.
+    """
+    merged_file.unlink(missing_ok=True)
+    if not junit_files:
+        return
+
+    root = ElementTree.Element("testsuites")
+    merged_count = 0
+    for junit_file in junit_files:
+        try:
+            part_root = ElementTree.parse(junit_file).getroot()
+        except ElementTree.ParseError as e:
+            progress.warning(
+                f"Failed to parse junit report {junit_file} of '{package_name}': {e}"
+            )
+            continue
+
+        if part_root.tag == "testsuites":
+            root.extend(part_root)
+        else:
+            root.append(part_root)
+        merged_count += 1
+
+    if not merged_count:
+        return
+
+    ElementTree.indent(root)
+    ElementTree.ElementTree(root).write(
+        merged_file, encoding="utf-8", xml_declaration=True
+    )
+    progress.info(
+        f"Merged {merged_count} junit report(s) of '{package_name}' into {merged_file}"
+    )

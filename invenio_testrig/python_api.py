@@ -745,6 +745,7 @@ class PythonAPI:
         check_output: Literal[False] = False,
         timeout: float | None = None,
         cwd: Path | None = None,
+        extra_env: dict[str, str] | None = None,
     ) -> None: ...
 
     @overload
@@ -757,6 +758,7 @@ class PythonAPI:
         check_output: Literal[True] = True,
         timeout: float | None = None,
         cwd: Path | None = None,
+        extra_env: dict[str, str] | None = None,
     ) -> str: ...
 
     def run_in_venv(
@@ -768,6 +770,7 @@ class PythonAPI:
         check_output: bool = False,
         timeout: float | None = None,
         cwd: Path | None = None,
+        extra_env: dict[str, str] | None = None,
     ) -> None | str:
         """Run a command inside the virtual environment.
 
@@ -776,11 +779,16 @@ class PythonAPI:
         :param capture_to_file: Optional file path to capture command output
         :param tee_output: If True and capture_to_file is set, output to both file and stdout/stderr
         :param timeout: Optional timeout in seconds. None means no timeout.
+        :param cwd: Optional working directory, defaults to ``project_path``.
+        :param extra_env: Optional environment variables for this command only. They
+                          override the ones from the configuration.
 
         :raises subprocess.CalledProcessError: If the command fails
         :raises subprocess.TimeoutExpired: If the command exceeds the timeout
         """
         environment = self.prepare_venv_environment(project_path)
+        if extra_env:
+            environment.update(extra_env)
         cwd = cwd or project_path
         if check_output:
             print(f"Checking output of command {command} in directory {cwd}")

@@ -7,6 +7,7 @@
 # details.
 """Shared utilities for CLI commands."""
 
+import shlex
 import subprocess
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -32,6 +33,7 @@ class TestArtifactPaths:
     freeze_file: Path
     warnings_file: Path
     simplified_log_file: Path
+    junit_file: Path
 
 
 def test_artifact_paths(log_dir: Path, variant: str) -> TestArtifactPaths:
@@ -47,7 +49,30 @@ def test_artifact_paths(log_dir: Path, variant: str) -> TestArtifactPaths:
         freeze_file=log_dir / f"{variant}_freeze.txt",
         warnings_file=log_dir / f"{variant}_warnings.json",
         simplified_log_file=log_dir / f"{variant}_simplified_log.log",
+        junit_file=log_dir / f"{variant}_junit.xml",
     )
+
+
+def junit_env(
+    junit_file: Path, base_env: dict[str, str] | None = None
+) -> dict[str, str]:
+    """Return environment that makes pytest write a JUnit XML report.
+
+    pytest appends ``PYTEST_ADDOPTS`` to its command line, so this works for any
+    test command that ends up invoking pytest (``./run-tests.sh``, ``./run.sh
+    test``, ...) without modifying the tested repository. Options already set in
+    the configuration are preserved.
+
+    Note that pytest overwrites the file on every session, so if the test command
+    runs pytest more than once, only the last session is reported.
+
+    :param junit_file: Path of the JUnit XML file to write.
+    :param base_env: Environment from the configuration, which may already
+                     contain ``PYTEST_ADDOPTS``.
+    """
+    existing = (base_env or {}).get("PYTEST_ADDOPTS", "").strip()
+    addopts = f"{existing} --junit-xml={shlex.quote(str(junit_file))}".strip()
+    return {"PYTEST_ADDOPTS": addopts}
 
 
 @contextmanager
@@ -114,6 +139,7 @@ def test_run_context(
 
 __all__ = [
     "process_warnings",
+    "junit_env",
     "TestArtifactPaths",
     "test_artifact_paths",
     "test_run_context",
