@@ -75,6 +75,10 @@ If you specify a list of patches in the command, it will automatically start a w
 
 If the repository already exists, the command will simply dispatch the workflow without modifying the repository.
 
+The seed repository (the repository whose dependency graph is tested) defaults to
+`oarepo/inveniordm-reference-repo@master`. Use `--repository org/repo[@branch]` to
+change the repository, and `--seed-branch <branch>` to override just its branch.
+
 ### Scenario 2: Testing RDM Repository
 
 When preparing to release a new version of your repository, you need to ensure that all frozen dependencies work together correctly and that no tests are broken. You might also want to test that everything would be working
@@ -245,7 +249,7 @@ Configuration for the seed InvenioRDM repository used as the foundation for test
   1. Extract dependencies matching the GitHub filters—these packages will be tested
   2. Run end-to-end tests (if E2E configuration is provided)
 
-  Default: `zenodo/zenodo-rdm@master`
+  Default: `oarepo/inveniordm-reference-repo@master`
 
 - **e2e** (optional) - Git reference to a repository containing an end-to-end test library/configuration. If the seed repository doesn't have an `e2e` directory, it will be copied from this package. If not provided, only unit tests will run (no end-to-end tests).
 
@@ -255,7 +259,7 @@ Configuration for the seed InvenioRDM repository used as the foundation for test
 
 ```yaml
 seed_repository:
-  git: zenodo/zenodo-rdm@master
+  git: oarepo/inveniordm-reference-repo@master
   e2e: oarepo/invenio-e2e@log-xhr
 ```
 

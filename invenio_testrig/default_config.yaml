@@ -85,7 +85,7 @@ seed_repository:
   # Git repository to install and test. It will be installed (using uv sync) and used to:
   #   1. Extract dependencies matching the github filters - these packages will be tested.
   #   2. Run e2e tests (if e2e configuration is provided).
-  git: zenodo/zenodo-rdm@master
+  git: oarepo/inveniordm-reference-repo@master
 
   # Package containing the e2e test library/configuration. If the git repository
   # above doesn't have an e2e directory, it will be copied from this package.
