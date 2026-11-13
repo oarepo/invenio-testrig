@@ -37,7 +37,7 @@ The command will automatically dispatch the workflow and open a browser window s
 2. Click "Run workflow"
 3. Fill in the workflow inputs:
    - **patches**: Space-separated list of patches to test (e.g., `inveniosoftware/invenio-records-resources#123`)
-   - **python-version**: Python version to use (default: 3.14.2)
+   - **python-version**: Python version to use (default: 3.14, i.e. the latest 3.14.x)
    - **patch-mode**: 
      - `upstream` - Apply patches on top of latest upstream versions
      - `pinned` - Apply patches on top of versions in the seed repository

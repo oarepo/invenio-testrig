@@ -84,7 +84,7 @@ InvenioRDM repository:
                name: My great repository
                repository: ${{ github.repository }}@${{ github.ref_name }}
                disable-codestyle-checks: true
-               python-version: 3.14.2
+               python-version: 3.14
                # optional stuff
                skip-report: false
                report-repository: ${{ github.repository }}

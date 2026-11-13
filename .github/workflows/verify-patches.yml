@@ -17,7 +17,7 @@ on:
         description: "Python version to use"
         required: false
         type: string
-        default: "3.14.2"
+        default: "3.14"
       disable-codestyle-checks:
         description: "Disable codestyle checks (black/isort) during tests"
         required: false
@@ -110,7 +110,7 @@ on:
 
 env:
   PYTHONUNBUFFERED: 1
-  PYTHON_VERSION: ${{ inputs.python-version || '3.14.2' }}
+  PYTHON_VERSION: ${{ inputs.python-version || '3.14' }}
   DISABLE_CODESTYLE_CHECKS: ${{ inputs.disable-codestyle-checks }}
   TEST_SCOPE: ${{ inputs.test-scope || 'affected' }}
   TEST_MODE: ${{ inputs.test-mode || 'stop-on-success' }}
