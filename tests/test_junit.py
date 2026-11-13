@@ -106,3 +106,32 @@ def test_merge_junit_files_skips_broken_reports(tmp_path: Path):
     content = merged.read_text()
     assert content.count("<testsuite ") == 1
     assert "tests.test_b" in content
+
+
+def test_shrink_junit_file_truncates_huge_names(tmp_path):
+    from invenio_testrig.cli.utils import shrink_junit_file
+
+    huge = "\\x00" * 50_000
+    junit_file = tmp_path / "patched_junit.xml"
+    junit_file.write_text(
+        '<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest">'
+        f'<testcase classname="tests.test_s3" name="test_put[{huge}]" time="1.0" />'
+        "</testsuite></testsuites>"
+    )
+
+    assert shrink_junit_file(junit_file, limit=100)
+    content = junit_file.read_text()
+    assert len(content) < 1000
+    assert "truncated" in content
+    assert 'classname="tests.test_s3"' in content
+
+
+def test_shrink_junit_file_keeps_small_reports(tmp_path):
+    from invenio_testrig.cli.utils import shrink_junit_file
+
+    junit_file = tmp_path / "patched_junit.xml"
+    junit_file.write_text(PART_0)
+
+    assert not shrink_junit_file(junit_file)
+    assert junit_file.read_text() == PART_0
+    assert not shrink_junit_file(tmp_path / "missing.xml")
