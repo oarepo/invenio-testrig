@@ -24,19 +24,28 @@ WORKFLOWS = files("invenio_testrig.testrig_client") / ".github" / "workflows"
 class FakeGh:
     """Stand-in for ``call_executable_quietly``: records commands, answers ``gh`` calls."""
 
-    def __init__(self, runs=None, fail_dispatch=False, runs_appear_after=0):
+    def __init__(
+        self, runs=None, fail_dispatch=False, runs_appear_after=0, repo_exists=True
+    ):
         self.commands: list[list[str]] = []
         self.runs = runs if runs is not None else []
         self.fail_dispatch = fail_dispatch
         self.runs_appear_after = runs_appear_after
         self.list_calls = 0
+        self.repo_exists = repo_exists
 
     def __call__(self, cmd, always_quiet=False, **kwargs):
         self.commands.append(cmd)
         if cmd[:3] == ["gh", "api", "user"]:
             return "someone\n", ""
         if cmd[:3] == ["gh", "repo", "view"]:
+            if not self.repo_exists:
+                raise subprocess.CalledProcessError(
+                    1, cmd, "", "Could not resolve to a Repository"
+                )
             return "", ""
+        if cmd[:3] == ["gh", "repo", "create"]:
+            raise AssertionError("the repository must not be created")
         if cmd[:3] == ["gh", "workflow", "run"]:
             if self.fail_dispatch:
                 raise subprocess.CalledProcessError(1, cmd, "", "HTTP 403")
@@ -194,3 +203,46 @@ def test_strict_update_fails_when_clone_fails(monkeypatch, tmp_path):
 
 def _progress():
     return ClickProgress()
+
+
+def test_no_create_repository_fails_instead_of_creating(fake_gh, no_browser):
+    fake = fake_gh(repo_exists=False)
+
+    result = CliRunner().invoke(
+        cli,
+        [
+            "github",
+            "--target",
+            "org/runner",
+            "--name",
+            "x",
+            "--non-interactive",
+            "--no-create-repository",
+        ],
+    )
+
+    assert result.exit_code == 1
+    assert not any(cmd[:3] == ["gh", "repo", "create"] for cmd in fake.commands)
+    assert not any(cmd[:3] == ["gh", "workflow", "run"] for cmd in fake.commands)
+    assert no_browser == []
+
+
+def test_no_create_repository_dispatches_to_an_existing_repository(fake_gh, no_browser):
+    url = "https://github.com/org/runner/actions/runs/9"
+    fake_gh(runs=[{"databaseId": 9, "url": url, "displayTitle": "x"}])
+
+    result = CliRunner().invoke(
+        cli,
+        [
+            "github",
+            "--target",
+            "org/runner",
+            "--name",
+            "x",
+            "--non-interactive",
+            "--no-create-repository",
+        ],
+    )
+
+    assert result.exit_code == 0, result.output
+    assert "run-id: 9" in result.output.splitlines()
