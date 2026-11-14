@@ -147,6 +147,15 @@ RUN_LOOKUP_DELAY = 2.0
         "run. Use with a unique --name: the run is identified by its title."
     ),
 )
+@click.option(
+    "--no-create-repository",
+    is_flag=True,
+    default=False,
+    help=(
+        "Exit with an error instead of creating the target repository when it doesn't exist "
+        "(or isn't accessible). For automation whose token is limited to one existing repository."
+    ),
+)
 @click.argument("patches", nargs=-1)
 def github_cmd(
     target: str | None,
@@ -168,6 +177,7 @@ def github_cmd(
     slow_test_splitting: bool,
     use_editable_installation: bool,
     non_interactive: bool,
+    no_create_repository: bool,
     patches: tuple[str, ...],
     progress: Progress,
 ):
@@ -189,6 +199,8 @@ def github_cmd(
     invenio-testrig github --seed-branch develop org/package#123
 
     invenio-testrig github --non-interactive --name my-unique-id --target org/runner
+
+    invenio-testrig github --non-interactive --no-create-repository --name my-id --target org/runner
 
 
     This function:
@@ -223,6 +235,15 @@ def github_cmd(
     username = _get_current_github_username()
     target_repo = _determine_target_repository(target, username, progress)
     repo_exists = _check_repository_exists(target_repo, progress)
+
+    if not repo_exists and no_create_repository:
+        # `gh repo view` fails the same way for a missing repository and for one the
+        # credentials can't see (e.g. a fine-grained token scoped to another repository).
+        progress.error(
+            f"Repository {target_repo} does not exist or is not accessible with the current "
+            "credentials. Create it first (or drop --no-create-repository)."
+        )
+        raise SystemExit(1)
 
     if not repo_exists:
         _create_repository(

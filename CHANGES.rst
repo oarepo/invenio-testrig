@@ -16,6 +16,8 @@ Unreleased
 - Workflow template 1.6.0 sets ``run-name`` from the ``name`` input, so runs are titled by their test
   name. Repositories on an older, unmodified template are updated automatically.
 - ``github``: a failed workflow dispatch now exits with an error instead of only printing a warning.
+- ``github``: new ``--no-create-repository``: a missing or inaccessible target repository is an error
+  instead of being created (for automation with a token limited to one existing repository).
 
 Version 1.0.0.dev0
 

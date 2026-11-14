@@ -67,6 +67,9 @@ unique ``--name``:
   updated (for example, because it was customized). Add ``--overwrite-testrig-file`` to always
   replace it.
 - A failed dispatch exits with an error in every mode.
+- Add ``--no-create-repository`` when the credentials are limited to one existing repository
+  (a fine-grained token): a missing or inaccessible target repository is then an error, instead of
+  an attempt to create a new public repository.
 
 Scenario 2: Testing RDM Repository
 ------------------------------------
