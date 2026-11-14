@@ -12,7 +12,7 @@ for GitHub Actions workflow matrix strategy, enabling parallel test execution.
 """
 
 import click
-import httpx
+import httpx2
 from rich.console import Console
 from rich.table import Table
 
@@ -28,13 +28,13 @@ class ReportHelper:
         self.report_url = report_url
 
     def fetch_json_config(self) -> dict:
-        with httpx.Client() as client:
+        with httpx2.Client() as client:
             response = client.get(self.report_url + "config.json")
             response.raise_for_status()
             return response.json()
 
     def fetch_tests_status(self) -> tuple[dict, dict]:
-        with httpx.Client() as client:
+        with httpx2.Client() as client:
             response = client.get(self.report_url + "data.json")
             response.raise_for_status()
             original_statuses = {}
