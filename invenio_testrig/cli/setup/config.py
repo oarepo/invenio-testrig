@@ -89,9 +89,9 @@ def _load_yaml_config_data(config_yaml_path_or_url: str | None) -> dict:
     if config_yaml_path_or_url.startswith(
         "http://"
     ) or config_yaml_path_or_url.startswith("https://"):
-        import httpx
+        import httpx2
 
-        response = httpx.get(config_yaml_path_or_url)
+        response = httpx2.get(config_yaml_path_or_url)
         response.raise_for_status()
         return yaml.safe_load(response.text)
     with open(config_yaml_path_or_url, "r") as f:

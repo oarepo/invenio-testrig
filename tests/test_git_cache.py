@@ -43,9 +43,9 @@ def test_get_pr_commits(git: GitCache):
 
 def test_virtual_pr_info(git: GitCache):
     pr_info = git.virtual_pr_info(
-        "inveniosoftware", "invenio-rdm-records", branch="maint-v23.x", base="v23.0.0"
+        "inveniosoftware", "invenio-rdm-records", branch="maint-23.x", base="v23.0.0"
     )
-    assert pr_info.source_branch == "maint-v23.x"
+    assert pr_info.source_branch == "maint-23.x"
     assert pr_info.source_org == "inveniosoftware"
     assert "5e2bdec470950924eb1f24ddc7c80c8d20b3c1ca" in pr_info.commits
     assert "435de740bbf92686d018edd1f7ba90d270a9cba2" in pr_info.commits
@@ -54,10 +54,10 @@ def test_virtual_pr_info(git: GitCache):
 
 def test_get_branch_commit(git: GitCache):
     commit = git.get_branch_commit(
-        "inveniosoftware", "invenio-rdm-records", "maint-v23.x"
+        "inveniosoftware", "invenio-rdm-records", "maint-23.x"
     )
     pr_info = git.virtual_pr_info(
-        "inveniosoftware", "invenio-rdm-records", branch="maint-v23.x", base="v23.0.0"
+        "inveniosoftware", "invenio-rdm-records", branch="maint-23.x", base="v23.0.0"
     )
     assert commit == pr_info.commits[-1]
 
@@ -70,7 +70,7 @@ def test_get_default_branch(git: GitCache):
 def test_get_branches(git: GitCache):
     branches = git.get_branches("inveniosoftware", "invenio-rdm-records")
     assert isinstance(branches, list)
-    assert "maint-v23.x" in branches
+    assert "maint-23.x" in branches
 
 
 def test_cache_repositories(git: GitCache):
