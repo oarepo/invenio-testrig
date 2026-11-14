@@ -15,6 +15,7 @@ execution status for report generation.
 import os
 import shutil
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 
@@ -209,7 +210,7 @@ def cmd_repo_test(
             )
 
             # create an s3 bucket for the test data
-            create_s3_location(test_repository_path, progress)
+            create_s3_location(python_api, test_repository_path, progress)
 
             # run the invenio-cli run in a background process
             #
@@ -408,38 +409,40 @@ def run_repository_tests(
     )
 
 
-def create_s3_location(repository_path: Path, progress: Progress):
+CREATE_S3_BUCKET_SCRIPT = """
+import s3fs
+from flask import current_app
+
+if "invenio-s3" not in current_app.extensions:
+    print("invenio-s3 is not installed, skipping S3 bucket creation")
+else:
+    info = current_app.extensions["invenio-s3"].init_s3fs_info
+    print(
+        "Creating S3 bucket 'default' at",
+        info["client_kwargs"].get("endpoint_url", "<default AWS endpoint>"),
+    )
+    fs = s3fs.S3FileSystem(**info)
+    if fs.exists("default"):
+        print("Bucket 'default' already exists.")
+    else:
+        fs.mkdir("default")
+        print("Bucket 'default' created.")
+"""
+
+
+def create_s3_location(
+    python_api: PythonAPI, repository_path: Path, progress: Progress
+):
     """Create the 'default' bucket in the repository's S3 service.
 
-    Repositories may serve S3 over TLS with a self-signed certificate (e.g. the
-    reference repo runs rustfs on https://localhost:9000 with
-    docker/nginx/test.crt). The endpoint and CA bundle can be overridden by the
-    INVENIO_S3_ENDPOINT_URL and INVENIO_S3_CA_BUNDLE environment variables.
+    The bucket is created from within ``invenio shell`` with invenio-s3's own
+    connection settings, so endpoint, credentials and TLS handling are exactly
+    those the running application uses (including ``INVENIO_S3_*`` environment
+    overrides). A self-signed S3 certificate can be trusted via the standard
+    ``AWS_CA_BUNDLE`` environment variable.
     """
-    import boto3
-    from botocore.client import Config
-
-    ca_bundle = os.environ.get("INVENIO_S3_CA_BUNDLE")
-    if not ca_bundle and (repository_path / "docker/nginx/test.crt").exists():
-        ca_bundle = str(repository_path / "docker/nginx/test.crt")
-    endpoint_url = os.environ.get("INVENIO_S3_ENDPOINT_URL") or (
-        "https://localhost:9000" if ca_bundle else "http://127.0.0.1:9000"
-    )
-    progress.info(f"Creating S3 bucket 'default' at {endpoint_url} (CA: {ca_bundle})")
-
-    s3 = boto3.client(
-        "s3",
-        endpoint_url=endpoint_url,
-        aws_access_key_id=os.environ.get("INVENIO_S3_ACCESS_KEY_ID", "CHANGE_ME"),
-        aws_secret_access_key=os.environ.get(
-            "INVENIO_S3_SECRET_ACCESS_KEY", "CHANGE_ME"
-        ),
-        config=Config(signature_version="s3v4"),
-        verify=ca_bundle if ca_bundle else None,
-    )
-
-    try:
-        s3.create_bucket(Bucket="default")
-    except s3.exceptions.BucketAlreadyOwnedByYou:
-        pass
-    progress.info("Bucket 'default' created.")
+    progress.info("Creating S3 bucket 'default' via invenio shell")
+    with tempfile.NamedTemporaryFile(suffix=".py", mode="wt") as f:
+        f.write(CREATE_S3_BUCKET_SCRIPT)
+        f.flush()
+        python_api.run_in_venv(repository_path, ["invenio", "shell", f.name])
