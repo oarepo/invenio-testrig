@@ -14,11 +14,13 @@ and legacy setup.py based projects.
 """
 
 import configparser
+import importlib.metadata
 import json
 import logging
 import os
 import shutil
 import subprocess
+import tempfile
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
@@ -31,6 +33,10 @@ from invenio_testrig.progress import Progress
 from invenio_testrig.utils import call_executable_quietly
 
 log = logging.getLogger(__name__)
+
+
+class DependencyResolutionError(RuntimeError):
+    """Raised when local clones cannot be installed without changing other packages."""
 
 
 @dataclass
@@ -390,9 +396,168 @@ class PythonAPI:
                 if patched:
                     patched_dependencies.append(library_package)
 
-        self.install_external_libraries(project_path, *paths_to_install)
+        self.install_local_clones_keeping_installed(
+            project_path, *paths_to_install, progress=progress
+        )
 
         return patched_dependencies
+
+    def install_local_clones_keeping_installed(
+        self,
+        project_path: Path,
+        *library_paths: Path,
+        progress: Progress | None = None,
+    ) -> None:
+        """Replace installed packages by local clones, keeping everything else as is.
+
+        Unlike ``--no-deps``, dependencies of the clones are resolved, so that
+        dependencies newly added in the clones (e.g. an unreleased master that
+        started to require a new library) get installed.
+
+        * The clones always win: they are passed as overrides, so version ranges
+          declared by other packages (including other clones) on a cloned package
+          are ignored. This is needed for release trains, where e.g. a major
+          version is bumped before the dependent packages relax their pins.
+        * Every other installed distribution is pinned to its current version
+          via a constraints file, so uv may only *add* packages. If the clones
+          need a different version of a package that is not part of the clones,
+          uv fails to resolve and :class:`DependencyResolutionError` is raised.
+        * Requirements left unsatisfied by the clones winning (``uv pip check``)
+          are reported as warnings: they are the pins that need to be bumped
+          before the release.
+
+        :param project_path: Path to the project where libraries should be installed
+        :param library_paths: Paths to the local clones to install
+        :param progress: Progress reporter for warnings (falls back to logging)
+
+        :raises DependencyResolutionError: if the clones cannot be installed
+            without changing any other installed distribution.
+        """
+        if not library_paths:
+            return
+
+        clones = {
+            self._local_project_name(path): path.resolve() for path in library_paths
+        }
+        clone_names = set(clones)
+        before = self._installed_distributions(project_path)
+
+        with tempfile.TemporaryDirectory(prefix="testrig-") as tmp:
+            constraints = Path(tmp) / "constraints.txt"
+            constraints.write_text(
+                "".join(
+                    f"{name}=={version}\n"
+                    for name, (version, _) in sorted(before.items())
+                    if name not in clone_names
+                )
+            )
+            overrides = Path(tmp) / "overrides.txt"
+            overrides.write_text(
+                "".join(
+                    f"{name} @ {path.as_uri()}\n"
+                    for name, path in sorted(clones.items())
+                )
+            )
+            args = [
+                self.uv_executable,
+                "pip",
+                "install",
+                "--constraint",
+                str(constraints),
+                "--override",
+                str(overrides),
+            ]
+            # Rebuild the clones even if the same path/version is installed already.
+            # Never use --force-reinstall here: it would reinstall the pinned
+            # packages as well, e.g. replacing editable installs by PyPI wheels.
+            for name in sorted(clone_names):
+                args.extend(["--reinstall-package", name])
+            args.extend(str(path) for path in library_paths)
+
+            try:
+                call_executable_quietly(
+                    args,
+                    cwd=project_path,
+                    env=self.prepare_venv_environment(project_path),
+                )
+            except subprocess.CalledProcessError as e:
+                raise DependencyResolutionError(
+                    "Local clones cannot be installed without changing other "
+                    f"installed packages:\n{e.stdout}\n{e.stderr}"
+                ) from e
+
+        # Safety net: the constraints should make this impossible.
+        after = self._installed_distributions(project_path)
+        changed = [
+            f"{name}: {old} -> {after.get(name, 'removed')}"
+            for name, old in before.items()
+            if name not in clone_names and after.get(name) != old
+        ]
+        if changed:
+            raise DependencyResolutionError(
+                f"Installing local clones modified other installed packages: {changed}"
+            )
+
+        self._report_unsatisfied_requirements(project_path, progress)
+
+    def _report_unsatisfied_requirements(
+        self, project_path: Path, progress: Progress | None
+    ) -> None:
+        """Warn about installed packages whose declared requirements are not met."""
+        try:
+            call_executable_quietly(
+                [self.uv_executable, "pip", "check"],
+                always_quiet=True,
+                cwd=project_path,
+                env=self.prepare_venv_environment(project_path),
+            )
+        except subprocess.CalledProcessError as e:
+            problems = [
+                line.strip()
+                for line in f"{e.stdout}\n{e.stderr}".splitlines()
+                if line.strip().startswith("The package")
+            ] or [f"uv pip check failed:\n{e.stdout}\n{e.stderr}"]
+            for problem in problems:
+                if progress is not None:
+                    progress.warning(f"Unsatisfied requirement: {problem}")
+                else:
+                    log.warning("Unsatisfied requirement: %s", problem)
+
+    def _local_project_name(self, path: Path) -> str:
+        """Return the normalized distribution name of a local project directory."""
+        try:
+            return self._read_local_project_info(path).name
+        except FileNotFoundError, KeyError:
+            return canonicalize_name(path.name)
+
+    def _installed_distributions(
+        self, project_path: Path
+    ) -> dict[str, tuple[str, str | None]]:
+        """Return ``name -> (version, direct_url.json content)`` of the venv's packages.
+
+        ``direct_url.json`` records where a distribution was installed from
+        (local directory, editable, VCS), so a change of source at the same
+        version is detected as well.
+        """
+        python = self._venv_path(project_path) / "bin" / "python"
+        stdout, _ = call_executable_quietly(
+            [
+                str(python),
+                "-I",
+                "-c",
+                "import json, sysconfig; p = sysconfig.get_paths(); "
+                "print(json.dumps(sorted({p['purelib'], p['platlib']})))",
+            ],
+            cwd=project_path,
+            env=self.prepare_venv_environment(project_path),
+        )
+        result: dict[str, tuple[str, str | None]] = {}
+        for dist in importlib.metadata.distributions(path=json.loads(stdout)):
+            if not dist.metadata["Name"]:
+                continue  # broken/half-removed metadata directory
+            name = canonicalize_name(dist.metadata["Name"])
+            result.setdefault(name, (dist.version, dist.read_text("direct_url.json")))
+        return result
 
     def install_external_libraries(
         self, project_path: Path, *library_paths: Path
