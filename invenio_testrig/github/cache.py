@@ -23,7 +23,7 @@ from functools import cached_property
 from pathlib import Path
 from typing import Any
 
-import semver
+import packaging
 
 from invenio_testrig.progress import Progress
 from invenio_testrig.types import PullRequestInfo
@@ -497,12 +497,12 @@ class GitCache:
             tags_on_commit = [tag for tag in tags_on_commit if tag.startswith("v")]
             if tags_on_commit:
                 # Sort version tags using semver and return the highest version
-                def parse_version(tag: str) -> semver.Version:
+                def parse_version(tag: str) -> packaging.version.Version:
                     try:
-                        return semver.Version.parse(tag[1:])  # remove 'v' prefix
+                        return packaging.version.Version(tag[1:])  # remove 'v' prefix
                     except ValueError:
                         # If parsing fails, return a very low version
-                        return semver.Version(0, 0, 0)
+                        return packaging.version.Version("0.0.0")
 
                 tags_on_commit.sort(key=parse_version, reverse=True)
                 return tags_on_commit[0][1:]  # remove leading 'v' from tag

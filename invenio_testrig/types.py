@@ -11,7 +11,7 @@ import logging
 from dataclasses import dataclass, field
 from typing import Any
 
-import semver
+import packaging
 from marshmallow_dataclass import class_schema
 
 log = logging.getLogger(__name__)
@@ -34,8 +34,8 @@ class VersionConstraint:
         :raises ValueError: If the operator is not supported
         :raises ValueError: If version strings cannot be parsed as semantic versions
         """
-        self_version = semver.Version.parse(self.version)
-        tested_version = semver.Version.parse(version_str)
+        self_version = packaging.version.Version(self.version)
+        tested_version = packaging.version.Version(version_str)
 
         if self.operator == "==":
             return tested_version == self_version
